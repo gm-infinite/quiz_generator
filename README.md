@@ -1,6 +1,4 @@
-# 🧠 QuizMind — A Multi-Agent Adaptive Learning System
-
-> *Because studying the same thing you already know is just procrastination with extra steps.*
+#  QuizMind — A Multi-Agent Adaptive Learning System
 
 ---
 
@@ -28,17 +26,17 @@ There's also a real challenge here technically — this isn't just a chatbot or 
 
 There are six agents working together under an orchestrator that decides who goes next:
 
-**🎯 Orchestrator** — the traffic controller. Looks at where the student is in the process and decides which agent should act next. It's the only agent with a full picture of the session.
+** Orchestrator** — the traffic controller. Looks at where the student is in the process and decides which agent should act next. It's the only agent with a full picture of the session.
 
-**📋 Assessment Agent** — kicks things off with a diagnostic quiz to map out what you know across different topics.
+** Assessment Agent** — kicks things off with a diagnostic quiz to map out what you know across different topics.
 
-**🔍 Weakness Analyzer** — goes through your answers, spots the patterns, and produces a structured breakdown of where you're struggling.
+** Weakness Analyzer** — goes through your answers, spots the patterns, and produces a structured breakdown of where you're struggling.
 
-**✏️ Question Generator** — uses web search and an LLM to create brand new practice questions targeting your weak areas. No recycled questions.
+** Question Generator** — uses web search and an LLM to create brand new practice questions targeting your weak areas. No recycled questions.
 
-**✅ Evaluator Agent** — grades your answers on the new questions and decides: did you actually improve, or do you need another round?
+** Evaluator Agent** — grades your answers on the new questions and decides: did you actually improve, or do you need another round?
 
-**📝 Feedback Agent** — wraps everything up with a clear, human-readable report on what got better and what still needs work.
+** Feedback Agent** — wraps everything up with a clear, human-readable report on what got better and what still needs work.
 
 The loop keeps running until the Evaluator is satisfied. The Orchestrator makes sure no one skips ahead.
 
@@ -58,41 +56,10 @@ The loop keeps running until the Evaluator is satisfied. The Orchestrator makes 
 
 | Name | Role |
 |------|------|
-| [Team Member 1] | Agent architecture & orchestration logic |
-| [Team Member 2] | Question generation, evaluation, UI |
+| Ayberk Karataban  2201256 |
+| Kuzey Berk Yılmaz 2200014 |
 
-*(Solo/duo project for SEN4018 — Agentic AI, Spring 2026)*
 
----
-
-## Project timeline
-
-| Milestone | Date |
-|-----------|------|
-| Initial documentation & motivation | April 12, 2026 |
-| Technical report & architecture details | May 3, 2026 |
-| Finished & deployed project | May 31, 2026 |
-| Presentation | Weeks 14–15 |
 
 ---
 
-## Running it locally
-
-```bash
-git clone https://github.com/[your-repo]/quizmind
-cd quizmind
-pip install -r requirements.txt
-python app.py
-```
-
-You'll need an Anthropic API key set as `ANTHROPIC_API_KEY` in your environment.
-
----
-
-## Status
-
-🟡 In progress — Upload #1 submitted. Building out agent pipeline next.
-
----
-
-*Built for SEN4018 @ Bahçeşehir University, Spring 2026.*
