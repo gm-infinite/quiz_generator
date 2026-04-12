@@ -24,7 +24,7 @@ There's also a real challenge here technically — this isn't just a chatbot or 
 
 ## How it works
 
-There are six agents working together under an orchestrator that decides who goes next:
+There are five agents working together under an orchestrator that decides who goes next:
 
 ** Orchestrator** — the traffic controller. Looks at where the student is in the process and decides which agent should act next. It's the only agent with a full picture of the session.
 
@@ -32,11 +32,10 @@ There are six agents working together under an orchestrator that decides who goe
 
 ** Weakness Analyzer** — goes through your answers, spots the patterns, and produces a structured breakdown of where you're struggling.
 
-** Question Generator** — uses web search and an LLM to create brand new practice questions targeting your weak areas. No recycled questions.
+** Question Generator** — uses web search and an LLM to create brand new practice questions targeting your weak areas.
 
-** Evaluator Agent** — grades your answers on the new questions and decides: did you actually improve, or do you need another round?
+** Evaluator & Feedback Agent ** — grades your answers on the new questions and decides: did you actually improve, or do you need another round and gives a feedback
 
-** Feedback Agent** — wraps everything up with a clear, human-readable report on what got better and what still needs work.
 
 The loop keeps running until the Evaluator is satisfied. The Orchestrator makes sure no one skips ahead.
 
@@ -54,8 +53,8 @@ The loop keeps running until the Evaluator is satisfied. The Orchestrator makes 
 
 ## Team
 
-| Name | Role |
-|------|------|
+| Name |
+|------|
 | Ayberk Karataban  2201256 |
 | Kuzey Berk Yılmaz 2200014 |
 
