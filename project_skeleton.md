@@ -132,7 +132,7 @@ session_state = {
 
 | Component | Tool |
 |-----------|------|
-| LLM | Google Gemini 1.5 Flash (via google-generativeai SDK) |
+| LLM | Google Gemini 3.1 Flash (via google-generativeai SDK) |
 | Agent orchestration | Custom Python classes |
 | Web search | Gemini native grounding with Google Search |
 | UI | Gradio |
