@@ -2,6 +2,11 @@
 
 This file provides guidance to Claude Code (claude.ai/code) when working with code in this repository.
 
+## Repo
+
+- GitHub: https://github.com/gm-infinite/quiz_generator
+- Active branch: `ayberk` (this is where work lands; no `main` exists yet).
+
 ## Project
 
 QuizMind — a multi-agent adaptive quiz system. Student picks subject + level, the app runs a broad-coverage test, identifies weak topics, generates targeted practice questions, evaluates improvement, and loops until the pass rule fires or the round cap (3) is hit. Built for SEN4018 Agentic AI, Bahçeşehir University, Spring 2026.
@@ -28,7 +33,9 @@ pytest tests/test_orchestrator.py -q             # one file
 pytest tests/test_agents.py::test_evaluator_pass_by_absolute_threshold -q   # one test
 ```
 
-`GEMINI_API_KEY` is read from `.env` (preferred) or `.env.example` as a fallback — `llm/gemini_client.py` loads both via `python-dotenv`. The key is required for `app.py`, `run_cli`, and `smoke_test`; tests don't need it (they use a `FakeGeminiClient` from `tests/conftest.py`).
+`GEMINI_API_KEY` is read from `.env` (preferred) or `.env.example` as a fallback — `llm/gemini_client.py` loads both via `python-dotenv`. The key is required for `app.py`, `run_cli`, and `smoke_test`.
+
+**Tests must never call the real API.** All tests in `tests/` use the `FakeGeminiClient` fixture (`fake_client`) defined in `tests/conftest.py`, which returns canned Pydantic instances per schema. If you write a new test, pass `fake_client` (or instantiate `FakeGeminiClient()` directly) — do not import `GeminiClient`. If a test needs a specific LLM response, call `fake_client.set(SchemaType, lambda prompt: SchemaType(...))` to override the default for that schema only.
 
 ## Architecture
 

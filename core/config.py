@@ -1,6 +1,6 @@
 """Centralized constants. Tune here, not inline."""
 
-GEMINI_MODEL = "gemini-2.5-flash"
+GEMINI_MODEL = "gemini-2.5-flash-lite"
 
 DIAGNOSTIC_QUESTION_COUNT = 10
 PRACTICE_QUESTIONS_PER_TOPIC = 5
