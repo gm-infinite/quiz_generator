@@ -16,6 +16,7 @@ class AssessmentAgent(BaseAgent):
             subject=state.subject,
             level=state.level,
             n_questions=config.DIAGNOSTIC_QUESTION_COUNT,
+            source_text=state.source_text,
         )
         result: QuestionSet = self.client.generate_structured(prompt, QuestionSet)
         state.diagnostic_questions = [q.model_dump() for q in result.questions]

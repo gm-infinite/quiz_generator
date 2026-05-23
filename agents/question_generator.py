@@ -12,6 +12,7 @@ from core import config
 from core.session_state import SessionState
 from llm import prompts
 from llm.schemas import QuestionSet
+from tools.dedupe import is_duplicate
 
 
 class QuestionGenerator(BaseAgent):
@@ -30,6 +31,7 @@ class QuestionGenerator(BaseAgent):
                 weak_topic=weak["topic"],
                 n_questions=config.PRACTICE_QUESTIONS_PER_TOPIC,
                 avoid_prompts=prior_stems,
+                source_text=state.source_text,
             )
             return i, weak, self.client.generate_with_search(prompt, QuestionSet)
 
@@ -48,12 +50,23 @@ class QuestionGenerator(BaseAgent):
         results.sort(key=lambda r: r[0])
 
         all_questions: list[dict] = []
+        accepted_stems: list[str] = list(prior_stems)
+        dropped = 0
         for i, weak, result in results:
-            for j, q in enumerate(result.questions):
+            j = 0
+            for q in result.questions:
+                if is_duplicate(q.prompt, accepted_stems):
+                    dropped += 1
+                    continue
                 d = q.model_dump()
                 d["id"] = f"p{state.iteration + 1}-{i + 1}-{j + 1}"
                 d["topic"] = weak["topic"]
                 all_questions.append(d)
+                accepted_stems.append(q.prompt)
+                j += 1
+
+        if dropped:
+            print(f"[question_generator] dropped {dropped} duplicate question(s)")
 
         state.practice_questions = all_questions
         state.practice_answers = []

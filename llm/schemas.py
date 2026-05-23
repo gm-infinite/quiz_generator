@@ -4,7 +4,7 @@ Every agent that asks Gemini for JSON points at one of these models.
 """
 from __future__ import annotations
 
-from pydantic import BaseModel, Field
+from pydantic import BaseModel, Field, model_validator
 
 
 class Question(BaseModel):
@@ -14,6 +14,21 @@ class Question(BaseModel):
     choices: list[str] = Field(..., min_length=2, max_length=6)
     correct_answer: str  # must match one of choices exactly
     explanation: str
+    # One-sentence rationale per incorrect choice, keyed by the choice text.
+    # LLMs sometimes omit this — we tolerate missing keys at render time.
+    distractor_rationales: dict[str, str] = Field(default_factory=dict)
+
+    @model_validator(mode="after")
+    def _check_consistency(self):
+        if self.correct_answer not in self.choices:
+            raise ValueError(
+                f"correct_answer {self.correct_answer!r} is not one of the choices"
+            )
+        if len(set(c.strip() for c in self.choices)) != len(self.choices):
+            raise ValueError("duplicate choices")
+        if any(not c.strip() for c in self.choices):
+            raise ValueError("empty choice")
+        return self
 
 
 class QuestionSet(BaseModel):

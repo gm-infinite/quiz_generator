@@ -14,8 +14,10 @@ class Phase(str, Enum):
     INIT = "init"
     ASSESSMENT = "assessment"
     ANALYSIS = "analysis"
+    DIAGNOSTIC_REVIEW = "diagnostic_review"
     PRACTICE = "practice"
     EVALUATION = "evaluation"
+    PRACTICE_REVIEW = "practice_review"
     FEEDBACK = "feedback"
     DONE = "done"
 
@@ -24,6 +26,7 @@ class Phase(str, Enum):
 class SessionState:
     subject: str = ""
     level: str = "beginner"
+    source_text: str = ""
 
     phase: Phase = Phase.INIT
 
@@ -44,3 +47,11 @@ class SessionState:
 
     final_report: dict[str, Any] | None = None
     judge_scores: dict[str, Any] | None = None
+
+    # Internal: a concurrent.futures.Future producing the next practice round,
+    # kicked off while the user is on the review screen. Excluded from repr
+    # and equality so dataclass introspection still works.
+    pending_future: Any = field(default=None, repr=False, compare=False)
+    pending_weak_topics: list[dict[str, Any]] | None = field(
+        default=None, repr=False, compare=False
+    )

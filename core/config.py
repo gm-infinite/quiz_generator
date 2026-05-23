@@ -1,13 +1,18 @@
 """Centralized constants. Tune here, not inline."""
 
 # LLM provider config
-LLM_API_BASE = "https://openrouter.ai/api/v1"   # OpenRouter (default)
+LLM_API_BASE = "https://dashscope-intl.aliyuncs.com/compatible-mode/v1"   # Alibaba DashScope (default)
 # Alternatives:
-#   "https://dashscope-intl.aliyuncs.com/compatible-mode/v1"   # Alibaba DashScope
+#   "https://openrouter.ai/api/v1"                             # OpenRouter
 #   "http://localhost:11434/v1"                                # Ollama (local)
 #   "https://api-inference.huggingface.co/v1"                  # Hugging Face
 
-LLM_MODEL = "qwen/qwen3.6-plus:free"
+LLM_MODEL = "qwen-plus"
+
+# DashScope's OpenAI-compat endpoint doesn't reliably honor strict
+# json_schema via `beta.chat.completions.parse`, so we go straight to
+# JSON mode. Flip to True if you switch to a provider that supports it.
+USE_STRICT_PARSE = False
 # Free tier default as of May 2026. Verify at
 # https://openrouter.ai/models?max_price=0 — OpenRouter's free catalog
 # rotates as model providers add/remove free hosting. The Qwen 2.5 series
@@ -31,3 +36,24 @@ PASS_IMPROVEMENT_DELTA = 0.20    # improvement over diagnostic that ends the loo
 MAX_PRACTICE_ROUNDS = 3
 
 LEVELS = ("beginner", "intermediate", "advanced")
+
+# Predefined subject categories surfaced in the UI dropdown.
+SUBJECT_CATEGORIES = (
+    "Geography of Turkey",
+    "World History",
+    "Python Programming",
+    "JavaScript & Web Development",
+    "Data Structures & Algorithms",
+    "Machine Learning Basics",
+    "Linear Algebra",
+    "Calculus",
+    "Statistics & Probability",
+    "Biology",
+    "Chemistry",
+    "Physics",
+    "English Grammar",
+    "General Knowledge",
+)
+
+# Cap on how much uploaded-file text we forward to the LLM (chars).
+SOURCE_TEXT_MAX_CHARS = 20_000

@@ -73,6 +73,10 @@ When a practice round fails, `Orchestrator.submit_practice_answers` recomputes `
 
 Note: `generate_with_search` is currently an alias for `generate_structured` — Qwen has no native search tool. Real search grounding (via Tavily/Serper) is a Phase 2 follow-up.
 
+### Judge agent (post-loop)
+
+`agents/judge_agent.py` runs **once after the state machine terminates** (pass or round cap) to produce qualitative `JudgeScores` over the full session transcript — diagnostic + every practice round, weak topics, and final scores. It's the only place an LLM judgment lands on the session as a whole; it does not influence the pass decision (the deterministic rule above already fired) and writes only to `state.judge_scores`.
+
 ### Structured output
 
 Every LLM call goes through `llm/llm_client.py` with a Pydantic schema from `llm/schemas.py`. The client tries OpenAI's strict structured-output path first (`beta.chat.completions.parse(response_format=PydanticClass)`), then falls back to JSON mode + manual `schema.model_validate_json(...)` if the model rejects strict json_schema. Agents never see this — they always get a validated Pydantic instance.

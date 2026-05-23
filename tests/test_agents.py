@@ -89,6 +89,67 @@ def test_question_generator_reassigns_ids_and_topic(fake_client):
     assert topics == {"derivatives"}
 
 
+def test_question_generator_drops_duplicates_across_rounds(fake_client):
+    # Diagnostic already contained this prompt. The generator should
+    # filter the duplicate from this round's practice set.
+    diag_prompt = "What is the derivative of x squared with respect to x"
+
+    def stub(_p):
+        return QuestionSet(questions=[
+            Question(
+                id="r1", topic="t", prompt=diag_prompt,
+                choices=["A", "B", "C", "D"],
+                correct_answer="A", explanation="",
+            ),
+            Question(
+                id="r2", topic="t",
+                prompt="What does the chain rule say in plain words",
+                choices=["A", "B", "C", "D"],
+                correct_answer="A", explanation="",
+            ),
+        ])
+
+    fake_client.set(QuestionSet, stub)
+    state = SessionState(subject="math", level="beginner")
+    state.iteration = 0
+    state.diagnostic_questions = [
+        {"prompt": diag_prompt, "id": "d1", "topic": "t",
+         "choices": ["A"], "correct_answer": "A", "explanation": ""}
+    ]
+    state.weak_topics = [{"topic": "t", "accuracy": 0.0, "explanation": ""}]
+
+    QuestionGenerator(fake_client).run(state)
+    prompts = [q["prompt"] for q in state.practice_questions]
+    assert diag_prompt not in prompts
+    assert len(state.practice_questions) == 1
+
+
+def test_question_generator_drops_intra_round_duplicates(fake_client):
+    repeated = "Explain how list comprehensions work in Python"
+
+    def stub(_p):
+        return QuestionSet(questions=[
+            Question(
+                id="x1", topic="t", prompt=repeated,
+                choices=["A", "B", "C", "D"],
+                correct_answer="A", explanation="",
+            ),
+            Question(
+                id="x2", topic="t", prompt=repeated,
+                choices=["A", "B", "C", "D"],
+                correct_answer="A", explanation="",
+            ),
+        ])
+
+    fake_client.set(QuestionSet, stub)
+    state = SessionState(subject="python", level="beginner")
+    state.iteration = 0
+    state.weak_topics = [{"topic": "t", "accuracy": 0.0, "explanation": ""}]
+    QuestionGenerator(fake_client).run(state)
+    # Second occurrence in the same round should be dropped.
+    assert len(state.practice_questions) == 1
+
+
 def test_evaluator_pass_by_absolute_threshold(fake_client):
     state = SessionState(subject="math", level="beginner")
     state.diagnostic_score = 0.2

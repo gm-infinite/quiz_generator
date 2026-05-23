@@ -66,6 +66,7 @@ def main() -> int:
     answers = _collect_answers(state.diagnostic_questions)
     print("\nGrading + analyzing...")
     state = orch.submit_diagnostic_answers(state, answers)
+    state = orch.continue_after_diagnostic(state)
 
     while state.phase == Phase.PRACTICE:
         print(
@@ -76,6 +77,7 @@ def main() -> int:
         answers = _collect_answers(state.practice_questions)
         print("\nEvaluating...")
         state = orch.submit_practice_answers(state, answers)
+        state = orch.continue_after_practice(state)
 
     _print_results(state)
     return 0

@@ -7,19 +7,36 @@ depends on and lets us refactor without touching agent code.
 from __future__ import annotations
 
 
-def assessment_prompt(subject: str, level: str, n_questions: int) -> str:
+def assessment_prompt(
+    subject: str,
+    level: str,
+    n_questions: int,
+    source_text: str = "",
+) -> str:
+    source_block = ""
+    if source_text:
+        source_block = (
+            f"\nGround every question STRICTLY in the source material below — do not "
+            f"introduce facts that are not stated or directly implied by it. If the "
+            f"source is short, stay focused on what it actually covers.\n"
+            f"\n--- SOURCE MATERIAL START ---\n{source_text}\n--- SOURCE MATERIAL END ---\n"
+        )
     return (
         f"You are designing a broad-coverage initial test to map a student's knowledge "
         f"of {subject!r} at a {level} level.\n"
+        f"{source_block}"
         f"\n"
         f"Generate exactly {n_questions} multiple-choice questions that span a BROAD set of "
         f"subtopics within {subject!r} — do not cluster on one area. The goal is to surface "
         f"weak spots, so coverage matters more than depth.\n"
         f"\n"
         f"Requirements per question:\n"
-        f"  - 4 plausible answer choices, exactly one correct.\n"
+        f"  - 4 plausible answer choices, exactly one correct. `correct_answer` "
+        f"must be EXACTLY one of the strings in `choices`. No duplicate choices.\n"
         f"  - A `topic` tag naming the specific subtopic (e.g. 'derivatives', not 'math').\n"
-        f"  - A short explanation of why the correct answer is correct.\n"
+        f"  - A short `explanation` of why the correct answer is correct.\n"
+        f"  - A `distractor_rationales` object mapping EACH incorrect choice "
+        f"(the exact string) to a one-sentence explanation of why it is wrong.\n"
         f"  - A unique `id` like 'd1', 'd2', ...\n"
     )
 
@@ -47,6 +64,7 @@ def question_generator_prompt(
     weak_topic: str,
     n_questions: int,
     avoid_prompts: list[str],
+    source_text: str = "",
 ) -> str:
     avoid = (
         "\n\nAvoid repeating these earlier question stems:\n"
@@ -54,14 +72,24 @@ def question_generator_prompt(
         if avoid_prompts
         else ""
     )
+    source_block = ""
+    if source_text:
+        source_block = (
+            f"\nGround every question STRICTLY in the source material below — do not "
+            f"introduce facts that are not stated or directly implied by it.\n"
+            f"\n--- SOURCE MATERIAL START ---\n{source_text}\n--- SOURCE MATERIAL END ---\n"
+        )
     return (
         f"Generate {n_questions} fresh multiple-choice practice questions on the topic "
         f"{weak_topic!r} within {subject!r}, targeting a {level} student who got this "
         f"topic wrong on the initial test.\n"
+        f"{source_block}"
         f"\n"
-        f"The questions should test understanding, not recall. Use web search to ground "
-        f"any factual claims. Each question must have 4 choices, one correct answer, an "
-        f"explanation, the topic tag {weak_topic!r}, and a unique id prefixed with 'p'."
+        f"The questions should test understanding, not recall. Each question must have "
+        f"4 unique choices (no duplicates), one `correct_answer` that is EXACTLY one of "
+        f"the choice strings, an `explanation`, a `distractor_rationales` object mapping "
+        f"each incorrect choice to a one-sentence reason it is wrong, the topic tag "
+        f"{weak_topic!r}, and a unique id prefixed with 'p'."
         f"{avoid}"
     )
 

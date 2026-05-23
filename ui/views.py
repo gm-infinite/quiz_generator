@@ -6,11 +6,24 @@ user inputs back into Orchestrator methods.
 """
 from __future__ import annotations
 
+import dataclasses
+
 import gradio as gr
 
 from core import config
 from core.orchestrator import Orchestrator
 from core.session_state import Phase, SessionState
+from tools.file_loader import extract_text
+
+
+def _fresh(s: SessionState) -> SessionState:
+    """Shallow-copy the state so `gr.State` sees a new object identity.
+
+    The orchestrator mutates state in place, so without this `@gr.render`
+    wouldn't detect that anything changed and the UI would stay stuck on
+    the previous phase.
+    """
+    return dataclasses.replace(s)
 
 _orch: Orchestrator | None = None
 
@@ -159,7 +172,115 @@ button.secondary, button:not(.primary) {
 }
 
 footer { display: none !important; }
+
+/* Loading indicator — CSS-only animated dots. */
+.qm-loading {
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+  color: var(--qm-muted) !important;
+  font-style: italic;
+}
+.qm-loading::before {
+  content: "";
+  width: 12px;
+  height: 12px;
+  border: 2px solid var(--qm-border);
+  border-top-color: var(--qm-accent);
+  border-radius: 50%;
+  animation: qm-spin 0.8s linear infinite;
+  display: inline-block;
+}
+@keyframes qm-spin {
+  to { transform: rotate(360deg); }
+}
+
+/* Review sheet — per-question verdict pills and answer tags. */
+.qm-verdict {
+  display: inline-block;
+  font-size: 11px;
+  font-weight: 600;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  padding: 2px 8px;
+  border-radius: 4px;
+  margin-right: 8px;
+  vertical-align: middle;
+}
+.qm-verdict.correct {
+  background: rgba(126, 176, 105, 0.15);
+  color: var(--qm-good) !important;
+  border: 1px solid rgba(126, 176, 105, 0.4);
+}
+.qm-verdict.incorrect {
+  background: rgba(192, 99, 94, 0.15);
+  color: var(--qm-bad) !important;
+  border: 1px solid rgba(192, 99, 94, 0.4);
+}
+.qm-tag {
+  display: inline-block;
+  font-size: 10px;
+  letter-spacing: 0.05em;
+  text-transform: uppercase;
+  padding: 1px 6px;
+  border-radius: 3px;
+  margin-left: 6px;
+  vertical-align: middle;
+}
+.qm-tag.correct { background: rgba(126, 176, 105, 0.15); color: var(--qm-good) !important; }
+.qm-tag.chosen  { background: rgba(217, 119, 87, 0.18); color: var(--qm-accent) !important; }
+.qm-choice-correct { color: var(--qm-good) !important; }
+.qm-choice-chosen  { color: var(--qm-accent) !important; }
+
+/* Progress counter shown above the submit button while answering. */
+.qm-progress {
+  display: inline-block;
+  font-size: 11px;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  color: var(--qm-muted) !important;
+  padding: 4px 8px;
+  border: 1px solid var(--qm-border);
+  border-radius: 4px;
+}
+
+/* Per-choice rationales (why a distractor was wrong) + correct-answer rationale. */
+.qm-distractor {
+  margin: 4px 0 8px 22px;
+  padding: 6px 10px;
+  border-left: 2px solid var(--qm-bad);
+  background: rgba(192, 99, 94, 0.06);
+  color: var(--qm-muted) !important;
+  font-size: 12px;
+  font-style: italic;
+}
+.qm-explanation {
+  margin-top: 8px;
+  padding: 8px 12px;
+  border-left: 2px solid var(--qm-good);
+  background: rgba(126, 176, 105, 0.06);
+  color: var(--qm-text) !important;
+  font-size: 12px;
+}
+
+/* Disabled primary button — keep it readable, not invisible. */
+button.primary:disabled, button[variant="primary"]:disabled {
+  background: var(--qm-surface) !important;
+  color: var(--qm-muted) !important;
+  cursor: not-allowed !important;
+  border: 1px solid var(--qm-border) !important;
+}
 """
+
+
+def _md_escape(text: str) -> str:
+    """Escape markdown control chars that show up in topic / prompt strings."""
+    return (
+        text.replace("\\", "\\\\")
+        .replace("_", "\\_")
+        .replace("*", "\\*")
+        .replace("`", "\\`")
+    )
 
 
 def _format_report(s: SessionState) -> str:
@@ -212,34 +333,77 @@ def build_blocks() -> gr.Blocks:
 
         with gr.Group() as setup_group:
             gr.Markdown("### Setup")
-            subject_in = gr.Textbox(
-                label="Subject",
-                placeholder="e.g. geography of Turkey",
-                value="geography of Turkey",
-                show_label=True,
+            category_in = gr.Dropdown(
+                choices=[*config.SUBJECT_CATEGORIES, "Custom..."],
+                value=config.SUBJECT_CATEGORIES[0],
+                label="Category",
+            )
+            custom_subject_in = gr.Textbox(
+                label="Custom subject",
+                placeholder="e.g. Ottoman architecture",
+                visible=False,
             )
             level_in = gr.Radio(
                 choices=list(config.LEVELS),
                 value="beginner",
                 label="Level",
             )
-            start_btn = gr.Button("Start test  →", variant="primary")
+            file_in = gr.File(
+                label="Optional: upload a file to generate questions from "
+                "(.txt, .md, .pdf)",
+                file_types=[".txt", ".md", ".pdf"],
+                file_count="single",
+            )
+            start_btn = gr.Button("Start test", variant="primary")
+
+        def _toggle_custom(choice: str):
+            return gr.update(visible=(choice == "Custom..."))
+
+        category_in.change(
+            _toggle_custom, inputs=category_in, outputs=custom_subject_in
+        )
 
         status = gr.Markdown("")
 
-        def start_session(subject: str, level: str):
-            if not subject.strip():
-                return gr.skip(), gr.update(), "_Please enter a subject._"
-            new_state = _orchestrator().start(subject.strip(), level)
-            return (
-                new_state,
+        def start_session(category: str, custom_subject: str, level: str, file_obj):
+            subject = custom_subject.strip() if category == "Custom..." else category
+            if not subject:
+                yield gr.skip(), gr.update(), "_Please pick or enter a subject._"
+                return
+
+            source_text = ""
+            if file_obj is not None:
+                path = file_obj.name if hasattr(file_obj, "name") else file_obj
+                try:
+                    source_text = extract_text(path)
+                except Exception as exc:
+                    yield gr.skip(), gr.update(), f"_Could not read file: {exc}_"
+                    return
+                if not source_text:
+                    yield gr.skip(), gr.update(), "_File appears empty._"
+                    return
+
+            yield (
+                gr.skip(),
                 gr.update(visible=False),
-                f"_Generated `{len(new_state.diagnostic_questions)}` test questions._",
+                '<span class="qm-loading">Generating test questions — usually 20–30 seconds.</span>',
+            )
+            try:
+                new_state = _orchestrator().start(subject, level, source_text=source_text)
+            except Exception as exc:
+                import traceback
+                traceback.print_exc()
+                yield gr.skip(), gr.update(visible=True), f"_Could not generate test: `{exc}`_"
+                return
+            yield (
+                _fresh(new_state),
+                gr.update(visible=False),
+                "",
             )
 
         start_btn.click(
             start_session,
-            inputs=[subject_in, level_in],
+            inputs=[category_in, custom_subject_in, level_in, file_in],
             outputs=[state, setup_group, status],
         )
 
@@ -250,13 +414,30 @@ def build_blocks() -> gr.Blocks:
                     state,
                     s.diagnostic_questions,
                     heading=f"## Initial test\n_{len(s.diagnostic_questions)} questions across broad subtopics._",
-                    submit_label="Submit answers  →",
+                    submit_label="Submit answers",
                     on_submit=lambda st, ans: _orchestrator().submit_diagnostic_answers(st, ans),
+                )
+
+            elif s.phase == Phase.DIAGNOSTIC_REVIEW:
+                _render_review(
+                    state,
+                    questions=s.diagnostic_questions,
+                    user_answers=s.diagnostic_answers,
+                    results=s.diagnostic_results,
+                    score=s.diagnostic_score,
+                    weak_topics=s.weak_topics,
+                    heading="## Initial test — results",
+                    continue_label=(
+                        "Start practice on weak topics"
+                        if s.weak_topics
+                        else "Continue"
+                    ),
+                    on_continue=lambda st: _orchestrator().continue_after_diagnostic(st),
                 )
 
             elif s.phase == Phase.PRACTICE:
                 topics = sorted({q["topic"] for q in s.practice_questions})
-                topic_chips = " ".join(f"`{t}`" for t in topics)
+                topic_chips = " ".join(f"`{_md_escape(t)}`" for t in topics)
                 _render_quiz(
                     state,
                     s.practice_questions,
@@ -264,8 +445,30 @@ def build_blocks() -> gr.Blocks:
                         f"## Practice round {s.iteration}\n"
                         f"_{len(s.practice_questions)} questions on:_ {topic_chips}"
                     ),
-                    submit_label=f"Submit round {s.iteration}  →",
+                    submit_label=f"Submit round {s.iteration}",
                     on_submit=lambda st, ans: _orchestrator().submit_practice_answers(st, ans),
+                )
+
+            elif s.phase == Phase.PRACTICE_REVIEW:
+                will_loop = (
+                    not s.passed
+                    and s.iteration < config.MAX_PRACTICE_ROUNDS
+                    and bool(s.pending_weak_topics)
+                )
+                _render_review(
+                    state,
+                    questions=s.practice_questions,
+                    user_answers=s.practice_answers,
+                    results=s.practice_results,
+                    score=s.practice_score,
+                    weak_topics=[],
+                    heading=f"## Practice round {s.iteration} — results",
+                    continue_label=(
+                        f"Next practice round (round {s.iteration + 1})"
+                        if will_loop
+                        else "See final report"
+                    ),
+                    on_continue=lambda st: _orchestrator().continue_after_practice(st),
                 )
 
             elif s.phase == Phase.DONE:
@@ -293,25 +496,118 @@ def _render_quiz(
         radios.append(
             gr.Radio(
                 choices=q["choices"],
-                label=f"{i + 1}. [{q['topic']}]  {q['prompt']}",
+                label=f"{i + 1}. [{q['topic']}]  {q['prompt']}",  # raw label, no markdown processing
             )
         )
+    progress = gr.Markdown(
+        f'<span class="qm-progress">0 / {len(questions)} answered</span>'
+    )
     submit_btn = gr.Button(submit_label, variant="primary")
     inline_status = gr.Markdown("")
+
+    def _on_answer_change(*answers):
+        answered = sum(1 for a in answers if a)
+        return f'<span class="qm-progress">{answered} / {len(questions)} answered</span>'
+
+    for r in radios:
+        r.change(_on_answer_change, inputs=radios, outputs=progress)
 
     def submit_handler(current_state, *answers):
         answers_list = [a or "" for a in answers]
         missing = [i + 1 for i, a in enumerate(answers_list) if not a]
         if missing:
-            return (
+            yield (
                 current_state,
                 f"_Please answer all questions. Missing: `{missing}`_",
             )
-        new_state = on_submit(current_state, answers_list)
-        return new_state, ""
+            return
+        yield current_state, '<span class="qm-loading">Grading and analyzing your answers.</span>'
+        try:
+            new_state = on_submit(current_state, answers_list)
+        except Exception as exc:
+            import traceback
+            traceback.print_exc()
+            yield current_state, f"_Something went wrong while grading: `{exc}`_"
+            return
+        yield _fresh(new_state), ""
 
     submit_btn.click(
         submit_handler,
         inputs=[state_var, *radios],
         outputs=[state_var, inline_status],
+    )
+
+
+def _render_review(
+    state_var: gr.State,
+    questions: list[dict],
+    user_answers: list[str],
+    results: list[dict],
+    score: float | None,
+    weak_topics: list[dict],
+    heading: str,
+    continue_label: str,
+    on_continue,
+):
+    correct_by_id = {r["question_id"]: r.get("correct", False) for r in results}
+
+    lines = [heading]
+    if score is not None:
+        lines.append(f"\n**Score:** `{score:.0%}` "
+                     f"({sum(correct_by_id.values())}/{len(questions)} correct)\n")
+    if weak_topics:
+        chips = ", ".join(
+            f"`{_md_escape(w['topic'])}` ({w['accuracy']:.0%})" for w in weak_topics
+        )
+        lines.append(f"**Weak topics flagged:** {chips}\n")
+
+    for i, q in enumerate(questions):
+        user_ans = user_answers[i] if i < len(user_answers) else ""
+        is_correct = correct_by_id.get(q["id"], False)
+        verdict_class = "correct" if is_correct else "incorrect"
+        verdict_label = "Correct" if is_correct else "Incorrect"
+        rationales = q.get("distractor_rationales", {}) or {}
+        safe_topic = _md_escape(q["topic"])
+        safe_prompt = _md_escape(q["prompt"])
+        lines.append(
+            f'\n---\n<span class="qm-verdict {verdict_class}">{verdict_label}</span>'
+            f' **{i+1}. [{safe_topic}]** {safe_prompt}\n'
+        )
+        for choice in q["choices"]:
+            is_right = choice == q.get("correct_answer")
+            is_chosen = choice == user_ans
+            tags = ""
+            if is_right:
+                tags += '<span class="qm-tag correct">Correct answer</span>'
+            if is_chosen:
+                tags += '<span class="qm-tag chosen">Your answer</span>'
+            choice_class = ""
+            if is_right:
+                choice_class = "qm-choice-correct"
+            elif is_chosen:
+                choice_class = "qm-choice-chosen"
+            line = f'- <span class="{choice_class}">{choice}</span>{tags}'
+            if not is_right and (reason := rationales.get(choice)):
+                line += f'<div class="qm-distractor">{reason}</div>'
+            lines.append(line)
+        if explanation := q.get("explanation", ""):
+            lines.append(f'\n<div class="qm-explanation">{explanation}</div>')
+
+    gr.Markdown("\n".join(lines))
+    continue_btn = gr.Button(continue_label, variant="primary")
+    inline_status = gr.Markdown("")
+
+    def handler(current_state):
+        yield current_state, '<span class="qm-loading">Generating next questions — usually 20–30 seconds.</span>'
+        try:
+            next_state = on_continue(current_state)
+        except Exception as exc:
+            import traceback
+            traceback.print_exc()
+            yield current_state, f"_Something went wrong: `{exc}`_"
+            return
+        yield _fresh(next_state), ""
+
+    continue_btn.click(
+        handler, inputs=[state_var], outputs=[state_var, inline_status]
     )
