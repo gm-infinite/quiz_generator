@@ -32,7 +32,7 @@ There are five agents working together under an orchestrator that decides who go
 
 **Weakness Analyzer** — goes through your answers, spots the patterns, and produces a structured breakdown of where you're struggling.
 
-**Question Generator** — uses web search and an LLM to create brand new practice questions targeting your weak areas.
+**Question Generator** — uses an LLM to create brand new practice questions targeting your weak areas.
 
 **Evaluator & Feedback Agent** — grades your answers on the new questions and decides: did you actually improve, or do you need another round and gives a feedback
 
@@ -43,10 +43,20 @@ The loop keeps running until the Evaluator is satisfied. The Orchestrator makes 
 
 ## Tech stack
 
-- **LLM backbone:** Gemini
+- **LLM backbone:** Qwen (via OpenRouter, OpenAI-compatible API). Provider-agnostic — the client also works against DashScope, Ollama, or any other OpenAI-compatible endpoint via `core/config.py`.
 - **Agent orchestration:** Custom multi-agent pipeline
-- **Tools used:** Web search, Python execution, session storage
+- **Tools used:** Python execution, session storage
 - **Language:** Python
+
+## Setup
+
+1. Create and activate a virtual environment: `python -m venv .venv && source .venv/bin/activate` (Windows: `.venv\Scripts\activate`).
+2. Install dependencies: `pip install -r requirements.txt`.
+3. Sign up at https://openrouter.ai, create an API key, and add it to `.env` as `OPENROUTER_API_KEY=sk-or-v1-...`.
+4. Run `python -m scripts.smoke_test` to confirm the wiring.
+5. Run `python app.py` and open http://127.0.0.1:7860.
+
+The default model is the free-tier `qwen/qwen3.6-plus:free`. To change it, edit `LLM_MODEL` in `core/config.py`.
 
 ---
 

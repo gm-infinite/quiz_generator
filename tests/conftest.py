@@ -1,4 +1,4 @@
-"""Shared test fixtures: a fake GeminiClient that returns canned schema objects.
+"""Shared test fixtures: a fake LLMClient that returns canned schema objects.
 
 No tests in this project should call the real API.
 """
@@ -34,7 +34,7 @@ def _q(qid: str, topic: str, correct: str = "A") -> Question:
     )
 
 
-class FakeGeminiClient:
+class FakeLLMClient:
     """Returns a default valid instance for any schema. Override per test."""
 
     def __init__(self) -> None:
@@ -83,8 +83,8 @@ class FakeGeminiClient:
 
 
 @pytest.fixture
-def fake_client() -> FakeGeminiClient:
-    return FakeGeminiClient()
+def fake_client() -> FakeLLMClient:
+    return FakeLLMClient()
 
 
 @pytest.fixture

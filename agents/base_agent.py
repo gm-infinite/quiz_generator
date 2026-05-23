@@ -4,13 +4,13 @@ from __future__ import annotations
 from abc import ABC, abstractmethod
 
 from core.session_state import SessionState
-from llm.gemini_client import GeminiClient
+from llm.llm_client import LLMClient
 
 
 class BaseAgent(ABC):
     name: str = "base"
 
-    def __init__(self, client: GeminiClient):
+    def __init__(self, client: LLMClient):
         self.client = client
 
     @abstractmethod

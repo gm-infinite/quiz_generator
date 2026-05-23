@@ -1,22 +1,21 @@
-"""Quick check that the Gemini client is wired up correctly.
+"""Quick check that the LLM client is wired up correctly.
 
 Run from project root:
     python -m scripts.smoke_test
 
-Requires GEMINI_API_KEY in .env or environment.
+Requires OPENROUTER_API_KEY in .env or environment.
 """
 from __future__ import annotations
 
-import json
 import sys
 
-from llm.gemini_client import GeminiClient
+from llm.llm_client import LLMClient
 from llm.prompts import assessment_prompt
 from llm.schemas import QuestionSet
 
 
 def main() -> int:
-    client = GeminiClient()
+    client = LLMClient()
     prompt = assessment_prompt(subject="basic Python", level="beginner", n_questions=3)
     result: QuestionSet = client.generate_structured(prompt, QuestionSet)
 

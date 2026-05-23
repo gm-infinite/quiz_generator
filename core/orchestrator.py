@@ -14,12 +14,12 @@ from agents.question_generator import QuestionGenerator
 from agents.weakness_analyzer import WeaknessAnalyzer
 from core import config
 from core.session_state import Phase, SessionState
-from llm.gemini_client import GeminiClient
+from llm.llm_client import LLMClient
 
 
 class Orchestrator:
-    def __init__(self, client: GeminiClient | None = None):
-        self.client = client or GeminiClient()
+    def __init__(self, client: LLMClient | None = None):
+        self.client = client or LLMClient()
         self.assessment = AssessmentAgent(self.client)
         self.analyzer = WeaknessAnalyzer(self.client)
         self.generator = QuestionGenerator(self.client)

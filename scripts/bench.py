@@ -6,15 +6,15 @@ from __future__ import annotations
 
 import time
 
-from llm.gemini_client import GeminiClient
+from llm.llm_client import LLMClient
 from llm.prompts import assessment_prompt
 from llm.schemas import QuestionSet
 from core import config
 
 
 def main() -> int:
-    client = GeminiClient()
-    print(f"Model: {config.GEMINI_MODEL}")
+    client = LLMClient()
+    print(f"Model: {config.LLM_MODEL}")
     print(f"Questions per call: {config.DIAGNOSTIC_QUESTION_COUNT}\n")
 
     times: list[float] = []
