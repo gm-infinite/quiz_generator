@@ -95,7 +95,13 @@ class Orchestrator:
         if not state.passed and state.iteration < config.MAX_PRACTICE_ROUNDS:
             from tools import scoring
 
-            per_topic = scoring.per_topic_accuracy(state.practice_results)
+            if state.confidence_ratings:
+                per_topic = scoring.confidence_adjusted_accuracy(
+                    state.practice_results, state.confidence_ratings
+                )
+            else:
+                per_topic = scoring.per_topic_accuracy(state.practice_results)
+
             still_weak = scoring.weak_topics(per_topic, config.WEAK_TOPIC_THRESHOLD)
             if still_weak:
                 next_weak = [
@@ -120,7 +126,13 @@ class Orchestrator:
         # Fallback: nothing pre-generated — compute synchronously now.
         from tools import scoring
 
-        per_topic = scoring.per_topic_accuracy(state.practice_results)
+        if state.confidence_ratings:
+            per_topic = scoring.confidence_adjusted_accuracy(
+                state.practice_results, state.confidence_ratings
+            )
+        else:
+            per_topic = scoring.per_topic_accuracy(state.practice_results)
+
         still_weak = scoring.weak_topics(per_topic, config.WEAK_TOPIC_THRESHOLD)
         if not still_weak:
             # No individual topic is below the threshold even though the

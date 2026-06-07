@@ -17,7 +17,11 @@ class WeaknessAnalyzer(BaseAgent):
         state.diagnostic_results = graded
         state.diagnostic_score = scoring.overall_accuracy(graded)
 
-        per_topic = scoring.per_topic_accuracy(graded)
+        if state.confidence_ratings:
+            per_topic = scoring.confidence_adjusted_accuracy(graded, state.confidence_ratings)
+        else:
+            per_topic = scoring.per_topic_accuracy(graded)
+
         weak_names = scoring.weak_topics(per_topic, config.WEAK_TOPIC_THRESHOLD)
 
         if not weak_names:

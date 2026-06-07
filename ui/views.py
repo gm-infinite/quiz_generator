@@ -270,6 +270,25 @@ button.primary:disabled, button[variant="primary"]:disabled {
   cursor: not-allowed !important;
   border: 1px solid var(--qm-border) !important;
 }
+
+/* Confidence radios — smaller, muted, inline below each answer group */
+.qm-confidence .gr-radio label, .qm-confidence [data-testid="radio-group"] label {
+  padding: 4px 10px !important;
+  font-size: 11px !important;
+  color: var(--qm-muted) !important;
+}
+.qm-confidence .gr-radio input:checked + span,
+.qm-confidence label:has(input:checked) {
+  background: #2a2a2a !important;
+  border-color: var(--qm-muted) !important;
+  color: var(--qm-text) !important;
+}
+.qm-confidence > label > span:first-child {
+  font-size: 10px !important;
+  color: var(--qm-muted) !important;
+  text-transform: uppercase;
+  letter-spacing: .06em !important;
+}
 """
 
 
@@ -636,6 +655,8 @@ def _render_quiz(
 ):
     gr.Markdown(heading)
     radios: list[gr.Radio] = []
+    conf_radios: list[gr.Radio] = []
+
     for i, q in enumerate(questions):
         radios.append(
             gr.Radio(
@@ -643,6 +664,15 @@ def _render_quiz(
                 label=f"{i + 1}. [{q['topic']}]  {q['prompt']}",  # raw label, no markdown processing
             )
         )
+        conf_radios.append(
+            gr.Radio(
+                choices=["Low", "Medium", "High"],
+                value="Medium",
+                label=f"Confidence on Q{i + 1}",
+                elem_classes=["qm-confidence"],
+            )
+        )
+
     progress = gr.Markdown(
         f'<span class="qm-progress">0 / {len(questions)} answered</span>'
     )
@@ -656,8 +686,12 @@ def _render_quiz(
     for r in radios:
         r.change(_on_answer_change, inputs=radios, outputs=progress)
 
-    def submit_handler(current_state, *answers):
-        answers_list = [a or "" for a in answers]
+    _CONF_MAP = {"Low": 1, "Medium": 2, "High": 3}
+
+    def submit_handler(current_state, *all_inputs):
+        answers_list = [a or "" for a in all_inputs[:len(questions)]]
+        conf_list = list(all_inputs[len(questions):])
+
         missing = [i + 1 for i, a in enumerate(answers_list) if not a]
         if missing:
             yield (
@@ -665,6 +699,13 @@ def _render_quiz(
                 f"_Please answer all questions. Missing: `{missing}`_",
             )
             return
+
+        # Merge confidence ratings into state before calling on_submit.
+        current_state.confidence_ratings.update({
+            questions[i]["id"]: _CONF_MAP.get(conf_list[i] or "Medium", 2)
+            for i in range(len(questions))
+        })
+
         yield current_state, '<span class="qm-loading">Grading and analyzing your answers.</span>'
         try:
             new_state = on_submit(current_state, answers_list)
@@ -677,7 +718,7 @@ def _render_quiz(
 
     submit_btn.click(
         submit_handler,
-        inputs=[state_var, *radios],
+        inputs=[state_var, *radios, *conf_radios],
         outputs=[state_var, inline_status],
     )
 
