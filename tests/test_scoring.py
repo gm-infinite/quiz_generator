@@ -1,4 +1,7 @@
+import pytest
+
 from tools import scoring
+from tools.scoring import confidence_adjusted_accuracy
 
 
 Q = lambda qid, topic, correct: {  # noqa: E731
@@ -46,3 +49,42 @@ def test_weak_topics_strict_inequality():
     # exactly at threshold is NOT weak
     per = {"a": 0.6}
     assert scoring.weak_topics(per, threshold=0.6) == []
+
+
+def test_confidence_correct_high_counts_fully():
+    graded = [{"question_id": "q1", "topic": "x", "correct": True}]
+    conf = {"q1": 3}  # High
+    result = confidence_adjusted_accuracy(graded, conf)
+    assert result["x"] == 1.0
+
+
+def test_confidence_correct_low_counts_half():
+    graded = [{"question_id": "q1", "topic": "x", "correct": True}]
+    conf = {"q1": 1}  # Low
+    result = confidence_adjusted_accuracy(graded, conf)
+    assert result["x"] == 0.5
+
+
+def test_confidence_wrong_always_zero():
+    graded = [{"question_id": "q1", "topic": "x", "correct": False}]
+    conf = {"q1": 3}  # High confidence but still wrong
+    result = confidence_adjusted_accuracy(graded, conf)
+    assert result["x"] == 0.0
+
+
+def test_confidence_missing_rating_defaults_to_medium():
+    graded = [{"question_id": "q1", "topic": "x", "correct": True}]
+    result = confidence_adjusted_accuracy(graded, {})  # no rating provided
+    assert result["x"] == 1.0  # medium = full weight
+
+
+def test_confidence_mixed_topic():
+    # 2 questions on topic "x": one correct+high, one correct+low
+    graded = [
+        {"question_id": "q1", "topic": "x", "correct": True},
+        {"question_id": "q2", "topic": "x", "correct": True},
+    ]
+    conf = {"q1": 3, "q2": 1}  # high + low
+    result = confidence_adjusted_accuracy(graded, conf)
+    # (1.0 + 0.5) / 2 = 0.75
+    assert result["x"] == pytest.approx(0.75)

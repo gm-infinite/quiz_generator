@@ -58,3 +58,24 @@ def weak_topics(
         [t for t, a in per_topic.items() if a < threshold],
         key=lambda t: per_topic[t],
     )
+
+
+def confidence_adjusted_accuracy(
+    graded: list[dict],
+    confidence: dict[str, int],
+    low_conf_weight: float = 0.5,
+) -> dict[str, float]:
+    """Per-topic accuracy where correct+low-confidence counts as low_conf_weight correct.
+
+    confidence maps question_id → 1 (Low) / 2 (Medium) / 3 (High).
+    Missing entries default to Medium (full weight).
+    """
+    totals: dict[str, int] = defaultdict(int)
+    weighted: dict[str, float] = defaultdict(float)
+    for g in graded:
+        totals[g["topic"]] += 1
+        if g["correct"]:
+            conf_level = confidence.get(g["question_id"], 2)
+            weight = low_conf_weight if conf_level == 1 else 1.0
+            weighted[g["topic"]] += weight
+    return {t: weighted[t] / totals[t] for t in totals}
