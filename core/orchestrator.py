@@ -72,6 +72,14 @@ class Orchestrator:
         state.practice_answers = answers
         state.phase = Phase.EVALUATION
         state = self.evaluator.run(state)
+
+        # Archive this round before results get overwritten by the next round.
+        state.practice_history.append({
+            "iteration": state.iteration,
+            "questions": list(state.practice_questions),
+            "results": list(state.practice_results),
+        })
+
         state.phase = Phase.PRACTICE_REVIEW
 
         # If there will be another round, pre-generate it now using the

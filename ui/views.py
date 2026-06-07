@@ -283,6 +283,51 @@ def _md_escape(text: str) -> str:
     )
 
 
+def _format_wrong_answers(s: SessionState) -> str:
+    """Build a study-list section from all incorrect answers across all rounds."""
+    wrong: list[dict] = []
+
+    # Diagnostic wrongs
+    qmap = {q["id"]: q for q in s.diagnostic_questions}
+    for r in s.diagnostic_results:
+        if not r["correct"] and r["question_id"] in qmap:
+            wrong.append({"round": "Initial test", "q": qmap[r["question_id"]], "r": r})
+
+    # Practice round wrongs (all rounds via practice_history)
+    for hist in s.practice_history:
+        label = f"Practice round {hist['iteration']}"
+        qmap_p = {q["id"]: q for q in hist["questions"]}
+        for r in hist["results"]:
+            if not r["correct"] and r["question_id"] in qmap_p:
+                wrong.append({"round": label, "q": qmap_p[r["question_id"]], "r": r})
+
+    if not wrong:
+        return ""
+
+    lines = ["\n---\n### Questions to review\n"]
+    lines.append(
+        f"_{len(wrong)} question{'s' if len(wrong) != 1 else ''} answered incorrectly "
+        f"across all rounds._\n"
+    )
+    current_round = None
+    for entry in wrong:
+        if entry["round"] != current_round:
+            current_round = entry["round"]
+            lines.append(f"\n**{current_round}**\n")
+        q = entry["q"]
+        r = entry["r"]
+        safe_topic = _md_escape(q["topic"])
+        safe_prompt = _md_escape(q["prompt"])
+        lines.append(f'- **[{safe_topic}]** {safe_prompt}')
+        lines.append(
+            f'  - Your answer: `{_md_escape(r["student_answer"])}`  '
+            f'  Correct: `{_md_escape(r["correct_answer"])}`'
+        )
+        if explanation := q.get("explanation", ""):
+            lines.append(f'  - _{explanation}_')
+    return "\n".join(lines)
+
+
 def _format_report(s: SessionState) -> str:
     lines = ["## Final report\n"]
     if s.diagnostic_score is not None:
@@ -314,6 +359,10 @@ def _format_report(s: SessionState) -> str:
             )
         if overall := s.judge_scores.get("overall_comment"):
             lines.append(f"\n_{overall}_")
+
+    wrong_section = _format_wrong_answers(s)
+    if wrong_section:
+        lines.append(wrong_section)
 
     return "\n".join(lines)
 
