@@ -400,6 +400,13 @@ def build_blocks() -> gr.Blocks:
                 value="beginner",
                 label="Level",
             )
+            question_count_in = gr.Slider(
+                minimum=5,
+                maximum=20,
+                step=5,
+                value=10,
+                label="Questions in initial test",
+            )
             file_in = gr.File(
                 label="Optional: upload a file to generate questions from "
                 "(.txt, .md, .pdf)",
@@ -417,7 +424,7 @@ def build_blocks() -> gr.Blocks:
 
         status = gr.Markdown("")
 
-        def start_session(category: str, custom_subject: str, level: str, file_obj):
+        def start_session(category: str, custom_subject: str, level: str, question_count: int, file_obj):
             subject = custom_subject.strip() if category == "Custom..." else category
             if not subject:
                 yield gr.skip(), gr.update(), "_Please pick or enter a subject._"
@@ -441,7 +448,10 @@ def build_blocks() -> gr.Blocks:
                 '<span class="qm-loading">Generating test questions — usually 20–30 seconds.</span>',
             )
             try:
-                new_state = _orchestrator().start(subject, level, source_text=source_text)
+                new_state = _orchestrator().start(
+                    subject, level, source_text=source_text,
+                    question_count=int(question_count),
+                )
             except Exception as exc:
                 import traceback
                 traceback.print_exc()
@@ -455,7 +465,7 @@ def build_blocks() -> gr.Blocks:
 
         start_btn.click(
             start_session,
-            inputs=[category_in, custom_subject_in, level_in, file_in],
+            inputs=[category_in, custom_subject_in, level_in, question_count_in, file_in],
             outputs=[state, setup_group, status],
         )
 

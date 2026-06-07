@@ -37,6 +37,22 @@ def test_assessment_populates_diagnostic_questions(fake_client):
     assert state.diagnostic_questions[0]["topic"] == "x"
 
 
+def test_assessment_uses_state_question_count(fake_client):
+    """Agent must request exactly state.question_count questions, not the config default."""
+    captured_prompts: list[str] = []
+
+    def capture(prompt: str) -> QuestionSet:
+        captured_prompts.append(prompt)
+        return QuestionSet(questions=[_stub_q("d1", "x")])
+
+    fake_client.set(QuestionSet, capture)
+    state = SessionState(subject="math", level="beginner")
+    state.question_count = 5
+    AssessmentAgent(fake_client).run(state)
+    assert len(captured_prompts) == 1
+    assert "5" in captured_prompts[0]
+
+
 def test_weakness_analyzer_skips_llm_if_no_weak_topics(fake_client):
     state = SessionState(subject="math", level="beginner")
     state.diagnostic_questions = [_stub_q("d1", "x").model_dump()]

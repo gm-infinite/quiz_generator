@@ -34,13 +34,14 @@ class Orchestrator:
         self._bg = ThreadPoolExecutor(max_workers=2)
 
     def start(
-        self, subject: str, level: str, source_text: str = ""
+        self, subject: str, level: str, source_text: str = "", question_count: int = 10
     ) -> SessionState:
         state = SessionState(
             subject=subject,
             level=level,
             source_text=source_text,
             phase=Phase.INIT,
+            question_count=question_count,
         )
         state.started_at = time.time()
         return self.prepare_diagnostic(state)
