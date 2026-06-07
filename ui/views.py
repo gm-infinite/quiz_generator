@@ -25,6 +25,55 @@ def _fresh(s: SessionState) -> SessionState:
     """
     return dataclasses.replace(s)
 
+_KEYBOARD_NAV_JS = """
+<script>
+(function () {
+  var focusedGroup = null;
+
+  document.addEventListener('focusin', function (e) {
+    var group = e.target.closest('.gr-radio, [data-testid="radio-group"]');
+    if (group) focusedGroup = group;
+  }, true);
+
+  document.addEventListener('keydown', function (e) {
+    if (['1', '2', '3', '4'].indexOf(e.key) === -1) return;
+    if (!focusedGroup) {
+      // If nothing focused yet, try the first unanswered group.
+      var allGroups = document.querySelectorAll(
+        '.gr-radio:not(.qm-confidence), [data-testid="radio-group"]:not(.qm-confidence)'
+      );
+      for (var i = 0; i < allGroups.length; i++) {
+        if (!allGroups[i].querySelector('input[type="radio"]:checked')) {
+          focusedGroup = allGroups[i];
+          break;
+        }
+      }
+    }
+    if (!focusedGroup) return;
+    var inputs = focusedGroup.querySelectorAll('input[type="radio"]');
+    var idx = parseInt(e.key, 10) - 1;
+    if (inputs[idx]) {
+      e.preventDefault();
+      inputs[idx].click();
+      inputs[idx].focus();
+      // Advance focus to the next answer radio group (skip confidence groups).
+      var allGroups = Array.from(document.querySelectorAll(
+        '.gr-radio:not(.qm-confidence), [data-testid="radio-group"]:not(.qm-confidence)'
+      ));
+      var cur = allGroups.indexOf(focusedGroup);
+      if (cur !== -1 && allGroups[cur + 1]) {
+        var nextInput = allGroups[cur + 1].querySelector('input[type="radio"]');
+        if (nextInput) {
+          nextInput.focus();
+          focusedGroup = allGroups[cur + 1];
+        }
+      }
+    }
+  });
+})();
+</script>
+"""
+
 _orch: Orchestrator | None = None
 
 
@@ -681,6 +730,7 @@ def _render_quiz(
     submit_label: str,
     on_submit,
 ):
+    gr.HTML(_KEYBOARD_NAV_JS)
     gr.Markdown(heading)
     radios: list[gr.Radio] = []
     conf_radios: list[gr.Radio] = []
