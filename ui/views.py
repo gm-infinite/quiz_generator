@@ -364,6 +364,43 @@ def _score_chart_html(round_scores: list[float]) -> str:
     )
 
 
+def _generate_export(s: SessionState) -> str:
+    """Serialise the session to a temp JSON file and return its path."""
+    import json
+    import tempfile
+
+    data = {
+        "subject": s.subject,
+        "level": s.level,
+        "question_count": s.question_count,
+        "passed": s.passed,
+        "diagnostic_score": s.diagnostic_score,
+        "practice_score": s.practice_score,
+        "round_scores": s.round_scores,
+        "elapsed_seconds": s.elapsed_seconds,
+        "iterations": s.iteration,
+        "weak_topics": s.weak_topics,
+        "final_report": s.final_report,
+        "judge_scores": s.judge_scores,
+        "diagnostic_questions": s.diagnostic_questions,
+        "diagnostic_answers": s.diagnostic_answers,
+        "diagnostic_results": s.diagnostic_results,
+        "practice_history": s.practice_history,
+        "confidence_ratings": s.confidence_ratings,
+    }
+    subject_slug = s.subject.lower().replace(" ", "_")[:20]
+    tmp = tempfile.NamedTemporaryFile(
+        mode="w",
+        suffix=".json",
+        prefix=f"quizmind_{subject_slug}_",
+        delete=False,
+        encoding="utf-8",
+    )
+    json.dump(data, tmp, indent=2, ensure_ascii=False)
+    tmp.close()
+    return tmp.name
+
+
 def _format_report(s: SessionState) -> str:
     lines = ["## Final report\n"]
     if s.diagnostic_score is not None:
@@ -573,7 +610,14 @@ def build_blocks() -> gr.Blocks:
                 if s.round_scores:
                     gr.HTML(_score_chart_html(s.round_scores))
                 gr.Markdown(_format_report(s))
-                restart = gr.Button("Start a new session", variant="primary")
+
+                with gr.Row():
+                    restart = gr.Button("Start a new session", variant="primary")
+                    gr.DownloadButton(
+                        "Download session JSON",
+                        value=_generate_export(s),
+                        variant="secondary",
+                    )
 
                 def reset():
                     return SessionState(), gr.update(visible=True), ""
