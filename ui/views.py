@@ -328,6 +328,42 @@ def _format_wrong_answers(s: SessionState) -> str:
     return "\n".join(lines)
 
 
+def _score_chart_html(round_scores: list[float]) -> str:
+    """Render an inline CSS bar chart for score progression. No dependencies."""
+    if not round_scores:
+        return ""
+
+    labels = ["Initial test"] + [
+        f"Round {i}" for i in range(1, len(round_scores))
+    ]
+    PASS = 0.70
+    bars = []
+    for label, score in zip(labels, round_scores):
+        pct = int(score * 100)
+        color = "#7eb069" if score >= PASS else "#d97757"
+        bars.append(
+            f'<div style="margin:4px 0">'
+            f'<div style="font-size:11px;color:#8a8580;margin-bottom:2px">{label}</div>'
+            f'<div style="display:flex;align-items:center;gap:8px">'
+            f'<div style="background:{color};width:{pct}%;height:18px;'
+            f'border-radius:3px;min-width:4px;transition:width .3s"></div>'
+            f'<span style="font-size:12px;color:#e8e6e3;min-width:32px">{pct}%</span>'
+            f'</div></div>'
+        )
+
+    return (
+        '<div style="padding:12px;background:#232323;border-radius:6px;'
+        'border:1px solid #2e2e2e;margin-bottom:16px">'
+        '<div style="font-size:11px;text-transform:uppercase;letter-spacing:.08em;'
+        'color:#8a8580;margin-bottom:10px">Score progression</div>'
+        + "".join(bars)
+        + f'<div style="margin-top:10px;font-size:10px;color:#8a8580">'
+        f'<span style="color:#d97757">■</span> below 70% pass threshold &nbsp;'
+        f'<span style="color:#7eb069">■</span> passing</div>'
+        "</div>"
+    )
+
+
 def _format_report(s: SessionState) -> str:
     lines = ["## Final report\n"]
     if s.diagnostic_score is not None:
@@ -534,6 +570,8 @@ def build_blocks() -> gr.Blocks:
                 )
 
             elif s.phase == Phase.DONE:
+                if s.round_scores:
+                    gr.HTML(_score_chart_html(s.round_scores))
                 gr.Markdown(_format_report(s))
                 restart = gr.Button("Start a new session", variant="primary")
 

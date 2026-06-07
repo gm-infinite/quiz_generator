@@ -56,6 +56,8 @@ class Orchestrator:
         state.diagnostic_answers = answers
         state.phase = Phase.ANALYSIS
         state = self.analyzer.run(state)
+        if state.diagnostic_score is not None:
+            state.round_scores.append(state.diagnostic_score)
         state.phase = Phase.DIAGNOSTIC_REVIEW
         if state.weak_topics:
             self._start_practice_pregen(state, weak_topics=state.weak_topics)
@@ -75,6 +77,9 @@ class Orchestrator:
         state.practice_answers = answers
         state.phase = Phase.EVALUATION
         state = self.evaluator.run(state)
+
+        if state.practice_score is not None:
+            state.round_scores.append(state.practice_score)
 
         # Archive this round before results get overwritten by the next round.
         state.practice_history.append({
