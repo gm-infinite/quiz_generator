@@ -335,6 +335,9 @@ def _format_report(s: SessionState) -> str:
     if s.practice_score is not None:
         lines.append(f"- **Practice score:** `{s.practice_score:.0%}`")
     lines.append(f"- **Passed:** `{s.passed}`  rounds: `{s.iteration}`")
+    if s.elapsed_seconds is not None:
+        mins, secs = divmod(int(s.elapsed_seconds), 60)
+        lines.append(f"- **Time:** `{mins}m {secs}s`")
 
     report = s.final_report or {}
     if rationale := report.get("evaluator_rationale"):

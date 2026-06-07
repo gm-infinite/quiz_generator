@@ -6,6 +6,7 @@ diagnostic answers, run practice round, etc.
 """
 from __future__ import annotations
 
+import time
 from concurrent.futures import ThreadPoolExecutor
 
 from agents.assessment_agent import AssessmentAgent
@@ -41,6 +42,7 @@ class Orchestrator:
             source_text=source_text,
             phase=Phase.INIT,
         )
+        state.started_at = time.time()
         return self.prepare_diagnostic(state)
 
     def prepare_diagnostic(self, state: SessionState) -> SessionState:
@@ -163,6 +165,8 @@ class Orchestrator:
         return self.generator.run(state)
 
     def _finalize(self, state: SessionState) -> SessionState:
+        if state.started_at:
+            state.elapsed_seconds = time.time() - state.started_at
         state.phase = Phase.FEEDBACK
         state = self.feedback.run(state)
         state = self.judge.run(state)
