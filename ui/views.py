@@ -420,6 +420,29 @@ def _generate_export(s: SessionState) -> str:
     return tmp.name
 
 
+def _format_history() -> str:
+    from tools.session_storage import load_sessions
+    records = load_sessions(max_entries=20)
+    if not records:
+        return "_No sessions recorded yet._"
+    lines = []
+    for r in reversed(records):
+        import datetime
+        ts = datetime.datetime.fromtimestamp(r["timestamp"]).strftime("%Y-%m-%d %H:%M")
+        passed_icon = "✓" if r.get("passed") else "✗"
+        diag = f"{r['diagnostic_score']:.0%}" if r.get("diagnostic_score") is not None else "—"
+        prac = f"{r['practice_score']:.0%}" if r.get("practice_score") is not None else "—"
+        elapsed = ""
+        if r.get("elapsed_seconds") is not None:
+            m, s = divmod(int(r["elapsed_seconds"]), 60)
+            elapsed = f" · {m}m{s}s"
+        lines.append(
+            f"- `{ts}` **{r.get('subject','?')}** ({r.get('level','?')}) "
+            f"— init: `{diag}` → final: `{prac}` {passed_icon}{elapsed}"
+        )
+    return "\n".join(lines)
+
+
 def _format_report(s: SessionState) -> str:
     lines = ["## Final report\n"]
     if s.diagnostic_score is not None:
@@ -513,6 +536,11 @@ def build_blocks() -> gr.Blocks:
         category_in.change(
             _toggle_custom, inputs=category_in, outputs=custom_subject_in
         )
+
+        with gr.Accordion("Session history", open=False):
+            history_md = gr.Markdown(_format_history())
+            refresh_btn = gr.Button("Refresh", size="sm")
+            refresh_btn.click(lambda: _format_history(), outputs=history_md)
 
         status = gr.Markdown("")
 

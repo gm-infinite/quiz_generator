@@ -18,6 +18,7 @@ from agents.weakness_analyzer import WeaknessAnalyzer
 from core import config
 from core.session_state import Phase, SessionState
 from llm.llm_client import LLMClient
+from tools import session_storage
 
 
 class Orchestrator:
@@ -189,4 +190,8 @@ class Orchestrator:
         state = self.feedback.run(state)
         state = self.judge.run(state)
         state.phase = Phase.DONE
+        try:
+            session_storage.save_session(state)
+        except Exception:
+            pass  # history write failure must never break a session
         return state
