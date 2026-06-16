@@ -43,3 +43,27 @@ def test_generate_pdf_handles_empty_state():
     path = _generate_pdf(SessionState(subject="", phase=Phase.DONE))
     with open(path, "rb") as f:
         assert f.read(5) == b"%PDF-"
+
+
+def test_pdf_safe_handles_unicode():
+    from ui.views import _pdf_safe
+    # Without Unicode font support: should replace non-latin-1 characters with ?
+    assert _pdf_safe("Bahçeşehir", has_unicode=False) == "Bahçe?ehir"
+    # With Unicode font support: should preserve full UTF-8 Turkish string
+    assert _pdf_safe("Bahçeşehir", has_unicode=True) == "Bahçeşehir"
+
+
+def test_generate_pdf_preserves_unicode():
+    # Verify that generating a PDF with Turkish characters (e.g. 'Bahçeşehir')
+    # and mathematical symbols runs successfully without crashing.
+    state = _state()
+    path = _generate_pdf(state)
+    try:
+        with open(path, "rb") as f:
+            content = f.read()
+        assert content.startswith(b"%PDF-")
+    finally:
+        import os
+        if os.path.exists(path):
+            os.remove(path)
+

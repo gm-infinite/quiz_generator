@@ -90,47 +90,78 @@ CUSTOM_CSS = """
 :root, .dark, .gradio-container {
   /* Page & Layout backgrounds */
   --background-fill-primary: #ffffff !important;
+  --background-fill-primary-dark: #ffffff !important;
   --background-fill-secondary: #f8f9fa !important;
+  --background-fill-secondary-dark: #f8f9fa !important;
   --body-background-fill: #ffffff !important;
+  --body-background-fill-dark: #ffffff !important;
 
   /* Block & Container backgrounds */
   --block-background-fill: #ffffff !important;
+  --block-background-fill-dark: #ffffff !important;
   --block-border-color: #e5e7eb !important;
+  --block-border-color-dark: #e5e7eb !important;
   --border-color-primary: #e5e7eb !important;
+  --border-color-primary-dark: #e5e7eb !important;
   --border-color-secondary: #f3f4f6 !important;
+  --border-color-secondary-dark: #f3f4f6 !important;
 
   /* Inputs */
   --input-background-fill: #ffffff !important;
+  --input-background-fill-dark: #ffffff !important;
   --input-border-color: #e5e7eb !important;
+  --input-border-color-dark: #e5e7eb !important;
 
   /* Text & Labels */
   --body-text-color: #374151 !important;
+  --body-text-color-dark: #374151 !important;
   --block-label-text-color: #6b7280 !important;
+  --block-label-text-color-dark: #6b7280 !important;
   --input-text-color: #111111 !important;
+  --input-text-color-dark: #111111 !important;
   --block-title-text-color: #111111 !important;
+  --block-title-text-color-dark: #111111 !important;
 
   /* Buttons & Accent Color */
   --primary-500: #111111 !important;
+  --primary-500-dark: #111111 !important;
   --primary-600: #242424 !important;
+  --primary-600-dark: #242424 !important;
   --button-primary-background-fill: #111111 !important;
+  --button-primary-background-fill-dark: #111111 !important;
   --button-primary-text-color: #ffffff !important;
+  --button-primary-text-color-dark: #ffffff !important;
   --button-secondary-background-fill: #ffffff !important;
+  --button-secondary-background-fill-dark: #ffffff !important;
   --button-secondary-text-color: #111111 !important;
+  --button-secondary-text-color-dark: #111111 !important;
   --button-secondary-border-color: #e5e7eb !important;
+  --button-secondary-border-color-dark: #e5e7eb !important;
 
   /* Radio / checkbox option pills (Level, confidence, quiz choices).
      Selected uses a soft blue tint (brand accent) — readable, not black. */
   --checkbox-label-background-fill: #ffffff !important;
+  --checkbox-label-background-fill-dark: #ffffff !important;
   --checkbox-label-background-fill-selected: #eff6ff !important;
+  --checkbox-label-background-fill-selected-dark: #eff6ff !important;
   --checkbox-label-background-fill-hover: #f8f9fa !important;
+  --checkbox-label-background-fill-hover-dark: #f8f9fa !important;
   --checkbox-label-text-color: #374151 !important;
+  --checkbox-label-text-color-dark: #374151 !important;
   --checkbox-label-text-color-selected: #1d4ed8 !important;
+  --checkbox-label-text-color-selected-dark: #1d4ed8 !important;
   --checkbox-background-color: #ffffff !important;
+  --checkbox-background-color-dark: #ffffff !important;
   --checkbox-background-color-selected: #3b82f6 !important;
+  --checkbox-background-color-selected-dark: #3b82f6 !important;
   --checkbox-border-color: #e5e7eb !important;
+  --checkbox-border-color-dark: #e5e7eb !important;
   --checkbox-border-color-selected: #3b82f6 !important;
+  --checkbox-border-color-selected-dark: #3b82f6 !important;
   --checkbox-border-color-hover: #3b82f6 !important;
+  --checkbox-border-color-hover-dark: #3b82f6 !important;
   --checkbox-border-color-focus: #3b82f6 !important;
+  --checkbox-border-color-focus-dark: #3b82f6 !important;
 
   /* QuizMind tokens — Cal.com palette */
   --qm-bg-gradient: #ffffff;
@@ -1054,9 +1085,11 @@ def _score_chart_html(round_scores: list[float]) -> str:
     )
 
 
-def _pdf_safe(text: object) -> str:
+def _pdf_safe(text: object, has_unicode: bool = False) -> str:
     """fpdf's core fonts only handle latin-1; replace anything they can't render
     so generation never crashes on LLM-produced unicode (math symbols, etc.)."""
+    if has_unicode:
+        return str(text)
     return str(text).encode("latin-1", "replace").decode("latin-1")
 
 
@@ -1079,32 +1112,67 @@ def _generate_pdf(s: SessionState) -> str:
     """Render the final report to a temp PDF and return its path."""
     import datetime
     import tempfile
+    import os
+    import urllib.request
 
     from fpdf import FPDF
     from fpdf.enums import XPos, YPos
 
+    # Download DejaVuSans family fonts to enable full Unicode/Turkish rendering in report PDFs
+    font_dir = os.path.join(os.path.dirname(os.path.dirname(__file__)), "data", "fonts")
+    os.makedirs(font_dir, exist_ok=True)
+    
+    font_urls = {
+        "DejaVuSans.ttf": "https://raw.githubusercontent.com/pyfpdf/fpdf2/master/test/fonts/DejaVuSans.ttf",
+        "DejaVuSans-Bold.ttf": "https://raw.githubusercontent.com/pyfpdf/fpdf2/master/test/fonts/DejaVuSans-Bold.ttf",
+        "DejaVuSans-Oblique.ttf": "https://raw.githubusercontent.com/pyfpdf/fpdf2/master/test/fonts/DejaVuSans-Oblique.ttf",
+    }
+    
+    has_dejavu = True
+    for filename, url in font_urls.items():
+        filepath = os.path.join(font_dir, filename)
+        if not os.path.exists(filepath):
+            try:
+                # 5-second timeout for offline safety and custom user agent to prevent blocks
+                req = urllib.request.Request(url, headers={"User-Agent": "Mozilla/5.0"})
+                with urllib.request.urlopen(req, timeout=5) as response, open(filepath, "wb") as out_file:
+                    out_file.write(response.read())
+            except Exception:
+                has_dejavu = False
+        if not os.path.exists(filepath):
+            has_dejavu = False
+
     report = s.final_report or {}
     pdf = FPDF()
     pdf.set_auto_page_break(auto=True, margin=15)
+    
+    if has_dejavu:
+        pdf.add_font("DejaVuSans", "", os.path.join(font_dir, "DejaVuSans.ttf"))
+        pdf.add_font("DejaVuSans", "B", os.path.join(font_dir, "DejaVuSans-Bold.ttf"))
+        pdf.add_font("DejaVuSans", "I", os.path.join(font_dir, "DejaVuSans-Oblique.ttf"))
+        font_family = "DejaVuSans"
+    else:
+        font_family = "Helvetica"
+
     pdf.add_page()
 
     def line(txt: str, h: float) -> None:
         # full-width line that always resets the cursor to the left margin,
         # otherwise the next multi_cell has zero usable width and fpdf raises.
-        pdf.multi_cell(0, h, _pdf_safe(txt), new_x=XPos.LMARGIN, new_y=YPos.NEXT)
+        pdf.multi_cell(0, h, _pdf_safe(txt, has_unicode=has_dejavu), new_x=XPos.LMARGIN, new_y=YPos.NEXT)
 
     def heading(txt: str, size: int = 13) -> None:
         pdf.ln(2)
-        pdf.set_font("Helvetica", "B", size)
+        pdf.set_font(font_family, "B", size)
         line(txt, size * 0.55)
 
     def body(txt: str, size: int = 11, style: str = "") -> None:
-        pdf.set_font("Helvetica", style, size)
+        pdf.set_font(font_family, style, size)
         line(txt, 5.5)
 
-    pdf.set_font("Helvetica", "B", 20)
+    pdf.set_font(font_family, "B", 20)
     line("QuizMind - Learning Report", 10)
-    pdf.set_font("Helvetica", "", 10)
+    pdf.set_font(font_family, "", 10)
     pdf.set_text_color(110)
     date = datetime.datetime.now().strftime("%Y-%m-%d %H:%M")
     line(f"{s.subject} ({s.level})  -  {date}", 6)
@@ -1419,6 +1487,26 @@ def build_blocks() -> gr.Blocks:
             '<h1>QuizMind</h1>'
             '<p>Adaptive multi-agent quiz system. We test you, find weak spots, and target them until you improve.</p>'
             '</div>'
+            '<script>'
+            '  (function() {'
+            '    document.documentElement.classList.remove("dark");'
+            '    document.body.classList.remove("dark");'
+            '    const observer = new MutationObserver((mutations) => {'
+            '      mutations.forEach((mutation) => {'
+            '        if (mutation.type === "attributes" && mutation.attributeName === "class") {'
+            '          if (document.documentElement.classList.contains("dark")) {'
+            '            document.documentElement.classList.remove("dark");'
+            '          }'
+            '          if (document.body.classList.contains("dark")) {'
+            '            document.body.classList.remove("dark");'
+            '          }'
+            '        }'
+            '      });'
+            '    });'
+            '    observer.observe(document.documentElement, { attributes: true });'
+            '    observer.observe(document.body, { attributes: true });'
+            '  })();'
+            '</script>'
         )
 
         with gr.Group(elem_classes=["qm-card"]) as setup_group:
@@ -1427,16 +1515,19 @@ def build_blocks() -> gr.Blocks:
                 choices=[*config.SUBJECT_CATEGORIES, "Custom..."],
                 value=config.SUBJECT_CATEGORIES[0],
                 label="Category",
+                elem_id="category-dropdown",
             )
             custom_subject_in = gr.Textbox(
                 label="Custom subject",
                 placeholder="e.g. Ottoman architecture",
                 visible=False,
+                elem_id="custom-subject-textbox",
             )
             level_in = gr.Radio(
                 choices=list(config.LEVELS),
                 value="beginner",
                 label="Level",
+                elem_id="level-radio",
             )
             question_count_in = gr.Slider(
                 minimum=5,
@@ -1444,6 +1535,7 @@ def build_blocks() -> gr.Blocks:
                 step=5,
                 value=10,
                 label="Questions in initial test",
+                elem_id="question-count-slider",
             )
             max_rounds_in = gr.Slider(
                 minimum=1,
@@ -1451,13 +1543,15 @@ def build_blocks() -> gr.Blocks:
                 step=1,
                 value=config.MAX_PRACTICE_ROUNDS,
                 label="Max practice rounds",
+                elem_id="max-rounds-slider",
             )
             file_in = gr.File(
                 label="Optional: upload a file to generate questions from (.txt, .md, .pdf)",
                 file_types=[".txt", ".md", ".pdf"],
                 file_count="single",
+                elem_id="file-uploader",
             )
-            start_btn = gr.Button("Start test", variant="primary")
+            start_btn = gr.Button("Start test", variant="primary", elem_id="start-session-button")
 
         def _toggle_custom(choice: str):
             return gr.update(visible=(choice == "Custom..."))
@@ -1595,11 +1689,12 @@ def build_blocks() -> gr.Blocks:
                 gr.HTML(_format_report_html(s))
 
                 with gr.Row():
-                    restart = gr.Button("Start a new session", variant="primary")
+                    restart = gr.Button("Start a new session", variant="primary", elem_id="restart-session-button")
                     gr.DownloadButton(
                         "Download report PDF",
                         value=_generate_pdf(s),
                         variant="secondary",
+                        elem_id="download-pdf-button",
                     )
 
                 def reset():
@@ -1658,7 +1753,7 @@ def _render_quiz(
         </div>
         """
     )
-    submit_btn = gr.Button(submit_label, variant="primary")
+    submit_btn = gr.Button(submit_label, variant="primary", elem_id="submit-answers-button")
     inline_status = gr.Markdown("")
 
     def _on_answer_change(*answers):
@@ -1807,7 +1902,7 @@ def _render_review(
 
     gr.HTML("\n".join(q_htmls))
     
-    continue_btn = gr.Button(continue_label, variant="primary")
+    continue_btn = gr.Button(continue_label, variant="primary", elem_id="continue-button")
     inline_status = gr.Markdown("")
 
     def handler(current_state):
