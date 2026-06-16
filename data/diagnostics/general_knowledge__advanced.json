@@ -1,0 +1,184 @@
+{
+  "questions": [
+    {
+      "id": "d1",
+      "topic": "astronomy",
+      "prompt": "Which planet in our solar system has the shortest rotational period (i.e., the shortest day)?",
+      "choices": [
+        "Venus",
+        "Jupiter",
+        "Earth",
+        "Mars"
+      ],
+      "correct_answer": "Jupiter",
+      "explanation": "Jupiter rotates once every ~9.9 hours—the shortest day of any planet in our solar system—due to its rapid spin and gaseous composition.",
+      "distractor_rationales": {
+        "Venus": "Venus has the longest rotational period (~243 Earth days) and rotates retrograde, making its day exceptionally long.",
+        "Earth": "Earth's rotational period is approximately 24 hours, far longer than Jupiter's.",
+        "Mars": "Mars rotates once every ~24.6 hours, slightly longer than Earth, and much longer than Jupiter."
+      }
+    },
+    {
+      "id": "d2",
+      "topic": "world geography",
+      "prompt": "Which country is both the largest landlocked country and the ninth-largest country by total area?",
+      "choices": [
+        "Afghanistan",
+        "Kazakhstan",
+        "Mongolia",
+        "Chad"
+      ],
+      "correct_answer": "Kazakhstan",
+      "explanation": "Kazakhstan covers ~2.7 million km², making it the world’s largest landlocked country and the ninth-largest sovereign state overall.",
+      "distractor_rationales": {
+        "Afghanistan": "Afghanistan is landlocked but ranks only ~40th in total area (~652,000 km²).",
+        "Mongolia": "Mongolia is the second-largest landlocked country (~1.56 million km²), but not the largest.",
+        "Chad": "Chad is landlocked and large (~1.28 million km²), but significantly smaller than Kazakhstan."
+      }
+    },
+    {
+      "id": "d3",
+      "topic": "classical mythology",
+      "prompt": "In Greek mythology, who was the Titan god of the sun before Apollo assumed that role in later tradition?",
+      "choices": [
+        "Helios",
+        "Hyperion",
+        "Ares",
+        "Prometheus"
+      ],
+      "correct_answer": "Helios",
+      "explanation": "Helios was the personification of the Sun who drove the chariot of the sun across the sky daily; Apollo became associated with the sun only in later Hellenistic and Roman periods.",
+      "distractor_rationales": {
+        "Hyperion": "Hyperion was Helios’s father and a Titan associated with heavenly light, but not the active sun god himself.",
+        "Ares": "Ares was the god of war, unrelated to solar functions.",
+        "Prometheus": "Prometheus was a Titan known for giving fire to humanity, not for solar dominion."
+      }
+    },
+    {
+      "id": "d4",
+      "topic": "literary history",
+      "prompt": "Which of these authors wrote *The Tale of Genji*, widely considered the world’s first novel?",
+      "choices": [
+        "Murasaki Shikibu",
+        "Ban Zhao",
+        "Sappho",
+        "Ibn Khaldun"
+      ],
+      "correct_answer": "Murasaki Shikibu",
+      "explanation": "Murasaki Shikibu, a Japanese noblewoman and lady-in-waiting, composed *The Tale of Genji* in early 11th-century Heian Japan.",
+      "distractor_rationales": {
+        "Ban Zhao": "Ban Zhao was a Han dynasty Chinese historian and scholar, author of *Lessons for Women*, not a novel.",
+        "Sappho": "Sappho was an Archaic Greek lyric poet from Lesbos; her surviving works are fragments of poetry, not narrative fiction.",
+        "Ibn Khaldun": "Ibn Khaldun was a 14th-century North African historian and sociologist, author of the *Muqaddimah*, not fiction."
+      }
+    },
+    {
+      "id": "d5",
+      "topic": "biochemistry",
+      "prompt": "Which nitrogenous base is found in RNA but not in DNA?",
+      "choices": [
+        "Thymine",
+        "Uracil",
+        "Adenine",
+        "Guanine"
+      ],
+      "correct_answer": "Uracil",
+      "explanation": "RNA uses uracil (U) to pair with adenine, whereas DNA uses thymine (T); uracil lacks the methyl group present in thymine.",
+      "distractor_rationales": {
+        "Thymine": "Thymine is exclusive to DNA—not found in standard RNA.",
+        "Adenine": "Adenine appears in both DNA and RNA as a purine base.",
+        "Guanine": "Guanine is a purine base present in both DNA and RNA."
+      }
+    },
+    {
+      "id": "d6",
+      "topic": "international law",
+      "prompt": "Which treaty established the International Criminal Court (ICC) in 2002?",
+      "choices": [
+        "Geneva Conventions",
+        "Rome Statute",
+        "Vienna Convention on the Law of Treaties",
+        "Hague Convention"
+      ],
+      "correct_answer": "Rome Statute",
+      "explanation": "The Rome Statute, adopted in 1998 and entered into force in 2002, created the permanent International Criminal Court to prosecute genocide, crimes against humanity, war crimes, and aggression.",
+      "distractor_rationales": {
+        "Geneva Conventions": "The Geneva Conventions (1949) govern treatment of civilians and combatants during war but do not establish the ICC.",
+        "Vienna Convention on the Law of Treaties": "This 1969 treaty codifies rules for treaty formation and interpretation, not judicial institutions.",
+        "Hague Convention": "The Hague Conventions refer to multiple treaties on warfare and arbitration (e.g., 1899/1907), predating and unrelated to the ICC."
+      }
+    },
+    {
+      "id": "d7",
+      "topic": "music theory",
+      "prompt": "In Western tonal music, what interval is formed between C and F♯?",
+      "choices": [
+        "Perfect fourth",
+        "Augmented fourth",
+        "Major third",
+        "Diminished fifth"
+      ],
+      "correct_answer": "Augmented fourth",
+      "explanation": "C to F is a perfect fourth (5 semitones); raising the top note to F♯ adds one semitone, forming an augmented fourth (6 semitones), also known as the tritone.",
+      "distractor_rationales": {
+        "Perfect fourth": "C to F is a perfect fourth; C to F♯ is one semitone wider.",
+        "Major third": "C to E is a major third (4 semitones); C to F♯ is 6 semitones, too wide.",
+        "Diminished fifth": "C to G♭ is a diminished fifth (6 semitones), enharmonically equivalent to C–F♯ but spelled differently; however, the interval *as named* from C to F♯ is aug. fourth by standard interval naming rules (counting letter names: C-D-E-F = 4)."
+      }
+    },
+    {
+      "id": "d8",
+      "topic": "economic history",
+      "prompt": "The 'Great Moderation' refers to a period of reduced macroeconomic volatility in many advanced economies beginning roughly when?",
+      "choices": [
+        "1950s",
+        "1970s",
+        "1980s",
+        "2000s"
+      ],
+      "correct_answer": "1980s",
+      "explanation": "The Great Moderation describes the era starting in the mid-1980s—following Volcker’s inflation crackdown—marked by lower inflation, milder business cycles, and greater output stability until the 2008 financial crisis.",
+      "distractor_rationales": {
+        "1950s": "The 1950s saw strong growth but also significant volatility, including recessions in 1953 and 1957–58, and high inflation variability.",
+        "1970s": "The 1970s were defined by stagflation, oil shocks, and extreme macroeconomic instability—antithetical to the Great Moderation.",
+        "2000s": "While the early 2000s continued the moderation trend, the period *began* in the 1980s; the 2000s include the onset of its end (2007–08 crisis)."
+      }
+    },
+    {
+      "id": "d9",
+      "topic": "linguistics",
+      "prompt": "What linguistic term describes a word that imitates the sound it represents, such as 'buzz' or 'hiss'?",
+      "choices": [
+        "Metaphor",
+        "Onomatopoeia",
+        "Alliteration",
+        "Synecdoche"
+      ],
+      "correct_answer": "Onomatopoeia",
+      "explanation": "Onomatopoeia refers to words phonetically evoking the sounds they denote—e.g., 'buzz', 'crash', 'meow'—common across many languages.",
+      "distractor_rationales": {
+        "Metaphor": "A metaphor is a figurative comparison (e.g., 'time is a thief'), not sound-imitative.",
+        "Alliteration": "Alliteration is the repetition of initial consonant sounds in adjacent words (e.g., 'she sells seashells'), not sound symbolism.",
+        "Synecdoche": "Synecdoche is a figure of speech where a part represents the whole (e.g., 'wheels' for 'car'), unrelated to sound imitation."
+      }
+    },
+    {
+      "id": "d10",
+      "topic": "materials science",
+      "prompt": "Which of these elements is classified as a metalloid and commonly used in semiconductors?",
+      "choices": [
+        "Aluminum",
+        "Silicon",
+        "Copper",
+        "Carbon"
+      ],
+      "correct_answer": "Silicon",
+      "explanation": "Silicon is a metalloid with electrical conductivity between metals and insulators, making it the foundational semiconductor material in modern electronics.",
+      "distractor_rationales": {
+        "Aluminum": "Aluminum is a post-transition metal, highly conductive—not a semiconductor.",
+        "Copper": "Copper is a transition metal and excellent conductor, unsuitable as a semiconductor without doping.",
+        "Carbon": "Carbon (e.g., graphite or diamond) can exhibit semiconducting behavior in specific allotropes like graphene, but it is not classified as a metalloid; silicon is the canonical metalloid semiconductor."
+      }
+    }
+  ]
+}

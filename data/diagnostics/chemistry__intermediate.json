@@ -1,0 +1,184 @@
+{
+  "questions": [
+    {
+      "id": "d1",
+      "topic": "Atomic Structure",
+      "prompt": "What is the maximum number of electrons that can occupy the third principal energy level (n = 3)?",
+      "choices": [
+        "8",
+        "18",
+        "9",
+        "32"
+      ],
+      "correct_answer": "18",
+      "explanation": "The maximum number of electrons in a principal energy level n is given by 2n²; for n = 3, 2 × 3² = 18.",
+      "distractor_rationales": {
+        "8": "This is the number of electrons in the n = 2 level (2 × 2² = 8) or reflects only s and p subshells (2 + 6 = 8), ignoring the d subshell present at n = 3.",
+        "9": "This is not derived from any standard electron capacity rule and incorrectly adds subshell capacities without accounting for orbital degeneracy.",
+        "32": "This is the capacity for n = 4 (2 × 4² = 32), mistakenly applying the formula to the wrong principal quantum number."
+      }
+    },
+    {
+      "id": "d2",
+      "topic": "Chemical Bonding",
+      "prompt": "Which of the following molecules contains only nonpolar covalent bonds?",
+      "choices": [
+        "H₂O",
+        "CO₂",
+        "O₂",
+        "NH₃"
+      ],
+      "correct_answer": "O₂",
+      "explanation": "O₂ consists of two identical oxygen atoms sharing electrons equally, resulting in a pure nonpolar covalent bond.",
+      "distractor_rationales": {
+        "H₂O": "O–H bonds are polar due to the electronegativity difference between O and H, and the molecule is bent, yielding a net dipole.",
+        "CO₂": "Although each C=O bond is polar, the linear geometry causes bond dipoles to cancel — the *bonds* are polar, so it does not contain 'only nonpolar covalent bonds'.",
+        "NH₃": "N–H bonds are polar (electronegativity difference ~0.9), and the trigonal pyramidal shape results in a net molecular dipole."
+      }
+    },
+    {
+      "id": "d3",
+      "topic": "Stoichiometry",
+      "prompt": "How many moles of O₂ are required to completely combust 2 moles of C₃H₈ (propane) according to the balanced equation: C₃H₈ + 5O₂ → 3CO₂ + 4H₂O?",
+      "choices": [
+        "2",
+        "5",
+        "10",
+        "15"
+      ],
+      "correct_answer": "10",
+      "explanation": "The balanced equation shows 1 mole of C₃H₈ requires 5 moles of O₂; therefore, 2 moles of C₃H₈ require 2 × 5 = 10 moles of O₂.",
+      "distractor_rationales": {
+        "2": "This incorrectly assumes a 1:1 molar ratio between C₃H₈ and O₂, ignoring the stoichiometric coefficient.",
+        "5": "This is the amount needed for only 1 mole of C₃H₈, not 2 moles.",
+        "15": "This may arise from misbalancing the equation or incorrectly counting oxygen atoms on the product side (e.g., adding CO₂ and H₂O oxygen counts without accounting for coefficients)."
+      }
+    },
+    {
+      "id": "d4",
+      "topic": "Acids and Bases",
+      "prompt": "Which of the following best defines a Brønsted–Lowry base?",
+      "choices": [
+        "A substance that donates protons",
+        "A substance that accepts protons",
+        "A substance that donates hydroxide ions",
+        "A substance that increases [H⁺] in solution"
+      ],
+      "correct_answer": "A substance that accepts protons",
+      "explanation": "By the Brønsted–Lowry definition, a base is a proton (H⁺) acceptor.",
+      "distractor_rationales": {
+        "A substance that donates protons": "This defines a Brønsted–Lowry *acid*, not a base.",
+        "A substance that donates hydroxide ions": "This is an Arrhenius base definition, which is narrower and does not apply to bases like NH₃ that lack OH⁻ but still accept protons.",
+        "A substance that increases [H⁺] in solution": "This describes the behavior of an acid, not a base."
+      }
+    },
+    {
+      "id": "d5",
+      "topic": "Thermodynamics",
+      "prompt": "For a spontaneous process at constant temperature and pressure, which of the following must be true?",
+      "choices": [
+        "ΔH < 0",
+        "ΔS > 0",
+        "ΔG < 0",
+        "ΔU = 0"
+      ],
+      "correct_answer": "ΔG < 0",
+      "explanation": "Gibbs free energy change (ΔG) determines spontaneity at constant T and P: ΔG < 0 indicates a spontaneous process.",
+      "distractor_rationales": {
+        "ΔH < 0": "Exothermicity (ΔH < 0) favors spontaneity but is insufficient alone — an endothermic process can be spontaneous if ΔS is large and positive.",
+        "ΔS > 0": "Positive entropy change favors spontaneity but is insufficient alone — a process with ΔS > 0 can be nonspontaneous if ΔH is highly positive and T is low.",
+        "ΔU = 0": "Internal energy change being zero implies no net energy change, but says nothing about spontaneity; it’s unrelated to the criterion for spontaneity under constant T and P."
+      }
+    },
+    {
+      "id": "d6",
+      "topic": "Periodic Trends",
+      "prompt": "Which element has the highest first ionization energy among the following?",
+      "choices": [
+        "Na",
+        "Mg",
+        "Al",
+        "Si"
+      ],
+      "correct_answer": "Si",
+      "explanation": "Ionization energy generally increases across a period due to increasing nuclear charge and decreasing atomic radius; Si (Group 14) has higher IE than Na (Group 1), Mg (Group 2), and Al (Group 13), despite a slight dip at Al due to p-orbital shielding.",
+      "distractor_rationales": {
+        "Na": "Na has the *lowest* first IE in this set — largest atomic radius and lowest effective nuclear charge in period 3.",
+        "Mg": "Mg has higher IE than Na but lower than Al and Si; its filled 3s² subshell gives it higher IE than Na but it lacks the increased Z_eff of Si.",
+        "Al": "Al has a lower first IE than Mg due to electron removal from a higher-energy 3p orbital, which is shielded and easier to remove than Mg’s 3s² electron."
+      }
+    },
+    {
+      "id": "d7",
+      "topic": "Kinetics",
+      "prompt": "What effect does a catalyst have on a chemical reaction?",
+      "choices": [
+        "Increases the activation energy",
+        "Shifts the position of equilibrium",
+        "Increases the rate by providing an alternative pathway with lower activation energy",
+        "Changes the enthalpy change (ΔH) of the reaction"
+      ],
+      "correct_answer": "Increases the rate by providing an alternative pathway with lower activation energy",
+      "explanation": "Catalysts speed up reactions by lowering the activation energy barrier without being consumed.",
+      "distractor_rationales": {
+        "Increases the activation energy": "This would slow the reaction, opposite to a catalyst’s function.",
+        "Shifts the position of equilibrium": "Catalysts do not affect equilibrium position — they only shorten the time to reach equilibrium.",
+        "Changes the enthalpy change (ΔH) of the reaction": "ΔH is a state function dependent only on initial and final states; catalysts do not alter ΔH."
+      }
+    },
+    {
+      "id": "d8",
+      "topic": "Solutions and Solubility",
+      "prompt": "According to 'like dissolves like', which solvent is most likely to dissolve hexane (C₆H₁₄)?",
+      "choices": [
+        "Water (H₂O)",
+        "Ethanol (CH₃CH₂OH)",
+        "Acetic acid (CH₃COOH)",
+        "Carbon tetrachloride (CCl₄)"
+      ],
+      "correct_answer": "Carbon tetrachloride (CCl₄)",
+      "explanation": "Hexane is nonpolar; CCl₄ is also nonpolar, making it miscible via London dispersion forces.",
+      "distractor_rationales": {
+        "Water (H₂O)": "Water is highly polar and forms strong hydrogen bonds; it cannot solvate nonpolar hexane effectively.",
+        "Ethanol (CH₃CH₂OH)": "Ethanol has a polar OH group and can hydrogen bond, making it too polar to dissolve significant amounts of nonpolar hexane.",
+        "Acetic acid (CH₃COOH)": "Like ethanol, acetic acid is polar and capable of hydrogen bonding, resulting in very low solubility for hexane."
+      }
+    },
+    {
+      "id": "d9",
+      "topic": "Redox Reactions",
+      "prompt": "In the reaction: 2Al(s) + 3Cu²⁺(aq) → 2Al³⁺(aq) + 3Cu(s), which species is reduced?",
+      "choices": [
+        "Al",
+        "Cu²⁺",
+        "Al³⁺",
+        "Cu"
+      ],
+      "correct_answer": "Cu²⁺",
+      "explanation": "Reduction is gain of electrons; Cu²⁺ gains electrons to become Cu(s), decreasing oxidation state from +2 to 0.",
+      "distractor_rationales": {
+        "Al": "Al(s) is oxidized (0 → +3), losing electrons.",
+        "Al³⁺": "Al³⁺ is the oxidation *product*, not the species undergoing reduction.",
+        "Cu": "Cu(s) is the *reduction product*; the species *reduced* is Cu²⁺, the reactant that gains electrons."
+      }
+    },
+    {
+      "id": "d10",
+      "topic": "Nuclear Chemistry",
+      "prompt": "What type of radioactive decay results in a decrease of the atomic number by 1 but no change in mass number?",
+      "choices": [
+        "Alpha decay",
+        "Beta-minus (β⁻) decay",
+        "Beta-plus (β⁺) decay",
+        "Gamma decay"
+      ],
+      "correct_answer": "Beta-plus (β⁺) decay",
+      "explanation": "In β⁺ decay, a proton converts to a neutron, emitting a positron and neutrino; atomic number Z decreases by 1, mass number A remains unchanged.",
+      "distractor_rationales": {
+        "Alpha decay": "Alpha decay reduces both Z by 2 and A by 4.",
+        "Beta-minus (β⁻) decay": "β⁻ decay increases Z by 1 (neutron → proton), leaving A unchanged.",
+        "Gamma decay": "Gamma emission involves only energy release; Z and A remain unchanged."
+      }
+    }
+  ]
+}

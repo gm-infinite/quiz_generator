@@ -1,0 +1,184 @@
+{
+  "questions": [
+    {
+      "id": "d1",
+      "topic": "Major rivers of Turkey",
+      "prompt": "Which river is the longest wholly within Turkey's borders?",
+      "choices": [
+        "Kızılırmak",
+        "Euphrates",
+        "Tigris",
+        "Sakarya"
+      ],
+      "correct_answer": "Kızılırmak",
+      "explanation": "The Kızılırmak (Red River) is approximately 1,355 km long and flows entirely within Turkey, making it the longest river fully contained in the country.",
+      "distractor_rationales": {
+        "Euphrates": "The Euphrates originates in eastern Turkey but flows through Syria and Iraq; only part of its course is in Turkey.",
+        "Tigris": "The Tigris also originates in eastern Turkey but primarily flows through Iraq and has a much shorter stretch within Turkey.",
+        "Sakarya": "The Sakarya is Turkey's third-longest river entirely within its borders (~824 km), but it is significantly shorter than the Kızılırmak."
+      }
+    },
+    {
+      "id": "d2",
+      "topic": "Mountain ranges",
+      "prompt": "Which mountain range forms the natural boundary between Turkey's Black Sea and Central Anatolia regions?",
+      "choices": [
+        "Taurus Mountains",
+        "Pontic Mountains",
+        "Anti-Taurus Mountains",
+        "Aegean Mountains"
+      ],
+      "correct_answer": "Pontic Mountains",
+      "explanation": "The Pontic Mountains (also called the Northern Anatolian Mountains) run parallel to the Black Sea coast and separate the narrow coastal strip from the interior plateau of Central Anatolia.",
+      "distractor_rationales": {
+        "Taurus Mountains": "The Taurus Mountains lie in southern Turkey, separating the Mediterranean coast from the Central Anatolian Plateau—not the Black Sea region.",
+        "Anti-Taurus Mountains": "The Anti-Taurus are an eastern extension of the Taurus system, located in eastern Turkey near the Armenian Highlands, not along the Black Sea.",
+        "Aegean Mountains": "There is no formally recognized 'Aegean Mountains' range; the western Aegean coast features smaller, fragmented ranges like the Bozdağlar, not a major unifying system."
+      }
+    },
+    {
+      "id": "d3",
+      "topic": "Climate zones",
+      "prompt": "Which climate type dominates the coastal areas of Turkey's Aegean and Mediterranean regions?",
+      "choices": [
+        "Humid subtropical (Cfa)",
+        "Mediterranean (Csa)",
+        "Semi-arid (BSh)",
+        "Oceanic (Cfb)"
+      ],
+      "correct_answer": "Mediterranean (Csa)",
+      "explanation": "The Csa classification—characterized by hot, dry summers and mild, rainy winters—is the defining climate of Turkey’s Aegean and Mediterranean coasts per the Köppen system.",
+      "distractor_rationales": {
+        "Humid subtropical (Cfa)": "Cfa features year-round precipitation and no dry season, which does not match the pronounced summer drought of Turkey’s southwest.",
+        "Semi-arid (BSh)": "BSh occurs in inland areas like Central Anatolia (e.g., Ankara), where rainfall is low and evaporation high—not the relatively wet coastal zones.",
+        "Oceanic (Cfb)": "Cfb requires cool summers and consistent precipitation; Turkey’s southwestern coasts have hot summers, disqualifying Cfb."
+      }
+    },
+    {
+      "id": "d4",
+      "topic": "Lakes",
+      "prompt": "Turkey's largest lake by surface area is:",
+      "choices": [
+        "Lake Van",
+        "Lake Tuz",
+        "Lake Eğirdir",
+        "Lake Beyşehir"
+      ],
+      "correct_answer": "Lake Van",
+      "explanation": "Lake Van covers approximately 3,755 km² and is not only Turkey’s largest lake but also the world’s largest soda lake.",
+      "distractor_rationales": {
+        "Lake Tuz": "Lake Tuz is Turkey’s second-largest lake (~1,500 km²), but it is a hypersaline salt lake that shrinks dramatically in summer and is much smaller than Lake Van.",
+        "Lake Eğirdir": "Lake Eğirdir is one of Turkey’s deeper freshwater lakes (~482 km²), but it ranks far below Lake Van in surface area.",
+        "Lake Beyşehir": "Lake Beyşehir (~650 km²) is the largest freshwater lake in Turkey—but still less than one-fifth the size of Lake Van."
+      }
+    },
+    {
+      "id": "d5",
+      "topic": "Geopolitical location",
+      "prompt": "Turkey is considered a transcontinental country because it spans which two continents?",
+      "choices": [
+        "Europe and Africa",
+        "Asia and Africa",
+        "Europe and Asia",
+        "Asia and Oceania"
+      ],
+      "correct_answer": "Europe and Asia",
+      "explanation": "Turkey straddles both Europe and Asia, with the Bosporus Strait, Sea of Marmara, and Dardanelles forming the conventional boundary between the two continents.",
+      "distractor_rationales": {
+        "Europe and Africa": "Turkey shares no land or maritime border with Africa; the closest African country is Egypt across the Eastern Mediterranean.",
+        "Asia and Africa": "No land connection exists between Turkey and Africa; the Sinai Peninsula separates them.",
+        "Asia and Oceania": "Oceania is thousands of kilometers away, with no geographic or geopolitical linkage to Turkey."
+      }
+    },
+    {
+      "id": "d6",
+      "topic": "Volcanic features",
+      "prompt": "Which Turkish landmark is a dormant stratovolcano and the country's highest peak?",
+      "choices": [
+        "Mount Süphan",
+        "Mount Erciyes",
+        "Mount Ağrı (Ararat)",
+        "Mount Nemrut"
+      ],
+      "correct_answer": "Mount Ağrı (Ararat)",
+      "explanation": "Mount Ağrı (5,137 m) is Turkey’s highest peak and a dormant compound volcano located in the Eastern Anatolia Region.",
+      "distractor_rationales": {
+        "Mount Süphan": "Mount Süphan (4,058 m) is a large volcanic mountain in eastern Turkey, but it is significantly lower than Mount Ağrı.",
+        "Mount Erciyes": "Mount Erciyes (3,916 m) is a prominent extinct volcano near Kayseri, but it is neither the highest nor dormant in the same geologic sense as Ağrı.",
+        "Mount Nemrut": "Mount Nemrut (2,150 m) is a volcanic massif known for its ancient statues, not its height or volcanic activity—it is much lower and not Turkey’s highest."
+      }
+    },
+    {
+      "id": "d7",
+      "topic": "Coastlines and seas",
+      "prompt": "Which sea lies to the north of Turkey?",
+      "choices": [
+        "Aegean Sea",
+        "Black Sea",
+        "Mediterranean Sea",
+        "Caspian Sea"
+      ],
+      "correct_answer": "Black Sea",
+      "explanation": "Turkey’s northern coastline borders the Black Sea, a marginal sea of the Atlantic Ocean enclosed by Eastern Europe and Western Asia.",
+      "distractor_rationales": {
+        "Aegean Sea": "The Aegean Sea lies to the west of Turkey, between Turkey and Greece.",
+        "Mediterranean Sea": "The Mediterranean Sea lies to the south of Turkey, accessible via the narrow Strait of Gibraltar.",
+        "Caspian Sea": "The Caspian Sea is landlocked and lies east of Turkey, beyond Georgia and Armenia; Turkey does not border it."
+      }
+    },
+    {
+      "id": "d8",
+      "topic": "Plains and basins",
+      "prompt": "The Çukurova Plain—Turkey’s most fertile agricultural region—is located in which part of the country?",
+      "choices": [
+        "Central Anatolia",
+        "Eastern Anatolia",
+        "Southeastern Anatolia",
+        "Çukurova is not in Turkey"
+      ],
+      "correct_answer": "Southeastern Anatolia",
+      "explanation": "The Çukurova Plain (also known as the Adana Plain) lies in the southeastern Mediterranean region, formed by the Seyhan and Ceyhan rivers, and is renowned for cotton, citrus, and early-season vegetables.",
+      "distractor_rationales": {
+        "Central Anatolia": "Central Anatolia features the semi-arid Konya Basin and steppe landscapes—not the humid, alluvial Çukurova.",
+        "Eastern Anatolia": "Eastern Anatolia is dominated by high plateaus, volcanoes, and cold continental climates—unsuitable for Çukurova’s agriculture.",
+        "Çukurova is not in Turkey": "Çukurova is unequivocally a major Turkish region centered on Adana and Mersin provinces."
+      }
+    },
+    {
+      "id": "d9",
+      "topic": "Natural resources",
+      "prompt": "Which mineral resource is Turkey the world’s largest producer of?",
+      "choices": [
+        "Chromium",
+        "Boron",
+        "Copper",
+        "Iron ore"
+      ],
+      "correct_answer": "Boron",
+      "explanation": "Turkey holds about 73% of the world’s proven boron reserves and accounts for over 50% of global boron production, primarily from deposits in the Eskişehir and Kütahya regions.",
+      "distractor_rationales": {
+        "Chromium": "Turkey is a notable chromium producer, but South Africa, Kazakhstan, and India dominate global output.",
+        "Copper": "Turkey mines copper, but it ranks well outside the top 10 global producers (e.g., Chile, Peru, China lead).",
+        "Iron ore": "Turkey imports more iron ore than it produces; its domestic output is modest compared to Australia, Brazil, or China."
+      }
+    },
+    {
+      "id": "d10",
+      "topic": "Earthquakes and tectonics",
+      "prompt": "Turkey is highly seismically active primarily due to its location on the boundary of which two major tectonic plates?",
+      "choices": [
+        "Eurasian and Pacific Plates",
+        "African and Arabian Plates",
+        "Eurasian and African Plates",
+        "Eurasian and Arabian Plates"
+      ],
+      "correct_answer": "Eurasian and Arabian Plates",
+      "explanation": "Turkey lies at the convergence of the Eurasian Plate and the northward-moving Arabian Plate, with the East Anatolian Fault and North Anatolian Fault accommodating this collision—causing frequent, powerful earthquakes.",
+      "distractor_rationales": {
+        "Eurasian and Pacific Plates": "The Pacific Plate interacts with Eurasia far to the east (e.g., Japan, Philippines); it does not contact Turkey.",
+        "African and Arabian Plates": "These plates diverge along the Red Sea Rift and interact minimally near the Sinai, but not under Turkey.",
+        "Eurasian and African Plates": "Their boundary lies in the central Mediterranean (e.g., near Sicily and Crete); Turkey is not on this boundary."
+      }
+    }
+  ]
+}

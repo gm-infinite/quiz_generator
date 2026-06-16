@@ -19,6 +19,8 @@ from openai import OpenAI, APIError, APIStatusError
 from pydantic import BaseModel, ValidationError
 
 from core import config
+from llm import prompts
+from tools import web_search
 
 T = TypeVar("T", bound=BaseModel)
 
@@ -177,10 +179,19 @@ class LLMClient:
             temperature=0.7,
         )
 
-    def generate_with_search(self, prompt: str, schema: type[T]) -> T:
-        """Same as generate_structured. Search grounding dropped in Phase 1.
+    def generate_with_search(
+        self, prompt: str, schema: type[T], search_query: str | None = None
+    ) -> T:
+        """generate_structured with web-search grounding prepended.
 
-        TODO(phase-2): wire in an external search tool (Tavily/Serper) and
-        inline results into the prompt before generation.
+        Runs `search_query` through tools/web_search (Tavily or Serper,
+        auto-detected from the API key present) and injects the snippets
+        above the prompt. Degrades to plain generate_structured when no
+        query is given, no key is configured, or the search fails — so
+        this is always safe to call.
         """
+        if search_query:
+            snippets = web_search.search_snippets(search_query)
+            if snippets:
+                prompt = prompts.search_grounding_block(snippets) + prompt
         return self.generate_structured(prompt, schema)

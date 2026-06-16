@@ -48,7 +48,7 @@ DONE
 
 Two important rules baked in:
 
-1. **The loop cap is hard.** `MAX_PRACTICE_ROUNDS = 3` in `core/config.py`. Even if the student is still failing, the loop exits.
+1. **The loop cap is hard.** The user picks the round cap per session (1–5, default `MAX_PRACTICE_ROUNDS = 3` in `core/config.py`); it's stored as `SessionState.max_rounds`. Even if the student is still failing, the loop exits when the cap is hit.
 2. **Weak topics get recomputed each loop.** When a practice round fails, `Orchestrator.submit_practice_answers` rebuilds `weak_topics` from the **practice** results (not the original diagnostic), so the next round chases what's still wrong.
 
 ---
@@ -125,7 +125,7 @@ One call. Asks the LLM for `DIAGNOSTIC_QUESTION_COUNT = 10` multiple-choice ques
 If no topics fall below threshold, `state.weak_topics` is left empty and the orchestrator skips practice.
 
 ### `QuestionGenerator` (`agents/question_generator.py`)
-Per weak topic, one LLM call (`generate_with_search`, which is currently an alias for `generate_structured` — search grounding was dropped in the Qwen migration and will be re-added in Phase 2 via Tavily/Serper) for `PRACTICE_QUESTIONS_PER_TOPIC = 5` questions. The calls are fanned out across a `ThreadPoolExecutor(max_workers=min(4, len(weak_topics)))`, so wall time is roughly `max(per-topic)` rather than `sum(per-topic)`.
+Per weak topic, one LLM call (`generate_with_search`, which first runs a Tavily/Serper web search on the subject + weak topic and injects the snippets into the prompt — see `tools/web_search.py`; without an API key it generates ungrounded) for `PRACTICE_QUESTIONS_PER_TOPIC = 5` questions. The calls are fanned out across a `ThreadPoolExecutor(max_workers=min(4, len(weak_topics)))`, so wall time is roughly `max(per-topic)` rather than `sum(per-topic)`.
 
 Two extra correctness moves:
 - Results are sorted by topic index after the join so question order is deterministic.
@@ -163,7 +163,7 @@ These scores show up at the bottom of the final report. They're for the assignme
 ### `LLMClient` (`llm/llm_client.py`)
 The single chokepoint. Provider-agnostic via the OpenAI-compatible API surface — by default it points at OpenRouter, but the same code works against DashScope, Ollama, or Hugging Face by editing `LLM_API_BASE` and `LLM_MODEL` in `core/config.py`. Two methods:
 - `generate_structured(prompt, schema)` — structured JSON output validated against a Pydantic schema. Tries OpenAI's strict `beta.chat.completions.parse(response_format=...)` first, then falls back to JSON mode + manual Pydantic validation if the model rejects strict json_schema.
-- `generate_with_search(prompt, schema)` — currently an alias for `generate_structured`. Qwen has no native search tool; Phase 2 plans to wire in Tavily/Serper and inline results into the prompt.
+- `generate_with_search(prompt, schema, search_query=None)` — runs `search_query` through `tools/web_search.py` (Tavily or Serper, auto-detected from which API key is set) and prepends the snippets to the prompt before calling `generate_structured`. Degrades silently to ungrounded generation when no key is configured, the query is empty, or the search fails.
 
 Reads `OPENROUTER_API_KEY` (or `LLM_API_KEY`) from `.env`, falling back to `.env.example`.
 
@@ -257,7 +257,8 @@ Tests **must never hit the real API**. They use `FakeLLMClient` from `tests/conf
 | `WEAK_TOPIC_THRESHOLD` | 0.60 | Topics under this accuracy get flagged as weak. |
 | `PASS_ABSOLUTE_THRESHOLD` | 0.70 | Practice score that ends the loop outright. |
 | `PASS_IMPROVEMENT_DELTA` | 0.20 | Improvement over diagnostic that also ends the loop. |
-| `MAX_PRACTICE_ROUNDS` | 3 | Hard cap. Loop exits whether passed or not. |
+| `MAX_PRACTICE_ROUNDS` | 3 | Default round cap; user can pick 1–`MAX_PRACTICE_ROUNDS_LIMIT` per session. Loop exits whether passed or not. |
+| `MAX_PRACTICE_ROUNDS_LIMIT` | 5 | Hard ceiling for the per-session round cap. |
 | `LEVELS` | `("beginner", "intermediate", "advanced")` | Choices shown in the UI radio. |
 
 ---

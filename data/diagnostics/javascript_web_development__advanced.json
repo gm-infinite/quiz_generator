@@ -1,0 +1,184 @@
+{
+  "questions": [
+    {
+      "id": "d1",
+      "topic": "Event Loop & Concurrency",
+      "prompt": "In JavaScript, what is the output of the following code?\n\nconsole.log('A');\nsetTimeout(() => console.log('B'), 0);\nPromise.resolve().then(() => console.log('C'));\nconsole.log('D');",
+      "choices": [
+        "A, D, C, B",
+        "A, D, B, C",
+        "A, B, D, C",
+        "A, B, C, D"
+      ],
+      "correct_answer": "A, D, C, B",
+      "explanation": "JavaScript's event loop processes microtasks (e.g., Promise callbacks) before macrotasks (e.g., setTimeout callbacks). 'A' and 'D' log synchronously; then the microtask queue runs 'C'; finally, the next macrotask runs 'B'.",
+      "distractor_rationales": {
+        "A, D, B, C": "This incorrectly assumes setTimeout with 0ms executes before Promise.then — but microtasks always preempt macrotasks.",
+        "A, B, D, C": "This implies setTimeout fires immediately before synchronous code completes, violating JavaScript's run-to-completion execution model.",
+        "A, B, C, D": "This suggests all operations execute in source order, ignoring the event loop’s task prioritization entirely."
+      }
+    },
+    {
+      "id": "d2",
+      "topic": "ES6+ Destructuring & Rest/Spread",
+      "prompt": "What is the value of `result` after executing the following code?\n\nconst arr = [1, 2, 3, 4];\nconst [a, ...b, c] = arr;",
+      "choices": [
+        "SyntaxError",
+        "[2, 3]",
+        "[2, 3, 4]",
+        "[1, 2, 3]"
+      ],
+      "correct_answer": "SyntaxError",
+      "explanation": "JavaScript does not support multiple rest elements or rest syntax in the middle of array destructuring — only one rest element is allowed, and it must be the last.",
+      "distractor_rationales": {
+        "[2, 3]": "This mistakenly assumes middle rest syntax is valid and extracts elements between first and last — but it’s a parse-time error.",
+        "[2, 3, 4]": "This incorrectly treats `...b` as capturing everything after `a`, ignoring that `c` also expects a binding, which is disallowed.",
+        "[1, 2, 3]": "This confuses rest behavior with slice() and ignores the syntactic restriction on rest placement."
+      }
+    },
+    {
+      "id": "d3",
+      "topic": "HTTP Status Codes & Semantics",
+      "prompt": "Which HTTP status code is most appropriate for a successful POST request that results in the creation of a new resource?",
+      "choices": [
+        "200 OK",
+        "201 Created",
+        "204 No Content",
+        "202 Accepted"
+      ],
+      "correct_answer": "201 Created",
+      "explanation": "HTTP 201 Created is specifically defined for responses to requests that result in the creation of a new resource, and typically includes a Location header pointing to the new resource.",
+      "distractor_rationales": {
+        "200 OK": "200 indicates general success but doesn’t semantically convey resource creation; it’s more appropriate for GET or PUT updates.",
+        "204 No Content": "204 signals success with no response body, but lacks the semantic meaning of creation and cannot include a Location header.",
+        "202 Accepted": "202 means the request was accepted for processing but not yet acted upon — inappropriate for immediate, synchronous creation."
+      }
+    },
+    {
+      "id": "d4",
+      "topic": "CSS Specificity & Cascade",
+      "prompt": "Given the following CSS rules, which color will be applied to a <p> element with class 'highlight' and id 'intro'?\n\n#intro { color: red; }\n.highlight { color: blue; }\np { color: green; }",
+      "choices": [
+        "red",
+        "blue",
+        "green",
+        "black (default)"
+      ],
+      "correct_answer": "red",
+      "explanation": "ID selectors (#intro) have higher specificity than class (.highlight) and type (p) selectors. Specificity values: #intro = 100, .highlight = 10, p = 1 → red wins.",
+      "distractor_rationales": {
+        "blue": "This underestimates ID specificity — class selectors never override ID selectors in the cascade, regardless of source order.",
+        "green": "This incorrectly assumes type selectors dominate due to being more general or appearing later — specificity trumps order here.",
+        "black (default)": "This falsely assumes no rule matches or all are overridden — the ID rule matches and has highest specificity."
+      }
+    },
+    {
+      "id": "d5",
+      "topic": "Web Security — CSP",
+      "prompt": "What does the Content-Security-Policy header 'script-src 'self';' prevent?",
+      "choices": [
+        "All inline scripts and dynamically evaluated code like eval()",
+        "Only external scripts from non-'self' origins",
+        "Only scripts loaded via <script src='...'>",
+        "Only scripts containing the string 'alert'"
+      ],
+      "correct_answer": "All inline scripts and dynamically evaluated code like eval()",
+      "explanation": "When 'unsafe-inline' and 'unsafe-eval' are omitted, CSP blocks inline <script> elements, javascript: URLs, and eval()-family functions by default.",
+      "distractor_rationales": {
+        "Only external scripts from non-'self' origins": "This mischaracterizes 'self' — it allows same-origin external scripts; the restriction is on *inline* and *eval*, not cross-origin externals alone.",
+        "Only scripts loaded via <script src='...'>": "This confuses enforcement scope — CSP restricts *execution sources*, not just the <script> tag mechanism.",
+        "Only scripts containing the string 'alert'": "CSP operates on source origin and script *delivery method*, not content-based string matching."
+      }
+    },
+    {
+      "id": "d6",
+      "topic": "React Hooks — useEffect Dependencies",
+      "prompt": "In a React functional component, what happens if you omit a variable used inside useEffect’s callback from its dependency array, and that variable changes across renders?",
+      "choices": [
+        "The effect runs with stale values of that variable",
+        "React throws a lint error but the code still runs",
+        "The effect re-runs automatically with updated values",
+        "The component crashes with 'Invariant Violation'"
+      ],
+      "correct_answer": "The effect runs with stale values of that variable",
+      "explanation": "Omitting a dependency causes the closure inside useEffect to capture the value from the render it was defined in — leading to stale reads even if the variable updates later.",
+      "distractor_rationales": {
+        "React throws a lint error but the code still runs": "While ESLint (with eslint-plugin-react-hooks) warns, this describes the *developer tooling*, not the runtime behavior — the question asks what *happens*.",
+        "The effect re-runs automatically with updated values": "Effects only re-run when dependencies *in the array* change — omission breaks synchronization.",
+        "The component crashes with 'Invariant Violation'": "React does not throw at runtime for missing deps — it silently preserves stale closure state."
+      }
+    },
+    {
+      "id": "d7",
+      "topic": "TypeScript Type Inference & Narrowing",
+      "prompt": "Given the TypeScript code:\n\nfunction process(x: string | number): string {\n  if (typeof x === 'string') return x.toUpperCase();\n  return x.toString();\n}\n\nWhat is the type of `x` inside the `if` block?",
+      "choices": [
+        "string | number",
+        "string",
+        "any",
+        "unknown"
+      ],
+      "correct_answer": "string",
+      "explanation": "TypeScript performs control-flow-based type narrowing: the `typeof` check refines `x` from `string | number` to `string` within the true branch of the `if` statement.",
+      "distractor_rationales": {
+        "string | number": "This ignores TypeScript’s narrowing behavior — the type is refined, not preserved, in conditional branches with type guards.",
+        "any": "TypeScript does not widen to `any` unless explicitly typed or in implicit-any mode — narrowing strictly *restricts* the type.",
+        "unknown": "`unknown` is the top type for untrusted input, but `typeof` is a recognized type guard that narrows to the checked primitive."
+      }
+    },
+    {
+      "id": "d8",
+      "topic": "Web APIs — Intersection Observer",
+      "prompt": "What is the primary purpose of the Intersection Observer API?",
+      "choices": [
+        "To detect when DOM elements enter or exit the viewport or another element's bounds",
+        "To observe changes to CSS styles applied to an element",
+        "To monitor network connectivity status changes",
+        "To intercept and modify fetch() requests"
+      ],
+      "correct_answer": "To detect when DOM elements enter or exit the viewport or another element's bounds",
+      "explanation": "Intersection Observer asynchronously observes changes in the intersection of a target element with an ancestor element or the top-level document's viewport.",
+      "distractor_rationales": {
+        "To observe changes to CSS styles applied to an element": "That is the domain of CSSOM or MutationObserver for style attribute changes — not Intersection Observer.",
+        "To monitor network connectivity status changes": "This is handled by the Navigator.onLine property or Network Information API, not Intersection Observer.",
+        "To intercept and modify fetch() requests": "That requires Service Workers or browser extensions — Intersection Observer has no network interception capability."
+      }
+    },
+    {
+      "id": "d9",
+      "topic": "Node.js Modules — CommonJS vs ESM",
+      "prompt": "What happens when you try to use `import fs from 'fs';` in a Node.js file with type: 'commonjs' in package.json?",
+      "choices": [
+        "SyntaxError: Cannot use import statement outside a module",
+        "The import works because Node resolves 'fs' internally",
+        "Node treats the file as ESM regardless of package.json",
+        "fs becomes undefined at runtime"
+      ],
+      "correct_answer": "SyntaxError: Cannot use import statement outside a module",
+      "explanation": "In CommonJS mode, Node.js treats files as CommonJS by default; `import`/`export` syntax is invalid unless the file extension is .mjs or type is 'module'.",
+      "distractor_rationales": {
+        "The import works because Node resolves 'fs' internally": "Resolution isn’t the issue — syntax parsing fails before resolution occurs.",
+        "Node treats the file as ESM regardless of package.json": "package.json `type` field *does* control module interpretation — 'commonjs' disables ESM syntax.",
+        "fs becomes undefined at runtime": "The error is thrown at parse time, so execution never reaches runtime evaluation."
+      }
+    },
+    {
+      "id": "d10",
+      "topic": "Accessibility — ARIA Roles & Properties",
+      "prompt": "Which ARIA attribute is required when using role='dialog' to ensure accessibility compliance?",
+      "choices": [
+        "aria-labelledby",
+        "aria-hidden",
+        "aria-live",
+        "aria-expanded"
+      ],
+      "correct_answer": "aria-labelledby",
+      "explanation": "ARIA specification requires `role='dialog'` to have either `aria-labelledby` (referencing an element with visible label text) or `aria-label` to provide an accessible name.",
+      "distractor_rationales": {
+        "aria-hidden": "aria-hidden='true' hides content from assistive tech — inappropriate for an active dialog; it’s often used on background page content *behind* the dialog.",
+        "aria-live": "aria-live controls announcement timing for dynamic content changes — useful but not required for dialog identity.",
+        "aria-expanded": "aria-expanded indicates expandable/collapsible state (e.g., for menus or accordions), not dialog labeling."
+      }
+    }
+  ]
+}

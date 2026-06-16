@@ -1,0 +1,184 @@
+{
+  "questions": [
+    {
+      "id": "d1",
+      "topic": "Cell Structure",
+      "prompt": "Which organelle is primarily responsible for producing ATP in eukaryotic cells?",
+      "choices": [
+        "Nucleus",
+        "Mitochondrion",
+        "Ribosome",
+        "Golgi apparatus"
+      ],
+      "correct_answer": "Mitochondrion",
+      "explanation": "The mitochondrion is the site of cellular respiration, where ATP is generated via oxidative phosphorylation.",
+      "distractor_rationales": {
+        "Nucleus": "The nucleus houses DNA and controls cellular activities but does not produce ATP.",
+        "Ribosome": "Ribosomes synthesize proteins but are not involved in energy production.",
+        "Golgi apparatus": "The Golgi modifies, sorts, and packages proteins for secretion but does not generate ATP."
+      }
+    },
+    {
+      "id": "d2",
+      "topic": "Genetics",
+      "prompt": "In a heterozygous individual (Aa), what percentage of gametes will carry the recessive allele (a)?",
+      "choices": [
+        "0%",
+        "25%",
+        "50%",
+        "100%"
+      ],
+      "correct_answer": "50%",
+      "explanation": "During meiosis, alleles segregate equally; a heterozygous individual produces 50% A and 50% a gametes.",
+      "distractor_rationales": {
+        "0%": "This would only occur in a homozygous dominant (AA) individual, not heterozygous.",
+        "25%": "25% reflects the expected proportion of homozygous recessive offspring in a monohybrid cross, not gamete composition.",
+        "100%": "This would occur only in a homozygous recessive (aa) individual."
+      }
+    },
+    {
+      "id": "d3",
+      "topic": "Evolution",
+      "prompt": "Which of the following best describes natural selection?",
+      "choices": [
+        "Random changes in DNA sequence",
+        "The inheritance of acquired characteristics",
+        "Differential survival and reproduction based on heritable traits",
+        "Migration of individuals between populations"
+      ],
+      "correct_answer": "Differential survival and reproduction based on heritable traits",
+      "explanation": "Natural selection acts on variation in heritable traits, favoring those that enhance survival and reproductive success in a given environment.",
+      "distractor_rationales": {
+        "Random changes in DNA sequence": "That defines mutation, not natural selection.",
+        "The inheritance of acquired characteristics": "This is Lamarck’s disproven theory, not Darwinian natural selection.",
+        "Migration of individuals between populations": "This describes gene flow, a separate evolutionary mechanism."
+      }
+    },
+    {
+      "id": "d4",
+      "topic": "Ecology",
+      "prompt": "What term describes all the members of the same species living in a particular area at the same time?",
+      "choices": [
+        "Ecosystem",
+        "Community",
+        "Population",
+        "Biome"
+      ],
+      "correct_answer": "Population",
+      "explanation": "A population is defined as a group of individuals of the same species occupying a specific area at a given time.",
+      "distractor_rationales": {
+        "Ecosystem": "An ecosystem includes both biotic and abiotic components in an area, not just one species.",
+        "Community": "A community comprises all populations (multiple species) interacting in a given area.",
+        "Biome": "A biome is a large-scale geographical region with similar climate and ecosystems (e.g., desert, tundra)."
+      }
+    },
+    {
+      "id": "d5",
+      "topic": "Human Physiology",
+      "prompt": "Which organ is primarily responsible for filtering blood, removing old red blood cells, and storing platelets?",
+      "choices": [
+        "Liver",
+        "Kidney",
+        "Spleen",
+        "Pancreas"
+      ],
+      "correct_answer": "Spleen",
+      "explanation": "The spleen filters blood, recycles iron from senescent red blood cells, and serves as a reservoir for platelets and white blood cells.",
+      "distractor_rationales": {
+        "Liver": "The liver metabolizes toxins and produces bile, but does not primarily filter RBCs or store platelets.",
+        "Kidney": "The kidney filters waste from blood to form urine but does not remove old RBCs or store platelets.",
+        "Pancreas": "The pancreas produces digestive enzymes and hormones like insulin, unrelated to blood filtration or platelet storage."
+      }
+    },
+    {
+      "id": "d6",
+      "topic": "Plant Biology",
+      "prompt": "Which structure in flowering plants is directly responsible for seed development?",
+      "choices": [
+        "Stamen",
+        "Petal",
+        "Ovary",
+        "Sepal"
+      ],
+      "correct_answer": "Ovary",
+      "explanation": "The ovary contains ovules; after fertilization, ovules develop into seeds and the ovary matures into a fruit.",
+      "distractor_rationales": {
+        "Stamen": "The stamen is the male reproductive organ (produces pollen), not involved in seed formation.",
+        "Petal": "Petals attract pollinators but play no direct role in seed development.",
+        "Sepal": "Sepals protect the flower bud but do not contribute to seed formation."
+      }
+    },
+    {
+      "id": "d7",
+      "topic": "Biochemistry",
+      "prompt": "Which type of bond holds together the two strands of DNA in its double-helix structure?",
+      "choices": [
+        "Peptide bond",
+        "Ionic bond",
+        "Hydrogen bond",
+        "Covalent bond"
+      ],
+      "correct_answer": "Hydrogen bond",
+      "explanation": "Complementary nitrogenous bases (A–T and G–C) are held together by hydrogen bonds, enabling strand separation during replication.",
+      "distractor_rationales": {
+        "Peptide bond": "Peptide bonds link amino acids in proteins, not nucleotides in DNA.",
+        "Ionic bond": "Ionic interactions may occur transiently in solution but do not define base pairing in DNA.",
+        "Covalent bond": "Covalent bonds hold nucleotides together *within* each strand (phosphodiester bonds), not *between* strands."
+      }
+    },
+    {
+      "id": "d8",
+      "topic": "Microbiology",
+      "prompt": "Which of the following is NOT a characteristic of viruses?",
+      "choices": [
+        "Contain genetic material (DNA or RNA)",
+        "Can replicate only inside host cells",
+        "Have a protein coat called a capsid",
+        "Contain ribosomes for protein synthesis"
+      ],
+      "correct_answer": "Contain ribosomes for protein synthesis",
+      "explanation": "Viruses lack cellular machinery—including ribosomes—and rely entirely on host cells to synthesize proteins.",
+      "distractor_rationales": {
+        "Contain genetic material (DNA or RNA)": "All viruses contain either DNA or RNA as their genetic material.",
+        "Can replicate only inside host cells": "Viruses are obligate intracellular parasites and cannot replicate independently.",
+        "Have a protein coat called a capsid": "The capsid protects viral genetic material and is a universal viral feature."
+      }
+    },
+    {
+      "id": "d9",
+      "topic": "Classification",
+      "prompt": "Organisms classified in the domain Archaea are most distinguished from Bacteria by which feature?",
+      "choices": [
+        "Presence of a nucleus",
+        "Cell wall composition",
+        "Membrane lipid structure",
+        "Ability to cause disease"
+      ],
+      "correct_answer": "Membrane lipid structure",
+      "explanation": "Archaea have ether-linked isoprenoid lipids in their membranes, whereas Bacteria have ester-linked fatty acid lipids.",
+      "distractor_rationales": {
+        "Presence of a nucleus": "Neither Archaea nor Bacteria have a true nucleus; both are prokaryotes.",
+        "Cell wall composition": "While differences exist (e.g., absence of peptidoglycan in many archaea), membrane lipids are the most fundamental distinguishing biochemical feature.",
+        "Ability to cause disease": "Most archaea are non-pathogenic; pathogenicity is not a defining domain-level trait."
+      }
+    },
+    {
+      "id": "d10",
+      "topic": "Photosynthesis",
+      "prompt": "In the light-dependent reactions of photosynthesis, what is the primary role of water (H₂O)?",
+      "choices": [
+        "To provide carbon for glucose synthesis",
+        "To accept electrons from photosystem I",
+        "To donate electrons and release oxygen",
+        "To generate ATP via substrate-level phosphorylation"
+      ],
+      "correct_answer": "To donate electrons and release oxygen",
+      "explanation": "Water is split (photolysis) to replace electrons lost by photosystem II; this releases O₂ as a byproduct.",
+      "distractor_rationales": {
+        "To provide carbon for glucose synthesis": "Carbon comes from CO₂ in the Calvin cycle, not water.",
+        "To accept electrons from photosystem I": "Electrons from photosystem I are accepted by NADP⁺ to form NADPH, not water.",
+        "To generate ATP via substrate-level phosphorylation": "ATP in photosynthesis is made via photophosphorylation (chemiosmosis), not substrate-level phosphorylation."
+      }
+    }
+  ]
+}

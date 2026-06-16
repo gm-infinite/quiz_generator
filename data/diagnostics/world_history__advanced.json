@@ -1,0 +1,184 @@
+{
+  "questions": [
+    {
+      "id": "d1",
+      "topic": "Ancient Mesopotamia",
+      "prompt": "Which of the following was the earliest known system of writing, developed in southern Mesopotamia around 3400 BCE?",
+      "choices": [
+        "Hieroglyphics",
+        "Cuneiform",
+        "Linear B",
+        "Oracle Bone Script"
+      ],
+      "correct_answer": "Cuneiform",
+      "explanation": "Cuneiform, composed of wedge-shaped marks pressed into clay tablets with a reed stylus, originated in Uruk (Sumer) circa 3400 BCE and is the world's earliest attested writing system.",
+      "distractor_rationales": {
+        "Hieroglyphics": "Egyptian hieroglyphics emerged around 3200 BCE—slightly later than cuneiform—and were used primarily for monumental inscriptions, not administrative record-keeping like early cuneiform.",
+        "Linear B": "Linear B was a syllabic script used by the Mycenaean Greeks around 1450–1200 BCE—over two millennia after cuneiform—and remained undeciphered until 1952.",
+        "Oracle Bone Script": "Oracle Bone Script, the earliest form of Chinese writing, dates to the late Shang Dynasty (~1250 BCE), making it significantly younger than cuneiform."
+      }
+    },
+    {
+      "id": "d2",
+      "topic": "Classical Greece",
+      "prompt": "What was the primary political innovation of Classical Athens that distinguished it from most other Greek city-states?",
+      "choices": [
+        "Establishment of a hereditary monarchy",
+        "Creation of a citizen assembly with direct voting on laws and policy",
+        "Adoption of a codified legal code modeled on Roman law",
+        "Institution of a professional standing army under state control"
+      ],
+      "correct_answer": "Creation of a citizen assembly with direct voting on laws and policy",
+      "explanation": "Athens developed radical democracy in the 5th century BCE, where adult male citizens participated directly in the Ecclesia (assembly) to debate and vote on legislation, war, and public officials.",
+      "distractor_rationales": {
+        "Establishment of a hereditary monarchy": "Athens abolished monarchy by the late 7th century BCE; it was governed by archons and later by democratic institutions—not kings.",
+        "Adoption of a codified legal code modeled on Roman law": "Roman law (e.g., Twelve Tables) postdated Athenian democracy by centuries; Athens had its own codes (e.g., Solon’s reforms), but they were not modeled on Rome.",
+        "Institution of a professional standing army under state control": "Athens relied on citizen-hoplite militias and naval conscription; professional standing armies (e.g., Macedonian phalanx or Roman legions) emerged later."
+      }
+    },
+    {
+      "id": "d3",
+      "topic": "Medieval Islamic Civilization",
+      "prompt": "Which institution in the medieval Islamic world served as both a center for advanced scientific research and a higher education academy, often attached to a mosque?",
+      "choices": [
+        "Caravanserai",
+        "Madrasa",
+        "Ribat",
+        "Dar al-Hikma"
+      ],
+      "correct_answer": "Dar al-Hikma",
+      "explanation": "Founded in Cairo in 1005 CE by the Fatimid Caliph al-Hakim, the Dar al-Hikma ('House of Wisdom') functioned as a library, research center, and academy for astronomy, mathematics, medicine, and theology.",
+      "distractor_rationales": {
+        "Caravanserai": "A caravanserai was a roadside inn for merchants and travelers, not an academic or scientific institution.",
+        "Madrasa": "While madrasas taught religious law, theology, and some rational sciences, they were primarily juridical and theological schools—not dedicated research centers like the Dar al-Hikma.",
+        "Ribat": "A ribat was a frontier fortress-monastery used for military defense and Sufi spiritual training, not scholarly research."
+      }
+    },
+    {
+      "id": "d4",
+      "topic": "Feudal Japan",
+      "prompt": "What was the principal function of the shogun in feudal Japan from the Kamakura period onward?",
+      "choices": [
+        "Spiritual leader and head of Shinto priesthood",
+        "Civilian administrator appointed by the emperor to manage taxation",
+        "Military dictator who held de facto national power while the emperor remained a symbolic figurehead",
+        "Diplomatic envoy representing Japan in relations with Ming China"
+      ],
+      "correct_answer": "Military dictator who held de facto national power while the emperor remained a symbolic figurehead",
+      "explanation": "Beginning with Minamoto no Yoritomo in 1192, the shogun was the supreme military commander whose bakufu (tent government) exercised actual political and military authority, reducing the emperor to a ceremonial role.",
+      "distractor_rationales": {
+        "Spiritual leader and head of Shinto priesthood": "That role belonged to the emperor (as descendant of Amaterasu) and Shinto priests—not the shogun, who was a secular military ruler.",
+        "Civilian administrator appointed by the emperor to manage taxation": "Shoguns were not appointed bureaucrats; they seized power militarily and ruled independently, often sidelining imperial appointments.",
+        "Diplomatic envoy representing Japan in relations with Ming China": "Foreign diplomacy was handled by regional lords or designated envoys—not the shogun personally—and formal tributary relations were minimal and intermittent."
+      }
+    },
+    {
+      "id": "d5",
+      "topic": "Atlantic Slave Trade",
+      "prompt": "Which European power initiated the transatlantic slave trade by establishing the first permanent trading post on the West African coast specifically for procuring enslaved people?",
+      "choices": [
+        "Portugal",
+        "Spain",
+        "Netherlands",
+        "England"
+      ],
+      "correct_answer": "Portugal",
+      "explanation": "Portuguese explorers built São Jorge da Mina (Elmina Castle) on the Gold Coast (modern Ghana) in 1482—the first major European trading post in sub-Saharan Africa—primarily to access gold and later to organize the slave trade.",
+      "distractor_rationales": {
+        "Spain": "Spain focused on conquest and colonization in the Americas after 1492 and relied heavily on Portuguese and later Dutch/English slave suppliers; it did not establish early West African posts.",
+        "Netherlands": "The Dutch entered the slave trade in the early 17th century, capturing Elmina from Portugal in 1637—over 150 years after its founding.",
+        "England": "English involvement intensified only after the establishment of the Royal African Company in 1672; their first major West African fort (Cape Coast Castle) was built in 1653."
+      }
+    },
+    {
+      "id": "d6",
+      "topic": "Enlightenment Europe",
+      "prompt": "Which Enlightenment thinker is best known for articulating the concept of the 'separation of powers' among legislative, executive, and judicial branches of government?",
+      "choices": [
+        "Jean-Jacques Rousseau",
+        "Voltaire",
+        "Montesquieu",
+        "Immanuel Kant"
+      ],
+      "correct_answer": "Montesquieu",
+      "explanation": "In *The Spirit of the Laws* (1748), Montesquieu analyzed comparative governments and argued that liberty is preserved only when governmental powers are separated and balanced—a foundational idea for modern constitutional democracies.",
+      "distractor_rationales": {
+        "Jean-Jacques Rousseau": "Rousseau emphasized popular sovereignty and the 'general will' in *The Social Contract*, not institutional separation of powers.",
+        "Voltaire": "Voltaire championed civil liberties, freedom of speech, and religious tolerance—but did not develop a structural theory of governmental branches.",
+        "Immanuel Kant": "Kant focused on moral philosophy, epistemology, and perpetual peace theory; he did not formulate a tripartite model of state power."
+      }
+    },
+    {
+      "id": "d7",
+      "topic": "Meiji Restoration",
+      "prompt": "What was the central objective of the Meiji government’s policy of 'fukoku kyōhei' ('rich country, strong army')?",
+      "choices": [
+        "To restore imperial rule by abolishing the shogunate and reinstating the emperor as absolute monarch",
+        "To achieve economic self-sufficiency and military parity with Western powers through rapid industrialization and modernization",
+        "To expand Japanese territorial control across East Asia via colonial annexation",
+        "To promote Confucian ethics as the moral foundation of national education"
+      ],
+      "correct_answer": "To achieve economic self-sufficiency and military parity with Western powers through rapid industrialization and modernization",
+      "explanation": "'Fukoku kyōhei' was the Meiji era’s guiding principle: building domestic industry (e.g., railroads, armaments factories, telegraphs) and a modern conscript army/navy to resist Western imperialism and renegotiate unequal treaties.",
+      "distractor_rationales": {
+        "To restore imperial rule by abolishing the shogunate and reinstating the emperor as absolute monarch": "That was the immediate political goal of the 1868 Restoration itself—not the broader socioeconomic doctrine of fukoku kyōhei.",
+        "To expand Japanese territorial control across East Asia via colonial annexation": "Imperial expansion (e.g., Taiwan 1895, Korea 1910) was a *consequence* of military strength gained under fukoku kyōhei—not its original aim.",
+        "To promote Confucian ethics as the moral foundation of national education": "While Confucian values were selectively revived (e.g., in the 1890 Imperial Rescript on Education), fukoku kyōhei prioritized technological and institutional modernization over ideological orthodoxy."
+      }
+    },
+    {
+      "id": "d8",
+      "topic": "Decolonization in Africa",
+      "prompt": "Which event is widely regarded as the catalyst for the 'Year of Africa' in 1960, during which 17 African nations gained independence?",
+      "choices": [
+        "The Mau Mau Uprising in Kenya",
+        "The Congo Crisis following independence from Belgium",
+        "The independence of Ghana in 1957",
+        "The Bandung Conference of 1955"
+      ],
+      "correct_answer": "The independence of Ghana in 1957",
+      "explanation": "Ghana’s peaceful independence under Kwame Nkrumah in 1957 demonstrated that Black African self-rule was achievable without full-scale war, inspiring liberation movements continent-wide and setting the stage for the unprecedented wave of independence in 1960.",
+      "distractor_rationales": {
+        "The Mau Mau Uprising in Kenya": "Though influential, the Mau Mau rebellion (1952–1960) was a violent conflict that delayed Kenyan independence until 1963 and did not trigger the 1960 cascade.",
+        "The Congo Crisis following independence from Belgium": "The Congo Crisis erupted *after* independence in June 1960—it was a destabilizing consequence, not a catalyst for the Year of Africa.",
+        "The Bandung Conference of 1955": "Bandung was pivotal for Afro-Asian solidarity and anti-colonial ideology, but its influence was longer-term and diplomatic—not the proximate catalyst for the 1960 independence surge."
+      }
+    },
+    {
+      "id": "d9",
+      "topic": "Cold War Latin America",
+      "prompt": "What was the primary justification publicly cited by the United States government for its covert intervention leading to the 1954 Guatemalan coup?",
+      "choices": [
+        "To support land reform benefiting indigenous peasants",
+        "To prevent the spread of communism amid perceived Soviet influence",
+        "To secure access to Guatemalan oil reserves for American corporations",
+        "To stabilize the region after a devastating earthquake"
+      ],
+      "correct_answer": "To prevent the spread of communism amid perceived Soviet influence",
+      "explanation": "The Eisenhower administration, citing the 'domino theory', portrayed President Jacobo Árbenz’s land reforms and ties to Guatemalan communists as evidence of a Soviet beachhead in the Western Hemisphere—justifying CIA-led Operation PBSUCCESS.",
+      "distractor_rationales": {
+        "To support land reform benefiting indigenous peasants": "U.S. officials opposed Árbenz’s agrarian reform (Decree 900), especially because it expropriated unused land from the U.S.-owned United Fruit Company.",
+        "To secure access to Guatemalan oil reserves for American corporations": "Guatemala had negligible oil reserves at the time; United Fruit’s interests centered on bananas and land—not petroleum.",
+        "To stabilize the region after a devastating earthquake": "No major earthquake occurred in Guatemala in 1953–1954; the coup was politically motivated, not disaster-related."
+      }
+    },
+    {
+      "id": "d10",
+      "topic": "Late 20th-Century Globalization",
+      "prompt": "Which 1995 international organization replaced the General Agreement on Tariffs and Trade (GATT) and introduced a formal dispute settlement mechanism with binding rulings?",
+      "choices": [
+        "International Monetary Fund (IMF)",
+        "World Bank",
+        "World Trade Organization (WTO)",
+        "Organization for Economic Co-operation and Development (OECD)"
+      ],
+      "correct_answer": "World Trade Organization (WTO)",
+      "explanation": "Established on January 1, 1995, the WTO succeeded GATT and created a permanent institutional framework including the Dispute Settlement Body (DSB), whose rulings members are obligated to implement or face authorized trade sanctions.",
+      "distractor_rationales": {
+        "International Monetary Fund (IMF)": "The IMF focuses on macroeconomic stability, balance-of-payments support, and monetary cooperation—not trade rules or dispute adjudication.",
+        "World Bank": "The World Bank provides development loans and poverty-reduction assistance; it does not regulate trade or resolve trade disputes.",
+        "Organization for Economic Co-operation and Development (OECD)": "The OECD is a forum for coordinating economic and social policy among high-income democracies, but it lacks legal authority or a binding dispute mechanism."
+      }
+    }
+  ]
+}

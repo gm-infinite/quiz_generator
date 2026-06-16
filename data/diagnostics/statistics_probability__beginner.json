@@ -1,0 +1,184 @@
+{
+  "questions": [
+    {
+      "id": "d1",
+      "topic": "Data Types",
+      "prompt": "Which of the following is an example of quantitative discrete data?",
+      "choices": [
+        "Height of students in centimeters",
+        "Number of siblings a student has",
+        "Favorite color of students",
+        "Time taken to complete a quiz in minutes"
+      ],
+      "correct_answer": "Number of siblings a student has",
+      "explanation": "Quantitative discrete data consists of countable numerical values with distinct, separate values — like whole numbers of siblings.",
+      "distractor_rationales": {
+        "Height of students in centimeters": "Height is quantitative but continuous, as it can take any value within a range (e.g., 162.3 cm).",
+        "Favorite color of students": "Favorite color is qualitative (categorical), not quantitative.",
+        "Time taken to complete a quiz in minutes": "Time is quantitative but continuous, since it can be measured to arbitrary precision (e.g., 4.72 minutes)."
+      }
+    },
+    {
+      "id": "d2",
+      "topic": "Measures of Central Tendency",
+      "prompt": "A data set has values: 3, 5, 7, 9, 11. What is the median?",
+      "choices": [
+        "5",
+        "6",
+        "7",
+        "9"
+      ],
+      "correct_answer": "7",
+      "explanation": "The median is the middle value when data is ordered; with five values, the third (7) is the median.",
+      "distractor_rationales": {
+        "5": "5 is the second value, not the middle one in this five-element set.",
+        "6": "6 is the mean of the first and last values, not the median — and not even in the data set.",
+        "9": "9 is the fourth value, not the middle one."
+      }
+    },
+    {
+      "id": "d3",
+      "topic": "Probability Basics",
+      "prompt": "A fair six-sided die is rolled once. What is the probability of rolling a number greater than 4?",
+      "choices": [
+        "1/6",
+        "1/3",
+        "1/2",
+        "2/3"
+      ],
+      "correct_answer": "1/3",
+      "explanation": "Numbers greater than 4 are 5 and 6 — two favorable outcomes out of six equally likely outcomes: 2/6 = 1/3.",
+      "distractor_rationales": {
+        "1/6": "This would be the probability of rolling a single specific number (e.g., just 5), not both 5 and 6.",
+        "1/2": "This incorrectly assumes three outcomes (4, 5, 6) or miscounts the sample space.",
+        "2/3": "This overcounts — e.g., by including 4 or assuming four favorable outcomes."
+      }
+    },
+    {
+      "id": "d4",
+      "topic": "Sampling Methods",
+      "prompt": "A school selects every 10th student from an alphabetized list of all enrolled students to survey opinions on lunch options. What sampling method is this?",
+      "choices": [
+        "Simple random sampling",
+        "Stratified sampling",
+        "Systematic sampling",
+        "Convenience sampling"
+      ],
+      "correct_answer": "Systematic sampling",
+      "explanation": "Systematic sampling selects elements at regular intervals (e.g., every k-th item) from an ordered list.",
+      "distractor_rationales": {
+        "Simple random sampling": "This would require each student to have an equal, independent chance via random selection (e.g., drawing names from a hat), not fixed intervals.",
+        "Stratified sampling": "This requires dividing the population into subgroups (strata) and sampling from each — no strata are mentioned here.",
+        "Convenience sampling": "This involves selecting whoever is easiest to reach, not a structured interval-based approach."
+      }
+    },
+    {
+      "id": "d5",
+      "topic": "Bar Graphs vs. Histograms",
+      "prompt": "What is a key difference between a bar graph and a histogram?",
+      "choices": [
+        "Bar graphs display categorical data; histograms display quantitative continuous data.",
+        "Histograms always use vertical bars; bar graphs may use horizontal bars.",
+        "Bar graphs show frequencies; histograms show relative frequencies.",
+        "Histograms have gaps between bars; bar graphs do not."
+      ],
+      "correct_answer": "Bar graphs display categorical data; histograms display quantitative continuous data.",
+      "explanation": "Bar graphs represent categories (e.g., types of fruit) with separated bars; histograms represent intervals of numerical data with adjacent bars (no gaps) for continuous distributions.",
+      "distractor_rationales": {
+        "Histograms always use vertical bars; bar graphs may use horizontal bars.": "Orientation is stylistic — both can be vertical or horizontal; it’s not a defining distinction.",
+        "Bar graphs show frequencies; histograms show relative frequencies.": "Both can display either absolute or relative frequencies — the choice depends on design, not chart type.",
+        "Histograms have gaps between bars; bar graphs do not.": "Actually, histograms typically have NO gaps between bars (to emphasize continuity), while bar graphs DO have gaps (to emphasize category separation)."
+      }
+    },
+    {
+      "id": "d6",
+      "topic": "Independent Events",
+      "prompt": "Two events A and B are independent. If P(A) = 0.4 and P(B) = 0.5, what is P(A and B)?",
+      "choices": [
+        "0.0",
+        "0.2",
+        "0.9",
+        "2.0"
+      ],
+      "correct_answer": "0.2",
+      "explanation": "For independent events, P(A and B) = P(A) × P(B) = 0.4 × 0.5 = 0.2.",
+      "distractor_rationales": {
+        "0.0": "This would imply mutual exclusivity, not independence — independent events can occur together.",
+        "0.9": "This incorrectly adds the probabilities, which applies only to mutually exclusive events for 'or', not 'and'.",
+        "2.0": "Probability cannot exceed 1; this violates the fundamental rule of probability bounds."
+      }
+    },
+    {
+      "id": "d7",
+      "topic": "Outliers",
+      "prompt": "Which of the following is a common rule-of-thumb method for identifying outliers in a data set?",
+      "choices": [
+        "Any value more than one standard deviation from the mean",
+        "Any value below Q1 − 1.5×IQR or above Q3 + 1.5×IQR",
+        "Any value that is the minimum or maximum",
+        "Any value not equal to the mode"
+      ],
+      "correct_answer": "Any value below Q1 − 1.5×IQR or above Q3 + 1.5×IQR",
+      "explanation": "The 1.5×IQR rule defines outliers as observations falling outside the lower and upper fences: Q1 − 1.5×IQR and Q3 + 1.5×IQR.",
+      "distractor_rationales": {
+        "Any value more than one standard deviation from the mean": "That identifies typical variation, not outliers; the common threshold is 2 or 3 standard deviations, and it assumes normality.",
+        "Any value that is the minimum or maximum": "Extremes aren’t automatically outliers — they must be unusually distant relative to the spread.",
+        "Any value not equal to the mode": "The mode is irrelevant to outlier detection; this reflects a misunderstanding of both concepts."
+      }
+    },
+    {
+      "id": "d8",
+      "topic": "Experimental Probability",
+      "prompt": "In 60 spins of a fair spinner with four equal sections (red, blue, green, yellow), red landed 18 times. What is the experimental probability of landing on red?",
+      "choices": [
+        "0.25",
+        "0.30",
+        "0.33",
+        "0.75"
+      ],
+      "correct_answer": "0.30",
+      "explanation": "Experimental probability = observed frequency / total trials = 18 / 60 = 0.30.",
+      "distractor_rationales": {
+        "0.25": "This is the theoretical probability (1/4), not the experimental result based on observed data.",
+        "0.33": "This approximates 18/54 or miscomputes 18/60 as ~0.33 instead of the exact 0.30.",
+        "0.75": "This incorrectly uses 45/60 or confuses 'not red' with 'red', or divides incorrectly (e.g., 60/18)."
+      }
+    },
+    {
+      "id": "d9",
+      "topic": "Two-Way Tables",
+      "prompt": "A two-way table shows gender (Male/Female) vs. preference (Tea/Coffee). The entry for 'Female & Tea' is 24, and the row total for Female is 60. What is the relative frequency of females who prefer tea?",
+      "choices": [
+        "0.24",
+        "0.40",
+        "0.60",
+        "24%"
+      ],
+      "correct_answer": "0.40",
+      "explanation": "Relative frequency = part / whole = 24 / 60 = 0.40 (or 40%).",
+      "distractor_rationales": {
+        "0.24": "This mistakenly treats the count (24) as a decimal proportion without dividing by the row total.",
+        "0.60": "This is the proportion of all females (60 / 100 if total sample were 100), but the question asks specifically about females who prefer tea.",
+        "24%": "While numerically equivalent to 0.24, this is not the correct decimal form — and 24% = 0.24, not 0.40; the answer must match the format used in choices (all decimals), and 24% ≠ 0.40."
+      }
+    },
+    {
+      "id": "d10",
+      "topic": "Correlation vs. Causation",
+      "prompt": "A study finds a strong positive correlation between ice cream sales and drowning incidents. Which conclusion is statistically justified?",
+      "choices": [
+        "Eating ice cream causes drowning.",
+        "Drowning causes increased ice cream consumption.",
+        "A third variable (e.g., hot weather) may explain both trends.",
+        "There is no relationship — correlation is meaningless."
+      ],
+      "correct_answer": "A third variable (e.g., hot weather) may explain both trends.",
+      "explanation": "Correlation does not imply causation; a lurking variable (like temperature) can drive both variables independently.",
+      "distractor_rationales": {
+        "Eating ice cream causes drowning.": "This falsely infers direct causation from correlation, ignoring alternative explanations.",
+        "Drowning causes increased ice cream consumption.": "This reverses directionality without evidence and defies plausibility.",
+        "There is no relationship — correlation is meaningless.": "Correlation quantifies association; dismissing it entirely ignores useful descriptive information."
+      }
+    }
+  ]
+}

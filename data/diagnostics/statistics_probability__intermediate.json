@@ -1,0 +1,184 @@
+{
+  "questions": [
+    {
+      "id": "d1",
+      "topic": "Descriptive Statistics",
+      "prompt": "A data set has mean = 12, median = 10, and mode = 8. What is the most likely shape of its distribution?",
+      "choices": [
+        "Symmetric",
+        "Left-skewed",
+        "Right-skewed",
+        "Uniform"
+      ],
+      "correct_answer": "Right-skewed",
+      "explanation": "In a right-skewed (positively skewed) distribution, the mean > median > mode due to a long tail pulling the mean rightward.",
+      "distractor_rationales": {
+        "Symmetric": "In a symmetric distribution, mean ≈ median ≈ mode — but here they differ significantly.",
+        "Left-skewed": "In a left-skewed distribution, the mean < median < mode — opposite of what’s observed.",
+        "Uniform": "A uniform distribution has no distinct mode and all central tendencies coincide; it cannot produce three distinct values like this."
+      }
+    },
+    {
+      "id": "d2",
+      "topic": "Probability Rules",
+      "prompt": "If P(A) = 0.4, P(B) = 0.5, and P(A ∩ B) = 0.2, what is P(A ∪ B)?",
+      "choices": [
+        "0.7",
+        "0.9",
+        "0.5",
+        "0.3"
+      ],
+      "correct_answer": "0.7",
+      "explanation": "By the addition rule: P(A ∪ B) = P(A) + P(B) − P(A ∩ B) = 0.4 + 0.5 − 0.2 = 0.7.",
+      "distractor_rationales": {
+        "0.9": "This incorrectly adds P(A) + P(B) without subtracting the intersection.",
+        "0.5": "This mistakenly assumes mutual exclusivity or confuses with conditional probability.",
+        "0.3": "This incorrectly subtracts P(A ∩ B) from only one probability (e.g., P(A) − P(A ∩ B))."
+      }
+    },
+    {
+      "id": "d3",
+      "topic": "Conditional Probability",
+      "prompt": "In a class, 60% of students study biology, and 35% study both biology and chemistry. Among biology students, what percent also study chemistry?",
+      "choices": [
+        "58.3%",
+        "35%",
+        "21%",
+        "100%"
+      ],
+      "correct_answer": "58.3%",
+      "explanation": "This is P(Chemistry | Biology) = P(Bio ∩ Chem) / P(Bio) = 0.35 / 0.60 ≈ 0.583 = 58.3%.",
+      "distractor_rationales": {
+        "35%": "This is the joint probability, not the conditional probability given biology.",
+        "21%": "This incorrectly multiplies P(Bio) × P(Bio ∩ Chem), which has no probabilistic meaning here.",
+        "100%": "This falsely assumes all biology students take chemistry, contradicting the given data."
+      }
+    },
+    {
+      "id": "d4",
+      "topic": "Discrete Probability Distributions",
+      "prompt": "A fair six-sided die is rolled once. Let X be the number shown. What is the expected value E(X)?",
+      "choices": [
+        "3",
+        "3.5",
+        "4",
+        "6"
+      ],
+      "correct_answer": "3.5",
+      "explanation": "E(X) = Σx·P(x) = (1+2+3+4+5+6)/6 = 21/6 = 3.5.",
+      "distractor_rationales": {
+        "3": "This is the median, not the mean, of the outcomes.",
+        "4": "This is an arbitrary integer near the center but not the correct weighted average.",
+        "6": "This is the maximum outcome, not the expected value."
+      }
+    },
+    {
+      "id": "d5",
+      "topic": "Sampling Distributions",
+      "prompt": "A population has mean μ = 50 and standard deviation σ = 10. If random samples of size n = 25 are taken, what is the standard deviation of the sampling distribution of the sample mean?",
+      "choices": [
+        "10",
+        "2",
+        "0.4",
+        "50"
+      ],
+      "correct_answer": "2",
+      "explanation": "The standard error is σ/√n = 10/√25 = 10/5 = 2.",
+      "distractor_rationales": {
+        "10": "This is the population standard deviation, not the standard error of the mean.",
+        "0.4": "This incorrectly divides σ by n instead of √n (i.e., 10/25 = 0.4).",
+        "50": "This is the population mean — irrelevant to variability of sample means."
+      }
+    },
+    {
+      "id": "d6",
+      "topic": "Hypothesis Testing Concepts",
+      "prompt": "In hypothesis testing, what does a p-value of 0.03 indicate (assuming α = 0.05)?",
+      "choices": [
+        "We reject H₀",
+        "We fail to reject H₀",
+        "The null hypothesis is true",
+        "The alternative hypothesis is false"
+      ],
+      "correct_answer": "We reject H₀",
+      "explanation": "Since p = 0.03 < α = 0.05, we reject the null hypothesis at the 5% significance level.",
+      "distractor_rationales": {
+        "We fail to reject H₀": "This would only occur if p ≥ α, but 0.03 < 0.05.",
+        "The null hypothesis is true": "A p-value does not measure the probability that H₀ is true; it assumes H₀ is true to compute extremity.",
+        "The alternative hypothesis is false": "The p-value gives no direct evidence about the truth of H₁; rejection supports it tentatively, but doesn’t prove falsehood of alternatives."
+      }
+    },
+    {
+      "id": "d7",
+      "topic": "Correlation and Regression",
+      "prompt": "If the correlation coefficient r between two variables X and Y is −0.85, which statement is best supported?",
+      "choices": [
+        "X and Y have a strong negative linear relationship",
+        "X causes Y to decrease",
+        "Y = −0.85X + b for some b",
+        "There is no association between X and Y"
+      ],
+      "correct_answer": "X and Y have a strong negative linear relationship",
+      "explanation": "r = −0.85 indicates a strong, negative, linear association — magnitude near 1 implies strength; sign indicates direction.",
+      "distractor_rationales": {
+        "X causes Y to decrease": "Correlation does not imply causation; no causal claim can be made from r alone.",
+        "Y = −0.85X + b for some b": "r ≠ slope; the regression slope depends on standard deviations of X and Y — r is unitless and scaled.",
+        "There is no association between X and Y": "r = −0.85 indicates a strong association, not absence."
+      }
+    },
+    {
+      "id": "d8",
+      "topic": "Counting Principles",
+      "prompt": "How many distinct 4-letter arrangements can be formed using the letters of 'MATH' without repetition?",
+      "choices": [
+        "16",
+        "24",
+        "12",
+        "4"
+      ],
+      "correct_answer": "24",
+      "explanation": "All letters are unique; number of permutations of 4 distinct items is 4! = 24.",
+      "distractor_rationales": {
+        "16": "This incorrectly calculates 4² or misapplies multiplication rule (e.g., 4×4×4×4).",
+        "12": "This may arise from mistakenly using 4×3 = 12 (only two positions), omitting full permutation.",
+        "4": "This confuses number of letters with number of arrangements."
+      }
+    },
+    {
+      "id": "d9",
+      "topic": "Normal Distribution",
+      "prompt": "For a normal distribution with mean 100 and standard deviation 15, approximately what percentage of values lie between 85 and 115?",
+      "choices": [
+        "68%",
+        "95%",
+        "99.7%",
+        "50%"
+      ],
+      "correct_answer": "68%",
+      "explanation": "85 = 100 − 15 (μ − σ), 115 = 100 + 15 (μ + σ); the Empirical Rule states ~68% of data lies within 1 standard deviation of the mean.",
+      "distractor_rationales": {
+        "95%": "That applies to μ ± 2σ = 70 to 130 — too wide for this interval.",
+        "99.7%": "That applies to μ ± 3σ = 55 to 145 — even wider.",
+        "50%": "This misinterprets symmetry as implying half the data lies in one standard deviation range."
+      }
+    },
+    {
+      "id": "d10",
+      "topic": "Confidence Intervals",
+      "prompt": "A 95% confidence interval for a population mean is computed as (22.3, 27.9). Which interpretation is correct?",
+      "choices": [
+        "There is a 95% chance the true mean lies in (22.3, 27.9)",
+        "95% of sample means from repeated sampling would fall in this interval",
+        "We are 95% confident the true mean is between 22.3 and 27.9",
+        "The margin of error is 5.6"
+      ],
+      "correct_answer": "We are 95% confident the true mean is between 22.3 and 27.9",
+      "explanation": "Confidence refers to the long-run success rate of the method; for *this* interval, we express confidence—not probability—about the fixed but unknown parameter.",
+      "distractor_rationales": {
+        "There is a 95% chance the true mean lies in (22.3, 27.9)": "The true mean is fixed, not random; probability statements about it are invalid in frequentist inference.",
+        "95% of sample means from repeated sampling would fall in this interval": "This confuses confidence intervals with sampling distributions — the interval is fixed; sample means vary.",
+        "The margin of error is 5.6": "Margin of error = half-width = (27.9 − 22.3)/2 = 2.8, not 5.6."
+      }
+    }
+  ]
+}

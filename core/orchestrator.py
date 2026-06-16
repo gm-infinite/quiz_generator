@@ -35,7 +35,12 @@ class Orchestrator:
         self._bg = ThreadPoolExecutor(max_workers=2)
 
     def start(
-        self, subject: str, level: str, source_text: str = "", question_count: int = 10
+        self,
+        subject: str,
+        level: str,
+        source_text: str = "",
+        question_count: int = 10,
+        max_rounds: int = config.MAX_PRACTICE_ROUNDS,
     ) -> SessionState:
         state = SessionState(
             subject=subject,
@@ -43,6 +48,7 @@ class Orchestrator:
             source_text=source_text,
             phase=Phase.INIT,
             question_count=question_count,
+            max_rounds=max(1, min(int(max_rounds), config.MAX_PRACTICE_ROUNDS_LIMIT)),
         )
         state.started_at = time.time()
         return self.prepare_diagnostic(state)
@@ -93,7 +99,7 @@ class Orchestrator:
 
         # If there will be another round, pre-generate it now using the
         # weak topics we can already compute from this round's results.
-        if not state.passed and state.iteration < config.MAX_PRACTICE_ROUNDS:
+        if not state.passed and state.iteration < state.max_rounds:
             from tools import scoring
 
             if state.confidence_ratings:
@@ -114,7 +120,7 @@ class Orchestrator:
         return state
 
     def continue_after_practice(self, state: SessionState) -> SessionState:
-        if state.passed or state.iteration >= config.MAX_PRACTICE_ROUNDS:
+        if state.passed or state.iteration >= state.max_rounds:
             return self._finalize(state)
 
         if state.pending_weak_topics:

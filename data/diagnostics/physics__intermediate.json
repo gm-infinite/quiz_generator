@@ -1,0 +1,184 @@
+{
+  "questions": [
+    {
+      "id": "d1",
+      "topic": "Newton's Laws of Motion",
+      "prompt": "A box rests on a horizontal frictionless surface. A constant horizontal force is applied to the box. What is the box's acceleration while the force is applied?",
+      "choices": [
+        "Zero",
+        "Constant and non-zero",
+        "Increasing with time",
+        "Decreasing with time"
+      ],
+      "correct_answer": "Constant and non-zero",
+      "explanation": "By Newton’s second law (F = ma), a constant net force on a constant mass produces constant acceleration.",
+      "distractor_rationales": {
+        "Zero": "Acceleration would be zero only if the net force were zero, but a constant horizontal force is applied and there is no opposing friction.",
+        "Increasing with time": "Acceleration would increase only if the net force increased or mass decreased; neither is the case here.",
+        "Decreasing with time": "Acceleration would decrease only if the net force decreased or mass increased; the problem states the force is constant and mass is unchanged."
+      }
+    },
+    {
+      "id": "d2",
+      "topic": "Electric Circuits",
+      "prompt": "In a simple series circuit with a battery and two identical resistors, how does the current through the first resistor compare to the current through the second resistor?",
+      "choices": [
+        "Greater than",
+        "Less than",
+        "Equal to",
+        "Unrelated to"
+      ],
+      "correct_answer": "Equal to",
+      "explanation": "In a series circuit, current is the same at all points because charge has no alternative path and must flow uniformly through each component.",
+      "distractor_rationales": {
+        "Greater than": "Current cannot be greater in one resistor than another in series; that would violate conservation of charge.",
+        "Less than": "Current cannot diminish across a resistor in series without a branching path; energy loss affects voltage, not current magnitude.",
+        "Unrelated to": "Current in a series circuit is fundamentally related — it is identical by definition of series connection."
+      }
+    },
+    {
+      "id": "d3",
+      "topic": "Thermodynamics",
+      "prompt": "Which process always increases the total entropy of an isolated system?",
+      "choices": [
+        "Isothermal compression",
+        "Adiabatic expansion",
+        "Reversible cycle",
+        "Irreversible process"
+      ],
+      "correct_answer": "Irreversible process",
+      "explanation": "The second law of thermodynamics states that the entropy of an isolated system never decreases and increases during irreversible processes.",
+      "distractor_rationales": {
+        "Isothermal compression": "Entropy can decrease locally for the system during isothermal compression, as heat is expelled to the surroundings.",
+        "Adiabatic expansion": "For a reversible adiabatic process, entropy remains constant (isentropic); irreversibility would increase it, but the term alone doesn’t guarantee it.",
+        "Reversible cycle": "A reversible cycle returns the system and surroundings to their initial states, so net entropy change is zero."
+      }
+    },
+    {
+      "id": "d4",
+      "topic": "Waves and Optics",
+      "prompt": "When light travels from air into glass, what happens to its speed and wavelength?",
+      "choices": [
+        "Speed increases; wavelength increases",
+        "Speed decreases; wavelength decreases",
+        "Speed decreases; wavelength increases",
+        "Speed increases; wavelength decreases"
+      ],
+      "correct_answer": "Speed decreases; wavelength decreases",
+      "explanation": "Light slows down in a higher-index medium like glass; since frequency remains constant, λ = v/f implies wavelength must also decrease.",
+      "distractor_rationales": {
+        "Speed increases; wavelength increases": "This would occur when entering a lower-index medium (e.g., glass to air), not air to glass.",
+        "Speed decreases; wavelength increases": "Wavelength cannot increase when speed drops at fixed frequency — they are directly proportional.",
+        "Speed increases; wavelength decreases": "Speed and wavelength change in the same direction for a given frequency; this pair contradicts λ = v/f."
+      }
+    },
+    {
+      "id": "d5",
+      "topic": "Energy Conservation",
+      "prompt": "A ball is dropped from rest from a height h above the ground, ignoring air resistance. When it is halfway down (at height h/2), what is its kinetic energy relative to its initial gravitational potential energy (U₀ = mgh)?",
+      "choices": [
+        "0",
+        "U₀/4",
+        "U₀/2",
+        "U₀"
+      ],
+      "correct_answer": "U₀/2",
+      "explanation": "By conservation of mechanical energy, loss in potential energy equals gain in kinetic energy: ΔU = mg(h − h/2) = mgh/2 = K.",
+      "distractor_rationales": {
+        "0": "Kinetic energy is zero only at the start (height h), not halfway down.",
+        "U₀/4": "This would correspond to a drop of h/4, not h/2.",
+        "U₀": "That would require full conversion of potential energy, occurring only just before impact (height ≈ 0)."
+      }
+    },
+    {
+      "id": "d6",
+      "topic": "Magnetism",
+      "prompt": "A straight wire carries current vertically upward. What is the direction of the magnetic field at a point due east of the wire?",
+      "choices": [
+        "North",
+        "South",
+        "East",
+        "West"
+      ],
+      "correct_answer": "North",
+      "explanation": "Using the right-hand rule: point thumb upward (current direction); fingers curl northward at a point east of the wire.",
+      "distractor_rationales": {
+        "South": "That would be the field direction west of the wire, not east.",
+        "East": "Magnetic field lines form concentric circles around the wire — no radial component outward or inward.",
+        "West": "Field direction is tangential to the circle, not opposite the radial direction; west would be correct south of the wire."
+      }
+    },
+    {
+      "id": "d7",
+      "topic": "Rotational Dynamics",
+      "prompt": "Two solid spheres of equal mass and radius, one made of aluminum and one of lead, roll without slipping down the same incline. Which reaches the bottom first?",
+      "choices": [
+        "Aluminum sphere",
+        "Lead sphere",
+        "They tie",
+        "Cannot be determined without incline angle"
+      ],
+      "correct_answer": "They tie",
+      "explanation": "For rolling without slipping, acceleration depends only on shape (moment of inertia factor) and gravity — not on mass or density; both solid spheres have I = (2/5)MR², so identical motion.",
+      "distractor_rationales": {
+        "Aluminum sphere": "Lower density doesn’t imply faster rolling; rotational inertia scales with mass, which cancels in the dynamics.",
+        "Lead sphere": "Greater density increases mass but not the dimensionless moment-of-inertia ratio; acceleration is independent of mass.",
+        "Cannot be determined without incline angle": "While acceleration magnitude depends on incline angle, both spheres share the same functional dependence — so relative arrival time does not depend on angle."
+      }
+    },
+    {
+      "id": "d8",
+      "topic": "Fluid Mechanics",
+      "prompt": "According to Bernoulli’s principle, in a steady, incompressible, non-viscous fluid flow, where the fluid speed increases, what happens to the pressure?",
+      "choices": [
+        "Increases",
+        "Decreases",
+        "Remains constant",
+        "Oscillates"
+      ],
+      "correct_answer": "Decreases",
+      "explanation": "Bernoulli’s equation states that an increase in fluid speed corresponds to a decrease in static pressure, assuming constant elevation and no energy losses.",
+      "distractor_rationales": {
+        "Increases": "This violates energy conservation — higher kinetic energy requires lower pressure energy for constant total mechanical energy.",
+        "Remains constant": "Only true if speed is constant; Bernoulli explicitly links speed and pressure inversely along a streamline.",
+        "Oscillates": "Bernoulli’s principle applies to steady flow, so pressure is steady at each point — no oscillation implied."
+      }
+    },
+    {
+      "id": "d9",
+      "topic": "Modern Physics (Photoelectric Effect)",
+      "prompt": "In the photoelectric effect, increasing the intensity of monochromatic light shining on a metal surface increases which of the following?",
+      "choices": [
+        "Maximum kinetic energy of emitted electrons",
+        "Work function of the metal",
+        "Number of emitted electrons per second",
+        "Threshold frequency"
+      ],
+      "correct_answer": "Number of emitted electrons per second",
+      "explanation": "Intensity corresponds to photon flux; more photons per second eject more electrons per second (if above threshold frequency), but do not change individual electron energy.",
+      "distractor_rationales": {
+        "Maximum kinetic energy of emitted electrons": "This depends only on photon frequency and work function (K_max = hf − φ), not intensity.",
+        "Work function of the metal": "The work function is an intrinsic material property and unaffected by incident light intensity.",
+        "Threshold frequency": "Threshold frequency is defined by φ/h and is fixed for a given material."
+      }
+    },
+    {
+      "id": "d10",
+      "topic": "Simple Harmonic Motion",
+      "prompt": "A mass-spring system oscillates horizontally on a frictionless surface. If the amplitude of oscillation is doubled, what happens to the period?",
+      "choices": [
+        "Halves",
+        "Doubles",
+        "Quadruples",
+        "Remains unchanged"
+      ],
+      "correct_answer": "Remains unchanged",
+      "explanation": "For an ideal mass-spring system, period T = 2π√(m/k) depends only on mass and spring constant — not on amplitude.",
+      "distractor_rationales": {
+        "Halves": "Period is independent of amplitude; halving would incorrectly suggest T ∝ 1/A.",
+        "Doubles": "This would imply T ∝ A, which contradicts the solution to the harmonic oscillator differential equation.",
+        "Quadruples": "No physical law links period quadratically to amplitude in simple harmonic motion."
+      }
+    }
+  ]
+}

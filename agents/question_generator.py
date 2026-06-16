@@ -33,7 +33,15 @@ class QuestionGenerator(BaseAgent):
                 avoid_prompts=prior_stems,
                 source_text=state.source_text,
             )
-            return i, weak, self.client.generate_with_search(prompt, QuestionSet)
+            # No web grounding when an uploaded file is the source of truth —
+            # questions must stay strictly within the source material.
+            search_query = (
+                "" if state.source_text
+                else f"{state.subject}: {weak['topic']} ({state.level})"
+            )
+            return i, weak, self.client.generate_with_search(
+                prompt, QuestionSet, search_query=search_query
+            )
 
         if not state.weak_topics:
             state.practice_questions = []

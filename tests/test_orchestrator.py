@@ -115,6 +115,38 @@ def test_max_rounds_hard_caps_loop(fake_client):
     assert state.passed is False  # never improved, but loop is capped
 
 
+def test_user_selected_max_rounds_caps_loop(fake_client):
+    """A per-session max_rounds=1 should end the session after one round."""
+    counts = {"n": 0}
+
+    def handler(_p):
+        counts["n"] += 1
+        if counts["n"] == 1:
+            return _diagnostic_set()
+        return QuestionSet(questions=[_q(f"x{i}", "alpha") for i in range(5)])
+
+    fake_client.set(QuestionSet, handler)
+    orch = Orchestrator(client=fake_client)
+    state = orch.start("math", "beginner", max_rounds=1)
+    assert state.max_rounds == 1
+    state = orch.submit_diagnostic_answers(state, ["B"] * 4 + ["A"] * 4)
+    state = orch.continue_after_diagnostic(state)
+
+    # Fail the only allowed round → must finalize, not loop.
+    state = orch.submit_practice_answers(state, ["B"] * 5)
+    state = orch.continue_after_practice(state)
+    assert state.phase == Phase.DONE
+    assert state.iteration == 1
+    assert state.passed is False
+
+
+def test_max_rounds_clamped_to_limit(fake_client):
+    fake_client.set(QuestionSet, lambda _p: _diagnostic_set())
+    orch = Orchestrator(client=fake_client)
+    assert orch.start("math", "beginner", max_rounds=99).max_rounds == config.MAX_PRACTICE_ROUNDS_LIMIT
+    assert orch.start("math", "beginner", max_rounds=0).max_rounds == 1
+
+
 def test_submit_diagnostic_lands_on_review_phase(fake_client):
     fake_client.set(QuestionSet, lambda _p: _diagnostic_set())
     orch = Orchestrator(client=fake_client)

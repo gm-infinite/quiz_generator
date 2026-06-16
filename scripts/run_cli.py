@@ -4,6 +4,7 @@
 """
 from __future__ import annotations
 
+from core import config
 from core.orchestrator import Orchestrator
 from core.session_state import Phase, SessionState
 
@@ -58,9 +59,15 @@ def main() -> int:
     subject = input("Subject: ").strip() or "basic Python"
     level = input("Level (beginner/intermediate/advanced) [beginner]: ").strip() or "beginner"
 
+    raw_rounds = input(
+        f"Max practice rounds (1-{config.MAX_PRACTICE_ROUNDS_LIMIT}) "
+        f"[{config.MAX_PRACTICE_ROUNDS}]: "
+    ).strip()
+    max_rounds = int(raw_rounds) if raw_rounds.isdigit() else config.MAX_PRACTICE_ROUNDS
+
     orch = Orchestrator()
     print(f"\nGenerating initial test on {subject!r} ({level})...")
-    state = orch.start(subject, level)
+    state = orch.start(subject, level, max_rounds=max_rounds)
 
     print(f"\n--- INITIAL TEST ({len(state.diagnostic_questions)} questions) ---")
     answers = _collect_answers(state.diagnostic_questions)

@@ -1,0 +1,184 @@
+{
+  "questions": [
+    {
+      "id": "d1",
+      "topic": "syntax and indentation",
+      "prompt": "What happens when you run the following Python code?\n\n```python\nif True:\nprint('Hello')\n```",
+      "choices": [
+        "Prints 'Hello'",
+        "Raises IndentationError",
+        "Raises SyntaxError",
+        "Prints nothing"
+      ],
+      "correct_answer": "Raises IndentationError",
+      "explanation": "Python requires consistent indentation after a colon in compound statements; 'print' is not indented, so it triggers an IndentationError.",
+      "distractor_rationales": {
+        "Prints 'Hello'": "This would only happen if the print statement were properly indented under the if clause.",
+        "Raises SyntaxError": "The syntax is valid up to the colon, but the missing indentation is caught as IndentationError (a subclass of SyntaxError, but reported distinctly).",
+        "Prints nothing": "The code does not execute due to the IndentationError, but the reason is an error—not silent failure."
+      }
+    },
+    {
+      "id": "d2",
+      "topic": "data types",
+      "prompt": "Which of the following is NOT a built-in immutable data type in Python?",
+      "choices": [
+        "tuple",
+        "str",
+        "frozenset",
+        "list"
+      ],
+      "correct_answer": "list",
+      "explanation": "Lists are mutable; you can append, remove, or change elements after creation. Tuples, strings, and frozensets cannot be modified in-place.",
+      "distractor_rationales": {
+        "tuple": "Tuples are immutable: once created, their elements cannot be changed.",
+        "str": "Strings are immutable: operations like .replace() return new strings rather than modifying the original.",
+        "frozenset": "Frozensets are immutable versions of sets and support no adding/removing methods."
+      }
+    },
+    {
+      "id": "d3",
+      "topic": "operators",
+      "prompt": "What is the value of the expression `10 // 3 + 10 % 3`?",
+      "choices": [
+        "4",
+        "5",
+        "6",
+        "7"
+      ],
+      "correct_answer": "6",
+      "explanation": "10 // 3 evaluates to 3 (floor division), and 10 % 3 evaluates to 1 (remainder); 3 + 1 equals 4.",
+      "distractor_rationales": {
+        "5": "This might result from mistakenly using regular division (/) instead of floor division (//), e.g., 10 / 3 ≈ 3.33 + 1 ≈ 4.33 → rounded incorrectly.",
+        "6": "This could arise from miscomputing 10 // 3 as 4 (e.g., confusing with ceiling) or misadding 3 + 3.",
+        "7": "This may come from incorrectly evaluating both operators as 10 / 3 ≈ 3.33 and rounding both up, or conflating with other operations like exponentiation."
+      }
+    },
+    {
+      "id": "d4",
+      "topic": "control flow",
+      "prompt": "What does the following code print?\n\n```python\nfor i in range(3):\n    if i == 1:\n        continue\n    print(i)\n```",
+      "choices": [
+        "0 1 2",
+        "0 2",
+        "0 1",
+        "1 2"
+      ],
+      "correct_answer": "0 2",
+      "explanation": "The loop iterates i = 0, 1, 2. When i == 1, 'continue' skips the print statement; thus only 0 and 2 are printed.",
+      "distractor_rationales": {
+        "0 1 2": "This would occur if the 'continue' had no effect — but it does skip printing for i == 1.",
+        "0 1": "This incorrectly assumes the loop stops after i == 1 or that 'continue' behaves like 'break'.",
+        "1 2": "This suggests the first iteration was skipped, but 'continue' only affects the current iteration, and i == 0 prints normally."
+      }
+    },
+    {
+      "id": "d5",
+      "topic": "functions",
+      "prompt": "What is the output of the following code?\n\n```python\ndef add(x, y=10):\n    return x + y\n\nprint(add(5))\n```",
+      "choices": [
+        "5",
+        "10",
+        "15",
+        "TypeError"
+      ],
+      "correct_answer": "15",
+      "explanation": "The function `add` has a default value of 10 for `y`. Calling `add(5)` uses `x=5`, `y=10`, so returns 5 + 10 = 15.",
+      "distractor_rationales": {
+        "5": "This would occur only if `y` were 0 or omitted from the calculation, but the function adds both parameters.",
+        "10": "This might result from passing only `y` or misunderstanding default behavior — but `x` is explicitly 5.",
+        "TypeError": "No TypeError occurs because the required argument `x` is provided and `y` uses its default."
+      }
+    },
+    {
+      "id": "d6",
+      "topic": "lists and indexing",
+      "prompt": "Given `my_list = [1, 2, 3, 4, 5]`, what is the value of `my_list[1:4]`?",
+      "choices": [
+        "[1, 2, 3]",
+        "[2, 3, 4]",
+        "[2, 3, 4, 5]",
+        "[1, 2, 3, 4]"
+      ],
+      "correct_answer": "[2, 3, 4]",
+      "explanation": "List slicing `my_list[start:stop]` includes elements from index `start` (inclusive) to `stop` (exclusive); indices 1–3 yield elements at positions 1, 2, and 3: 2, 3, 4.",
+      "distractor_rationales": {
+        "[1, 2, 3]": "This corresponds to slice [0:3], not [1:4].",
+        "[2, 3, 4, 5]": "This would be [1:5]; the stop index 4 excludes element at index 4 (i.e., 5).",
+        "[1, 2, 3, 4]": "This is [0:4], starting from index 0 instead of 1."
+      }
+    },
+    {
+      "id": "d7",
+      "topic": "dictionaries",
+      "prompt": "What is the result of `'key' in {'key': 'value'} `?",
+      "choices": [
+        "True",
+        "False",
+        "KeyError",
+        "None"
+      ],
+      "correct_answer": "True",
+      "explanation": "The `in` operator on a dictionary checks for key membership (not values), and 'key' exists as a key in the dictionary.",
+      "distractor_rationales": {
+        "False": "This would be correct only if the key were absent.",
+        "KeyError": "KeyError is raised during lookup (e.g., `d['missing']`), not during `in` membership testing.",
+        "None": "`in` always returns a boolean, never None."
+      }
+    },
+    {
+      "id": "d8",
+      "topic": "input and output",
+      "prompt": "What does `input()` return by default?",
+      "choices": [
+        "An integer",
+        "A float",
+        "A string",
+        "A list"
+      ],
+      "correct_answer": "A string",
+      "explanation": "The `input()` function always returns a string, regardless of user input — even if the user types digits.",
+      "distractor_rationales": {
+        "An integer": "To get an integer, you must explicitly convert using `int(input())`.",
+        "A float": "Float conversion requires explicit `float(input())`; `input()` alone does not parse numerically.",
+        "A list": "Input returns a single string; splitting or parsing is needed to obtain a list."
+      }
+    },
+    {
+      "id": "d9",
+      "topic": "modules and imports",
+      "prompt": "Which statement correctly imports the `sqrt` function from the `math` module?",
+      "choices": [
+        "import sqrt from math",
+        "from math import sqrt",
+        "import math.sqrt",
+        "from math import *"
+      ],
+      "correct_answer": "from math import sqrt",
+      "explanation": "The `from module import name` syntax imports a specific name (`sqrt`) directly into the current namespace.",
+      "distractor_rationales": {
+        "import sqrt from math": "This is invalid Python syntax; the correct order is `from ... import ...`.",
+        "import math.sqrt": "This is not valid; `import` works on modules, not dotted names — use `from math import sqrt` or `import math`.",
+        "from math import *": "This imports all public names, but it's discouraged and doesn’t specifically import *only* `sqrt` — also violates the requirement of 'correctly imports the `sqrt` function' in targeted fashion."
+      }
+    },
+    {
+      "id": "d10",
+      "topic": "exceptions",
+      "prompt": "What exception is raised when trying to access a non-existent key in a dictionary using bracket notation?",
+      "choices": [
+        "ValueError",
+        "KeyError",
+        "IndexError",
+        "NameError"
+      ],
+      "correct_answer": "KeyError",
+      "explanation": "Accessing a missing key with `d[key]` raises `KeyError`; `IndexError` applies to sequences like lists, not dict key access.",
+      "distractor_rationales": {
+        "ValueError": "Raised for inappropriate values (e.g., `int('abc')`), not missing keys.",
+        "IndexError": "Raised when a sequence index is out of range — dictionaries don’t use numeric indices for key access.",
+        "NameError": "Raised when a variable name is undefined, not when a dict key is missing."
+      }
+    }
+  ]
+}

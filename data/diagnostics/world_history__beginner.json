@@ -1,0 +1,184 @@
+{
+  "questions": [
+    {
+      "id": "d1",
+      "topic": "Ancient Mesopotamia",
+      "prompt": "Which of the following is considered the world's first known system of writing?",
+      "choices": [
+        "Hieroglyphics",
+        "Cuneiform",
+        "Alphabet",
+        "Oracle Bone Script"
+      ],
+      "correct_answer": "Cuneiform",
+      "explanation": "Cuneiform, developed by the Sumerians in Mesopotamia around 3400 BCE, is the earliest known writing system, using wedge-shaped marks on clay tablets.",
+      "distractor_rationales": {
+        "Hieroglyphics": "Egyptian hieroglyphics emerged around 3200 BCE—slightly later than cuneiform—and were used primarily for monumental inscriptions.",
+        "Alphabet": "The first true alphabet (Proto-Sinaitic) appeared around 1800 BCE in the Levant, over 1500 years after cuneiform.",
+        "Oracle Bone Script": "This early Chinese writing dates to approximately 1200 BCE during the Shang Dynasty, much later than cuneiform."
+      }
+    },
+    {
+      "id": "d2",
+      "topic": "Classical Greece",
+      "prompt": "Which ancient Greek city-state was known for its militaristic society and rigorous training of male citizens from childhood?",
+      "choices": [
+        "Athens",
+        "Sparta",
+        "Corinth",
+        "Thebes"
+      ],
+      "correct_answer": "Sparta",
+      "explanation": "Sparta emphasized military discipline above all; boys entered the agoge (state training program) at age seven and lived communally until adulthood.",
+      "distractor_rationales": {
+        "Athens": "Athens valued democratic participation, philosophy, and arts; education included rhetoric, music, and physical training—but not militarized state control.",
+        "Corinth": "Corinth was a major commercial and maritime power but did not institutionalize child military training like Sparta.",
+        "Thebes": "Thebes rose to prominence later (4th century BCE) and was known for innovations like the Sacred Band, not lifelong militarized upbringing."
+      }
+    },
+    {
+      "id": "d3",
+      "topic": "Mauryan Empire",
+      "prompt": "Which Mauryan emperor embraced Buddhism after the Kalinga War and promoted dhamma through edicts carved on pillars and rocks?",
+      "choices": [
+        "Chandragupta Maurya",
+        "Bindusara",
+        "Ashoka",
+        "Samudragupta"
+      ],
+      "correct_answer": "Ashoka",
+      "explanation": "Ashoka (r. c. 268–232 BCE) renounced violence after the bloody Kalinga War and adopted Buddhism, spreading ethical principles (dhamma) via inscribed edicts across his empire.",
+      "distractor_rationales": {
+        "Chandragupta Maurya": "Chandragupta founded the Mauryan Empire and later embraced Jainism—not Buddhism—and left no pillar edicts.",
+        "Bindusara": "Bindusara expanded the empire but showed no recorded affiliation with Buddhism or public moral edicts.",
+        "Samudragupta": "Samudragupta was a Gupta emperor (4th century CE), centuries later, known for military conquests—not Buddhist patronage or rock edicts."
+      }
+    },
+    {
+      "id": "d4",
+      "topic": "Medieval West Africa",
+      "prompt": "Which West African empire controlled trans-Saharan trade routes and was renowned for its wealth in gold and scholarship in Timbuktu?",
+      "choices": [
+        "Ghana Empire",
+        "Mali Empire",
+        "Songhai Empire",
+        "Kanem-Bornu"
+      ],
+      "correct_answer": "Mali Empire",
+      "explanation": "Under Mansa Musa (r. 1312–1337), the Mali Empire reached its height, dominating gold-salt trade and fostering Islamic scholarship in Timbuktu’s Sankore Madrasah.",
+      "distractor_rationales": {
+        "Ghana Empire": "Ghana preceded Mali and controlled early trans-Saharan trade, but its capital Koumbi Saleh lacked Timbuktu’s scholarly reputation.",
+        "Songhai Empire": "Songhai succeeded Mali and also centered on Timbuktu, but its scholarly golden age peaked later (15th–16th centuries), not during the empire’s founding rise.",
+        "Kanem-Bornu": "Located around Lake Chad, Kanem-Bornu engaged in trans-Saharan trade but focused more on slaves and livestock than gold, and Timbuktu was outside its territory."
+      }
+    },
+    {
+      "id": "d5",
+      "topic": "Feudal Japan",
+      "prompt": "What was the primary role of the samurai in feudal Japanese society?",
+      "choices": [
+        "Religious priests serving Shinto shrines",
+        "Merchants trading with China and Korea",
+        "Hereditary warriors loyal to a daimyo",
+        "Bureaucrats administering imperial decrees"
+      ],
+      "correct_answer": "Hereditary warriors loyal to a daimyo",
+      "explanation": "Samurai were elite warriors bound by bushido (the way of the warrior) and owed military service and loyalty to their daimyo (feudal lord), forming the backbone of Japan’s feudal hierarchy.",
+      "distractor_rationales": {
+        "Religious priests serving Shinto shrines": "Shinto priests (kannushi) held religious roles; samurai might practice Shinto or Buddhism but were not defined by priestly duties.",
+        "Merchants trading with China and Korea": "Merchants (chōnin) were socially lower in the Tokugawa hierarchy and rarely held warrior status or political authority.",
+        "Bureaucrats administering imperial decrees": "Civil bureaucrats existed, especially earlier under the ritsuryō system, but samurai rose to dominance as military administrators—not imperial civil servants—during feudalism."
+      }
+    },
+    {
+      "id": "d6",
+      "topic": "Ottoman Empire",
+      "prompt": "What significant event in 1453 marked the end of the Byzantine Empire and demonstrated the military power of the Ottoman Empire?",
+      "choices": [
+        "Battle of Manzikert",
+        "Fall of Constantinople",
+        "Siege of Acre",
+        "Capture of Jerusalem"
+      ],
+      "correct_answer": "Fall of Constantinople",
+      "explanation": "In 1453, Ottoman Sultan Mehmed II captured Constantinople using massive cannons, ending over 1,100 years of Byzantine rule and establishing Istanbul as the Ottoman capital.",
+      "distractor_rationales": {
+        "Battle of Manzikert": "Fought in 1071, this Seljuk victory weakened Byzantine control in Anatolia but did not end the empire.",
+        "Siege of Acre": "A key Crusader stronghold, Acre fell to the Mamluks in 1291—not the Ottomans—and marked the end of the Crusader states, not Byzantium.",
+        "Capture of Jerusalem": "Jerusalem was taken by Saladin in 1187 and later by the Ottomans in 1517, but neither event ended the Byzantine Empire."
+      }
+    },
+    {
+      "id": "d7",
+      "topic": "Atlantic Slave Trade",
+      "prompt": "Which European nation established Elmina Castle on the Gold Coast (modern-day Ghana) in 1482 as a key trading post for gold—and later enslaved people?",
+      "choices": [
+        "Portugal",
+        "Netherlands",
+        "Britain",
+        "France"
+      ],
+      "correct_answer": "Portugal",
+      "explanation": "Portuguese explorers built São Jorge da Mina (Elmina Castle) in 1482 to secure access to West African gold; it later became a major hub in the transatlantic slave trade.",
+      "distractor_rationales": {
+        "Netherlands": "The Dutch seized Elmina from Portugal in 1637—over 150 years later—and used it for slavery, but they did not found it.",
+        "Britain": "Britain gained control of Elmina only in 1872, long after its peak use in the slave trade.",
+        "France": "France never controlled Elmina; its West African presence centered on Senegal (e.g., Saint-Louis and Gorée)."
+      }
+    },
+    {
+      "id": "d8",
+      "topic": "Enlightenment Europe",
+      "prompt": "Which Enlightenment thinker argued that governments derive their legitimacy from a 'social contract' and that people retain the right to overthrow tyrannical rulers?",
+      "choices": [
+        "Voltaire",
+        "John Locke",
+        "Baron de Montesquieu",
+        "Jean-Jacques Rousseau"
+      ],
+      "correct_answer": "John Locke",
+      "explanation": "In his *Two Treatises of Government* (1689), Locke asserted that legitimate government rests on consent and protection of natural rights—and if it fails, the people may revolt.",
+      "distractor_rationales": {
+        "Voltaire": "Voltaire championed freedom of speech and religion but did not develop a systematic theory of revolution or social contract legitimacy.",
+        "Baron de Montesquieu": "Montesquieu advocated separation of powers in *The Spirit of the Laws*, not the right of revolution per se.",
+        "Jean-Jacques Rousseau": "Rousseau’s *Social Contract* emphasized collective sovereignty ('general will'), but his view of legitimate resistance was more constrained and less focused on individual rights than Locke’s."
+      }
+    },
+    {
+      "id": "d9",
+      "topic": "Latin American Independence",
+      "prompt": "Who led the successful independence movement in northern South America, resulting in the creation of Gran Colombia in 1819?",
+      "choices": [
+        "José de San Martín",
+        "Toussaint Louverture",
+        "Simón Bolívar",
+        "Miguel Hidalgo"
+      ],
+      "correct_answer": "Simón Bolívar",
+      "explanation": "Simón Bolívar led military campaigns across present-day Venezuela, Colombia, Ecuador, and Panama, culminating in the formation of Gran Colombia in 1819 after the Battle of Boyacá.",
+      "distractor_rationales": {
+        "José de San Martín": "San Martín liberated southern South America (Argentina, Chile, Peru) but did not found Gran Colombia.",
+        "Toussaint Louverture": "Louverture led the Haitian Revolution in the Caribbean, achieving emancipation in Saint-Domingue—not mainland South America.",
+        "Miguel Hidalgo": "Hidalgo initiated Mexico’s independence struggle in 1810 but was captured and executed in 1811, before any sovereign state was established."
+      }
+    },
+    {
+      "id": "d10",
+      "topic": "Meiji Restoration",
+      "prompt": "What was the primary goal of the Meiji Restoration in Japan (beginning in 1868)?",
+      "choices": [
+        "To restore imperial rule and modernize Japan to resist Western imperialism",
+        "To expand Japanese colonial rule across Southeast Asia",
+        "To reinstate the shogunate under Tokugawa leadership",
+        "To adopt Confucian ethics as the sole state ideology"
+      ],
+      "correct_answer": "To restore imperial rule and modernize Japan to resist Western imperialism",
+      "explanation": "The Meiji Restoration abolished the shogunate, restored symbolic and political authority to the emperor, and launched rapid industrialization, military reform, and constitutional governance to avoid colonization.",
+      "distractor_rationales": {
+        "To expand Japanese colonial rule across Southeast Asia": "Japanese imperialism intensified later—in the 1890s (Taiwan, Korea) and 1930s—not as the initial goal of the Meiji Restoration.",
+        "To reinstate the shogunate under Tokugawa leadership": "The Restoration explicitly ended the Tokugawa shogunate; former shogunate loyalists were defeated in the Boshin War (1868–1869).",
+        "To adopt Confucian ethics as the sole state ideology": "While Confucian values influenced education and morality, Meiji leaders prioritized Western science, technology, and institutions—not ideological orthodoxy."
+      }
+    }
+  ]
+}

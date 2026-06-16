@@ -1,0 +1,184 @@
+{
+  "questions": [
+    {
+      "id": "d1",
+      "topic": "Cell Structure",
+      "prompt": "Which organelle is primarily responsible for producing ATP through aerobic respiration in eukaryotic cells?",
+      "choices": [
+        "Nucleus",
+        "Mitochondrion",
+        "Golgi apparatus",
+        "Ribosome"
+      ],
+      "correct_answer": "Mitochondrion",
+      "explanation": "The mitochondrion houses the electron transport chain and enzymes of the Krebs cycle, making it the primary site of ATP production via aerobic respiration.",
+      "distractor_rationales": {
+        "Nucleus": "The nucleus stores genetic material and controls cellular activities but does not produce ATP.",
+        "Golgi apparatus": "The Golgi apparatus modifies, sorts, and packages proteins and lipids for secretion or delivery, not energy production.",
+        "Ribosome": "Ribosomes synthesize proteins using mRNA instructions but are not involved in ATP generation."
+      }
+    },
+    {
+      "id": "d2",
+      "topic": "Genetics",
+      "prompt": "In a dihybrid cross between two heterozygous pea plants (YyRr × YyRr), where Y = yellow seed (dominant) and R = round seed (dominant), what proportion of offspring are expected to have green, wrinkled seeds (yyrr)?",
+      "choices": [
+        "1/4",
+        "1/8",
+        "1/16",
+        "9/16"
+      ],
+      "correct_answer": "1/16",
+      "explanation": "For yyrr, both loci must be homozygous recessive: probability of yy is 1/4 and rr is 1/4; independent assortment gives (1/4) × (1/4) = 1/16.",
+      "distractor_rationales": {
+        "1/4": "This would be the probability for a single homozygous recessive trait (e.g., yy alone), not both simultaneously.",
+        "1/8": "This incorrectly assumes dependent segregation or miscalculates the product of two independent 1/4 probabilities.",
+        "9/16": "This is the proportion of offspring showing *both* dominant phenotypes (yellow and round), not the double recessive."
+      }
+    },
+    {
+      "id": "d3",
+      "topic": "Evolution",
+      "prompt": "Which observation provides the strongest direct evidence for evolution by natural selection?",
+      "choices": [
+        "Fossilized remains of extinct species",
+        "Homologous structures across vertebrates",
+        "Observed changes in beak size of Galápagos finches during drought",
+        "Similar embryonic development in mammals and birds"
+      ],
+      "correct_answer": "Observed changes in beak size of Galápagos finches during drought",
+      "explanation": "The Grants' field studies documented real-time, heritable, adaptive change in finch beak morphology in response to environmental pressure — direct observation of natural selection.",
+      "distractor_rationales": {
+        "Fossilized remains of extinct species": "Fossils provide evidence of change over time and extinction, but not the *mechanism* of natural selection in action.",
+        "Homologous structures across vertebrates": "These support common ancestry (descent with modification) but do not directly demonstrate selection acting on variation.",
+        "Similar embryonic development in mammals and birds": "This reflects shared developmental genes from common ancestry, not ongoing selective adaptation."
+      }
+    },
+    {
+      "id": "d4",
+      "topic": "Ecology",
+      "prompt": "What term describes the total mass of living organisms at a given trophic level in an ecosystem?",
+      "choices": [
+        "Biomass",
+        "Productivity",
+        "Abundance",
+        "Biodiversity"
+      ],
+      "correct_answer": "Biomass",
+      "explanation": "Biomass refers specifically to the total dry mass of living organic material at a particular trophic level (e.g., grams per square meter of producers).",
+      "distractor_rationales": {
+        "Productivity": "Productivity measures the *rate* of biomass production (e.g., g/m²/year), not the standing stock itself.",
+        "Abundance": "Abundance refers to the number of individuals, not their collective mass.",
+        "Biodiversity": "Biodiversity quantifies the variety of species or genetic diversity, not mass."
+      }
+    },
+    {
+      "id": "d5",
+      "topic": "Human Physiology",
+      "prompt": "Which blood vessel carries oxygenated blood *away* from the heart to the body tissues?",
+      "choices": [
+        "Pulmonary artery",
+        "Pulmonary vein",
+        "Superior vena cava",
+        "Aorta"
+      ],
+      "correct_answer": "Aorta",
+      "explanation": "The aorta is the largest systemic artery; it receives oxygenated blood from the left ventricle and distributes it to the body.",
+      "distractor_rationales": {
+        "Pulmonary artery": "Carries *deoxygenated* blood from the right ventricle to the lungs.",
+        "Pulmonary vein": "Carries *oxygenated* blood *back to the heart* (left atrium) from the lungs — it's a vein carrying oxygenated blood, but not away from the heart.",
+        "Superior vena cava": "Carries *deoxygenated* blood *to the heart* (right atrium) from the upper body."
+      }
+    },
+    {
+      "id": "d6",
+      "topic": "Plant Biology",
+      "prompt": "Which process occurs primarily in the guard cells of plant leaves and directly drives stomatal opening?",
+      "choices": [
+        "Photosynthesis",
+        "Active transport of potassium ions (K⁺)",
+        "Cellulose synthesis",
+        "Transpiration"
+      ],
+      "correct_answer": "Active transport of potassium ions (K⁺)",
+      "explanation": "Guard cells accumulate K⁺ via active transport, lowering water potential and causing water influx and turgor increase — which opens the stomatal pore.",
+      "distractor_rationales": {
+        "Photosynthesis": "While photosynthesis occurs in guard cell chloroplasts and may support energy needs, it is not the direct driver of turgor change.",
+        "Cellulose synthesis": "Involved in cell wall formation, not rapid osmotic regulation of stomatal aperture.",
+        "Transpiration": "Transpiration is the *result* of open stomata (water vapor loss), not the cause of opening."
+      }
+    },
+    {
+      "id": "d7",
+      "topic": "Molecular Biology",
+      "prompt": "During DNA replication, which enzyme synthesizes short RNA primers necessary for DNA polymerase to begin synthesis?",
+      "choices": [
+        "DNA ligase",
+        "Helicase",
+        "Primase",
+        "DNA polymerase III"
+      ],
+      "correct_answer": "Primase",
+      "explanation": "Primase is an RNA polymerase that synthesizes short RNA primers complementary to the DNA template, providing a 3′-OH group for DNA polymerase to extend.",
+      "distractor_rationales": {
+        "DNA ligase": "Joins Okazaki fragments on the lagging strand by catalyzing phosphodiester bonds — it seals, not initiates.",
+        "Helicase": "Unwinds the DNA double helix ahead of the replication fork but does not synthesize primers.",
+        "DNA polymerase III": "Elongates DNA strands using primers but cannot initiate synthesis *de novo*."
+      }
+    },
+    {
+      "id": "d8",
+      "topic": "Immunology",
+      "prompt": "Which type of immune cell is primarily responsible for recognizing and destroying virus-infected host cells?",
+      "choices": [
+        "B lymphocyte",
+        "Helper T cell",
+        "Cytotoxic T lymphocyte",
+        "Macrophage"
+      ],
+      "correct_answer": "Cytotoxic T lymphocyte",
+      "explanation": "Cytotoxic T lymphocytes (CD8⁺ T cells) recognize viral antigens presented on MHC class I molecules and induce apoptosis in infected cells.",
+      "distractor_rationales": {
+        "B lymphocyte": "Produces antibodies that neutralize extracellular viruses but does not directly kill infected cells.",
+        "Helper T cell": "Activates other immune cells (e.g., B cells, cytotoxic T cells) via cytokines but does not directly lyse infected cells.",
+        "Macrophage": "Phagocytoses pathogens and presents antigens but is not specialized for killing virus-infected nucleated cells."
+      }
+    },
+    {
+      "id": "d9",
+      "topic": "Biochemistry",
+      "prompt": "What type of chemical bond is primarily responsible for holding together the two complementary strands of DNA?",
+      "choices": [
+        "Peptide bond",
+        "Ionic bond",
+        "Hydrogen bond",
+        "Disulfide bridge"
+      ],
+      "correct_answer": "Hydrogen bond",
+      "explanation": "Hydrogen bonds form between complementary nitrogenous bases (A–T with 2 H-bonds, G–C with 3 H-bonds), enabling specific base pairing and reversible strand separation.",
+      "distractor_rationales": {
+        "Peptide bond": "Links amino acids in proteins, not nucleotides in DNA.",
+        "Ionic bond": "Not the primary force stabilizing base pairing; DNA backbone charge is shielded by ions, but base pairing is H-bond driven.",
+        "Disulfide bridge": "Covalent bond between cysteine residues in proteins, absent in standard DNA structure."
+      }
+    },
+    {
+      "id": "d10",
+      "topic": "Animal Behavior",
+      "prompt": "A female blue-footed booby performs a high-stepping dance to attract a mate. This behavior is best classified as which type of communication?",
+      "choices": [
+        "Chemical signal",
+        "Auditory signal",
+        "Visual signal",
+        "Tactile signal"
+      ],
+      "correct_answer": "Visual signal",
+      "explanation": "The 'sky-pointing' and high-stepping display relies on movement and conspicuous blue feet — features perceived visually by potential mates.",
+      "distractor_rationales": {
+        "Chemical signal": "Involves pheromones or odors, which are not described in this display.",
+        "Auditory signal": "Would involve sounds (e.g., bird song); the booby’s courtship is silent and motion-based.",
+        "Tactile signal": "Requires physical contact, whereas the dance is performed at a distance to be seen."
+      }
+    }
+  ]
+}

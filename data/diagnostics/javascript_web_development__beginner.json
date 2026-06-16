@@ -1,0 +1,184 @@
+{
+  "questions": [
+    {
+      "id": "d1",
+      "topic": "HTML structure",
+      "prompt": "Which HTML element is used to define the main content of a web page, distinct from headers, footers, and navigation?",
+      "choices": [
+        "<main>",
+        "<content>",
+        "<body>",
+        "<section>"
+      ],
+      "correct_answer": "<main>",
+      "explanation": "The <main> element represents the dominant content of the <body> — content that is directly related to or expands upon the central topic of a document.",
+      "distractor_rationales": {
+        "<content>": "There is no standard HTML element named <content>; it is not part of the HTML specification.",
+        "<body>": "<body> contains all visible content on the page but also includes headers, footers, and navigation — it is not semantically restricted to 'main' content.",
+        "<section>": "<section> groups thematically related content but does not convey the singular, primary content role that <main> does; multiple <section> elements may exist outside <main>."
+      }
+    },
+    {
+      "id": "d2",
+      "topic": "CSS selectors",
+      "prompt": "Which CSS selector targets all <p> elements that are direct children of a <div>?",
+      "choices": [
+        "div > p",
+        "div p",
+        "div + p",
+        "p:child(div)"
+      ],
+      "correct_answer": "div > p",
+      "explanation": "The child combinator (>) selects only elements that are immediate children of the specified parent.",
+      "distractor_rationales": {
+        "div p": "This is a descendant selector and matches any <p> inside a <div>, regardless of nesting depth — not just direct children.",
+        "div + p": "This is an adjacent sibling selector and matches a <p> that immediately follows a <div>, not one contained within it.",
+        "p:child(div)": "':child()' is not a valid CSS pseudo-class; there is no such selector in standard CSS."
+      }
+    },
+    {
+      "id": "d3",
+      "topic": "JavaScript variables",
+      "prompt": "What happens when you declare a variable with 'let' inside an if-block and try to access it outside that block?",
+      "choices": [
+        "ReferenceError: cannot access before initialization",
+        "undefined",
+        "SyntaxError: unexpected token",
+        "ReferenceError: x is not defined"
+      ],
+      "correct_answer": "ReferenceError: x is not defined",
+      "explanation": "Variables declared with 'let' are block-scoped; they are not accessible outside their enclosing block (e.g., if statement), resulting in a ReferenceError when referenced externally.",
+      "distractor_rationales": {
+        "ReferenceError: cannot access before initialization": "That error occurs during temporal dead zone access *within* the same block, before the 'let' declaration — not when accessing outside the block.",
+        "undefined": "This would occur if the variable were declared with 'var' (function-scoped) or accessed as a non-existent property, not with block-scoped 'let'.",
+        "SyntaxError: unexpected token": "This arises from invalid syntax (e.g., missing braces or commas), not from block scope violation."
+      }
+    },
+    {
+      "id": "d4",
+      "topic": "HTTP methods",
+      "prompt": "Which HTTP method is conventionally used to request data from a server without changing state?",
+      "choices": [
+        "GET",
+        "POST",
+        "PUT",
+        "DELETE"
+      ],
+      "correct_answer": "GET",
+      "explanation": "GET is a safe and idempotent method intended for retrieving data; it should not cause any state change on the server.",
+      "distractor_rationales": {
+        "POST": "POST is used to submit data and often triggers state changes (e.g., creating resources); it is neither safe nor idempotent.",
+        "PUT": "PUT is used to update or replace a resource entirely and modifies server state.",
+        "DELETE": "DELETE removes a resource and explicitly changes server state."
+      }
+    },
+    {
+      "id": "d5",
+      "topic": "DOM manipulation",
+      "prompt": "Which JavaScript method adds a new element as the last child of a specified parent node?",
+      "choices": [
+        "appendChild()",
+        "insertBefore()",
+        "prepend()",
+        "replaceChild()"
+      ],
+      "correct_answer": "appendChild()",
+      "explanation": "appendChild() inserts a node as the last child of the parent node.",
+      "distractor_rationales": {
+        "insertBefore()": "insertBefore() inserts a node before a specified existing child — not necessarily at the end.",
+        "prepend()": "prepend() adds a node as the *first* child, not the last.",
+        "replaceChild()": "replaceChild() replaces an existing child node with a new one — it does not add to the end."
+      }
+    },
+    {
+      "id": "d6",
+      "topic": "JavaScript arrays",
+      "prompt": "Which built-in array method returns a new array with all elements that pass a test implemented by a provided function?",
+      "choices": [
+        "filter()",
+        "map()",
+        "reduce()",
+        "find()"
+      ],
+      "correct_answer": "filter()",
+      "explanation": "filter() creates a new array containing only elements for which the callback function returns true.",
+      "distractor_rationales": {
+        "map()": "map() transforms each element and returns a new array of the same length — it does not filter based on a condition.",
+        "reduce()": "reduce() computes a single value (e.g., sum) by applying a function against an accumulator and each element — it does not return a filtered array.",
+        "find()": "find() returns only the *first* element that satisfies the condition, not a new array of all matching elements."
+      }
+    },
+    {
+      "id": "d7",
+      "topic": "Web forms",
+      "prompt": "Which HTML attribute ensures that a user must fill out a form field before submitting?",
+      "choices": [
+        "required",
+        "mandatory",
+        "validate",
+        "filled"
+      ],
+      "correct_answer": "required",
+      "explanation": "The 'required' boolean attribute indicates that the input must be filled before the form can be submitted.",
+      "distractor_rationales": {
+        "mandatory": "'mandatory' is not a valid HTML attribute for form validation.",
+        "validate": "'validate' is not a standard HTML attribute; validation logic is handled via attributes like 'required', 'pattern', or JavaScript.",
+        "filled": "'filled' is not an HTML attribute and has no effect on browser validation."
+      }
+    },
+    {
+      "id": "d8",
+      "topic": "JavaScript async/await",
+      "prompt": "What is the return type of an async function in JavaScript?",
+      "choices": [
+        "Promise",
+        "AsyncFunction",
+        "undefined",
+        "Generator"
+      ],
+      "correct_answer": "Promise",
+      "explanation": "Every async function implicitly returns a Promise; if the function returns a value, the Promise is resolved with that value.",
+      "distractor_rationales": {
+        "AsyncFunction": "AsyncFunction is a constructor/type name internally used by engines, but it is not the runtime return type — the actual returned object is a Promise.",
+        "undefined": "An async function returns undefined only if explicitly returned as such — but even then, it's wrapped in a resolved Promise, not bare undefined.",
+        "Generator": "Generators are created with function*, not async, and return Generator objects — unrelated to async functions."
+      }
+    },
+    {
+      "id": "d9",
+      "topic": "Responsive design",
+      "prompt": "Which CSS unit is best suited for creating font sizes that scale relative to the viewport width?",
+      "choices": [
+        "vw",
+        "em",
+        "rem",
+        "px"
+      ],
+      "correct_answer": "vw",
+      "explanation": "1vw equals 1% of the viewport’s width, making it ideal for responsive typography that scales with screen size.",
+      "distractor_rationales": {
+        "em": "em is relative to the font-size of the parent element, not the viewport — it cascades and can compound unpredictably.",
+        "rem": "rem is relative to the root (html) element’s font-size — useful for consistent scaling, but static unless root size changes via media queries or JS.",
+        "px": "px is an absolute unit and does not scale responsively with viewport dimensions."
+      }
+    },
+    {
+      "id": "d10",
+      "topic": "Browser security",
+      "prompt": "What does the Same-Origin Policy primarily restrict?",
+      "choices": [
+        "Cross-origin reading of responses",
+        "Cross-origin sending of requests",
+        "Execution of inline scripts",
+        "Use of localStorage across domains"
+      ],
+      "correct_answer": "Cross-origin reading of responses",
+      "explanation": "The Same-Origin Policy prevents scripts running on one origin from reading responses from a different origin, protecting sensitive data.",
+      "distractor_rationales": {
+        "Cross-origin sending of requests": "Browsers *allow* cross-origin requests (e.g., <img> src, <form> submit, fetch()); the restriction is on reading the response.",
+        "Execution of inline scripts": "Inline script execution is controlled by Content Security Policy (CSP), not the Same-Origin Policy.",
+        "Use of localStorage across domains": "localStorage is origin-scoped by design — it’s isolated per origin, but this isolation is enforced by storage APIs, not SOP directly."
+      }
+    }
+  ]
+}

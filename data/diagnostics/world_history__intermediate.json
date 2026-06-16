@@ -1,0 +1,184 @@
+{
+  "questions": [
+    {
+      "id": "d1",
+      "topic": "Ancient Mesopotamia",
+      "prompt": "Which of the following is considered the world's first known written legal code?",
+      "choices": [
+        "Code of Hammurabi",
+        "Twelve Tables",
+        "Edicts of Ashoka",
+        "Magna Carta"
+      ],
+      "correct_answer": "Code of Hammurabi",
+      "explanation": "The Code of Hammurabi, dating to c. 1754 BCE in Babylon, is the earliest complete and well-preserved legal code discovered to date.",
+      "distractor_rationales": {
+        "Twelve Tables": "The Twelve Tables were Rome's earliest codified laws, established around 450 BCE—over a millennium after Hammurabi.",
+        "Edicts of Ashoka": "Ashoka's edicts (c. 268–232 BCE) were moral and administrative proclamations inscribed on pillars and rocks, not a formal legal code.",
+        "Magna Carta": "The Magna Carta was signed in 1215 CE in England and is a foundational constitutional document, not the first written legal code."
+      }
+    },
+    {
+      "id": "d2",
+      "topic": "Classical Greece",
+      "prompt": "What was the primary purpose of the Delian League when it was founded in 478 BCE?",
+      "choices": [
+        "To defend Greek city-states against Persian invasion",
+        "To establish Athenian imperial dominance",
+        "To unify Greece under Spartan hegemony",
+        "To promote philosophical education across the Aegean"
+      ],
+      "correct_answer": "To defend Greek city-states against Persian invasion",
+      "explanation": "The Delian League was formed as a defensive alliance led by Athens after the Persian Wars, with the stated aim of continuing the fight against Persian influence and protecting Ionian Greeks.",
+      "distractor_rationales": {
+        "To establish Athenian imperial dominance": "While Athens later transformed the league into an empire, that was a gradual evolution—not its original purpose.",
+        "To unify Greece under Spartan hegemony": "Sparta led the rival Peloponnesian League; it refused leadership of the Delian League and distrusted Athenian ambitions.",
+        "To promote philosophical education across the Aegean": "Philosophical schools emerged later and were not institutionalized or league-sponsored in this period."
+      }
+    },
+    {
+      "id": "d3",
+      "topic": "Medieval West Africa",
+      "prompt": "Which West African empire was renowned for its scholarly center at Timbuktu and its wealth derived from trans-Saharan gold-salt trade?",
+      "choices": [
+        "Mali Empire",
+        "Ghana Empire",
+        "Songhai Empire",
+        "Kanem-Bornu"
+      ],
+      "correct_answer": "Mali Empire",
+      "explanation": "Under Mansa Musa (r. 1312–1337), the Mali Empire reached its zenith, with Timbuktu flourishing as a hub of Islamic learning and commerce fueled by gold and salt.",
+      "distractor_rationales": {
+        "Ghana Empire": "Ghana preceded Mali and controlled early trans-Saharan trade, but Timbuktu rose to prominence under Mali—not Ghana.",
+        "Songhai Empire": "Songhai succeeded Mali and also patronized Timbuktu, but its golden age came later (15th–16th centuries); Mali established Timbuktu’s scholarly reputation.",
+        "Kanem-Bornu": "Located in the Lake Chad region, Kanem-Bornu was influential in Central Sudan but not associated with Timbuktu or the western gold-salt routes."
+      }
+    },
+    {
+      "id": "d4",
+      "topic": "Feudal Japan",
+      "prompt": "What was the central political and military role of the shogun in feudal Japan?",
+      "choices": [
+        "Hereditary military dictator who held de facto national authority",
+        "Spiritual leader and head of Shinto shrines",
+        "Imperial advisor appointed by the emperor",
+        "Regional governor appointed by the Chinese court"
+      ],
+      "correct_answer": "Hereditary military dictator who held de facto national authority",
+      "explanation": "From the Kamakura period onward, the shogun was the supreme military commander whose bakufu (shogunate) governed Japan, while the emperor remained a ceremonial figurehead.",
+      "distractor_rationales": {
+        "Spiritual leader and head of Shinto shrines": "That role belonged to the emperor in theory—and later to state-appointed priests—not the shogun.",
+        "Imperial advisor appointed by the emperor": "Shoguns were not appointed advisors; they seized power militarily and ruled independently, often sidelining the imperial court.",
+        "Regional governor appointed by the Chinese court": "Japan was never administered by China; the shogunate was a domestic institution asserting sovereignty."
+      }
+    },
+    {
+      "id": "d5",
+      "topic": "Ottoman Empire",
+      "prompt": "Which event marked the definitive end of the Byzantine Empire and cemented Ottoman control over Constantinople?",
+      "choices": [
+        "Siege of Constantinople in 1453",
+        "Battle of Kosovo in 1389",
+        "Fall of Trebizond in 1461",
+        "Capture of Adrianople in 1361"
+      ],
+      "correct_answer": "Siege of Constantinople in 1453",
+      "explanation": "The Ottoman conquest of Constantinople in 1453 ended over 1,100 years of Byzantine rule and transformed the city into the Ottoman capital, Istanbul.",
+      "distractor_rationales": {
+        "Battle of Kosovo in 1389": "This was a pivotal battle in the Balkans but did not end the Byzantine Empire—it occurred decades before Constantinople fell.",
+        "Fall of Trebizond in 1461": "Trebizond was the last remnant of Byzantine rule, but its fall was a consequence—not the defining end—of the empire’s collapse after 1453.",
+        "Capture of Adrianople in 1361": "Adrianople became an early Ottoman capital, but the Byzantine Empire continued for another century with Constantinople still intact."
+      }
+    },
+    {
+      "id": "d6",
+      "topic": "Atlantic Slave Trade",
+      "prompt": "Which European power established the first major, state-sanctioned transatlantic slave trading company—the Royal African Company—in 1672?",
+      "choices": [
+        "England",
+        "Portugal",
+        "Netherlands",
+        "France"
+      ],
+      "correct_answer": "England",
+      "explanation": "Chartered by Charles II in 1672, the Royal African Company held a monopoly on English trade—including enslaved people—along Africa’s west coast until 1698.",
+      "distractor_rationales": {
+        "Portugal": "Portugal pioneered Atlantic slavery earlier (15th century) but did not create a formal chartered company like the RAC; its trade was largely organized through crown agents and private contractors.",
+        "Netherlands": "The Dutch West India Company (founded 1621) engaged heavily in slave trading, but it preceded the RAC and was not English.",
+        "France": "The French Compagnie des Indes Occidentales was founded in 1664, but it focused more broadly on colonial trade and lacked the RAC’s explicit, long-standing slave-trade monopoly."
+      }
+    },
+    {
+      "id": "d7",
+      "topic": "Enlightenment Europe",
+      "prompt": "Which Enlightenment thinker is best known for articulating the concept of the 'separation of powers' among legislative, executive, and judicial branches of government?",
+      "choices": [
+        "Montesquieu",
+        "Voltaire",
+        "Jean-Jacques Rousseau",
+        "John Locke"
+      ],
+      "correct_answer": "Montesquieu",
+      "explanation": "In *The Spirit of the Laws* (1748), Montesquieu argued that liberty is preserved only when governmental powers are separated and balanced—a foundational idea for modern constitutional democracies.",
+      "distractor_rationales": {
+        "Voltaire": "Voltaire championed freedom of speech and religious tolerance but did not develop a systematic theory of institutional separation of powers.",
+        "Jean-Jacques Rousseau": "Rousseau emphasized popular sovereignty and the general will in *The Social Contract*, rejecting separation of powers in favor of unified legislative authority.",
+        "John Locke": "Locke distinguished legislative and executive powers in *Two Treatises of Government*, but he did not include an independent judiciary as a third branch—Montesquieu did."
+      }
+    },
+    {
+      "id": "d8",
+      "topic": "Meiji Restoration",
+      "prompt": "What was the primary goal of the Meiji government’s policy of *fukoku kyōhei* ('rich country, strong army')?",
+      "choices": [
+        "To rapidly industrialize Japan and build a modern military to resist Western imperialism",
+        "To restore traditional samurai privileges and Confucian hierarchy",
+        "To colonize Korea and Manchuria as settler territories",
+        "To establish a parliamentary democracy modeled on Britain"
+      ],
+      "correct_answer": "To rapidly industrialize Japan and build a modern military to resist Western imperialism",
+      "explanation": "*Fukoku kyōhei* was the Meiji era’s guiding principle: economic development and military modernization were pursued simultaneously to achieve sovereign equality with Western powers and avoid colonization.",
+      "distractor_rationales": {
+        "To restore traditional samurai privileges and Confucian hierarchy": "The Meiji government abolished the samurai class and dismantled feudal institutions—this policy was explicitly anti-traditionalist.",
+        "To colonize Korea and Manchuria as settler territories": "Colonial expansion came later (1890s–1930s); *fukoku kyōhei* was fundamentally defensive and nation-building in intent.",
+        "To establish a parliamentary democracy modeled on Britain": "While the Meiji Constitution (1889) created a Diet, sovereignty resided with the emperor—not the people—and democratic practice was severely limited."
+      }
+    },
+    {
+      "id": "d9",
+      "topic": "Decolonization in Africa",
+      "prompt": "Which 1960 event earned the year the nickname 'Year of Africa' due to the unprecedented number of newly independent nations?",
+      "choices": [
+        "Seventeen African colonies gained independence",
+        "The Organization of African Unity was founded",
+        "The Congo Crisis began following independence",
+        "South Africa declared itself a republic and left the Commonwealth"
+      ],
+      "correct_answer": "Seventeen African colonies gained independence",
+      "explanation": "In 1960, 17 African territories—including Nigeria, Senegal, Cameroon, and the Democratic Republic of the Congo—achieved independence from European colonial powers, marking a watershed in decolonization.",
+      "distractor_rationales": {
+        "The Organization of African Unity was founded": "The OAU was founded in 1963—not 1960—and while symbolic, it was not the reason for the 'Year of Africa' designation.",
+        "The Congo Crisis began following independence": "Though the Congo’s independence in June 1960 triggered immediate instability, the 'Year of Africa' refers to the broader wave—not just one crisis.",
+        "South Africa declared itself a republic and left the Commonwealth": "This occurred in 1961 and reflected apartheid consolidation—not decolonization—and involved no transfer of sovereignty to Black South Africans."
+      }
+    },
+    {
+      "id": "d10",
+      "topic": "Cold War Latin America",
+      "prompt": "What was the primary motivation behind the United States’ support for the 1973 military coup in Chile?",
+      "choices": [
+        "To prevent the consolidation of a Marxist-led government under Salvador Allende",
+        "To secure access to Chile’s copper reserves for U.S. industry",
+        "To retaliate for Chile’s recognition of Cuba in 1960",
+        "To install a military regime capable of suppressing indigenous land movements"
+      ],
+      "correct_answer": "To prevent the consolidation of a Marxist-led government under Salvador Allende",
+      "explanation": "The Nixon administration viewed Allende’s democratically elected socialist government as a Cold War threat and authorized covert CIA operations to destabilize his regime, culminating in the 1973 coup.",
+      "distractor_rationales": {
+        "To secure access to Chile’s copper reserves for U.S. industry": "While U.S. corporations had major stakes in Chilean copper, nationalization was a symptom—not the root cause—of U.S. opposition; geopolitics drove the intervention.",
+        "To retaliate for Chile’s recognition of Cuba in 1960": "Chile recognized Cuba in 1960, but U.S. hostility intensified only after Allende’s 1970 election and his alignment with the Soviet bloc.",
+        "To install a military regime capable of suppressing indigenous land movements": "Indigenous land rights were not a significant factor in U.S. decision-making; Cold War anti-communism was the overriding priority."
+      }
+    }
+  ]
+}

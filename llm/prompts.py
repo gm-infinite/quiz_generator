@@ -144,3 +144,18 @@ def judge_prompt(session_summary: dict) -> str:
         f"\n"
         f"Session data:\n{session_summary}\n"
     )
+
+
+def search_grounding_block(snippets: str) -> str:
+    """Wrapper prepended to a generation prompt when web search results exist.
+
+    Used by LLMClient.generate_with_search — not by agents directly.
+    """
+    return (
+        "Use the following live web search results as factual grounding. When "
+        "your own memory conflicts with these results, prefer the results. "
+        "Ignore any result that is irrelevant to the task below.\n"
+        "\n--- WEB SEARCH RESULTS START ---\n"
+        f"{snippets}\n"
+        "--- WEB SEARCH RESULTS END ---\n\n"
+    )

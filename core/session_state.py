@@ -34,6 +34,11 @@ class SessionState:
     # Set by the UI before start(); assessment agent reads this.
     question_count: int = 10
 
+    # --- Configurable practice-round cap ---
+    # Set by the UI/CLI before start(); the Orchestrator reads this instead
+    # of config.MAX_PRACTICE_ROUNDS. Clamped to 1–5 in Orchestrator.start().
+    max_rounds: int = 3
+
     # --- Timer (Task 3) ---
     started_at: float = 0.0        # time.time() when session starts
     elapsed_seconds: float | None = None  # computed at finalize

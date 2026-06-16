@@ -1,0 +1,184 @@
+{
+  "questions": [
+    {
+      "id": "d1",
+      "topic": "Time Complexity Analysis",
+      "prompt": "What is the worst-case time complexity of quicksort when the pivot is always the smallest element?",
+      "choices": [
+        "O(n)",
+        "O(n log n)",
+        "O(n²)",
+        "O(log n)"
+      ],
+      "correct_answer": "O(n²)",
+      "explanation": "When the pivot is always the smallest (or largest) element, partitioning yields one subarray of size n−1 and one of size 0, leading to a recurrence T(n) = T(n−1) + O(n), which solves to O(n²).",
+      "distractor_rationales": {
+        "O(n)": "This would imply linear work total, but quicksort must compare most elements multiple times in this degenerate case.",
+        "O(n log n)": "This is the average-case complexity with balanced partitions; it does not hold when pivots consistently yield worst-case splits.",
+        "O(log n)": "This is far too optimistic — even reading all input requires Ω(n) time, so no correct comparison-based sort can be sublinear."
+      }
+    },
+    {
+      "id": "d2",
+      "topic": "Hash Tables",
+      "prompt": "Which collision resolution strategy in hash tables guarantees O(1) worst-case lookup time assuming a perfect hash function and fixed table size?",
+      "choices": [
+        "Separate chaining",
+        "Linear probing",
+        "Double hashing",
+        "Open addressing with cuckoo hashing"
+      ],
+      "correct_answer": "Separate chaining",
+      "explanation": "With a perfect hash function and fixed table size, separate chaining places at most one key per bucket; thus lookup is O(1) worst-case. Other open-addressing methods may require probing sequences that grow with load.",
+      "distractor_rationales": {
+        "Linear probing": "Worst-case lookup can degrade to O(n) due to clustering, even with good hashing.",
+        "Double hashing": "Still subject to long probe sequences under high load or adversarial inputs; worst-case is not bounded by constant time.",
+        "Open addressing with cuckoo hashing": "Cuckoo hashing offers O(1) *amortized* lookup, but worst-case lookup is O(log n) due to relocation chains during insertion; lookup itself is O(1), but guarantee depends on implementation assumptions — separate chaining is simpler and unambiguously O(1) worst-case here."
+      }
+    },
+    {
+      "id": "d3",
+      "topic": "Binary Search Trees",
+      "prompt": "In a valid binary search tree (BST), which property must hold for every node?",
+      "choices": [
+        "The left subtree contains only nodes with keys less than the node's key",
+        "The right subtree contains only nodes with keys greater than or equal to the node's key",
+        "The height of left and right subtrees differs by at most one",
+        "The node's key is the median of all keys in its subtree"
+      ],
+      "correct_answer": "The left subtree contains only nodes with keys less than the node's key",
+      "explanation": "By definition, a BST requires that for every node, all keys in the left subtree are strictly less than the node’s key, and all keys in the right subtree are strictly greater.",
+      "distractor_rationales": {
+        "The right subtree contains only nodes with keys greater than or equal to the node's key": "BSTs require strict inequality on both sides; allowing equality violates uniqueness and ordering guarantees.",
+        "The height of left and right subtrees differs by at most one": "This describes an AVL tree (a self-balancing BST), not a general BST.",
+        "The node's key is the median of all keys in its subtree": "A BST does not enforce median placement; e.g., a right-skewed tree satisfies BST property without medians."
+      }
+    },
+    {
+      "id": "d4",
+      "topic": "Graph Algorithms",
+      "prompt": "Which algorithm is most appropriate for finding the shortest path from a single source to all other vertices in a weighted, directed graph with negative edge weights but no negative cycles?",
+      "choices": [
+        "Dijkstra's algorithm",
+        "Floyd-Warshall algorithm",
+        "Bellman-Ford algorithm",
+        "Prim's algorithm"
+      ],
+      "correct_answer": "Bellman-Ford algorithm",
+      "explanation": "Bellman-Ford handles negative edge weights and detects negative cycles; it computes shortest paths from a single source in O(VE) time.",
+      "distractor_rationales": {
+        "Dijkstra's algorithm": "It assumes non-negative edge weights; with negatives, it may produce incorrect results due to premature finalization of distances.",
+        "Floyd-Warshall algorithm": "It solves the all-pairs shortest paths problem, not single-source — overkill and less efficient (O(V³)) for this use case.",
+        "Prim's algorithm": "This is for minimum spanning trees in undirected graphs, not shortest paths."
+      }
+    },
+    {
+      "id": "d5",
+      "topic": "Dynamic Programming",
+      "prompt": "What is the primary distinguishing feature of problems suitable for dynamic programming?",
+      "choices": [
+        "They can be solved recursively with overlapping subproblems",
+        "They involve greedy choices that lead to global optimality",
+        "They require backtracking to explore exponential solution spaces",
+        "They must be formulated as linear programs"
+      ],
+      "correct_answer": "They can be solved recursively with overlapping subproblems",
+      "explanation": "Dynamic programming exploits optimal substructure and overlapping subproblems — computing each subproblem once and reusing solutions via memoization or tabulation.",
+      "distractor_rationales": {
+        "They involve greedy choices that lead to global optimality": "That defines greedy algorithms, not DP; greedy methods don’t revisit or reuse subproblem solutions.",
+        "They require backtracking to explore exponential solution spaces": "Backtracking explores all possibilities without reuse; DP avoids recomputation precisely to avoid exponential blowup.",
+        "They must be formulated as linear programs": "LP is a different paradigm; many DP problems (e.g., knapsack) are integer/nonlinear and not naturally LP-formulated."
+      }
+    },
+    {
+      "id": "d6",
+      "topic": "Heaps",
+      "prompt": "In a max-heap implemented as an array, where is the largest element always located?",
+      "choices": [
+        "At index 0",
+        "At the last index",
+        "At index ⌊n/2⌋",
+        "At index n−1"
+      ],
+      "correct_answer": "At index 0",
+      "explanation": "By definition, in a max-heap, the root (largest element) is stored at index 0 in the array representation, with children at indices 2i+1 and 2i+2.",
+      "distractor_rationales": {
+        "At the last index": "The last index holds a leaf node, which could be minimal — no heap invariant constrains leaf values.",
+        "At index ⌊n/2⌋": "This is the index of the first leaf node (in 0-based array), not the root.",
+        "At index n−1": "Same as 'last index' — incorrect for same reason."
+      }
+    },
+    {
+      "id": "d7",
+      "topic": "Recursion & Divide-and-Conquer",
+      "prompt": "Which of the following best describes the role of the 'combine' step in divide-and-conquer algorithms?",
+      "choices": [
+        "Merging sorted subarrays in merge sort",
+        "Choosing the pivot in quicksort",
+        "Splitting the array into halves",
+        "Recursively solving subproblems"
+      ],
+      "correct_answer": "Merging sorted subarrays in merge sort",
+      "explanation": "The 'combine' step integrates solutions of subproblems into a solution for the original problem — e.g., merging two sorted halves into one sorted array in merge sort.",
+      "distractor_rationales": {
+        "Choosing the pivot in quicksort": "Pivot selection is part of partitioning (the 'divide' step), not combining.",
+        "Splitting the array into halves": "This is the 'divide' step, not 'combine'.",
+        "Recursively solving subproblems": "This is the 'conquer' step — independent recursive calls on subproblems."
+      }
+    },
+    {
+      "id": "d8",
+      "topic": "String Algorithms",
+      "prompt": "What is the main purpose of the failure function (also called LPS array) in the KMP (Knuth-Morris-Pratt) string matching algorithm?",
+      "choices": [
+        "To skip unnecessary character comparisons by leveraging prefix-suffix matches",
+        "To compute the hash value of each substring efficiently",
+        "To identify palindromic substrings in linear time",
+        "To build a suffix tree for the pattern"
+      ],
+      "correct_answer": "To skip unnecessary character comparisons by leveraging prefix-suffix matches",
+      "explanation": "The LPS (Longest Proper Prefix which is also Suffix) array allows KMP to avoid backtracking in the text by determining how much of the pattern can be reused after a mismatch.",
+      "distractor_rationales": {
+        "To compute the hash value of each substring efficiently": "That describes rolling hash usage in Rabin-Karp, not KMP.",
+        "To identify palindromic substrings in linear time": "That is the purpose of Manacher’s algorithm, not KMP.",
+        "To build a suffix tree for the pattern": "Suffix trees are built via specialized algorithms (e.g., Ukkonen’s); KMP uses only a flat LPS array."
+      }
+    },
+    {
+      "id": "d9",
+      "topic": "Union-Find (Disjoint Set Union)",
+      "prompt": "What is the amortized time complexity per operation (find or union) in a union-find data structure with both union-by-rank and path compression?",
+      "choices": [
+        "O(1)",
+        "O(log n)",
+        "O(α(n))",
+        "O(n)"
+      ],
+      "correct_answer": "O(α(n))",
+      "explanation": "With union-by-rank and path compression, the amortized cost per operation is O(α(n)), where α is the inverse Ackermann function — effectively constant for all practical input sizes.",
+      "distractor_rationales": {
+        "O(1)": "While α(n) ≤ 4 for any n ≤ 2^65536, it is technically not constant — O(α(n)) is the precise bound.",
+        "O(log n)": "This is achievable with union-by-rank alone, but path compression improves it further.",
+        "O(n)": "This is far too pessimistic; even naive union-find is O(log n) with union-by-rank."
+      }
+    },
+    {
+      "id": "d10",
+      "topic": "Sorting Algorithms",
+      "prompt": "Which sorting algorithm is stable, in-place, and has worst-case time complexity O(n²)?",
+      "choices": [
+        "Merge sort",
+        "Bubble sort",
+        "Heap sort",
+        "Quick sort"
+      ],
+      "correct_answer": "Bubble sort",
+      "explanation": "Bubble sort is stable (does not swap equal elements out of order), in-place (uses only O(1) extra memory), and has O(n²) worst-case time.",
+      "distractor_rationales": {
+        "Merge sort": "Stable and O(n log n), but not in-place — requires O(n) auxiliary space.",
+        "Heap sort": "In-place and O(n log n), but unstable — heap operations may reorder equal elements.",
+        "Quick sort": "In-place and O(n²) worst-case, but unstable — partitioning swaps non-adjacent elements arbitrarily."
+      }
+    }
+  ]
+}

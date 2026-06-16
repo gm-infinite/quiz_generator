@@ -1,6 +1,6 @@
 """Gradio entry point.
 
-    python app.py
+python app.py
 """
 from ui.views import CSS, build_blocks
 

@@ -40,6 +40,7 @@ class FakeLLMClient:
     def __init__(self) -> None:
         self.handlers: dict[type, Callable[[str], BaseModel]] = {}
         self.calls: list[tuple[type, str]] = []
+        self.search_queries: list[str | None] = []
 
     def set(self, schema: type[T], handler: Callable[[str], T]) -> None:
         self.handlers[schema] = handler  # type: ignore[assignment]
@@ -78,7 +79,10 @@ class FakeLLMClient:
             return self.handlers[schema](prompt)  # type: ignore[return-value]
         return self._default(schema)
 
-    def generate_with_search(self, prompt: str, schema: type[T]) -> T:
+    def generate_with_search(
+        self, prompt: str, schema: type[T], search_query: str | None = None
+    ) -> T:
+        self.search_queries.append(search_query)
         return self.generate_structured(prompt, schema)
 
 

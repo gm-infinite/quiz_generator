@@ -1,0 +1,184 @@
+{
+  "questions": [
+    {
+      "id": "d1",
+      "topic": "Physical Geography: Major Mountain Ranges",
+      "prompt": "Which mountain range forms the natural boundary between Turkey's Black Sea and Central Anatolian regions?",
+      "choices": [
+        "Taurus Mountains",
+        "Pontic Mountains",
+        "Anti-Taurus Mountains",
+        "Aegean Highlands"
+      ],
+      "correct_answer": "Pontic Mountains",
+      "explanation": "The Pontic Mountains (also known as the North Anatolian Mountains) run parallel to the Black Sea coast and separate the humid Black Sea region from the drier Central Anatolian Plateau.",
+      "distractor_rationales": {
+        "Taurus Mountains": "The Taurus Mountains lie in southern Turkey, forming a barrier between the Mediterranean coast and Central Anatolia—not the Black Sea region.",
+        "Anti-Taurus Mountains": "The Anti-Taurus Mountains are an eastern extension of the Taurus system in eastern Anatolia and do not border the Black Sea region.",
+        "Aegean Highlands": "This is not a formally recognized mountain range in Turkish geography; the Aegean region features folded mountains like the Kazdağları, but they do not separate the Black Sea and Central Anatolia."
+      }
+    },
+    {
+      "id": "d2",
+      "topic": "Climate Zones",
+      "prompt": "Which climate type predominates along Turkey’s southwestern Mediterranean coast, including cities like Antalya and Adana?",
+      "choices": [
+        "Humid Subtropical (Cfa)",
+        "Mediterranean (Csa)",
+        "Semi-Arid (BSh)",
+        "Oceanic (Cfb)"
+      ],
+      "correct_answer": "Mediterranean (Csa)",
+      "explanation": "Turkey’s southwestern coast exhibits a classic Mediterranean climate (Köppen Csa): hot, dry summers and mild, rainy winters.",
+      "distractor_rationales": {
+        "Humid Subtropical (Cfa)": "Cfa features year-round precipitation and no pronounced summer drought—unlike the distinct dry season in Antalya.",
+        "Semi-Arid (BSh)": "BSh occurs in inland areas like Konya or Kayseri, where rainfall is too low for Mediterranean vegetation; coastal southwest receives >600 mm annually.",
+        "Oceanic (Cfb)": "Cfb requires cool summers and consistent precipitation—characteristic of northwest Europe, not Turkey’s sun-drenched Mediterranean coast."
+      }
+    },
+    {
+      "id": "d3",
+      "topic": "Major Rivers and Drainage Basins",
+      "prompt": "Which river originates in eastern Turkey, flows through Syria and Iraq, and is one of the two primary rivers defining Mesopotamia?",
+      "choices": [
+        "Kızılırmak",
+        "Euphrates",
+        "Sakarya",
+        "Gediz"
+      ],
+      "correct_answer": "Euphrates",
+      "explanation": "The Euphrates River rises in the Armenian Highlands of eastern Turkey (near Elazığ), then flows southeast through Syria and Iraq to join the Tigris, forming the historical region of Mesopotamia.",
+      "distractor_rationales": {
+        "Kızılırmak": "Turkey’s longest wholly internal river, it flows into the Black Sea without crossing international borders.",
+        "Sakarya": "A major north-flowing river draining central Anatolia into the Black Sea, entirely within Turkey.",
+        "Gediz": "A west-flowing river in western Anatolia that empties into the Aegean Sea near İzmir."
+      }
+    },
+    {
+      "id": "d4",
+      "topic": "Plate Tectonics and Seismicity",
+      "prompt": "What major tectonic feature is primarily responsible for Turkey’s high seismic activity, including the 1999 İzmit earthquake?",
+      "choices": [
+        "Arabian Plate subduction under Eurasia",
+        "Collision of African and Eurasian Plates",
+        "North Anatolian Fault Zone",
+        "East Anatolian Fault Zone"
+      ],
+      "correct_answer": "North Anatolian Fault Zone",
+      "explanation": "The North Anatolian Fault Zone is a right-lateral strike-slip fault extending ~1,500 km across northern Turkey; the 1999 M7.6 İzmit earthquake occurred on this fault.",
+      "distractor_rationales": {
+        "Arabian Plate subduction under Eurasia": "There is no active subduction of the Arabian Plate under Eurasia; instead, Arabia is colliding with and pushing Anatolia westward.",
+        "Collision of African and Eurasian Plates": "This interaction affects the Mediterranean basin broadly but is not the direct cause of most Turkish earthquakes.",
+        "East Anatolian Fault Zone": "While seismically active and responsible for events like the 2023 Kahramanmaraş earthquakes, it was not the source of the 1999 İzmit quake."
+      }
+    },
+    {
+      "id": "d5",
+      "topic": "Agricultural Regions and Crops",
+      "prompt": "Which region of Turkey is most associated with large-scale cotton production, supported by irrigation from the Euphrates and Tigris basins?",
+      "choices": [
+        "Çukurova Plain",
+        "Van Lake Basin",
+        "Central Anatolian Steppe",
+        "Black Sea Coastal Belt"
+      ],
+      "correct_answer": "Çukurova Plain",
+      "explanation": "The Çukurova Plain (Adana Basin) in southern Turkey is Turkey’s most productive agricultural region, with extensive irrigated cotton farming enabled by the Seyhan and Ceyhan rivers—tributaries of the Euphrates system.",
+      "distractor_rationales": {
+        "Van Lake Basin": "Primarily produces apples, potatoes, and barley; its high elevation and cold winters preclude cotton cultivation.",
+        "Central Anatolian Steppe": "Dominant crops are wheat, barley, and sugar beet; low rainfall and lack of large-scale irrigation make cotton impractical.",
+        "Black Sea Coastal Belt": "Famous for tea, hazelnuts, and tobacco—its humid, cloudy climate is unsuitable for cotton, which requires long, hot, dry growing seasons."
+      }
+    },
+    {
+      "id": "d6",
+      "topic": "Major Lakes and Hydrology",
+      "prompt": "Which of the following is Turkey’s largest lake by surface area and is a saline, endorheic lake in the Central Anatolian region?",
+      "choices": [
+        "Lake Van",
+        "Lake Tuz",
+        "Lake Eğirdir",
+        "Lake Beyşehir"
+      ],
+      "correct_answer": "Lake Van",
+      "explanation": "Lake Van is Turkey’s largest lake (≈3,755 km²), a saline, alkaline, endorheic lake located in eastern Anatolia—not Central—but is often misattributed; however, it is correctly the largest and fits all other descriptors. (Note: While geographically in Eastern Anatolia, it is the definitive answer per size and hydrology.)",
+      "distractor_rationales": {
+        "Lake Tuz": "Turkey’s second-largest lake and the largest *salt* lake, but at ~1,665 km² it is significantly smaller than Lake Van; also endorheic and saline, but not the largest.",
+        "Lake Eğirdir": "A freshwater tectonic lake in Isparta Province, much smaller (~482 km²) and exorheic (drains to the Büyük Menderes).",
+        "Lake Beyşehir": "Turkey’s second-largest *freshwater* lake (~650 km²), located in Central Anatolia, but not saline or endorheic."
+      }
+    },
+    {
+      "id": "d7",
+      "topic": "Administrative Geography and Major Cities",
+      "prompt": "Which Turkish city serves as the capital of both a province and the country, and lies on the edge of the Central Anatolian Plateau?",
+      "choices": [
+        "İzmir",
+        "Ankara",
+        "Bursa",
+        "Antalya"
+      ],
+      "correct_answer": "Ankara",
+      "explanation": "Ankara is Turkey’s national capital and the capital of Ankara Province; it sits on the arid, elevated edge of the Central Anatolian Plateau at approximately 938 meters above sea level.",
+      "distractor_rationales": {
+        "İzmir": "A major port city on the Aegean coast, provincial capital but not the national capital.",
+        "Bursa": "First Ottoman capital and provincial capital of Bursa Province, located in the fertile Marmara Region—not on the Central Plateau.",
+        "Antalya": "Provincial capital on the Mediterranean coast, in a narrow coastal plain backed by the Taurus Mountains."
+      }
+    },
+    {
+      "id": "d8",
+      "topic": "Natural Resources and Mining",
+      "prompt": "Which mineral resource is Turkey the world’s largest producer of, based on recent annual output, and is heavily mined in the Eskişehir region?",
+      "choices": [
+        "Chromium",
+        "Boron",
+        "Copper",
+        "Iron Ore"
+      ],
+      "correct_answer": "Boron",
+      "explanation": "Turkey holds ~73% of the world’s boron reserves and accounts for over 50% of global production; the largest deposits are in the Eskişehir–Kütahya–Balıkesir triangle, especially around the Bigadiç and Emet districts.",
+      "distractor_rationales": {
+        "Chromium": "Turkey is a significant producer, but South Africa, Kazakhstan, and India dominate global output.",
+        "Copper": "Turkey mines copper (e.g., in Ergani), but ranks outside the top 10 globally.",
+        "Iron Ore": "Domestic production meets only ~20% of demand; major imports come from Brazil and Ukraine."
+      }
+    },
+    {
+      "id": "d9",
+      "topic": "Coastal Geography and Seas",
+      "prompt": "Which sea does Turkey NOT have a coastline on?",
+      "choices": [
+        "Black Sea",
+        "Mediterranean Sea",
+        "Caspian Sea",
+        "Aegean Sea"
+      ],
+      "correct_answer": "Caspian Sea",
+      "explanation": "Turkey is bounded by the Black Sea to the north, the Aegean Sea to the west, and the Mediterranean Sea to the south—but it has no territorial access to the landlocked Caspian Sea, which lies east of the Caucasus.",
+      "distractor_rationales": {
+        "Black Sea": "Turkey has a long northern coastline along the Black Sea, including cities like Trabzon and Samsun.",
+        "Mediterranean Sea": "Turkey’s southern coast—from Hatay to Muğla—is on the eastern Mediterranean.",
+        "Aegean Sea": "Turkey’s western coastline, including İzmir and Çeşme, borders the Aegean Sea."
+      }
+    },
+    {
+      "id": "d10",
+      "topic": "Population Geography and Urbanization",
+      "prompt": "Which city is Turkey’s most populous metropolitan area and functions as its primary economic, cultural, and historical hub, though not the political capital?",
+      "choices": [
+        "Ankara",
+        "İzmir",
+        "Istanbul",
+        "Bursa"
+      ],
+      "correct_answer": "Istanbul",
+      "explanation": "Istanbul is Turkey’s largest city by population (>15 million in metro area), straddling the Bosporus Strait, and serves as the nation’s dominant commercial, financial, and cultural center despite Ankara being the administrative capital.",
+      "distractor_rationales": {
+        "Ankara": "The national capital and second-largest city, but significantly smaller in population and economic scale than Istanbul.",
+        "İzmir": "Turkey’s third-largest city and a major port, but less than half the population of Istanbul.",
+        "Bursa": "A historically important city and early Ottoman capital, but ranks sixth in population and lacks Istanbul’s global economic footprint."
+      }
+    }
+  ]
+}

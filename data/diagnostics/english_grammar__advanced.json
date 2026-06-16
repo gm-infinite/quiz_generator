@@ -1,0 +1,184 @@
+{
+  "questions": [
+    {
+      "id": "d1",
+      "topic": "Subject-verb agreement with collective nouns",
+      "prompt": "Which sentence demonstrates correct subject-verb agreement?",
+      "choices": [
+        "The committee have reached a decision.",
+        "The committee has reached a decision.",
+        "The committee is reaching a decision.",
+        "The committee are reaching a decision."
+      ],
+      "correct_answer": "The committee has reached a decision.",
+      "explanation": "In American English, collective nouns like 'committee' are treated as singular units and take singular verbs; 'has' agrees with the singular subject.",
+      "distractor_rationales": {
+        "The committee have reached a decision.": "This reflects British English usage but is inconsistent with standard American English grammar conventions tested here.",
+        "The committee is reaching a decision.": "While grammatically possible, it incorrectly shifts tense and implies an ongoing, incomplete action rather than a completed one, making it semantically and idiomatically inferior to the correct past perfect choice.",
+        "The committee are reaching a decision.": "Treats 'committee' as plural and uses present continuous tense inappropriately for a completed action; violates both number agreement and aspect selection."
+      }
+    },
+    {
+      "id": "d2",
+      "topic": "Subjunctive mood",
+      "prompt": "Which sentence correctly uses the subjunctive mood to express a demand or recommendation?",
+      "choices": [
+        "She insisted that he pays the bill immediately.",
+        "She insisted that he pay the bill immediately.",
+        "She insisted that he paid the bill immediately.",
+        "She insisted that he will pay the bill immediately."
+      ],
+      "correct_answer": "She insisted that he pay the bill immediately.",
+      "explanation": "After verbs like 'insist', 'demand', or 'recommend', the subjunctive mood requires the base form of the verb ('pay'), regardless of person or number.",
+      "distractor_rationales": {
+        "She insisted that he pays the bill immediately.": "Uses indicative present tense ('pays'), which is ungrammatical after 'insisted' when expressing a demand — violates subjunctive requirement.",
+        "She insisted that he paid the bill immediately.": "Uses indicative past tense ('paid'), which misrepresents the intended meaning (a present/future obligation) and fails to trigger the subjunctive form.",
+        "She insisted that he will pay the bill immediately.": "Combines past-tense main verb 'insisted' with future 'will', creating a tense clash and violating the subjunctive construction rule."
+      }
+    },
+    {
+      "id": "d3",
+      "topic": "Dangling modifiers",
+      "prompt": "Which sentence contains a dangling modifier?",
+      "choices": [
+        "After reviewing the data, the conclusion was clear.",
+        "After reviewing the data, she reached a clear conclusion.",
+        "Having studied linguistics, Maria understands syntax deeply.",
+        "Walking home, the storm began to gather."
+      ],
+      "correct_answer": "After reviewing the data, the conclusion was clear.",
+      "explanation": "The phrase 'After reviewing the data' has no logical subject in the main clause — 'the conclusion' cannot perform the action of reviewing; the modifier dangles.",
+      "distractor_rationales": {
+        "After reviewing the data, she reached a clear conclusion.": "Correctly attaches the modifier to 'she', the logical reviewer — not a dangling modifier.",
+        "Having studied linguistics, Maria understands syntax deeply.": "Modifier 'Having studied linguistics' logically refers to 'Maria' — properly attached.",
+        "Walking home, the storm began to gather.": "While awkward, this is not technically a *dangling* modifier in the strictest sense because 'storm' cannot walk — but it's a misplaced modifier; however, 'After reviewing the data, the conclusion was clear.' is the canonical, unambiguous example of a dangling modifier."
+      }
+    },
+    {
+      "id": "d4",
+      "topic": "Parallel structure",
+      "prompt": "Which sentence exhibits correct parallelism?",
+      "choices": [
+        "She enjoys hiking, swimming, and to ride bicycles.",
+        "She enjoys hiking, swimming, and riding bicycles.",
+        "She enjoys to hike, swimming, and riding bicycles.",
+        "She enjoys hiking, to swim, and riding bicycles."
+      ],
+      "correct_answer": "She enjoys hiking, swimming, and riding bicycles.",
+      "explanation": "All three items in the series are gerunds (verb + -ing), maintaining consistent grammatical form required for parallel structure.",
+      "distractor_rationales": {
+        "She enjoys hiking, swimming, and to ride bicycles.": "Mixes gerunds ('hiking', 'swimming') with an infinitive ('to ride'), breaking parallelism.",
+        "She enjoys to hike, swimming, and riding bicycles.": "Starts with infinitive ('to hike') then shifts to gerunds — inconsistent form.",
+        "She enjoys hiking, to swim, and riding bicycles.": "Inserts infinitive ('to swim') between two gerunds, violating structural uniformity."
+      }
+    },
+    {
+      "id": "d5",
+      "topic": "Restrictive vs. non-restrictive clauses",
+      "prompt": "Which sentence correctly uses commas to set off a non-restrictive clause?",
+      "choices": [
+        "My brother who lives in Tokyo visited last week.",
+        "My brother, who lives in Tokyo, visited last week.",
+        "My brother, who lives in Tokyo visited last week.",
+        "My brother who lives in Tokyo, visited last week."
+      ],
+      "correct_answer": "My brother, who lives in Tokyo, visited last week.",
+      "explanation": "A non-restrictive clause adds extra, non-essential information and must be set off by a pair of commas; 'who lives in Tokyo' is non-restrictive here (implying the speaker has only one brother).",
+      "distractor_rationales": {
+        "My brother who lives in Tokyo visited last week.": "Lacks commas, making the clause restrictive — implying the speaker has multiple brothers and specifying which one; contradicts the intended non-restrictive meaning.",
+        "My brother, who lives in Tokyo visited last week.": "Missing the closing comma, violating standard punctuation rules for non-restrictive clauses.",
+        "My brother who lives in Tokyo, visited last week.": "Incorrectly places a comma after the restrictive clause, creating a misplaced pause and syntactic confusion."
+      }
+    },
+    {
+      "id": "d6",
+      "topic": "Pronoun-antecedent agreement (indeterminate gender)",
+      "prompt": "Which sentence correctly handles pronoun-antecedent agreement for a singular indefinite antecedent?",
+      "choices": [
+        "Everyone should bring their own notebook.",
+        "Everyone should bring his own notebook.",
+        "Everyone should bring her own notebook.",
+        "Everyone should bring its own notebook."
+      ],
+      "correct_answer": "Everyone should bring their own notebook.",
+      "explanation": "Modern standard English accepts 'they/their' as a singular, gender-neutral pronoun for indefinite antecedents like 'everyone'; it is inclusive and grammatically sanctioned by major style guides.",
+      "distractor_rationales": {
+        "Everyone should bring his own notebook.": "Historically used but now considered outdated and exclusionary; 'his' does not accommodate all genders.",
+        "Everyone should bring her own notebook.": "Similarly exclusionary and nonstandard as a universal singular; lacks broad acceptance as a generic form.",
+        "Everyone should bring its own notebook.": "'Its' is reserved for non-human or non-sentient antecedents; applying it to 'everyone' is dehumanizing and ungrammatical."
+      }
+    },
+    {
+      "id": "d7",
+      "topic": "Misplaced modifiers",
+      "prompt": "Which sentence contains a misplaced modifier?",
+      "choices": [
+        "She served sandwiches to the children on paper plates.",
+        "She served sandwiches on paper plates to the children.",
+        "Only she understood the complex theorem.",
+        "He almost drove 500 miles without stopping."
+      ],
+      "correct_answer": "She served sandwiches to the children on paper plates.",
+      "explanation": "The phrase 'on paper plates' is ambiguously placed — it could modify 'sandwiches' (sandwiches made of paper plates) or 'served', but contextually it should modify how they were served; better placement is 'She served sandwiches on paper plates to the children.'",
+      "distractor_rationales": {
+        "She served sandwiches on paper plates to the children.": "Clear and unambiguous — 'on paper plates' correctly modifies the verb 'served'.",
+        "Only she understood the complex theorem.": "Ambiguity exists (does 'only' modify 'she' or 'understood'?), but this is a case of *squinting* modifier, not classic misplacement; less severe and not the best example.",
+        "He almost drove 500 miles without stopping.": "Ambiguous — does 'almost' modify 'drove' (he didn’t drive at all) or '500 miles' (he drove ~499)? But 'She served sandwiches to the children on paper plates.' is a textbook misplaced modifier with concrete physical implausibility."
+      }
+    },
+    {
+      "id": "d8",
+      "topic": "Verb tense sequence (past perfect in reported speech)",
+      "prompt": "Which sentence correctly sequences tenses when reporting a past event that occurred before another past event?",
+      "choices": [
+        "She said she went to Paris before she moved to Berlin.",
+        "She said she had gone to Paris before she moved to Berlin.",
+        "She said she goes to Paris before she moved to Berlin.",
+        "She said she would go to Paris before she moved to Berlin."
+      ],
+      "correct_answer": "She said she had gone to Paris before she moved to Berlin.",
+      "explanation": "The past perfect ('had gone') is required to indicate an action completed prior to another past action ('moved'); this preserves temporal logic in reported speech.",
+      "distractor_rationales": {
+        "She said she went to Paris before she moved to Berlin.": "Uses simple past for both verbs, failing to distinguish anteriority — ambiguous about whether the Paris trip preceded the move.",
+        "She said she goes to Paris before she moved to Berlin.": "Mixes present simple ('goes') with past ('moved'), creating a tense mismatch and illogical time relationship.",
+        "She said she would go to Paris before she moved to Berlin.": "Uses conditional 'would go', implying future-in-the-past intention, not a completed prior action."
+      }
+    },
+    {
+      "id": "d9",
+      "topic": "Comparative and superlative adjectives",
+      "prompt": "Which sentence uses the comparative form correctly?",
+      "choices": [
+        "This hypothesis is more simpler than the prior model.",
+        "This hypothesis is simpler than the prior model.",
+        "This hypothesis is most simple than the prior model.",
+        "This hypothesis is simple than the prior model."
+      ],
+      "correct_answer": "This hypothesis is simpler than the prior model.",
+      "explanation": "For one-syllable adjectives like 'simple', the comparative is formed by adding '-er'; 'simpler' is correct, and 'than' properly introduces the comparison.",
+      "distractor_rationales": {
+        "This hypothesis is more simpler than the prior model.": "Double comparative — 'more' + '-er' is redundant and ungrammatical.",
+        "This hypothesis is most simple than the prior model.": "'Most simple' is a superlative form, incompatible with 'than', which requires comparative structure.",
+        "This hypothesis is simple than the prior model.": "Omits comparative inflection entirely; 'simple' is positive degree and cannot license 'than'."
+      }
+    },
+    {
+      "id": "d10",
+      "topic": "Use of 'fewer' vs. 'less'",
+      "prompt": "Which sentence correctly applies the countable/uncountable distinction for 'fewer' and 'less'?",
+      "choices": [
+        "There are less people in the room today.",
+        "There are fewer people in the room today.",
+        "We need less chairs for the meeting.",
+        "She drank fewer water than recommended."
+      ],
+      "correct_answer": "There are fewer people in the room today.",
+      "explanation": "'People' is a countable noun, so 'fewer' is required; 'fewer people' is grammatically and semantically correct.",
+      "distractor_rationales": {
+        "There are less people in the room today.": "'Less' is reserved for uncountable nouns (e.g., 'less traffic'); using it with countable 'people' violates standard usage.",
+        "We need less chairs for the meeting.": "'Chairs' is countable, requiring 'fewer', not 'less'.",
+        "She drank fewer water than recommended.": "'Water' is uncountable, requiring 'less', not 'fewer'."
+      }
+    }
+  ]
+}

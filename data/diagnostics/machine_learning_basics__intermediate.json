@@ -1,0 +1,184 @@
+{
+  "questions": [
+    {
+      "id": "d1",
+      "topic": "Supervised Learning",
+      "prompt": "Which of the following best defines supervised learning?",
+      "choices": [
+        "A model learns from unlabeled data to discover hidden patterns",
+        "A model is trained using input-output pairs to make predictions on new inputs",
+        "A model adjusts its parameters solely through reward signals from an environment",
+        "A model clusters similar data points without prior knowledge of categories"
+      ],
+      "correct_answer": "A model is trained using input-output pairs to make predictions on new inputs",
+      "explanation": "Supervised learning requires labeled training data—each input has a corresponding known output (label)—so the model can learn a mapping from inputs to outputs.",
+      "distractor_rationales": {
+        "A model learns from unlabeled data to discover hidden patterns": "This describes unsupervised learning, not supervised learning.",
+        "A model adjusts its parameters solely through reward signals from an environment": "This defines reinforcement learning, which relies on rewards/penalties rather than labeled examples.",
+        "A model clusters similar data points without prior knowledge of categories": "Clustering is a core unsupervised learning task and does not use labels."
+      }
+    },
+    {
+      "id": "d2",
+      "topic": "Overfitting",
+      "prompt": "What is the primary symptom of overfitting in a machine learning model?",
+      "choices": [
+        "High training accuracy but low validation/test accuracy",
+        "Low accuracy on both training and test sets",
+        "Consistently high accuracy across all datasets",
+        "Slow convergence during training"
+      ],
+      "correct_answer": "High training accuracy but low validation/test accuracy",
+      "explanation": "Overfitting occurs when a model memorizes training data—including noise and outliers—leading to poor generalization, reflected in strong performance on training data but weak performance on unseen data.",
+      "distractor_rationales": {
+        "Low accuracy on both training and test sets": "This suggests underfitting or model failure, not overfitting.",
+        "Consistently high accuracy across all datasets": "This indicates good generalization, the opposite of overfitting.",
+        "Slow convergence during training": "This relates to optimization challenges (e.g., learning rate, architecture), not overfitting per se."
+      }
+    },
+    {
+      "id": "d3",
+      "topic": "Loss Functions",
+      "prompt": "Which loss function is most commonly used for binary classification tasks with probabilistic outputs?",
+      "choices": [
+        "Mean Squared Error (MSE)",
+        "Hinge Loss",
+        "Cross-Entropy Loss",
+        "Kullback-Leibler Divergence"
+      ],
+      "correct_answer": "Cross-Entropy Loss",
+      "explanation": "Binary cross-entropy loss directly penalizes the difference between predicted class probabilities and true binary labels, making it ideal for probabilistic binary classification (e.g., logistic regression, neural nets with sigmoid output).",
+      "distractor_rationales": {
+        "Mean Squared Error (MSE)": "MSE can be used but is less statistically principled for classification and suffers from vanishing gradients near saturation.",
+        "Hinge Loss": "Hinge loss is used in SVMs for maximum-margin classification, not inherently probabilistic.",
+        "Kullback-Leibler Divergence": "KL divergence measures distribution mismatch but is not standard for basic binary classification; cross-entropy is its more direct practical counterpart."
+      }
+    },
+    {
+      "id": "d4",
+      "topic": "Evaluation Metrics",
+      "prompt": "In a binary classification problem with highly imbalanced classes (e.g., 95% negative, 5% positive), which metric is most informative for assessing model performance on the minority class?",
+      "choices": [
+        "Accuracy",
+        "Precision",
+        "F1-Score",
+        "Area Under the ROC Curve (AUC-ROC)"
+      ],
+      "correct_answer": "F1-Score",
+      "explanation": "F1-score is the harmonic mean of precision and recall, balancing both concerns—especially valuable when recall (finding true positives) matters and accuracy is misleading due to imbalance.",
+      "distractor_rationales": {
+        "Accuracy": "Accuracy is misleading in imbalanced settings; a model predicting all negatives could achieve 95% accuracy while failing entirely on the positive class.",
+        "Precision": "Precision alone ignores false negatives and thus doesn’t reflect how well the model finds minority-class instances.",
+        "Area Under the ROC Curve (AUC-ROC)": "AUC-ROC is robust to imbalance and useful, but it evaluates ranking ability across thresholds—not a single operating point—and is less intuitive for direct minority-class performance than F1."
+      }
+    },
+    {
+      "id": "d5",
+      "topic": "Feature Engineering",
+      "prompt": "Why is feature scaling (e.g., standardization or normalization) particularly important for algorithms like k-Nearest Neighbors (k-NN) and gradient descent-based models?",
+      "choices": [
+        "It reduces the number of features to prevent curse of dimensionality",
+        "It ensures all features contribute equally to distance calculations or gradient updates",
+        "It makes features interpretable to domain experts",
+        "It guarantees convergence to the global optimum"
+      ],
+      "correct_answer": "It ensures all features contribute equally to distance calculations or gradient updates",
+      "explanation": "k-NN relies on distance metrics (e.g., Euclidean), where unscaled features with larger ranges dominate distances; gradient descent converges faster and more stably when features are on similar scales.",
+      "distractor_rationales": {
+        "It reduces the number of features to prevent curse of dimensionality": "Scaling does not reduce dimensionality—techniques like PCA or feature selection do that.",
+        "It makes features interpretable to domain experts": "Interpretability depends on feature meaning and transformation logic, not scaling alone.",
+        "It guarantees convergence to the global optimum": "Scaling improves optimization behavior but does not guarantee global optimality—especially in non-convex problems."
+      }
+    },
+    {
+      "id": "d6",
+      "topic": "Bias-Variance Tradeoff",
+      "prompt": "Which scenario best illustrates high bias in a machine learning model?",
+      "choices": [
+        "The model performs well on training data but poorly on validation data",
+        "The model performs poorly on both training and validation data",
+        "The model's predictions vary widely across different training sets",
+        "The model achieves perfect accuracy on training data but fails on any new sample"
+      ],
+      "correct_answer": "The model performs poorly on both training and validation data",
+      "explanation": "High bias reflects systematic error—underfitting—where the model is too simple to capture underlying patterns, resulting in poor performance on both seen and unseen data.",
+      "distractor_rationales": {
+        "The model performs well on training data but poorly on validation data": "This indicates high variance (overfitting), not high bias.",
+        "The model's predictions vary widely across different training sets": "This is characteristic of high variance, reflecting instability.",
+        "The model achieves perfect accuracy on training data but fails on any new sample": "This extreme case reflects severe overfitting (high variance), not high bias."
+      }
+    },
+    {
+      "id": "d7",
+      "topic": "Decision Trees",
+      "prompt": "What does the 'Gini impurity' measure in the context of decision tree splitting?",
+      "choices": [
+        "The average squared deviation from the mean target value",
+        "The probability of misclassifying a randomly chosen element if labeled according to the class distribution in the subset",
+        "The information gain relative to the parent node",
+        "The Euclidean distance between feature vectors in the split subsets"
+      ],
+      "correct_answer": "The probability of misclassifying a randomly chosen element if labeled according to the class distribution in the subset",
+      "explanation": "Gini impurity = 1 − Σ(p_i)², where p_i is the proportion of class i in the node; it quantifies the likelihood of incorrect classification under random labeling by class proportions.",
+      "distractor_rationales": {
+        "The average squared deviation from the mean target value": "That defines Mean Squared Error, used in regression trees—not Gini.",
+        "The information gain relative to the parent node": "Information gain is based on entropy reduction, not Gini impurity (though both are splitting criteria).",
+        "The Euclidean distance between feature vectors in the split subsets": "Distance metrics are unrelated to Gini, which operates on class label distributions only."
+      }
+    },
+    {
+      "id": "d8",
+      "topic": "Regularization",
+      "prompt": "How does L2 regularization (Ridge regression) differ from L1 regularization (Lasso) in terms of coefficient behavior?",
+      "choices": [
+        "L2 drives some coefficients exactly to zero; L1 shrinks coefficients toward zero but rarely zeros them",
+        "L2 encourages sparsity by setting many coefficients to zero; L1 produces small but nonzero coefficients",
+        "L2 shrinks all coefficients proportionally and avoids zeroing any; L1 can drive some coefficients exactly to zero",
+        "L2 and L1 both produce identical coefficient shrinkage patterns"
+      ],
+      "correct_answer": "L2 shrinks all coefficients proportionally and avoids zeroing any; L1 can drive some coefficients exactly to zero",
+      "explanation": "L2 regularization adds the sum of squared coefficients to the loss, yielding smooth shrinkage; L1 adds the sum of absolute values, inducing sparsity via corner solutions in the constraint region.",
+      "distractor_rationales": {
+        "L2 drives some coefficients exactly to zero; L1 shrinks coefficients toward zero but rarely zeros them": "This reverses their actual behaviors.",
+        "L2 encourages sparsity by setting many coefficients to zero; L1 produces small but nonzero coefficients": "Again, this misattributes sparsity—L1 induces sparsity; L2 does not.",
+        "L2 and L1 both produce identical coefficient shrinkage patterns": "They differ fundamentally in geometry and effect: L1 yields sparse models; L2 yields dense, balanced shrinkage."
+      }
+    },
+    {
+      "id": "d9",
+      "topic": "Cross-Validation",
+      "prompt": "What is the main purpose of k-fold cross-validation?",
+      "choices": [
+        "To increase training data size by duplicating samples",
+        "To estimate how a model will generalize to an independent dataset by rotating train/validation splits",
+        "To select hyperparameters without any validation data",
+        "To eliminate the need for a separate test set"
+      ],
+      "correct_answer": "To estimate how a model will generalize to an independent dataset by rotating train/validation splits",
+      "explanation": "k-fold CV partitions data into k subsets, iteratively holding out one fold for validation while training on the rest, providing a robust estimate of generalization performance using all data for both training and validation roles.",
+      "distractor_rationales": {
+        "To increase training data size by duplicating samples": "CV does not augment or duplicate data—it reuses original samples in different roles.",
+        "To select hyperparameters without any validation data": "CV itself *is* a validation strategy; hyperparameter tuning typically uses nested CV or a held-out validation set.",
+        "To eliminate the need for a separate test set": "CV estimates performance but does *not* replace a final, independent test set for unbiased evaluation after model selection."
+      }
+    },
+    {
+      "id": "d10",
+      "topic": "Ensemble Methods",
+      "prompt": "What key mechanism distinguishes bagging (e.g., Random Forest) from boosting (e.g., AdaBoost)?",
+      "choices": [
+        "Bagging trains models sequentially with updated weights on misclassified examples; boosting trains models in parallel on bootstrap samples",
+        "Bagging uses voting/averaging of independent models; boosting combines weak learners sequentially with emphasis on previously misclassified instances",
+        "Bagging requires deep trees; boosting requires shallow trees",
+        "Bagging reduces variance only; boosting reduces bias only"
+      ],
+      "correct_answer": "Bagging uses voting/averaging of independent models; boosting combines weak learners sequentially with emphasis on previously misclassified instances",
+      "explanation": "Bagging builds diverse, independent models (typically via bootstrapping) and aggregates them to reduce variance; boosting builds models sequentially, adjusting example weights to focus on errors made by prior models, thereby reducing bias.",
+      "distractor_rationales": {
+        "Bagging trains models sequentially with updated weights on misclassified examples; boosting trains models in parallel on bootstrap samples": "This swaps the core mechanisms of the two methods.",
+        "Bagging uses deep trees; boosting requires shallow trees": "While boosting often uses stumps, bagging (e.g., Random Forest) uses fully grown trees—but depth is not the defining distinction.",
+        "Bagging reduces variance only; boosting reduces bias only": "Though dominant effects differ, both impact bias and variance; the sequential weighting vs. parallel independence is the structural distinction."
+      }
+    }
+  ]
+}

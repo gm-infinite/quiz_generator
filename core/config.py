@@ -33,7 +33,8 @@ WEAK_TOPIC_THRESHOLD = 0.60      # accuracy below this flags a topic
 PASS_ABSOLUTE_THRESHOLD = 0.70   # practice score that ends the loop outright
 PASS_IMPROVEMENT_DELTA = 0.20    # improvement over diagnostic that ends the loop
 
-MAX_PRACTICE_ROUNDS = 3
+MAX_PRACTICE_ROUNDS = 3         # default round cap; user can override per session
+MAX_PRACTICE_ROUNDS_LIMIT = 5   # hard ceiling for the per-session override
 
 LEVELS = ("beginner", "intermediate", "advanced")
 
@@ -57,3 +58,12 @@ SUBJECT_CATEGORIES = (
 
 # Cap on how much uploaded-file text we forward to the LLM (chars).
 SOURCE_TEXT_MAX_CHARS = 20_000
+
+# Web search grounding (Phase 2). Active only when SEARCH_ENABLED is True
+# AND a TAVILY_API_KEY or SERPER_API_KEY is present in the environment/.env.
+# Without a key, generate_with_search silently falls back to ungrounded
+# generation — nothing breaks.
+SEARCH_ENABLED = True
+SEARCH_MAX_RESULTS = 4
+SEARCH_TIMEOUT_SECONDS = 8
+SEARCH_SNIPPET_MAX_CHARS = 500   # per-result truncation before prompt injection

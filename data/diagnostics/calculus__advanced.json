@@ -1,0 +1,184 @@
+{
+  "questions": [
+    {
+      "id": "c1",
+      "topic": "limits",
+      "prompt": "What is \\(\\lim_{x \\to 0} \\frac{\\sin(3x)}{x}\\)?",
+      "choices": [
+        "0",
+        "1",
+        "3",
+        "∞"
+      ],
+      "correct_answer": "3",
+      "explanation": "Using the standard limit \\(\\lim_{u \\to 0} \\frac{\\sin u}{u} = 1\\), substitute \\(u = 3x\\): \\(\\frac{\\sin(3x)}{x} = 3 \\cdot \\frac{\\sin(3x)}{3x} \\to 3 \\cdot 1 = 3\\).",
+      "distractor_rationales": {
+        "0": "This incorrectly assumes \\(\\sin(3x)\\) vanishes faster than \\(x\\), ignoring the linear behavior of sine near 0.",
+        "1": "This mistakenly applies the basic \\(\\frac{\\sin x}{x}\\) limit without accounting for the coefficient 3 in the argument.",
+        "∞": "This wrongly interprets the ratio as unbounded, though both numerator and denominator approach 0 linearly."
+      }
+    },
+    {
+      "id": "c2",
+      "topic": "integration_techniques",
+      "prompt": "Which substitution is most appropriate to evaluate \\(\\int x \\sqrt{1 - x^2} \\, dx\\)?",
+      "choices": [
+        "u = x^2",
+        "u = 1 - x^2",
+        "u = \\sqrt{1 - x^2}",
+        "u = \\arcsin x"
+      ],
+      "correct_answer": "u = 1 - x^2",
+      "explanation": "Letting \\(u = 1 - x^2\\) gives \\(du = -2x\\,dx\\), so \\(x\\,dx = -\\frac{1}{2} du\\), and the integral becomes \\(-\\frac{1}{2} \\int \\sqrt{u}\\, du\\), which is straightforward.",
+      "distractor_rationales": {
+        "u = x^2": "This yields \\(du = 2x\\,dx\\), but leaves \\(\\sqrt{1 - u}\\) without a clean differential match for the remaining factor.",
+        "u = \\sqrt{1 - x^2}": "Differentiating gives \\(du = \\frac{-x}{\\sqrt{1 - x^2}} dx\\), leading to a more complicated integrand involving \\(u^2\\) in denominator.",
+        "u = \\arcsin x": "This substitution is useful for forms like \\(\\frac{1}{\\sqrt{1 - x^2}}\\), not for integrals with an explicit \\(x\\) factor and square root."
+      }
+    },
+    {
+      "id": "c3",
+      "topic": "series_convergence",
+      "prompt": "Does the series \\(\\sum_{n=1}^{\\infty} \\frac{(-1)^n}{\\sqrt{n}}\\) converge absolutely, conditionally, or diverge?",
+      "choices": [
+        "Absolutely convergent",
+        "Conditionally convergent",
+        "Divergent",
+        "Convergent only for n > 10"
+      ],
+      "correct_answer": "Conditionally convergent",
+      "explanation": "The alternating series test applies (terms decrease in absolute value to 0), so it converges; but \\(\\sum \\frac{1}{\\sqrt{n}}\\) is a p-series with \\(p = \\frac{1}{2} < 1\\), so it diverges — hence conditional convergence.",
+      "distractor_rationales": {
+        "Absolutely convergent": "Absolute convergence would require \\(\\sum \\frac{1}{\\sqrt{n}}\\) to converge, but it diverges as a p-series with \\(p \\leq 1\\).",
+        "Divergent": "Although the absolute series diverges, the alternating version satisfies the alternating series test and therefore converges.",
+        "Convergent only for n > 10": "Convergence is a property of the infinite tail; shifting the index does not change convergence behavior."
+      }
+    },
+    {
+      "id": "c4",
+      "topic": "multivariable_calculus",
+      "prompt": "Let \\(f(x,y) = x^2 y + \\sin(xy)\\). What is \\(\\frac{\\partial f}{\\partial x}\\) at \\((x,y) = (\\pi, 0)\\)?",
+      "choices": [
+        "0",
+        "π²",
+        "2π",
+        "−1"
+      ],
+      "correct_answer": "0",
+      "explanation": "Compute \\(f_x = 2xy + y \\cos(xy)\\). At \\((\\pi, 0)\\): \\(2\\pi \\cdot 0 + 0 \\cdot \\cos(0) = 0 + 0 = 0\\).",
+      "distractor_rationales": {
+        "π²": "This incorrectly evaluates \\(x^2 y\\) term as \\(\\pi^2\\) without multiplying by \\(y = 0\\).",
+        "2π": "This mistakenly treats \\(f_x\\) as \\(2x\\) alone, ignoring both the product rule on \\(x^2 y\\) and the chain rule on \\(\\sin(xy)\\).",
+        "−1": "This may arise from miscomputing \\(\\cos(xy)\\) as −1 and forgetting the prefactor \\(y = 0\\), making that term vanish."
+      }
+    },
+    {
+      "id": "c5",
+      "topic": "fundamental_theorem_of_calculus",
+      "prompt": "Let \\(F(x) = \\int_0^{x^2} e^{t^2} \\, dt\\). What is \\(F'(x)\\)?",
+      "choices": [
+        "e^{x^4}",
+        "2x e^{x^4}",
+        "e^{x^2}",
+        "2x e^{x^2}"
+      ],
+      "correct_answer": "2x e^{x^4}",
+      "explanation": "By the chain rule and FTC Part 1: if \\(F(x) = \\int_a^{u(x)} f(t)\\,dt\\), then \\(F'(x) = f(u(x)) \\cdot u'(x)\\). Here \\(u(x) = x^2\\), \\(u'(x) = 2x\\), and \\(f(u(x)) = e^{(x^2)^2} = e^{x^4}\\), so \\(F'(x) = 2x e^{x^4}\\).",
+      "distractor_rationales": {
+        "e^{x^4}": "This omits the derivative of the upper limit \\(x^2\\), violating the chain rule.",
+        "e^{x^2}": "This incorrectly substitutes \\(t = x\\) instead of \\(t = x^2\\) into the integrand.",
+        "2x e^{x^2}": "This mistakenly uses \\(x^2\\) as the exponent instead of \\((x^2)^2 = x^4\\)."
+      }
+    },
+    {
+      "id": "c6",
+      "topic": "differential_equations",
+      "prompt": "Which function satisfies the initial value problem \\(y' = 2y\\), \\(y(0) = 5\\)?",
+      "choices": [
+        "y = 5e^{2x}",
+        "y = 2e^{5x}",
+        "y = 5x^2",
+        "y = e^{2x} + 4"
+      ],
+      "correct_answer": "y = 5e^{2x}",
+      "explanation": "The ODE \\(y' = 2y\\) is separable with solution \\(y = Ce^{2x}\\); applying \\(y(0) = 5\\) gives \\(C = 5\\).",
+      "distractor_rationales": {
+        "y = 2e^{5x}": "This swaps the growth rate and initial value: derivative would be \\(10e^{5x} \\neq 2y\\).",
+        "y = 5x^2": "Its derivative is \\(10x\\), which is not proportional to \\(y\\) globally.",
+        "y = e^{2x} + 4": "Satisfies the ODE only if constant term vanishes; here \\(y' = 2e^{2x} \\neq 2(e^{2x}+4)\\)."
+      }
+    },
+    {
+      "id": "c7",
+      "topic": "parametric_and_polar",
+      "prompt": "A curve is given parametrically by \\(x(t) = \\cos t\\), \\(y(t) = \\sin^2 t\\), for \\(0 \\leq t \\leq 2\\pi\\). What is the Cartesian equation relating \\(x\\) and \\(y\\)?",
+      "choices": [
+        "y = 1 - x^2",
+        "y = x^2",
+        "y = \\sqrt{1 - x^2}",
+        "y = 1 + x^2"
+      ],
+      "correct_answer": "y = 1 - x^2",
+      "explanation": "Since \\(x = \\cos t\\), \\(x^2 = \\cos^2 t\\); and \\(y = \\sin^2 t = 1 - \\cos^2 t = 1 - x^2\\). Domain is \\(x \\in [-1,1]\\), consistent with cosine.",
+      "distractor_rationales": {
+        "y = x^2": "This would require \\(\\sin^2 t = \\cos^2 t\\), true only at isolated points, not identically.",
+        "y = \\sqrt{1 - x^2}": "This describes the upper semicircle, but \\(y = \\sin^2 t \\geq 0\\) and equals zero at \\(t = 0, \\pi, 2\\pi\\), matching \\(1 - x^2\\), not its square root.",
+        "y = 1 + x^2": "This is always ≥ 1, but \\(y = \\sin^2 t \\in [0,1]\\), so impossible."
+      }
+    },
+    {
+      "id": "c8",
+      "topic": "applications_of_integration",
+      "prompt": "What is the volume of the solid obtained by rotating the region bounded by \\(y = x^2\\), \\(y = 0\\), and \\(x = 2\\) about the y-axis?",
+      "choices": [
+        "8π",
+        "\\(\\frac{32π}{5}\\)",
+        "\\(\\frac{8π}{3}\\)",
+        "\\(\\frac{16π}{3}\\)"
+      ],
+      "correct_answer": "\\(\\frac{32π}{5}\\)",
+      "explanation": "Using the shell method about the y-axis: radius = x, height = x², so \\(V = 2\\pi \\int_0^2 x \\cdot x^2 \\, dx = 2\\pi \\int_0^2 x^3 \\, dx = 2\\pi \\left[ \\frac{x^4}{4} \\right]_0^2 = 2\\pi \\cdot \\frac{16}{4} = 8\\pi\\).",
+      "distractor_rationales": {
+        "\\(\\frac{32π}{5}\\)": "This is the volume when rotating about the x-axis (using disk method), not the y-axis.",
+        "\\(\\frac{8π}{3}\\)": "This results from incorrectly using the disk method with radius x² and integrating w.r.t. x without the 2π factor or misapplying geometry.",
+        "\\(\\frac{16π}{3}\\)": "This arises from misidentifying the height or radius in the shell method, e.g., using height = 2 − x² or omitting the x factor."
+      }
+    },
+    {
+      "id": "c9",
+      "topic": "vector_calculus",
+      "prompt": "Let \\(\\mathbf{F}(x,y) = \\langle -y, x \\rangle\\). What is the value of the line integral \\(\\oint_C \\mathbf{F} \\cdot d\\mathbf{r}\\), where \\(C\\) is the unit circle oriented counterclockwise?",
+      "choices": [
+        "0",
+        "2π",
+        "π",
+        "−2π"
+      ],
+      "correct_answer": "2π",
+      "explanation": "By Green’s Theorem, \\(\\oint_C P\\,dx + Q\\,dy = \\iint_D (Q_x - P_y)\\,dA\\). Here \\(P = -y\\), \\(Q = x\\), so \\(Q_x - P_y = 1 - (-1) = 2\\). Over unit disk \\(D\\), integral is \\(2 \\cdot \\text{area}(D) = 2 \\cdot \\pi = 2\\pi\\).",
+      "distractor_rationales": {
+        "0": "This would hold only if the vector field were conservative, but \\(\\nabla \\times \\mathbf{F} = 2 \\neq 0\\), so it’s not.",
+        "π": "This incorrectly uses half the area or miscomputes \\(Q_x - P_y\\) as 1 instead of 2.",
+        "−2π": "This results from reversing orientation (clockwise), but the problem specifies counterclockwise."
+      }
+    },
+    {
+      "id": "c10",
+      "topic": "sequences",
+      "prompt": "Consider the sequence \\(a_n = \\frac{n!}{n^n}\\). What is \\(\\lim_{n \\to \\infty} a_n\\)?",
+      "choices": [
+        "0",
+        "1",
+        "e^{−1}",
+        "∞"
+      ],
+      "correct_answer": "0",
+      "explanation": "By the ratio test for sequences: \\(\\frac{a_{n+1}}{a_n} = \\frac{(n+1)!}{(n+1)^{n+1}} \\cdot \\frac{n^n}{n!} = \\frac{n^n}{(n+1)^n} = \\left( \\frac{n}{n+1} \\right)^n = \\left( 1 - \\frac{1}{n+1} \\right)^n \\to e^{-1} < 1\\), so \\(a_n \\to 0\\). Alternatively, each factor in \\(\\frac{n!}{n^n} = \\prod_{k=1}^n \\frac{k}{n} \\leq \\frac{1}{n} \\to 0\\).",
+      "distractor_rationales": {
+        "1": "This falsely assumes factorial and exponential growth balance; in fact \\(n^n\\) dominates \\(n!\\) asymptotically.",
+        "e^{−1}": "This is the limit of the *ratio* \\(a_{n+1}/a_n\\), not of \\(a_n\\) itself.",
+        "∞": "This contradicts Stirling’s approximation \\(n! \\sim \\sqrt{2\\pi n}\\, (n/e)^n\\), which shows \\(a_n \\sim \\frac{\\sqrt{2\\pi n}}{e^n} \\to 0\\)."
+      }
+    }
+  ]
+}

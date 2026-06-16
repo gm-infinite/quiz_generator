@@ -27,13 +27,16 @@ python -m scripts.run_cli
 # smoke test the LLM wiring (one structured call)
 python -m scripts.smoke_test
 
-# tests (20 deterministic, no real API calls)
+# time end-to-end assessment latency
+python -m scripts.bench
+
+# tests (~76, deterministic, no real API calls)
 pytest -q
 pytest tests/test_orchestrator.py -q             # one file
 pytest tests/test_agents.py::test_evaluator_pass_by_absolute_threshold -q   # one test
 ```
 
-`OPENROUTER_API_KEY` is read from `.env` (preferred) or `.env.example` as a fallback — `llm/llm_client.py` loads both via `python-dotenv`. The key is required for `app.py`, `run_cli`, and `smoke_test`.
+`DASHSCOPE_API_KEY` is read from `.env` (preferred) or `.env.example` as a fallback — `llm/llm_client.py` loads both via `python-dotenv`. The client also accepts `OPENROUTER_API_KEY` / `LLM_API_KEY` for other providers. The key is required for `app.py`, `run_cli`, `smoke_test`, and `bench`.
 
 **Tests must never call the real API.** All tests in `tests/` use the `FakeLLMClient` fixture (`fake_client`) defined in `tests/conftest.py`, which returns canned Pydantic instances per schema. If you write a new test, pass `fake_client` (or instantiate `FakeLLMClient()` directly) — do not import `LLMClient`. If a test needs a specific LLM response, call `fake_client.set(SchemaType, lambda prompt: SchemaType(...))` to override the default for that schema only.
 
@@ -51,7 +54,7 @@ Three layers, each with a hard rule:
 
 - **`core/orchestrator.py`** owns the state machine and is the only entry point the UI/CLI calls. It **never calls the LLM** — it delegates to agents and inspects what they wrote to `SessionState`. Adding a new phase means adding a method here and updating `Phase`.
 - **`agents/*`** each do one thing and return the mutated `SessionState`. They construct prompts (from `llm/prompts.py`), call `self.client.generate_structured` or `generate_with_search`, and write results back. They never import each other.
-- **`llm/llm_client.py`** is the single chokepoint for every LLM call. Retries, model swaps, rate limiting all live here. Agents must not import the openai SDK directly. The client is provider-agnostic via OpenAI-compatible APIs — default is OpenRouter + Qwen, but swapping to DashScope, Ollama, or Hugging Face is just a `core/config.py` edit.
+- **`llm/llm_client.py`** is the single chokepoint for every LLM call. Retries, model swaps, rate limiting all live here. Agents must not import the openai SDK directly. The client is provider-agnostic via OpenAI-compatible APIs — default is Alibaba DashScope + Qwen (`LLM_API_BASE` points at `dashscope-intl.aliyuncs.com`), but swapping to OpenRouter, Ollama, or Hugging Face is just a `core/config.py` edit.
 
 The **UI (`ui/views.py`)** only imports `Orchestrator`, `SessionState`, `Phase`, and `config`. It must not import anything from `agents/`. UI events call orchestrator methods which return a new `SessionState`; a `@gr.render(inputs=state)` block re-renders the quiz/report area on every state change — that's how PRACTICE → PRACTICE loop-backs and PRACTICE → DONE transitions display automatically without manual visibility toggling.
 
@@ -61,7 +64,7 @@ Scoring, weak-topic detection, and the pass decision are **pure Python in `tools
 
 ### Pass rule
 
-In `agents/evaluator_agent.py`: pass iff `practice_score ≥ PASS_ABSOLUTE_THRESHOLD (0.70)` OR `(practice_score - diagnostic_score) ≥ PASS_IMPROVEMENT_DELTA (0.20)`. Thresholds live in `core/config.py`. The Orchestrator hard-caps at `MAX_PRACTICE_ROUNDS = 3` regardless of pass status.
+In `agents/evaluator_agent.py`: pass iff `practice_score ≥ PASS_ABSOLUTE_THRESHOLD (0.70)` OR `(practice_score - diagnostic_score) ≥ PASS_IMPROVEMENT_DELTA (0.20)`. Thresholds live in `core/config.py`. The round cap is per-session (`SessionState.max_rounds`, default `MAX_PRACTICE_ROUNDS = 3`); the user can override it at `start()`, clamped to 1–`MAX_PRACTICE_ROUNDS_LIMIT (5)`. The Orchestrator stops the loop once `iteration >= max_rounds` regardless of pass status.
 
 ### Loop-back behavior
 
@@ -71,7 +74,9 @@ When a practice round fails, `Orchestrator.submit_practice_answers` recomputes `
 
 `agents/question_generator.py` uses `ThreadPoolExecutor(max_workers=min(4, len(weak_topics)))` to fan LLM calls out per weak topic — wall time on multi-topic rounds is `~max(per-topic)` rather than `sum(per-topic)`. Results are sorted by topic index after the join so question order is deterministic. The agent **overwrites returned `id` and `topic` fields** (`p{iter}-{topicIdx}-{qIdx}`) to prevent collisions across topics/rounds and to force the topic tag to match the requested weak topic.
 
-Note: `generate_with_search` is currently an alias for `generate_structured` — Qwen has no native search tool. Real search grounding (via Tavily/Serper) is a Phase 2 follow-up.
+Cross-round repeats: the generator asks the LLM (via `avoid_prompts`) to skip prior stems, but it ignores that often enough that `tools/dedupe.py` applies a hard post-filter — normalized-stem exact match plus token-overlap threshold — to reject duplicates. Don't rely on the prompt instruction alone.
+
+Note: `generate_with_search(prompt, schema, search_query=...)` grounds generation with real web search via `tools/web_search.py` (Tavily or Serper, auto-detected from `TAVILY_API_KEY` / `SERPER_API_KEY` in `.env`). Snippets are injected above the prompt via `prompts.search_grounding_block`. No key, empty `search_query`, or any search failure degrades silently to plain `generate_structured` — search is never load-bearing, and tests must never hit the network (`_post_json` is always monkeypatched; see `tests/test_web_search.py`). Sessions with uploaded source material skip search entirely (questions must stay within the source). Search constants (`SEARCH_ENABLED`, `SEARCH_MAX_RESULTS`, etc.) live in `core/config.py`.
 
 ### Judge agent (post-loop)
 
@@ -88,10 +93,11 @@ User-visible strings say "initial test" / "test"; internal field names still say
 ## Stack
 
 - Python 3.11+ (developed on 3.13)
-- `openai` SDK (used against any OpenAI-compatible endpoint — default OpenRouter)
+- `openai` SDK (used against any OpenAI-compatible endpoint — default DashScope)
 - Pydantic v2, Gradio (6.x — note `theme` and `css` belong on `launch()`, not `Blocks()`)
-- In-memory `SessionState` only — no database, no persistence between sessions
-- Default model: `qwen/qwen3.6-plus:free` (`core/config.LLM_MODEL`) on OpenRouter. The free-tier catalog rotates — if the default 404s, pick a current `:free` Qwen model at https://openrouter.ai/models?max_price=0. Other options listed in `core/config.py`.
+- `pypdf` for uploaded-source extraction (`tools/file_loader.py`)
+- In-memory `SessionState` during a run; completed sessions are appended to `~/.quizmind/sessions.jsonl` by `tools/session_storage.py` — no database
+- Default model: `qwen-plus` (`core/config.LLM_MODEL`) on DashScope. `USE_STRICT_PARSE` is `False` because DashScope's OpenAI-compat endpoint doesn't reliably honor strict JSON mode — flip it on if you switch to a provider that does. Other model/provider options are commented in `core/config.py`.
 
 ## What NOT to do
 
