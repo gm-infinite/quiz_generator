@@ -1,0 +1,184 @@
+{
+  "questions": [
+    {
+      "id": "d1",
+      "topic": "Thermodynamics",
+      "prompt": "For a spontaneous process at constant temperature and pressure, which of the following must be true?",
+      "choices": [
+        "ΔG > 0",
+        "ΔG < 0",
+        "ΔH < 0",
+        "ΔS < 0"
+      ],
+      "correct_answer": "ΔG < 0",
+      "explanation": "A negative Gibbs free energy change (ΔG < 0) is the thermodynamic criterion for spontaneity at constant temperature and pressure.",
+      "distractor_rationales": {
+        "ΔG > 0": "This indicates a nonspontaneous process; ΔG must be negative for spontaneity.",
+        "ΔH < 0": "While exothermicity (ΔH < 0) often favors spontaneity, it is not sufficient on its own—entropy and temperature also matter.",
+        "ΔS < 0": "A negative entropy change opposes spontaneity but does not preclude it if ΔH is sufficiently negative and T is low."
+      }
+    },
+    {
+      "id": "d2",
+      "topic": "Quantum Chemistry",
+      "prompt": "What is the maximum number of electrons that can occupy the 4d subshell?",
+      "choices": [
+        "2",
+        "6",
+        "10",
+        "14"
+      ],
+      "correct_answer": "10",
+      "explanation": "The d subshell has 5 orbitals (mₗ = −2, −1, 0, +1, +2), each holding up to 2 electrons with opposite spins, giving 5 × 2 = 10 electrons.",
+      "distractor_rationales": {
+        "2": "That is the capacity of a single orbital, not the entire subshell.",
+        "6": "This is the capacity of the p subshell (3 orbitals), not d.",
+        "14": "This is the capacity of the f subshell (7 orbitals), not d."
+      }
+    },
+    {
+      "id": "d3",
+      "topic": "Acid-Base Chemistry",
+      "prompt": "Which of the following species is amphoteric?",
+      "choices": [
+        "NH₄⁺",
+        "HCO₃⁻",
+        "Cl⁻",
+        "H₃O⁺"
+      ],
+      "correct_answer": "HCO₃⁻",
+      "explanation": "HCO₃⁻ can act as both an acid (donating H⁺ to form CO₃²⁻) and a base (accepting H⁺ to form H₂CO₃), satisfying the definition of amphoteric.",
+      "distractor_rationales": {
+        "NH₄⁺": "It can only donate a proton (acidic), not accept one under normal aqueous conditions.",
+        "Cl⁻": "It is the conjugate base of a strong acid and has negligible proton affinity—it is not basic enough to be amphoteric.",
+        "H₃O⁺": "It functions exclusively as an acid (proton donor) in water and cannot accept another proton under standard conditions."
+      }
+    },
+    {
+      "id": "d4",
+      "topic": "Electrochemistry",
+      "prompt": "In a galvanic cell, where does oxidation occur?",
+      "choices": [
+        "Cathode",
+        "Salt bridge",
+        "Anode",
+        "External circuit"
+      ],
+      "correct_answer": "Anode",
+      "explanation": "Oxidation (loss of electrons) always occurs at the anode in both galvanic and electrolytic cells.",
+      "distractor_rationales": {
+        "Cathode": "Reduction occurs at the cathode—not oxidation.",
+        "Salt bridge": "The salt bridge maintains charge neutrality by ion migration; no redox reactions occur there.",
+        "External circuit": "Electrons flow *through* the external circuit, but oxidation occurs at the electrode surface (anode), not in the wire."
+      }
+    },
+    {
+      "id": "d5",
+      "topic": "Organic Reaction Mechanisms",
+      "prompt": "What type of mechanism is involved in the reaction of tert-butyl bromide with sodium methoxide in methanol?",
+      "choices": [
+        "SN1",
+        "SN2",
+        "E1",
+        "E2"
+      ],
+      "correct_answer": "E2",
+      "explanation": "Tert-butyl bromide is a tertiary alkyl halide, and sodium methoxide is a strong, bulky base in a polar protic solvent—favoring bimolecular elimination (E2) over substitution.",
+      "distractor_rationales": {
+        "SN1": "While tertiary halides *can* undergo SN1, methoxide is too strong a base and poor nucleophile in protic solvent, making elimination dominant.",
+        "SN2": "Steric hindrance prevents backside attack on the tertiary carbon—SN2 is effectively impossible here.",
+        "E1": "E1 requires weak base and often acidic conditions; strong base (CH₃O⁻) drives concerted E2 instead."
+      }
+    },
+    {
+      "id": "d6",
+      "topic": "Coordination Chemistry",
+      "prompt": "What is the coordination number of the central metal ion in [Fe(CN)₆]⁴⁻?",
+      "choices": [
+        "2",
+        "4",
+        "6",
+        "8"
+      ],
+      "correct_answer": "6",
+      "explanation": "There are six cyanide (CN⁻) ligands directly bonded to the Fe²⁺ ion, so the coordination number is 6.",
+      "distractor_rationales": {
+        "2": "Only applies to linear complexes like [Ag(NH₃)₂]⁺, not octahedral ones.",
+        "4": "Applies to tetrahedral or square planar complexes (e.g., [Ni(CN)₄]²⁻), not this hexacyano complex.",
+        "8": "Occurs in rare cases like square antiprism complexes (e.g., [Mo(CN)₈]⁴⁻), not here."
+      }
+    },
+    {
+      "id": "d7",
+      "topic": "Kinetics",
+      "prompt": "A reaction follows second-order kinetics overall and first-order with respect to each of two reactants. What happens to the rate if the concentration of one reactant is doubled while the other is held constant?",
+      "choices": [
+        "Rate unchanged",
+        "Rate doubles",
+        "Rate quadruples",
+        "Rate halves"
+      ],
+      "correct_answer": "Rate doubles",
+      "explanation": "Since rate = k[A][B], doubling [A] (with [B] constant) multiplies the rate by 2¹ = 2.",
+      "distractor_rationales": {
+        "Rate unchanged": "That would occur only if the reaction were zero-order in that reactant.",
+        "Rate quadruples": "That would happen only if the reaction were second-order in that reactant (e.g., rate = k[A]²).",
+        "Rate halves": "That would imply inverse first-order dependence, which contradicts the given rate law."
+      }
+    },
+    {
+      "id": "d8",
+      "topic": "Periodic Trends",
+      "prompt": "Which element has the highest first ionization energy among the following?",
+      "choices": [
+        "Al",
+        "Si",
+        "P",
+        "S"
+      ],
+      "correct_answer": "P",
+      "explanation": "Across period 3, ionization energy generally increases left to right, but P (electron configuration [Ne]3s²3p³) has a half-filled p-subshell, conferring extra stability and a slight increase over S ([Ne]3s²3p⁴), where electron–electron repulsion in the doubly occupied p-orbital lowers IE.",
+      "distractor_rationales": {
+        "Al": "Has lowest IE here due to larger atomic radius and electron shielding in the 3p¹ configuration.",
+        "Si": "Higher than Al but lower than P due to increasing effective nuclear charge without extra stability.",
+        "S": "Slightly lower than P due to e⁻–e⁻ repulsion in the 3p⁴ configuration destabilizing the neutral atom."
+      }
+    },
+    {
+      "id": "d9",
+      "topic": "Nuclear Chemistry",
+      "prompt": "Which type of radioactive decay results in no change to the mass number (A) but increases the atomic number (Z) by 1?",
+      "choices": [
+        "Alpha decay",
+        "Beta-minus decay",
+        "Beta-plus decay",
+        "Gamma decay"
+      ],
+      "correct_answer": "Beta-minus decay",
+      "explanation": "In beta-minus decay, a neutron converts to a proton + electron + antineutrino; A remains unchanged (same total nucleons), Z increases by 1.",
+      "distractor_rationales": {
+        "Alpha decay": "Decreases A by 4 and Z by 2.",
+        "Beta-plus decay": "Decreases Z by 1 (proton → neutron + positron), A unchanged.",
+        "Gamma decay": "Involves only energy release; no change to A or Z."
+      }
+    },
+    {
+      "id": "d10",
+      "topic": "States of Matter & Intermolecular Forces",
+      "prompt": "Why does ethanol (CH₃CH₂OH) have a higher boiling point than dimethyl ether (CH₃OCH₃), even though they are constitutional isomers?",
+      "choices": [
+        "Ethanol has greater London dispersion forces",
+        "Dimethyl ether has stronger dipole–dipole interactions",
+        "Ethanol forms intermolecular hydrogen bonds",
+        "Dimethyl ether is more polarizable"
+      ],
+      "correct_answer": "Ethanol forms intermolecular hydrogen bonds",
+      "explanation": "Ethanol contains an O–H bond, enabling strong hydrogen bonding between molecules; dimethyl ether lacks O–H or N–H bonds and cannot H-bond with itself, relying only on weaker dipole–dipole and dispersion forces.",
+      "distractor_rationales": {
+        "Ethanol has greater London dispersion forces": "Both molecules have identical molecular formulas (C₂H₆O) and similar molar masses, so dispersion forces are nearly equal.",
+        "Dimethyl ether has stronger dipole–dipole interactions": "Its dipole moment (~1.3 D) is actually slightly *smaller* than ethanol’s (~1.7 D), and critically, it lacks H-bonding capability.",
+        "Dimethyl ether is more polarizable": "Identical atoms and electron count mean polarizability is essentially identical; no basis for difference."
+      }
+    }
+  ]
+}

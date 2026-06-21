@@ -1,0 +1,184 @@
+{
+  "questions": [
+    {
+      "id": "d1",
+      "topic": "supervised learning",
+      "prompt": "In supervised learning, what is the primary role of the training labels?",
+      "choices": [
+        "To initialize model weights",
+        "To compute gradients during backpropagation",
+        "To evaluate generalization performance on unseen data",
+        "To guide the learning algorithm in adjusting parameters to minimize prediction error"
+      ],
+      "correct_answer": "To guide the learning algorithm in adjusting parameters to minimize prediction error",
+      "explanation": "Training labels provide the ground-truth targets that the model uses to compute loss and update parameters via optimization; they are essential for learning the mapping from inputs to outputs.",
+      "distractor_rationales": {
+        "To initialize model weights": "Model weights are typically initialized randomly or with heuristics (e.g., Xavier), independent of labels.",
+        "To compute gradients during backpropagation": "Gradients are computed *using* the loss, which depends on labels—but labels themselves do not directly compute gradients; the loss function mediates that relationship.",
+        "To evaluate generalization performance on unseen data": "Labels for *unseen* (test) data are used for evaluation, but training labels are not used for that purpose—they are only for learning."
+      }
+    },
+    {
+      "id": "d2",
+      "topic": "bias-variance tradeoff",
+      "prompt": "A model exhibits high variance and low bias. Which symptom is most characteristic?",
+      "choices": [
+        "Consistently underestimates target values across datasets",
+        "Performs well on training data but poorly on validation data",
+        "Fails to capture underlying trends even on training data",
+        "Insensitive to changes in training set composition"
+      ],
+      "correct_answer": "Performs well on training data but poorly on validation data",
+      "explanation": "High variance means the model fits noise in the training set, leading to overfitting—strong training performance but weak generalization to validation/test data.",
+      "distractor_rationales": {
+        "Consistently underestimates target values across datasets": "This reflects systematic error—characteristic of high bias, not high variance.",
+        "Fails to capture underlying trends even on training data": "Indicates underfitting due to high bias, e.g., using a linear model for nonlinear data.",
+        "Insensitive to changes in training set composition": "That describes low variance—high variance models are *highly* sensitive to training set variations."
+      }
+    },
+    {
+      "id": "d3",
+      "topic": "cross-validation",
+      "prompt": "Why is k-fold cross-validation preferred over a single train-validation split when estimating model performance?",
+      "choices": [
+        "It eliminates the need for a separate test set",
+        "It reduces computational cost compared to holdout validation",
+        "It provides a lower-variance estimate of generalization error by averaging over multiple splits",
+        "It guarantees optimal hyperparameter selection"
+      ],
+      "correct_answer": "It provides a lower-variance estimate of generalization error by averaging over multiple splits",
+      "explanation": "By evaluating performance across k different validation folds and averaging, k-fold CV yields a more robust and less split-dependent estimate of generalization error than a single random split.",
+      "distractor_rationales": {
+        "It eliminates the need for a separate test set": "A final held-out test set is still required for unbiased evaluation after model selection—CV does not replace it.",
+        "It reduces computational cost compared to holdout validation": "k-fold CV is *more* computationally expensive—it trains k models instead of one.",
+        "It guarantees optimal hyperparameter selection": "CV helps *estimate* performance for hyperparameter tuning but offers no guarantee of global optimality or avoidance of overfitting to the CV procedure itself."
+      }
+    },
+    {
+      "id": "d4",
+      "topic": "logistic regression",
+      "prompt": "In binary logistic regression, what does the output of the sigmoid function represent, assuming the model is well-calibrated?",
+      "choices": [
+        "The margin between classes",
+        "The log-odds of the positive class",
+        "The probability of the positive class",
+        "The Euclidean distance to the decision boundary"
+      ],
+      "correct_answer": "The probability of the positive class",
+      "explanation": "The sigmoid function maps the linear predictor to [0,1], and under proper calibration and correct specification, this output estimates P(y=1 | x).",
+      "distractor_rationales": {
+        "The margin between classes": "Margin is a concept from SVMs—not directly represented by sigmoid output.",
+        "The log-odds of the positive class": "That is the *input* to the sigmoid (i.e., the linear combination z = w^T x + b), not its output.",
+        "The Euclidean distance to the decision boundary": "Distance to decision boundary is proportional to |z|, not sigmoid(z); sigmoid(z) is nonlinear and bounded."
+      }
+    },
+    {
+      "id": "d5",
+      "topic": "gradient descent",
+      "prompt": "What is the primary purpose of the learning rate in gradient descent?",
+      "choices": [
+        "To scale feature values to unit variance",
+        "To determine the number of iterations before convergence",
+        "To control the step size taken in the direction of steepest descent",
+        "To regularize the loss function and prevent overfitting"
+      ],
+      "correct_answer": "To control the step size taken in the direction of steepest descent",
+      "explanation": "The learning rate multiplies the gradient vector to define how far to move along the negative gradient per update—too large causes divergence, too small causes slow convergence.",
+      "distractor_rationales": {
+        "To scale feature values to unit variance": "That is the role of feature normalization/preprocessing, not the learning rate.",
+        "To determine the number of iterations before convergence": "Iteration count is determined by stopping criteria (e.g., tolerance, max epochs), not the learning rate directly.",
+        "To regularize the loss function and prevent overfitting": "Regularization is achieved via penalty terms (e.g., L1/L2), not the learning rate."
+      }
+    },
+    {
+      "id": "d6",
+      "topic": "decision trees",
+      "prompt": "What criterion do standard greedy decision tree algorithms (e.g., CART) use to select the best split at a node?",
+      "choices": [
+        "Maximum mutual information between features and labels",
+        "Minimum reconstruction error in feature space",
+        "Maximum reduction in impurity (e.g., Gini or entropy)",
+        "Minimum pairwise distance between class centroids"
+      ],
+      "correct_answer": "Maximum reduction in impurity (e.g., Gini or entropy)",
+      "explanation": "CART and similar algorithms recursively choose splits that maximize impurity decrease—measured by Gini impurity or information gain (entropy reduction)—to create purer child nodes.",
+      "distractor_rationales": {
+        "Maximum mutual information between features and labels": "While related, mutual information is not the standard splitting metric in CART; information gain (a variant) is used in ID3/C4.5, but CART uses Gini or entropy-based impurity reduction.",
+        "Minimum reconstruction error in feature space": "Reconstruction error is relevant to PCA or autoencoders—not decision tree splitting.",
+        "Minimum pairwise distance between class centroids": "Centroid-based distances are used in clustering (e.g., k-means), not classification tree induction."
+      }
+    },
+    {
+      "id": "d7",
+      "topic": "overfitting",
+      "prompt": "Which of the following is a direct indicator of overfitting during model training?",
+      "choices": [
+        "Training loss steadily decreases while validation loss begins to increase",
+        "Both training and validation loss decrease monotonically",
+        "Training accuracy remains constant while validation accuracy improves",
+        "Validation loss drops below training loss early in training"
+      ],
+      "correct_answer": "Training loss steadily decreases while validation loss begins to increase",
+      "explanation": "This classic pattern signals that the model is memorizing training noise rather than learning generalizable patterns—hence overfitting.",
+      "distractor_rationales": {
+        "Both training and validation loss decrease monotonically": "This indicates healthy, generalizable learning—not overfitting.",
+        "Training accuracy remains constant while validation accuracy improves": "Unlikely and inconsistent with typical learning dynamics; constant training accuracy suggests stagnation, not overfitting.",
+        "Validation loss drops below training loss early in training": "This can occur due to dataset-specific noise or luck in early splits and is not diagnostic of overfitting."
+      }
+    },
+    {
+      "id": "d8",
+      "topic": "feature engineering",
+      "prompt": "Why is it generally unsafe to apply standardization (z-score normalization) to the entire dataset before train/validation/test split?",
+      "choices": [
+        "It increases model interpretability",
+        "It violates the independence assumption by leaking information from validation/test into training statistics",
+        "It makes gradient descent numerically unstable",
+        "It eliminates categorical features"
+      ],
+      "correct_answer": "It violates the independence assumption by leaking information from validation/test into training statistics",
+      "explanation": "Standardization requires computing mean and std — if done on the full dataset, those statistics incorporate validation/test data, causing data leakage and overly optimistic performance estimates.",
+      "distractor_rationales": {
+        "It increases model interpretability": "Standardization may aid interpretability in some contexts, but that is not a safety concern—and it doesn’t inherently increase it.",
+        "It makes gradient descent numerically unstable": "Standardization usually *improves* numerical stability and convergence speed.",
+        "It eliminates categorical features": "Standardization applies only to numeric features and leaves categoricals unchanged (unless encoded first)."
+      }
+    },
+    {
+      "id": "d9",
+      "topic": "ensemble methods",
+      "prompt": "How does bagging (e.g., Random Forest) primarily reduce model variance?",
+      "choices": [
+        "By enforcing sparsity in feature selection across trees",
+        "By training each model on a random subset of features *and* samples, then averaging predictions",
+        "By penalizing complex hypotheses via an L2 term in the loss",
+        "By sequentially correcting residuals of prior models"
+      ],
+      "correct_answer": "By training each model on a random subset of features *and* samples, then averaging predictions",
+      "explanation": "Bagging builds diverse base learners via bootstrap sampling (random subsets of samples) and often feature subsampling; aggregation (e.g., averaging or voting) smooths out individual model variance.",
+      "distractor_rationales": {
+        "By enforcing sparsity in feature selection across trees": "Sparsity is associated with L1 regularization—not core to bagging mechanics.",
+        "By penalizing complex hypotheses via an L2 term in the loss": "That describes ridge regression or weight decay—not bagging.",
+        "By sequentially correcting residuals of prior models": "That defines boosting (e.g., AdaBoost, Gradient Boosting), not bagging."
+      }
+    },
+    {
+      "id": "d10",
+      "topic": "confusion matrix",
+      "prompt": "In a binary classification confusion matrix, what does specificity measure?",
+      "choices": [
+        "Proportion of actual positives correctly identified",
+        "Proportion of predicted negatives that are actually negative",
+        "Proportion of actual negatives correctly identified",
+        "Proportion of predicted positives that are actually positive"
+      ],
+      "correct_answer": "Proportion of actual negatives correctly identified",
+      "explanation": "Specificity = True Negatives / (True Negatives + False Positives) — it quantifies how well the model identifies negative instances (i.e., avoids false alarms).",
+      "distractor_rationales": {
+        "Proportion of actual positives correctly identified": "That is sensitivity (recall), not specificity.",
+        "Proportion of predicted negatives that are actually negative": "That is the negative predictive value (NPV), which depends on prevalence.",
+        "Proportion of predicted positives that are actually positive": "That is precision (positive predictive value)."
+      }
+    }
+  ]
+}

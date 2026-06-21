@@ -1,0 +1,184 @@
+{
+  "questions": [
+    {
+      "id": "d1",
+      "topic": "Physical Geography: Mountain Ranges",
+      "prompt": "Which mountain range forms the natural boundary between Turkey's Black Sea Region and the Central Anatolian Plateau?",
+      "choices": [
+        "Taurus Mountains",
+        "Pontic Mountains",
+        "Anti-Taurus Mountains",
+        "Aegean Fold Belt"
+      ],
+      "correct_answer": "Pontic Mountains",
+      "explanation": "The Pontic Mountains (also known as the North Anatolian Mountains) run parallel to the Black Sea coast and act as a formidable barrier separating the humid, forested Black Sea Region from the semi-arid Central Anatolian Plateau.",
+      "distractor_rationales": {
+        "Taurus Mountains": "The Taurus Mountains lie south of the Central Anatolian Plateau and separate it from the Mediterranean Region, not the Black Sea Region.",
+        "Anti-Taurus Mountains": "The Anti-Taurus Mountains are an eastern extension of the Taurus system in eastern Anatolia and do not border the Black Sea Region.",
+        "Aegean Fold Belt": "This tectonic feature underlies western Turkey’s Aegean coast and is unrelated to the Black Sea–Central Anatolia transition."
+      }
+    },
+    {
+      "id": "d2",
+      "topic": "Climate Zones",
+      "prompt": "Which climate type, according to the Köppen classification, predominates in the coastal areas of the Turkish Aegean Region?",
+      "choices": [
+        "Csa (Hot-summer Mediterranean)",
+        "Csb (Warm-summer Mediterranean)",
+        "BSk (Cold Semi-Arid)",
+        "Dsa (Hot-summer Humid Continental)"
+      ],
+      "correct_answer": "Csa (Hot-summer Mediterranean)",
+      "explanation": "The Aegean coast—including cities like İzmir and Bodrum—experiences hot, dry summers and mild, rainy winters, fitting the Csa classification, which requires the warmest month above 22°C and at least four dry summer months.",
+      "distractor_rationales": {
+        "Csb (Warm-summer Mediterranean)": "Csb occurs in cooler maritime locations like parts of northern California or coastal Chile; the Aegean coast is too warm in summer for Csb.",
+        "BSk (Cold Semi-Arid)": "BSk applies to inland steppe zones like Konya Plain—not the moist, winter-rainfall Aegean coast.",
+        "Dsa (Hot-summer Humid Continental)": "Dsa requires severe winters with average temperatures below −3°C in the coldest month, which does not occur along the Aegean coast."
+      }
+    },
+    {
+      "id": "d3",
+      "topic": "Hydrology: Major Rivers",
+      "prompt": "Which river originates in eastern Turkey, flows through Syria and Iraq, and is shared by Turkey as part of the transboundary Tigris–Euphrates basin?",
+      "choices": [
+        "Kızılırmak",
+        "Sakarya",
+        "Euphrates",
+        "Yesilırmak"
+      ],
+      "correct_answer": "Euphrates",
+      "explanation": "The Euphrates River rises in the Armenian Highlands of eastern Turkey (near Elazığ), then flows southeast through Syria and Iraq to join the Tigris, forming the Shatt al-Arab before entering the Persian Gulf.",
+      "distractor_rationales": {
+        "Kızılırmak": "Kızılırmak is Turkey’s longest wholly internal river, flowing into the Black Sea without crossing any international border.",
+        "Sakarya": "Sakarya is another major internal Turkish river, draining central Anatolia into the Black Sea.",
+        "Yesilırmak": "Yesilırmak (‘Green River’) also flows entirely within Turkey, entering the Black Sea near Samsun."
+      }
+    },
+    {
+      "id": "d4",
+      "topic": "Geopolitical Boundaries",
+      "prompt": "Which country shares the longest land border with Turkey?",
+      "choices": [
+        "Iran",
+        "Syria",
+        "Iraq",
+        "Georgia"
+      ],
+      "correct_answer": "Iran",
+      "explanation": "Turkey shares approximately 5,360 km of total land borders, of which the Iran–Turkey border extends about 534 km — longer than Syria (~822 km), Iraq (~367 km), Georgia (~273 km), Bulgaria (~269 km), and Greece (~206 km).",
+      "distractor_rationales": {
+        "Syria": "Though highly visible geopolitically, the Syria–Turkey border (~822 km) is shorter than Iran’s.",
+        "Iraq": "The Iraq–Turkey border is only ~367 km long and lies entirely in southeastern Anatolia.",
+        "Georgia": "The Georgia–Turkey border is ~273 km and confined to Turkey’s northeastern corner."
+      }
+    },
+    {
+      "id": "d5",
+      "topic": "Volcanism & Tectonics",
+      "prompt": "Mount Ararat, Turkey’s highest peak, is part of which larger volcanic complex and tectonic setting?",
+      "choices": [
+        "Anatolian Plate’s stable craton",
+        "East Anatolian Fault Zone uplift",
+        "Armenian Highland volcanic plateau",
+        "North Anatolian Fault shear zone"
+      ],
+      "correct_answer": "Armenian Highland volcanic plateau",
+      "explanation": "Mount Ararat (5,137 m) is a dormant compound volcano situated on the northwestern edge of the Armenian Highland, a broad volcanic plateau formed by Cenozoic subduction and continental collision in the Lesser Caucasus region.",
+      "distractor_rationales": {
+        "Anatolian Plate’s stable craton": "Turkey lacks a Precambrian craton; the Anatolian 'plate' is a seismically active microplate bounded by major faults, not a stable cratonic block.",
+        "East Anatolian Fault Zone uplift": "While the East Anatolian Fault is nearby, Ararat is not a tectonic uplift but a stratovolcano built by magmatic activity.",
+        "North Anatolian Fault shear zone": "The North Anatolian Fault runs west–east across northern Turkey and is unrelated to Ararat’s location or origin in far eastern Anatolia."
+      }
+    },
+    {
+      "id": "d6",
+      "topic": "Agricultural Geography",
+      "prompt": "Which region of Turkey is the leading producer of hazelnuts, accounting for over 70% of global supply?",
+      "choices": [
+        "Southeastern Anatolia",
+        "Marmara Region",
+        "Black Sea Region",
+        "Central Anatolia"
+      ],
+      "correct_answer": "Black Sea Region",
+      "explanation": "Turkey produces ~75% of the world’s hazelnuts, with over 80% grown in the humid, temperate coastal belt of the eastern and western Black Sea Region—especially in Giresun, Ordu, and Trabzon provinces.",
+      "distractor_rationales": {
+        "Southeastern Anatolia": "This region specializes in cotton, wheat, and pistachios—not hazelnuts, which require high humidity and mild winters.",
+        "Marmara Region": "Marmara is Turkey’s industrial and demographic core, producing fruits like cherries and olives, but not hazelnuts at scale.",
+        "Central Anatolia": "Its semi-arid steppe climate is unsuitable for hazelnut cultivation, which needs abundant rainfall and no hard frost during flowering."
+      }
+    },
+    {
+      "id": "d7",
+      "topic": "Coastal & Marine Geography",
+      "prompt": "What geographic feature separates the European and Asian portions of Turkey in the Sea of Marmara?",
+      "choices": [
+        "Bosphorus Strait",
+        "Dardanelles Strait",
+        "Çanakkale Strait",
+        "Prince Islands Archipelago"
+      ],
+      "correct_answer": "Bosphorus Strait",
+      "explanation": "The Bosphorus Strait connects the Black Sea to the Sea of Marmara and serves as the conventional boundary between Thrace (Europe) and Anatolia (Asia); Istanbul straddles both sides.",
+      "distractor_rationales": {
+        "Dardanelles Strait": "The Dardanelles (also called Çanakkale Strait) connects the Sea of Marmara to the Aegean Sea and lies entirely within Asian Turkey, not dividing continents.",
+        "Çanakkale Strait": "This is an alternate name for the Dardanelles and thus incorrect for the Europe–Asia divide.",
+        "Prince Islands Archipelago": "These islands lie in the Sea of Marmara but are geographically part of Asia and do not constitute a continental boundary."
+      }
+    },
+    {
+      "id": "d8",
+      "topic": "Geomorphology: Lake Systems",
+      "prompt": "Lake Van, Turkey’s largest lake by surface area, is notable for being what type of lake?",
+      "choices": [
+        "Glacial cirque lake",
+        "Tectonic graben lake",
+        "Volcanic crater lake (caldera)",
+        "Endorheic soda lake"
+      ],
+      "correct_answer": "Endorheic soda lake",
+      "explanation": "Lake Van is the world’s largest soda lake (highly alkaline, sodium carbonate–dominated), fed by rivers but having no outlet—making it endorheic—and lying in a closed tectonic basin in eastern Anatolia.",
+      "distractor_rationales": {
+        "Glacial cirque lake": "No significant Pleistocene glaciation occurred in the Lake Van basin; its basin formed tectonically, not glacially.",
+        "Tectonic graben lake": "While tectonically subsided, Lake Van is not a classic graben lake like Lake Baikal; its defining hydrochemical trait is endorheism and alkalinity.",
+        "Volcanic crater lake (caldera)": "Lake Van occupies a complex pull-apart basin, not a volcanic caldera—though it is surrounded by volcanoes like Nemrut."
+      }
+    },
+    {
+      "id": "d9",
+      "topic": "Population & Urban Geography",
+      "prompt": "Which Turkish city is located furthest west and serves as the country’s primary port on the Aegean Sea?",
+      "choices": [
+        "İzmir",
+        "Çeşme",
+        "Antalya",
+        "Mersin"
+      ],
+      "correct_answer": "İzmir",
+      "explanation": "İzmir is Turkey’s third-largest city and its westernmost major metropolitan center, with a deep natural harbor and the country’s second-busiest port after Istanbul—strategically anchoring the Aegean coast.",
+      "distractor_rationales": {
+        "Çeşme": "Çeşme is a resort town on a peninsula west of İzmir, but it is not a major port city and lacks İzmir’s urban scale, infrastructure, or cargo capacity.",
+        "Antalya": "Antalya is a major Mediterranean port, but lies on the southern coast—hundreds of kilometers east of İzmir.",
+        "Mersin": "Mersin is a large Mediterranean port city, but located on the southern (Cilician) coast, significantly farther east than İzmir."
+      }
+    },
+    {
+      "id": "d10",
+      "topic": "Energy Geography & Natural Resources",
+      "prompt": "Turkey’s largest proven reserves of which mineral resource are concentrated in the Ergani district of eastern Anatolia?",
+      "choices": [
+        "Chromium",
+        "Boron",
+        "Copper",
+        "Iron ore"
+      ],
+      "correct_answer": "Chromium",
+      "explanation": "The Ergani矿区 (mining district) in Diyarbakır Province hosts Turkey’s largest and historically most important chromium deposits, supplying much of the country’s ferrochrome production since the 1930s.",
+      "distractor_rationales": {
+        "Boron": "Turkey holds >70% of the world’s boron reserves—but these are concentrated in the Eskişehir, Kütahya, and Balıkesir regions of western Anatolia, not Ergani.",
+        "Copper": "Major copper deposits occur at Murgul (Artvin) and Küre (Kastamonu) in northern Turkey—not Ergani.",
+        "Iron ore": "Turkey’s largest iron ore reserves are in Divriği (Sivas) and Hekimhan (Malatya), not eastern Ergani."
+      }
+    }
+  ]
+}

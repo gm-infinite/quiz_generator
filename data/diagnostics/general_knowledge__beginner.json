@@ -1,0 +1,184 @@
+{
+  "questions": [
+    {
+      "id": "d1",
+      "topic": "world geography",
+      "prompt": "Which of these countries is landlocked?",
+      "choices": [
+        "Brazil",
+        "Switzerland",
+        "Japan",
+        "Egypt"
+      ],
+      "correct_answer": "Switzerland",
+      "explanation": "Switzerland is surrounded entirely by land (bordered by Germany, France, Italy, Austria, and Liechtenstein) and has no coastline.",
+      "distractor_rationales": {
+        "Brazil": "Brazil has an extensive Atlantic coastline stretching over 7,000 km.",
+        "Japan": "Japan is an island nation in the Pacific Ocean with no land borders.",
+        "Egypt": "Egypt has coastlines on both the Mediterranean Sea and the Red Sea."
+      }
+    },
+    {
+      "id": "d2",
+      "topic": "biology",
+      "prompt": "Which organ produces insulin in the human body?",
+      "choices": [
+        "Liver",
+        "Pancreas",
+        "Kidney",
+        "Stomach"
+      ],
+      "correct_answer": "Pancreas",
+      "explanation": "The pancreas contains beta cells in the islets of Langerhans that synthesize and secrete insulin to regulate blood glucose.",
+      "distractor_rationales": {
+        "Liver": "The liver stores and releases glucose but does not produce insulin.",
+        "Kidney": "The kidneys filter blood and regulate electrolytes but do not produce insulin.",
+        "Stomach": "The stomach secretes digestive enzymes and acid, not hormones like insulin."
+      }
+    },
+    {
+      "id": "d3",
+      "topic": "astronomy",
+      "prompt": "Which planet is known as the Red Planet?",
+      "choices": [
+        "Venus",
+        "Jupiter",
+        "Mars",
+        "Saturn"
+      ],
+      "correct_answer": "Mars",
+      "explanation": "Mars appears reddish due to iron oxide (rust) prevalent in its surface soil and dust.",
+      "distractor_rationales": {
+        "Venus": "Venus appears bright white-yellow due to its thick, reflective cloud cover.",
+        "Jupiter": "Jupiter is striped with orange, brown, and white bands caused by atmospheric gases and storms.",
+        "Saturn": "Saturn has a pale gold hue from ammonia crystals in its upper atmosphere."
+      }
+    },
+    {
+      "id": "d4",
+      "topic": "literature",
+      "prompt": "Who wrote 'Romeo and Juliet'?",
+      "choices": [
+        "Charles Dickens",
+        "William Shakespeare",
+        "Jane Austen",
+        "Mark Twain"
+      ],
+      "correct_answer": "William Shakespeare",
+      "explanation": "'Romeo and Juliet' is a tragedy written by William Shakespeare around 1595–1596.",
+      "distractor_rationales": {
+        "Charles Dickens": "Dickens wrote 'Oliver Twist' and 'A Tale of Two Cities', not Shakespearean drama.",
+        "Jane Austen": "Austen authored novels like 'Pride and Prejudice'; her works are 19th-century social fiction.",
+        "Mark Twain": "Twain wrote 'Adventures of Huckleberry Finn'; he was a 19th-century American humorist."
+      }
+    },
+    {
+      "id": "d5",
+      "topic": "history",
+      "prompt": "In which year did World War II end?",
+      "choices": [
+        "1918",
+        "1945",
+        "1939",
+        "1953"
+      ],
+      "correct_answer": "1945",
+      "explanation": "World War II ended in Europe on May 8, 1945 (V-E Day) and globally on September 2, 1945 (V-J Day) after Japan's surrender.",
+      "distractor_rationales": {
+        "1918": "1918 marks the end of World War I, not World War II.",
+        "1939": "1939 is the year World War II began with Germany’s invasion of Poland.",
+        "1953": "1953 is the year the Korean War armistice was signed; it is unrelated to WWII."
+      }
+    },
+    {
+      "id": "d6",
+      "topic": "chemistry",
+      "prompt": "What is the chemical symbol for gold?",
+      "choices": [
+        "Go",
+        "Gd",
+        "Au",
+        "Ag"
+      ],
+      "correct_answer": "Au",
+      "explanation": "Au comes from the Latin word 'aurum', meaning gold.",
+      "distractor_rationales": {
+        "Go": "Go is not a valid chemical symbol; no element has this abbreviation.",
+        "Gd": "Gd is the symbol for gadolinium, a rare-earth metal.",
+        "Ag": "Ag is the symbol for silver, from the Latin 'argentum'."
+      }
+    },
+    {
+      "id": "d7",
+      "topic": "music",
+      "prompt": "How many strings does a standard violin have?",
+      "choices": [
+        "Three",
+        "Four",
+        "Five",
+        "Six"
+      ],
+      "correct_answer": "Four",
+      "explanation": "A standard violin has four strings tuned to G, D, A, and E (from lowest to highest pitch).",
+      "distractor_rationales": {
+        "Three": "Three-stringed violins exist only in rare historical or experimental variants, not standard.",
+        "Five": "Five-string violins are uncommon hybrids used in some folk or jazz contexts, not standard.",
+        "Six": "Six-stringed instruments like the guitar are common, but violins are traditionally four-stringed."
+      }
+    },
+    {
+      "id": "d8",
+      "topic": "art",
+      "prompt": "Who painted 'The Starry Night'?",
+      "choices": [
+        "Pablo Picasso",
+        "Vincent van Gogh",
+        "Claude Monet",
+        "Leonardo da Vinci"
+      ],
+      "correct_answer": "Vincent van Gogh",
+      "explanation": "'The Starry Night' was painted by Vincent van Gogh in 1889 while he was at the Saint-Paul-de-Mausole asylum in France.",
+      "distractor_rationales": {
+        "Pablo Picasso": "Picasso created 'Guernica' and pioneered Cubism, but not 'The Starry Night'.",
+        "Claude Monet": "Monet was an Impressionist known for 'Water Lilies', not this Post-Impressionist work.",
+        "Leonardo da Vinci": "Da Vinci painted 'Mona Lisa' and 'The Last Supper' during the Renaissance, centuries earlier."
+      }
+    },
+    {
+      "id": "d9",
+      "topic": "physics",
+      "prompt": "What unit is used to measure electric current?",
+      "choices": [
+        "Volt",
+        "Watt",
+        "Ampere",
+        "Ohm"
+      ],
+      "correct_answer": "Ampere",
+      "explanation": "The ampere (symbol: A) is the SI base unit for electric current, defined as flow of one coulomb per second.",
+      "distractor_rationales": {
+        "Volt": "The volt measures electric potential or voltage, not current.",
+        "Watt": "The watt measures power—the rate of energy transfer—not current.",
+        "Ohm": "The ohm measures electrical resistance, not current."
+      }
+    },
+    {
+      "id": "d10",
+      "topic": "food and nutrition",
+      "prompt": "Which of these foods is a good source of vitamin C?",
+      "choices": [
+        "Carrot",
+        "Banana",
+        "Orange",
+        "Cheese"
+      ],
+      "correct_answer": "Orange",
+      "explanation": "Oranges are rich in vitamin C, providing over 60 mg per medium fruit—nearly 100% of the daily recommended intake.",
+      "distractor_rationales": {
+        "Carrot": "Carrots are high in beta-carotene (vitamin A precursor), not vitamin C.",
+        "Banana": "Bananas provide potassium and vitamin B6, but very little vitamin C.",
+        "Cheese": "Cheese is rich in calcium and protein but contains negligible vitamin C."
+      }
+    }
+  ]
+}

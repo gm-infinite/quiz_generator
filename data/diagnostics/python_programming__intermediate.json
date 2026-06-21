@@ -1,0 +1,184 @@
+{
+  "questions": [
+    {
+      "id": "d1",
+      "topic": "list comprehensions",
+      "prompt": "What is the output of the following code?\\n[x * 2 for x in range(3)]",
+      "choices": [
+        "[0, 2, 4]",
+        "[1, 2, 3]",
+        "[0, 1, 2, 3]",
+        "[2, 4, 6]"
+      ],
+      "correct_answer": "[0, 2, 4]",
+      "explanation": "range(3) produces 0, 1, 2; multiplying each by 2 yields 0, 2, 4, resulting in the list [0, 2, 4].",
+      "distractor_rationales": {
+        "[1, 2, 3]": "This would result from using range(1, 4), not range(3).",
+        "[0, 1, 2, 3]": "This is just range(4); no multiplication or comprehension transformation is applied.",
+        "[2, 4, 6]": "This assumes range(3) yields [1, 2, 3], but range(3) starts at 0."
+      }
+    },
+    {
+      "id": "d2",
+      "topic": "exception handling",
+      "prompt": "What happens when this code executes?\\ntry:\\n    x = 1 / 0\\nexcept ValueError:\\n    print('ValueError')\\nelse:\\n    print('No error')\\nfinally:\\n    print('Done')",
+      "choices": [
+        "Prints 'Done' only",
+        "Prints 'ValueError' then 'Done'",
+        "Prints 'No error' then 'Done'",
+        "Prints 'Done' after raising ZeroDivisionError"
+      ],
+      "correct_answer": "Prints 'Done' after raising ZeroDivisionError",
+      "explanation": "ZeroDivisionError is not caught by except ValueError, so it propagates; finally always runs, printing 'Done', then the unhandled exception terminates execution.",
+      "distractor_rationales": {
+        "Prints 'Done' only": "The 'Done' prints, but the unhandled ZeroDivisionError still raises and halts execution afterward — it's not suppressed.",
+        "Prints 'ValueError' then 'Done'": "ValueError is not raised here; the error is ZeroDivisionError, which is not handled by that except clause.",
+        "Prints 'No error' then 'Done'": "The else block only runs if no exception occurs; here, 1/0 raises ZeroDivisionError, so else is skipped."
+      }
+    },
+    {
+      "id": "d3",
+      "topic": "mutable vs immutable objects",
+      "prompt": "After executing the following code, what is the value of `y`?\\nx = [1, 2, 3]\\ny = x\\ny.append(4)",
+      "choices": [
+        "[1, 2, 3]",
+        "[1, 2, 3, 4]",
+        "None",
+        "[4]"
+      ],
+      "correct_answer": "[1, 2, 3, 4]",
+      "explanation": "Lists are mutable and passed by object reference; assigning `y = x` makes `y` refer to the same list object, so `append(4)` modifies both `x` and `y`.",
+      "distractor_rationales": {
+        "[1, 2, 3]": "This would be true only if lists were immutable or if a copy was made (e.g., `y = x.copy()`).",
+        "None": "list.append() returns None, but that doesn’t affect the value of `y`, which still refers to the modified list.",
+        "[4]": "This incorrectly assumes `y` was reassigned or that `append()` replaces the list rather than mutating it in place."
+      }
+    },
+    {
+      "id": "d4",
+      "topic": "function arguments and unpacking",
+      "prompt": "What is printed by this code?\\ndef f(a, b=2, *args, **kwargs):\\n    return len(args) + len(kwargs)\\nprint(f(1, 3, 4, 5, x=6, y=7))",
+      "choices": [
+        "2",
+        "3",
+        "4",
+        "5"
+      ],
+      "correct_answer": "4",
+      "explanation": "The call f(1, 3, 4, 5, x=6, y=7) assigns a=1, b=3, args=(4, 5) → length 2, and kwargs={'x':6, 'y':7} → length 2; thus the function returns 2 + 2 = 4.",
+      "distractor_rationales": {
+        "2": "This would be the result if only len(args) were returned, ignoring kwargs.",
+        "3": "There is no combination of argument counts here that sums to 3 — args has two values, kwargs has two keys.",
+        "5": "This overcounts — perhaps by including a or b in the sum, but the function only sums len(args) and len(kwargs)."
+      }
+    },
+    {
+      "id": "d5",
+      "topic": "decorators",
+      "prompt": "What does the following decorator do when applied to a function?\\ndef my_dec(func):\\n    def wrapper(*args, **kwargs):\\n        print('Start')\\n        result = func(*args, **kwargs)\\n        print('End')\\n        return result\\n    return wrapper",
+      "choices": [
+        "Adds logging before and after function execution",
+        "Caches the function's return value",
+        "Limits the function to one call",
+        "Validates input types"
+      ],
+      "correct_answer": "Adds logging before and after function execution",
+      "explanation": "The wrapper prints 'Start' before calling the original function and 'End' after, then returns its result — classic logging behavior.",
+      "distractor_rationales": {
+        "Caches the function's return value": "No memoization logic (e.g., no dictionary lookup or storage) is present.",
+        "Limits the function to one call": "The wrapper executes on every call; there's no state or counter to restrict invocation.",
+        "Validates input types": "No isinstance checks or type assertions appear in the wrapper."
+      }
+    },
+    {
+      "id": "d6",
+      "topic": "lambda functions",
+      "prompt": "Which of these is equivalent to the lambda expression `lambda x, y: x if x > y else y`?",
+      "choices": [
+        "def max_func(x, y): return x if x > y else y",
+        "def max_func(x, y): return max(x, y)",
+        "lambda x, y: max(x, y)",
+        "def max_func(x, y): if x > y: return x else: return y"
+      ],
+      "correct_answer": "def max_func(x, y): return x if x > y else y",
+      "explanation": "This function exactly replicates the conditional expression logic and signature of the lambda — same parameters, same ternary return.",
+      "distractor_rationales": {
+        "def max_func(x, y): return max(x, y)": "While functionally similar, it uses a built-in instead of the explicit conditional logic.",
+        "lambda x, y: max(x, y)": "This is a different lambda — it delegates to max(), not a direct ternary.",
+        "def max_func(x, y): if x > y: return x else: return y": "This is logically equivalent but uses a full if-statement, not the compact ternary expression like the lambda."
+      }
+    },
+    {
+      "id": "d7",
+      "topic": "context managers",
+      "prompt": "What is guaranteed by using a file opened with `with open('file.txt') as f:`?",
+      "choices": [
+        "The file is closed automatically even if an exception occurs",
+        "The file is read-only",
+        "The file is buffered in memory for faster access",
+        "The file is locked for exclusive process access"
+      ],
+      "correct_answer": "The file is closed automatically even if an exception occurs",
+      "explanation": "The `with` statement ensures `__exit__` (which closes the file) is called regardless of normal completion or exception, providing deterministic cleanup.",
+      "distractor_rationales": {
+        "The file is read-only": "File mode defaults to 'r', but it can be explicitly opened in write mode — read-only is not guaranteed by `with` itself.",
+        "The file is buffered in memory for faster access": "Buffering is implementation-dependent and configurable (e.g., via `buffering=` parameter), not guaranteed by `with`.",
+        "The file is locked for exclusive process access": "`with` provides no inter-process locking; that requires explicit `threading.Lock` or OS-level mechanisms."
+      }
+    },
+    {
+      "id": "d8",
+      "topic": "dunder methods",
+      "prompt": "Which dunder method is invoked when you use the `==` operator on two instances of a custom class?",
+      "choices": [
+        "__eq__",
+        "__compare__",
+        "__equals__",
+        "__is__"
+      ],
+      "correct_answer": "__eq__",
+      "explanation": "The `==` operator calls the `__eq__` method; implementing it allows custom equality logic.",
+      "distractor_rationales": {
+        "__compare__": "Python has no __compare__ method; comparison is handled by individual rich comparison methods like __eq__, __lt__, etc.",
+        "__equals__": "This is not a valid Python dunder method name; the correct name is __eq__.",
+        "__is__": "There is no __is__ method; `is` tests identity and cannot be overridden."
+      }
+    },
+    {
+      "id": "d9",
+      "topic": "generators",
+      "prompt": "What is the type of the object returned by calling `def gen(): yield 1; g = gen()`?",
+      "choices": [
+        "<class 'generator'>",
+        "<class 'function'>",
+        "<class 'iterable'>",
+        "<class 'iterator'>"
+      ],
+      "correct_answer": "<class 'generator'>",
+      "explanation": "A function containing `yield` is a generator function; calling it returns a generator object, whose type is `generator`.",
+      "distractor_rationales": {
+        "<class 'function'>": "The call `gen()` executes the function and returns a generator — it does not return the function object itself.",
+        "<class 'iterable'>": "While generators are iterable, their precise type is `generator`; `iterable` is an abstract concept, not a concrete type.",
+        "<class 'iterator'>": "Generators are *also* iterators (they implement `__iter__` and `__next__`), but `type(g)` specifically returns `<class 'generator'>`."
+      }
+    },
+    {
+      "id": "d10",
+      "topic": "name resolution (LEGB rule)",
+      "prompt": "What is printed by this code?\\nx = 'global'\\ndef outer():\\n    x = 'outer'\\n    def inner():\\n        nonlocal x\\n        x = 'inner'\\n    inner()\\n    print(x)\\nouter()",
+      "choices": [
+        "global",
+        "outer",
+        "inner",
+        "UnboundLocalError"
+      ],
+      "correct_answer": "inner",
+      "explanation": "The `nonlocal x` declaration in `inner()` binds to the `x` in `outer()`, so `x = 'inner'` modifies that variable; `outer()` then prints the updated value.",
+      "distractor_rationales": {
+        "global": "The `nonlocal` statement prevents lookup in the global scope — it explicitly targets the enclosing (non-global) scope.",
+        "outer": "That would be printed only if `x` were unchanged — but it is reassigned inside `inner()` via `nonlocal`.",
+        "UnboundLocalError": "This would occur if `x` were referenced before assignment *without* `nonlocal` or `global`; here, `nonlocal` correctly declares intent."
+      }
+    }
+  ]
+}

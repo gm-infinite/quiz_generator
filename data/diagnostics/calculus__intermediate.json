@@ -1,0 +1,184 @@
+{
+  "questions": [
+    {
+      "id": "c1",
+      "topic": "limits",
+      "prompt": "What is \\(\\lim_{x \\to 0} \\frac{\\sin(3x)}{x}\\)?",
+      "choices": [
+        "0",
+        "1",
+        "3",
+        "undefined"
+      ],
+      "correct_answer": "3",
+      "explanation": "Using the standard limit \\(\\lim_{u \\to 0} \\frac{\\sin u}{u} = 1\\), substitute \\(u = 3x\\): \\(\\frac{\\sin(3x)}{x} = 3 \\cdot \\frac{\\sin(3x)}{3x} \\to 3 \\cdot 1 = 3\\).",
+      "distractor_rationales": {
+        "0": "This incorrectly assumes \\(\\sin(3x) \\to 0\\) implies the whole ratio vanishes, ignoring the linear denominator scaling.",
+        "1": "This mistakenly applies the basic \\(\\frac{\\sin x}{x} \\to 1\\) limit without accounting for the coefficient 3 in the argument.",
+        "undefined": "The function is defined near 0 (except at 0) and has a removable discontinuity; the limit exists and is finite."
+      }
+    },
+    {
+      "id": "c2",
+      "topic": "derivatives",
+      "prompt": "If \\(f(x) = e^{x^2}\\), what is \\(f'(x)\\)?",
+      "choices": [
+        "\\(e^{x^2}\\)",
+        "\\(2x e^{x^2}\\)",
+        "\\(x^2 e^{x^2 - 1}\\)",
+        "\\(2x e^{x}\\)"
+      ],
+      "correct_answer": "\\(2x e^{x^2}\\)",
+      "explanation": "Apply the chain rule: derivative of outer function \\(e^u\\) is \\(e^u\\), times derivative of inner function \\(u = x^2\\), which is \\(2x\\); so \\(f'(x) = 2x e^{x^2}\\).",
+      "distractor_rationales": {
+        "\\(e^{x^2}\\)": "This ignores the chain rule and treats the exponent as if it were constant.",
+        "\\(x^2 e^{x^2 - 1}\\)": "This incorrectly applies the power rule to the exponential, confusing it with polynomial differentiation.",
+        "\\(2x e^{x}\\)": "This mistakenly replaces the exponent \\(x^2\\) with \\(x\\) in the exponential base, violating composition."
+      }
+    },
+    {
+      "id": "c3",
+      "topic": "integration",
+      "prompt": "Evaluate \\(\\int_0^{\\pi/2} \\cos x \\, dx\\).",
+      "choices": [
+        "0",
+        "1",
+        "-1",
+        "\\(\\frac{\\pi}{2}\\)"
+      ],
+      "correct_answer": "1",
+      "explanation": "The antiderivative of \\(\\cos x\\) is \\(\\sin x\\), so \\(\\int_0^{\\pi/2} \\cos x \\, dx = \\sin(\\pi/2) - \\sin(0) = 1 - 0 = 1\\).",
+      "distractor_rationales": {
+        "0": "This results from incorrectly evaluating \\(\\sin(\\pi/2) = 0\\) or misapplying the Fundamental Theorem.",
+        "-1": "This arises from reversing the limits of integration or sign error in evaluating sine.",
+        "\\(\\frac{\\pi}{2}\\)": "This confuses the integral with the length of the interval, ignoring the function's values."
+      }
+    },
+    {
+      "id": "c4",
+      "topic": "related_rates",
+      "prompt": "A spherical balloon is inflated so that its radius increases at a constant rate of 2 cm/s. At what rate is the volume increasing when the radius is 3 cm? (Recall \\(V = \\frac{4}{3}\\pi r^3\\).)",
+      "choices": [
+        "\\(24\\pi \\text{ cm}^3/\\text{s}\\)",
+        "\\(36\\pi \\text{ cm}^3/\\text{s}\\)",
+        "\\(72\\pi \\text{ cm}^3/\\text{s}\\)",
+        "\\(108\\pi \\text{ cm}^3/\\text{s}\\)"
+      ],
+      "correct_answer": "\\(72\\pi \\text{ cm}^3/\\text{s}\\)",
+      "explanation": "Differentiate \\(V = \\frac{4}{3}\\pi r^3\\) w.r.t. time: \\(\\frac{dV}{dt} = 4\\pi r^2 \\frac{dr}{dt}\\). Plug in \\(r = 3\\), \\(\\frac{dr}{dt} = 2\\): \\(4\\pi (9)(2) = 72\\pi\\).",
+      "distractor_rationales": {
+        "\\(24\\pi \\text{ cm}^3/\\text{s}\\)": "This uses \\(\\frac{dV}{dr} = 4\\pi r^2\\) but forgets to multiply by \\(\\frac{dr}{dt}\\).",
+        "\\(36\\pi \\text{ cm}^3/\\text{s}\\)": "This incorrectly computes \\(4\\pi r \\frac{dr}{dt}\\) (missing one factor of r) or uses surface area instead of derivative.",
+        "\\(108\\pi \\text{ cm}^3/\\text{s}\\)": "This mistakenly uses \\(r^3\\) instead of \\(r^2\\) in the derivative expression, e.g., \\(4\\pi r^3 \\frac{dr}{dt}\\)."
+      }
+    },
+    {
+      "id": "c5",
+      "topic": "fundamental_theorem_of_calculus",
+      "prompt": "Let \\(F(x) = \\int_1^x \\sqrt{t^2 + 1} \\, dt\\). What is \\(F'(x)\\)?",
+      "choices": [
+        "\\(\\sqrt{x^2 + 1}\\)",
+        "\\(\\sqrt{x^2 + 1} - \\sqrt{2}\\)",
+        "\\(\\frac{x}{\\sqrt{x^2 + 1}}\\)",
+        "\\(\\int_1^x \\frac{t}{\\sqrt{t^2 + 1}} \\, dt\\)"
+      ],
+      "correct_answer": "\\(\\sqrt{x^2 + 1}\\)",
+      "explanation": "By the Fundamental Theorem of Calculus Part 1, if \\(F(x) = \\int_a^x f(t)\\,dt\\), then \\(F'(x) = f(x)\\). Here \\(f(t) = \\sqrt{t^2 + 1}\\), so \\(F'(x) = \\sqrt{x^2 + 1}\\).",
+      "distractor_rationales": {
+        "\\(\\sqrt{x^2 + 1} - \\sqrt{2}\\)": "This incorrectly subtracts the lower-limit evaluation, confusing FTC with definite integral evaluation.",
+        "\\(\\frac{x}{\\sqrt{x^2 + 1}}\\)": "This is the derivative of \\(\\sqrt{x^2 + 1}\\) itself — a misapplication of chain rule instead of FTC.",
+        "\\(\\int_1^x \\frac{t}{\\sqrt{t^2 + 1}} \\, dt\\)": "This is the antiderivative of the integrand’s derivative — conflating integration and differentiation operations."
+      }
+    },
+    {
+      "id": "c6",
+      "topic": "optimization",
+      "prompt": "A rectangle has perimeter 20 meters. What is the maximum possible area?",
+      "choices": [
+        "10 m²",
+        "20 m²",
+        "25 m²",
+        "100 m²"
+      ],
+      "correct_answer": "25 m²",
+      "explanation": "Let side lengths be \\(x\\) and \\(y\\); then \\(2x + 2y = 20 \\Rightarrow y = 10 - x\\). Area \\(A = x(10 - x) = 10x - x^2\\). This quadratic has vertex at \\(x = 5\\), so \\(A_{\\max} = 5 \\cdot 5 = 25\\).",
+      "distractor_rationales": {
+        "10 m²": "This results from incorrectly assuming one side is fixed at 1 and solving for the other.",
+        "20 m²": "This may come from using \\(x = 4\\), \\(y = 6\\) (perimeter correct) but not maximizing the product.",
+        "100 m²": "This incorrectly squares the perimeter (20²) instead of optimizing the area function."
+      }
+    },
+    {
+      "id": "c7",
+      "topic": "sequences_and_series",
+      "prompt": "Does the infinite series \\(\\sum_{n=1}^{\\infty} \\frac{1}{n^2}\\) converge or diverge?",
+      "choices": [
+        "Converges",
+        "Diverges",
+        "Converges only conditionally",
+        "Cannot be determined"
+      ],
+      "correct_answer": "Converges",
+      "explanation": "This is a p-series with \\(p = 2 > 1\\), so it converges by the p-series test.",
+      "distractor_rationales": {
+        "Diverges": "This incorrectly applies the harmonic series result (p = 1) to p = 2.",
+        "Converges only conditionally": "Conditional convergence applies only to alternating series with non-absolutely convergent terms; this series has all positive terms and converges absolutely.",
+        "Cannot be determined": "The p-series test gives a definitive conclusion for this well-known form."
+      }
+    },
+    {
+      "id": "c8",
+      "topic": "implicit_differentiation",
+      "prompt": "Given \\(x^2 + y^2 = 25\\), find \\(\\frac{dy}{dx}\\) at the point \\((3, 4)\\).",
+      "choices": [
+        "\\(-\\frac{3}{4}\\)",
+        "\\(\\frac{3}{4}\\)",
+        "\\(-\\frac{4}{3}\\)",
+        "\\(\\frac{4}{3}\\)"
+      ],
+      "correct_answer": "\\(-\\frac{3}{4}\\)",
+      "explanation": "Differentiate implicitly: \\(2x + 2y \\frac{dy}{dx} = 0 \\Rightarrow \\frac{dy}{dx} = -\\frac{x}{y}\\). At \\((3,4)\\), this is \\(-\\frac{3}{4}\\).",
+      "distractor_rationales": {
+        "\\(\\frac{3}{4}\\)": "This omits the negative sign arising from solving \\(2y \\frac{dy}{dx} = -2x\\).",
+        "\\(-\\frac{4}{3}\\)": "This inverts the ratio, mistakenly computing \\(-\\frac{y}{x}\\) instead of \\(-\\frac{x}{y}\\).",
+        "\\(\\frac{4}{3}\\)": "This both inverts the ratio and drops the negative sign."
+      }
+    },
+    {
+      "id": "c9",
+      "topic": "applications_of_integration",
+      "prompt": "What is the area between the curves \\(y = x\\) and \\(y = x^2\\) from \\(x = 0\\) to \\(x = 1\\)?",
+      "choices": [
+        "\\(\\frac{1}{6}\\)",
+        "\\(\\frac{1}{3}\\)",
+        "\\(\\frac{1}{2}\\)",
+        "1"
+      ],
+      "correct_answer": "\\(\\frac{1}{6}\\)",
+      "explanation": "On \\([0,1]\\), \\(x \\ge x^2\\), so area = \\(\\int_0^1 (x - x^2)\\,dx = \\left[\\frac{x^2}{2} - \\frac{x^3}{3}\\right]_0^1 = \\frac{1}{2} - \\frac{1}{3} = \\frac{1}{6}\\).",
+      "distractor_rationales": {
+        "\\(\\frac{1}{3}\\)": "This results from integrating only \\(x^2\\) or miscomputing the antiderivative difference.",
+        "\\(\\frac{1}{2}\\)": "This is the area under \\(y = x\\) alone, ignoring subtraction of the region under \\(y = x^2\\).",
+        "1": "This incorrectly takes the width (1) times average height without integration."
+      }
+    },
+    {
+      "id": "c10",
+      "topic": "lhopitals_rule",
+      "prompt": "Evaluate \\(\\lim_{x \\to 0} \\frac{e^x - 1}{x}\\).",
+      "choices": [
+        "0",
+        "1",
+        "e",
+        "undefined"
+      ],
+      "correct_answer": "1",
+      "explanation": "This is a \\(\\frac{0}{0}\\) indeterminate form. Applying L’Hôpital’s Rule: \\(\\lim_{x \\to 0} \\frac{e^x}{1} = e^0 = 1\\).",
+      "distractor_rationales": {
+        "0": "This incorrectly substitutes numerator and denominator separately without recognizing indeterminacy.",
+        "e": "This mistakenly evaluates \\(e^x\\) at \\(x = 1\\) or confuses the limit with \\(\\lim_{x \\to 1}\\).",
+        "undefined": "Although the expression is undefined at \\(x = 0\\), the limit exists and is finite via L’Hôpital’s Rule or series expansion."
+      }
+    }
+  ]
+}

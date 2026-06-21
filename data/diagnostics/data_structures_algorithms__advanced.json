@@ -1,0 +1,184 @@
+{
+  "questions": [
+    {
+      "id": "d1",
+      "topic": "Time Complexity Analysis",
+      "prompt": "What is the asymptotic time complexity of building a binary heap from an unsorted array of n elements using the standard bottom-up heapify procedure?",
+      "choices": [
+        "O(n log n)",
+        "O(n)",
+        "O(log n)",
+        "O(n^2)"
+      ],
+      "correct_answer": "O(n)",
+      "explanation": "Building a heap via bottom-up heapify (starting from last non-leaf node and sifting down) runs in linear time because the work per level decreases geometrically, yielding a total of O(n).",
+      "distractor_rationales": {
+        "O(n log n)": "This is the complexity of inserting n elements one-by-one into an initially empty heap, not bulk construction.",
+        "O(log n)": "This describes the cost of a single sift-down or heap operation, not the full construction.",
+        "O(n^2)": "This overestimates the actual work; no quadratic behavior occurs in the standard heap construction algorithm."
+      }
+    },
+    {
+      "id": "d2",
+      "topic": "Graph Algorithms",
+      "prompt": "Which algorithm is most appropriate for finding the shortest path between a single source and all other vertices in a weighted, directed graph with some negative edge weights but no negative cycles?",
+      "choices": [
+        "Dijkstra's algorithm",
+        "Floyd-Warshall algorithm",
+        "Bellman-Ford algorithm",
+        "A* search"
+      ],
+      "correct_answer": "Bellman-Ford algorithm",
+      "explanation": "Bellman-Ford handles negative edge weights and detects negative cycles; it computes shortest paths from a single source in O(VE) time.",
+      "distractor_rationales": {
+        "Dijkstra's algorithm": "Fails with negative edge weights because it assumes greedy choice remains optimal, which is violated when negative edges exist.",
+        "Floyd-Warshall algorithm": "Solves all-pairs shortest paths, not single-source — unnecessarily expensive (O(V^3)) and overkill for this requirement.",
+        "A* search": "Requires a consistent heuristic and is designed for informed search in state spaces, not general weighted graphs with negatives."
+      }
+    },
+    {
+      "id": "d3",
+      "topic": "Balanced Binary Search Trees",
+      "prompt": "In an AVL tree, what is the maximum possible height difference between the left and right subtrees of any node?",
+      "choices": [
+        "0",
+        "1",
+        "2",
+        "log n"
+      ],
+      "correct_answer": "1",
+      "explanation": "By definition, an AVL tree enforces that the heights of the left and right subtrees of every node differ by at most 1.",
+      "distractor_rationales": {
+        "0": "That would enforce perfect balance (like a complete binary tree), which AVL does not require.",
+        "2": "Violates the AVL invariant; insertion or deletion would trigger rebalancing before this occurs.",
+        "log n": "This is an upper bound on overall tree height, not the allowed local height difference."
+      }
+    },
+    {
+      "id": "d4",
+      "topic": "Hash Tables",
+      "prompt": "Which collision resolution strategy in hash tables guarantees O(1) worst-case lookup time assuming a perfect hash function and fixed table size?",
+      "choices": [
+        "Separate chaining",
+        "Linear probing",
+        "Double hashing",
+        "Cuckoo hashing"
+      ],
+      "correct_answer": "Cuckoo hashing",
+      "explanation": "With two hash functions and bounded relocation, cuckoo hashing achieves O(1) worst-case successful lookup time under suitable conditions (e.g., load factor < 0.5 and good hash functions).",
+      "distractor_rationales": {
+        "Separate chaining": "Worst-case lookup is O(n) if all keys hash to the same bucket and degenerate into a linked list.",
+        "Linear probing": "Worst-case lookup can be O(n) due to clustering, especially under high load.",
+        "Double hashing": "Improves distribution over linear probing but still exhibits worst-case O(n) behavior in pathological cases."
+      }
+    },
+    {
+      "id": "d5",
+      "topic": "Dynamic Programming",
+      "prompt": "Which classic problem is NOT typically solved using dynamic programming due to absence of overlapping subproblems?",
+      "choices": [
+        "Longest Common Subsequence",
+        "Matrix Chain Multiplication",
+        "Binary Search in a sorted array",
+        "0/1 Knapsack"
+      ],
+      "correct_answer": "Binary Search in a sorted array",
+      "explanation": "Binary search has no overlapping subproblems—it partitions the problem into disjoint halves, making it naturally divide-and-conquer, not DP.",
+      "distractor_rationales": {
+        "Longest Common Subsequence": "Exhibits both optimal substructure and overlapping subproblems — canonical DP use case.",
+        "Matrix Chain Multiplication": "Overlapping subproblems arise repeatedly when evaluating parenthesizations of subchains.",
+        "0/1 Knapsack": "Subproblems (capacity, item index) recur across different recursion paths — hallmark of DP applicability."
+      }
+    },
+    {
+      "id": "d6",
+      "topic": "String Algorithms",
+      "prompt": "What is the primary purpose of the 'failure function' (also called prefix function) in the KMP (Knuth-Morris-Pratt) string matching algorithm?",
+      "choices": [
+        "To skip unnecessary character comparisons by leveraging matched prefix-suffix information",
+        "To compute the longest palindromic substring",
+        "To hash substrings for rolling comparison",
+        "To build a suffix array for the pattern"
+      ],
+      "correct_answer": "To skip unnecessary character comparisons by leveraging matched prefix-suffix information",
+      "explanation": "The failure function precomputes, for each prefix of the pattern, the length of the longest proper prefix that is also a suffix — enabling KMP to avoid backtracking in the text.",
+      "distractor_rationales": {
+        "To compute the longest palindromic substring": "That is solved by Manacher’s algorithm, not KMP’s failure function.",
+        "To hash substrings for rolling comparison": "That describes Rabin-Karp’s use of hashing, not KMP.",
+        "To build a suffix array for the pattern": "Suffix arrays are built via sorting or SA-IS algorithms — unrelated to KMP’s prefix function."
+      }
+    },
+    {
+      "id": "d7",
+      "topic": "Amortized Analysis",
+      "prompt": "In a dynamic array (e.g., Python list or Java ArrayList) that doubles in size when full, what is the amortized cost of n consecutive append operations starting from size 0?",
+      "choices": [
+        "O(1)",
+        "O(log n)",
+        "O(n)",
+        "O(n log n)"
+      ],
+      "correct_answer": "O(1)",
+      "explanation": "Using aggregate or accounting method, total cost of n appends is O(n) due to geometrically increasing resize costs, so amortized cost per operation is O(1).",
+      "distractor_rationales": {
+        "O(log n)": "Misidentifies the cost of a single resize (which is O(current size)), not the amortized per-operation cost.",
+        "O(n)": "This is the worst-case cost of a single append during resize, not the amortized average.",
+        "O(n log n)": "Overestimates total cost; sum of resize costs is 1 + 2 + 4 + ... + n ≈ 2n, not Θ(n log n)."
+      }
+    },
+    {
+      "id": "d8",
+      "topic": "NP-Completeness",
+      "prompt": "Which of the following statements is true regarding NP-complete problems?",
+      "choices": [
+        "If any NP-complete problem has a polynomial-time algorithm, then P = NP",
+        "All NP-complete problems can be solved in exponential time but never in polynomial time",
+        "NP-complete problems are a subset of P",
+        "A problem is NP-complete only if it is in NP and can be solved in O(n^k) time for some constant k"
+      ],
+      "correct_answer": "If any NP-complete problem has a polynomial-time algorithm, then P = NP",
+      "explanation": "By definition, NP-complete problems are the hardest in NP; a poly-time solution to one implies poly-time solutions to all problems in NP.",
+      "distractor_rationales": {
+        "All NP-complete problems can be solved in exponential time but never in polynomial time": "This assumes P ≠ NP, which is unproven; the statement is conjectural, not logically necessary.",
+        "NP-complete problems are a subset of P": "False — if true, then P = NP, but it's unknown and widely believed false.",
+        "A problem is NP-complete only if it is in NP and can be solved in O(n^k) time for some constant k": "That describes membership in P, not NP-completeness; NP-complete problems need not be in P."
+      }
+    },
+    {
+      "id": "d9",
+      "topic": "Trie Data Structure",
+      "prompt": "What is a key advantage of using a trie (prefix tree) over a balanced BST for storing a large set of strings?",
+      "choices": [
+        "Lower worst-case space complexity",
+        "Support for efficient prefix-based queries (e.g., autocomplete)",
+        "Better cache locality during traversal",
+        "Guaranteed O(1) insertion time"
+      ],
+      "correct_answer": "Support for efficient prefix-based queries (e.g., autocomplete)",
+      "explanation": "Tries enable O(m) prefix search (where m is prefix length), independent of dataset size, making them ideal for autocomplete, spell-check, and IP routing.",
+      "distractor_rationales": {
+        "Lower worst-case space complexity": "Tries often use more space due to pointer overhead and sparse branching — not a key advantage.",
+        "Better cache locality during traversal": "BSTs (especially B-trees) often have better locality than pointer-heavy tries; tries may suffer from poor locality.",
+        "Guaranteed O(1) insertion time": "Insertion is O(m) for a string of length m — not constant."
+      }
+    },
+    {
+      "id": "d10",
+      "topic": "Minimum Spanning Trees",
+      "prompt": "Which condition guarantees that a given edge e must be included in every minimum spanning tree of a connected, undirected, edge-weighted graph?",
+      "choices": [
+        "Edge e is the unique lightest edge crossing some cut of the graph",
+        "Edge e is the heaviest edge in some cycle",
+        "Edge e connects two vertices with degree 1",
+        "Edge e has the globally minimum weight in the entire graph"
+      ],
+      "correct_answer": "Edge e is the unique lightest edge crossing some cut of the graph",
+      "explanation": "The Cut Property states that the unique minimum-weight edge crossing any cut must belong to every MST.",
+      "distractor_rationales": {
+        "Edge e is the heaviest edge in some cycle": "By the Cycle Property, such an edge cannot belong to *any* MST — opposite of required.",
+        "Edge e connects two vertices with degree 1": "Vertex degree says nothing about MST inclusion; irrelevant to cut or cycle properties.",
+        "Edge e has the globally minimum weight in the entire graph": "While often in an MST, it’s not *guaranteed* unless it crosses some cut — e.g., if it’s a self-loop or isolated, but more precisely: global minimum doesn’t imply uniqueness across *a* cut; uniqueness relative to a cut is essential."
+      }
+    }
+  ]
+}

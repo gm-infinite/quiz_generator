@@ -1,0 +1,184 @@
+{
+  "questions": [
+    {
+      "id": "d1",
+      "topic": "Atomic Structure",
+      "prompt": "What is the charge of a neutron?",
+      "choices": [
+        "+1",
+        "0",
+        "-1",
+        "+2"
+      ],
+      "correct_answer": "0",
+      "explanation": "Neutrons are neutral subatomic particles with no electric charge.",
+      "distractor_rationales": {
+        "+1": "This is the charge of a proton, not a neutron.",
+        "-1": "This is the charge of an electron, not a neutron.",
+        "+2": "No common subatomic particle has a +2 charge; alpha particles do, but they are helium nuclei, not neutrons."
+      }
+    },
+    {
+      "id": "d2",
+      "topic": "Chemical Bonding",
+      "prompt": "Which type of bond involves the sharing of electron pairs between atoms?",
+      "choices": [
+        "Ionic bond",
+        "Metallic bond",
+        "Covalent bond",
+        "Hydrogen bond"
+      ],
+      "correct_answer": "Covalent bond",
+      "explanation": "Covalent bonds form when two atoms share one or more pairs of electrons.",
+      "distractor_rationales": {
+        "Ionic bond": "Ionic bonds involve the transfer of electrons from a metal to a nonmetal, not sharing.",
+        "Metallic bond": "Metallic bonds involve a 'sea' of delocalized electrons shared among many atoms, not discrete electron-pair sharing between two atoms.",
+        "Hydrogen bond": "Hydrogen bonds are weak intermolecular attractions, not primary bonds involving electron sharing."
+      }
+    },
+    {
+      "id": "d3",
+      "topic": "States of Matter",
+      "prompt": "Which state of matter has a definite volume but no definite shape?",
+      "choices": [
+        "Solid",
+        "Liquid",
+        "Gas",
+        "Plasma"
+      ],
+      "correct_answer": "Liquid",
+      "explanation": "Liquids maintain a fixed volume but take the shape of their container.",
+      "distractor_rationales": {
+        "Solid": "Solids have both definite shape and definite volume.",
+        "Gas": "Gases have neither definite shape nor definite volume.",
+        "Plasma": "Plasmas, like gases, expand to fill their container and lack definite shape and volume."
+      }
+    },
+    {
+      "id": "d4",
+      "topic": "Periodic Table",
+      "prompt": "Which group of elements is known for being highly reactive nonmetals that form -1 ions?",
+      "choices": [
+        "Alkali metals",
+        "Halogens",
+        "Noble gases",
+        "Alkaline earth metals"
+      ],
+      "correct_answer": "Halogens",
+      "explanation": "Halogens (Group 17) have seven valence electrons and readily gain one electron to form stable -1 anions.",
+      "distractor_rationales": {
+        "Alkali metals": "Alkali metals (Group 1) are reactive metals that lose one electron to form +1 cations.",
+        "Noble gases": "Noble gases (Group 18) are inert and rarely form ions due to full valence shells.",
+        "Alkaline earth metals": "Alkaline earth metals (Group 2) lose two electrons to form +2 cations."
+      }
+    },
+    {
+      "id": "d5",
+      "topic": "Chemical Reactions",
+      "prompt": "In a chemical reaction, what does the law of conservation of mass state?",
+      "choices": [
+        "Mass is created in exothermic reactions.",
+        "Mass is destroyed in endothermic reactions.",
+        "The total mass of reactants equals the total mass of products.",
+        "Mass changes depending on the reaction rate."
+      ],
+      "correct_answer": "The total mass of reactants equals the total mass of products.",
+      "explanation": "The law of conservation of mass states that matter cannot be created or destroyed in a chemical reaction, so total mass remains constant.",
+      "distractor_rationales": {
+        "Mass is created in exothermic reactions.": "Energy is released in exothermic reactions, but mass is not created.",
+        "Mass is destroyed in endothermic reactions.": "Energy is absorbed in endothermic reactions, but mass is not destroyed.",
+        "Mass changes depending on the reaction rate.": "Reaction rate affects how quickly mass is converted, not the total mass before and after."
+      }
+    },
+    {
+      "id": "d6",
+      "topic": "Acids and Bases",
+      "prompt": "According to the Brønsted–Lowry definition, what is an acid?",
+      "choices": [
+        "A substance that increases OH⁻ concentration in water.",
+        "A substance that accepts a proton (H⁺).",
+        "A substance that donates a proton (H⁺).",
+        "A substance with pH greater than 7."
+      ],
+      "correct_answer": "A substance that donates a proton (H⁺).",
+      "explanation": "Brønsted–Lowry acids are proton donors.",
+      "distractor_rationales": {
+        "A substance that increases OH⁻ concentration in water.": "That describes an Arrhenius base, not a Brønsted–Lowry acid.",
+        "A substance that accepts a proton (H⁺).": "That is the definition of a Brønsted–Lowry base.",
+        "A substance with pH greater than 7.": "A pH > 7 indicates a basic solution, not an acid."
+      }
+    },
+    {
+      "id": "d7",
+      "topic": "Stoichiometry",
+      "prompt": "How many moles of oxygen atoms are present in 1 mole of CO₂?",
+      "choices": [
+        "1 mole",
+        "2 moles",
+        "3 moles",
+        "6.02 × 10²³ moles"
+      ],
+      "correct_answer": "2 moles",
+      "explanation": "Each molecule of CO₂ contains two oxygen atoms; thus, 1 mole of CO₂ contains 2 moles of oxygen atoms.",
+      "distractor_rationales": {
+        "1 mole": "This would be true for CO, not CO₂.",
+        "3 moles": "CO₂ has three atoms total (1 C + 2 O), but only 2 are oxygen atoms.",
+        "6.02 × 10²³ moles": "That is Avogadro's number of entities — a count, not a mole quantity; it’s dimensionally incorrect here."
+      }
+    },
+    {
+      "id": "d8",
+      "topic": "Solutions",
+      "prompt": "What term describes a solution that contains the maximum amount of solute that can dissolve at a given temperature?",
+      "choices": [
+        "Unsaturated",
+        "Supersaturated",
+        "Saturated",
+        "Dilute"
+      ],
+      "correct_answer": "Saturated",
+      "explanation": "A saturated solution is in dynamic equilibrium with undissolved solute and holds the maximum possible solute at that temperature.",
+      "distractor_rationales": {
+        "Unsaturated": "An unsaturated solution can dissolve more solute.",
+        "Supersaturated": "A supersaturated solution holds *more* than the equilibrium amount and is unstable.",
+        "Dilute": "Dilute is a qualitative term describing low concentration, not a thermodynamic state."
+      }
+    },
+    {
+      "id": "d9",
+      "topic": "Thermochemistry",
+      "prompt": "What does a negative ΔH (change in enthalpy) indicate about a chemical reaction?",
+      "choices": [
+        "The reaction absorbs heat from the surroundings.",
+        "The reaction releases heat to the surroundings.",
+        "The reaction has increased entropy.",
+        "The reaction is nonspontaneous."
+      ],
+      "correct_answer": "The reaction releases heat to the surroundings.",
+      "explanation": "A negative ΔH signifies an exothermic reaction, where energy is released as heat.",
+      "distractor_rationales": {
+        "The reaction absorbs heat from the surroundings.": "That corresponds to a positive ΔH (endothermic).",
+        "The reaction has increased entropy.": "Entropy change (ΔS) is independent of ΔH; a negative ΔH does not imply anything about entropy.",
+        "The reaction is nonspontaneous.": "Spontaneity depends on both ΔH and ΔS (via ΔG); a negative ΔH favors spontaneity but doesn’t guarantee it."
+      }
+    },
+    {
+      "id": "d10",
+      "topic": "Organic Chemistry Basics",
+      "prompt": "What is the general molecular formula for alkanes?",
+      "choices": [
+        "CₙH₂ₙ",
+        "CₙH₂ₙ₊₁",
+        "CₙH₂ₙ₊₂",
+        "CₙH₂ₙ₋₂"
+      ],
+      "correct_answer": "CₙH₂ₙ₊₂",
+      "explanation": "Alkanes are saturated hydrocarbons with only single bonds; their general formula is CₙH₂ₙ₊₂ (e.g., methane CH₄, ethane C₂H₆).",
+      "distractor_rationales": {
+        "CₙH₂ₙ": "This is the general formula for alkenes (with one double bond).",
+        "CₙH₂ₙ₊₁": "This resembles the formula for alkyl groups (e.g., methyl CH₃–), not whole alkanes.",
+        "CₙH₂ₙ₋₂": "This applies to alkynes (with one triple bond) or dienes."
+      }
+    }
+  ]
+}

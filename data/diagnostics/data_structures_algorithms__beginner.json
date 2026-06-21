@@ -1,0 +1,184 @@
+{
+  "questions": [
+    {
+      "id": "d1",
+      "topic": "Time Complexity",
+      "prompt": "What is the time complexity of accessing an element by index in a standard dynamic array (e.g., Python list or Java ArrayList)?",
+      "choices": [
+        "O(1)",
+        "O(log n)",
+        "O(n)",
+        "O(n²)"
+      ],
+      "correct_answer": "O(1)",
+      "explanation": "Array indexing is a direct memory calculation using base address + index × element size, requiring constant time regardless of input size.",
+      "distractor_rationales": {
+        "O(log n)": "Logarithmic time applies to operations like binary search on sorted arrays, not direct indexing.",
+        "O(n)": "Linear time applies to searches or traversals that may scan all elements, but indexing does not require scanning.",
+        "O(n²)": "Quadratic time typically arises from nested loops over input size; indexing involves no iteration."
+      }
+    },
+    {
+      "id": "d2",
+      "topic": "Stacks",
+      "prompt": "Which real-world scenario best models the behavior of a stack data structure?",
+      "choices": [
+        "A line of people waiting at a ticket counter",
+        "Books piled on a table where you can only add or remove from the top",
+        "A playlist played in shuffle mode",
+        "A dictionary sorted alphabetically"
+      ],
+      "correct_answer": "Books piled on a table where you can only add or remove from the top",
+      "explanation": "A stack follows LIFO (Last-In, First-Out): the last book placed is the first one removed — matching push/pop semantics exactly.",
+      "distractor_rationales": {
+        "A line of people waiting at a ticket counter": "This models a queue (FIFO), not a stack.",
+        "A playlist played in shuffle mode": "Shuffle introduces randomness and no fixed order; stacks have strict positional discipline.",
+        "A dictionary sorted alphabetically": "This suggests ordered lookup (e.g., BST or hash table), not LIFO access."
+      }
+    },
+    {
+      "id": "d3",
+      "topic": "Hash Tables",
+      "prompt": "What is the average-case time complexity for insertion in a well-implemented hash table with chaining and good hashing?",
+      "choices": [
+        "O(1)",
+        "O(log n)",
+        "O(n)",
+        "O(n log n)"
+      ],
+      "correct_answer": "O(1)",
+      "explanation": "With uniform hashing and low load factor, expected number of collisions is constant, so insertion (compute hash + append to bucket) is amortized constant time.",
+      "distractor_rationales": {
+        "O(log n)": "Logarithmic time applies to balanced tree-based structures (e.g., AVL trees), not hash tables.",
+        "O(n)": "Linear time would occur only in worst-case scenarios like all keys hashing to same bucket — not the average case.",
+        "O(n log n)": "This complexity is typical for comparison-based sorting, not hash table operations."
+      }
+    },
+    {
+      "id": "d4",
+      "topic": "Binary Search Trees",
+      "prompt": "In a valid Binary Search Tree (BST), which property must always hold for every node?",
+      "choices": [
+        "The left subtree contains only nodes with keys less than the node's key",
+        "The tree is always perfectly balanced",
+        "All leaf nodes are at the same depth",
+        "The right subtree contains only nodes with keys less than the node's key"
+      ],
+      "correct_answer": "The left subtree contains only nodes with keys less than the node's key",
+      "explanation": "By definition, a BST requires that for each node, all keys in the left subtree are strictly smaller, and all keys in the right subtree are strictly larger.",
+      "distractor_rationales": {
+        "The tree is always perfectly balanced": "Balance is not required for BST validity; AVL or Red-Black trees enforce balance, but basic BST does not.",
+        "All leaf nodes are at the same depth": "That describes a perfect binary tree, not a BST.",
+        "The right subtree contains only nodes with keys less than the node's key": "This violates BST ordering — the right subtree must contain *greater* keys."
+      }
+    },
+    {
+      "id": "d5",
+      "topic": "Recursion",
+      "prompt": "What essential component must every recursive function include to avoid infinite recursion?",
+      "choices": [
+        "At least two base cases",
+        "A loop inside the function",
+        "A base case that terminates the recursion",
+        "A global counter variable"
+      ],
+      "correct_answer": "A base case that terminates the recursion",
+      "explanation": "A base case provides a condition under which the function returns directly without making another recursive call, preventing infinite descent.",
+      "distractor_rationales": {
+        "At least two base cases": "Many correct recursive functions use only one base case (e.g., factorial(0) = 1).",
+        "A loop inside the function": "Recursion replaces iteration; loops are not required and often unnecessary in pure recursion.",
+        "A global counter variable": "Global state is discouraged in recursion; correctness relies on parameters and base cases, not globals."
+      }
+    },
+    {
+      "id": "d6",
+      "topic": "Queues",
+      "prompt": "Which operation is NOT supported in O(1) average time by a standard circular array-based queue?",
+      "choices": [
+        "Enqueue (add to rear)",
+        "Dequeue (remove from front)",
+        "Accessing the front element without removal",
+        "Accessing an arbitrary element by index"
+      ],
+      "correct_answer": "Accessing an arbitrary element by index",
+      "explanation": "A queue only guarantees efficient access to front/rear; arbitrary indexing breaks its abstraction and requires O(n) traversal or unsafe assumptions about internal layout.",
+      "distractor_rationales": {
+        "Enqueue (add to rear)": "Supported in O(1) via modulo arithmetic on rear pointer.",
+        "Dequeue (remove from front)": "Supported in O(1) via modulo arithmetic on front pointer.",
+        "Accessing the front element without removal": "O(1) — just return data[front] (with modulo handling)."
+      }
+    },
+    {
+      "id": "d7",
+      "topic": "Sorting Algorithms",
+      "prompt": "Which sorting algorithm has worst-case time complexity O(n log n) and is commonly used in practice due to its reliability and efficiency?",
+      "choices": [
+        "Bubble Sort",
+        "Merge Sort",
+        "Insertion Sort",
+        "Quick Sort"
+      ],
+      "correct_answer": "Merge Sort",
+      "explanation": "Merge Sort guarantees O(n log n) in all cases (best/average/worst) due to its divide-and-conquer strategy and stable merging.",
+      "distractor_rationales": {
+        "Bubble Sort": "Has worst-case O(n²); inefficient for large inputs.",
+        "Insertion Sort": "Worst-case is O(n²), though efficient for small or nearly sorted data.",
+        "Quick Sort": "Average-case is O(n log n), but worst-case is O(n²) when pivots are poorly chosen (e.g., already sorted input)."
+      }
+    },
+    {
+      "id": "d8",
+      "topic": "Linked Lists",
+      "prompt": "Compared to arrays, what is a primary advantage of singly linked lists?",
+      "choices": [
+        "Faster random access by index",
+        "Lower memory overhead per element",
+        "Efficient insertion/deletion at the beginning",
+        "Guaranteed cache locality"
+      ],
+      "correct_answer": "Efficient insertion/deletion at the beginning",
+      "explanation": "Inserting or deleting at the head of a singly linked list takes O(1) time — just update the head pointer — whereas arrays require shifting all subsequent elements (O(n)).",
+      "distractor_rationales": {
+        "Faster random access by index": "Linked lists require O(n) traversal to reach index i; arrays support O(1) indexing.",
+        "Lower memory overhead per element": "Linked lists require extra storage for pointers (e.g., ~8 bytes/node), increasing overhead vs. arrays.",
+        "Guaranteed cache locality": "Arrays store elements contiguously, giving superior cache performance; linked list nodes are scattered in memory."
+      }
+    },
+    {
+      "id": "d9",
+      "topic": "Graph Representations",
+      "prompt": "Which graph representation is most space-efficient for a sparse undirected graph with V vertices and E edges?",
+      "choices": [
+        "Adjacency Matrix",
+        "Adjacency List",
+        "Edge List",
+        "Incidence Matrix"
+      ],
+      "correct_answer": "Adjacency List",
+      "explanation": "An adjacency list uses Θ(V + E) space, which is optimal for sparse graphs where E ≪ V²; adjacency matrices use Θ(V²), wasting space.",
+      "distractor_rationales": {
+        "Adjacency Matrix": "Uses V² space regardless of sparsity — highly inefficient when E is small.",
+        "Edge List": "Uses Θ(E) space, but lacks efficient neighbor queries; adjacency list balances space and common operation efficiency.",
+        "Incidence Matrix": "Uses Θ(V × E) space — exponentially worse for dense edge sets and rarely used for general algorithms."
+      }
+    },
+    {
+      "id": "d10",
+      "topic": "Big O Notation",
+      "prompt": "If f(n) = 3n² + 5n + 2, which of the following is the tightest correct Big O classification?",
+      "choices": [
+        "O(n)",
+        "O(n²)",
+        "O(n³)",
+        "O(2ⁿ)"
+      ],
+      "correct_answer": "O(n²)",
+      "explanation": "Big O captures the dominant growth term; here, 3n² dominates, so f(n) ∈ O(n²), and it's tight because f(n) is also Ω(n²).",
+      "distractor_rationales": {
+        "O(n)": "Too restrictive — f(n) grows faster than any linear function.",
+        "O(n³)": "Correct but not tight; Big O seeks the smallest valid upper bound.",
+        "O(2ⁿ)": "Correct but extremely loose; exponential bounds are valid for all polynomial functions but uninformative."
+      }
+    }
+  ]
+}

@@ -1,0 +1,184 @@
+{
+  "questions": [
+    {
+      "id": "d1",
+      "topic": "world geography",
+      "prompt": "Which of these countries is landlocked?",
+      "choices": [
+        "Bolivia",
+        "Chile",
+        "Peru",
+        "Uruguay"
+      ],
+      "correct_answer": "Bolivia",
+      "explanation": "Bolivia is surrounded entirely by land — bordered by Brazil, Paraguay, Argentina, Chile, and Peru — with no coastline.",
+      "distractor_rationales": {
+        "Chile": "Chile has a long Pacific coastline stretching over 4,000 km.",
+        "Peru": "Peru borders the Pacific Ocean to the west.",
+        "Uruguay": "Uruguay has a coastline along the Atlantic Ocean and the Río de la Plata."
+      }
+    },
+    {
+      "id": "d2",
+      "topic": "classical mythology",
+      "prompt": "In Greek mythology, who was the king of the gods and ruler of Mount Olympus?",
+      "choices": [
+        "Poseidon",
+        "Hades",
+        "Zeus",
+        "Ares"
+      ],
+      "correct_answer": "Zeus",
+      "explanation": "Zeus was the supreme deity in the Greek pantheon, associated with the sky, thunder, and justice, and ruled from Mount Olympus.",
+      "distractor_rationales": {
+        "Poseidon": "Poseidon was god of the sea, earthquakes, and horses — powerful but subordinate to Zeus.",
+        "Hades": "Hades ruled the underworld, not Olympus, and was not considered 'king of the gods' in the Olympian hierarchy.",
+        "Ares": "Ares was the god of war, known for his impulsiveness and lack of authority over other gods."
+      }
+    },
+    {
+      "id": "d3",
+      "topic": "biological taxonomy",
+      "prompt": "Which taxonomic rank is the most specific (i.e., narrowest) among the following?",
+      "choices": [
+        "Family",
+        "Genus",
+        "Order",
+        "Species"
+      ],
+      "correct_answer": "Species",
+      "explanation": "The Linnaean hierarchy from broadest to most specific is: Domain > Kingdom > Phylum > Class > Order > Family > Genus > Species — so 'species' is the most specific standard rank listed.",
+      "distractor_rationales": {
+        "Family": "Family is broader than genus and species; e.g., Felidae includes lions, tigers, and domestic cats.",
+        "Genus": "Genus groups closely related species (e.g., Panthera includes leo, tigris, onca), but is still broader than species.",
+        "Order": "Order is much broader; e.g., Carnivora includes cats, dogs, bears, and seals."
+      }
+    },
+    {
+      "id": "d4",
+      "topic": "world history",
+      "prompt": "The Magna Carta was signed in which century?",
+      "choices": [
+        "11th century",
+        "12th century",
+        "13th century",
+        "14th century"
+      ],
+      "correct_answer": "13th century",
+      "explanation": "The Magna Carta was agreed to by King John of England in 1215 — placing it firmly in the 13th century.",
+      "distractor_rationales": {
+        "11th century": "The 11th century ended in 1099; the Norman Conquest (1066) occurred then, but Magna Carta came later.",
+        "12th century": "The 12th century ended in 1199; King John’s reign began in 1199, but the charter was signed in 1215.",
+        "14th century": "The 14th century began in 1301; events like the start of the Hundred Years’ War occurred then, long after Magna Carta."
+      }
+    },
+    {
+      "id": "d5",
+      "topic": "literary genres",
+      "prompt": "Which of the following best defines 'satire'?",
+      "choices": [
+        "A narrative focused on heroic deeds and mythic quests",
+        "A work using humor, irony, or exaggeration to criticize human folly or vice",
+        "A poetic form with strict meter and rhyme scheme",
+        "A story centered on romantic love and emotional conflict"
+      ],
+      "correct_answer": "A work using humor, irony, or exaggeration to criticize human folly or vice",
+      "explanation": "Satire is a genre whose primary purpose is social or moral critique through wit, irony, parody, or caricature.",
+      "distractor_rationales": {
+        "A narrative focused on heroic deeds and mythic quests": "That describes epic poetry or heroic fantasy, not satire.",
+        "A poetic form with strict meter and rhyme scheme": "That refers to formal verse structures like sonnets or villanelles — unrelated to satirical intent.",
+        "A story centered on romantic love and emotional conflict": "That defines romance or romantic drama, not satire."
+      }
+    },
+    {
+      "id": "d6",
+      "topic": "astronomy",
+      "prompt": "Which planet in our solar system rotates on its side — with an axial tilt of about 98 degrees?",
+      "choices": [
+        "Jupiter",
+        "Saturn",
+        "Uranus",
+        "Neptune"
+      ],
+      "correct_answer": "Uranus",
+      "explanation": "Uranus rotates nearly on its side, with an axial tilt of approximately 98°, causing extreme seasonal variations.",
+      "distractor_rationales": {
+        "Jupiter": "Jupiter’s axial tilt is only about 3°, making its rotation nearly upright.",
+        "Saturn": "Saturn’s tilt is ~27°, significant but nowhere near sideways.",
+        "Neptune": "Neptune’s axial tilt is ~28°, similar to Saturn’s — not extreme like Uranus’s."
+      }
+    },
+    {
+      "id": "d7",
+      "topic": "chemical elements",
+      "prompt": "Which element has the chemical symbol 'Fe'?",
+      "choices": [
+        "Francium",
+        "Fermium",
+        "Iron",
+        "Fluorine"
+      ],
+      "correct_answer": "Iron",
+      "explanation": "Fe comes from the Latin word 'ferrum', meaning iron; it is a transition metal with atomic number 26.",
+      "distractor_rationales": {
+        "Francium": "Francium’s symbol is Fr; it’s a highly radioactive alkali metal.",
+        "Fermium": "Fermium’s symbol is Fm; it’s a synthetic actinide, not represented by Fe.",
+        "Fluorine": "Fluorine’s symbol is F; Fe is never used for fluorine."
+      }
+    },
+    {
+      "id": "d8",
+      "topic": "music theory",
+      "prompt": "In Western music notation, how many beats does a half note receive in 4/4 time?",
+      "choices": [
+        "1 beat",
+        "2 beats",
+        "3 beats",
+        "4 beats"
+      ],
+      "correct_answer": "2 beats",
+      "explanation": "In 4/4 time, the quarter note gets one beat, so a half note (twice the duration) receives two beats.",
+      "distractor_rationales": {
+        "1 beat": "That is the value of a quarter note in 4/4 time, not a half note.",
+        "3 beats": "A dotted half note receives three beats in 4/4, but a plain half note does not.",
+        "4 beats": "A whole note receives four beats in 4/4 time; a half note is half that duration."
+      }
+    },
+    {
+      "id": "d9",
+      "topic": "earth science",
+      "prompt": "What type of rock is formed when lava cools and solidifies on Earth's surface?",
+      "choices": [
+        "Metamorphic",
+        "Sedimentary",
+        "Intrusive igneous",
+        "Extrusive igneous"
+      ],
+      "correct_answer": "Extrusive igneous",
+      "explanation": "Extrusive igneous rocks (e.g., basalt, obsidian) form from lava cooling rapidly at the surface.",
+      "distractor_rationales": {
+        "Metamorphic": "Metamorphic rocks form under heat and pressure deep underground, not from surface lava.",
+        "Sedimentary": "Sedimentary rocks form from compaction and cementation of sediments, not cooling magma.",
+        "Intrusive igneous": "Intrusive igneous rocks (e.g., granite) form from magma cooling slowly beneath the surface."
+      }
+    },
+    {
+      "id": "d10",
+      "topic": "political systems",
+      "prompt": "Which term describes a system of government in which citizens hold sovereign power and exercise it directly or through elected representatives?",
+      "choices": [
+        "Monarchy",
+        "Oligarchy",
+        "Theocracy",
+        "Democracy"
+      ],
+      "correct_answer": "Democracy",
+      "explanation": "Democracy literally means 'rule by the people' (from Greek 'demos' + 'kratos') and encompasses both direct and representative forms where ultimate authority rests with citizens.",
+      "distractor_rationales": {
+        "Monarchy": "Monarchy concentrates power in a single hereditary ruler, not the citizenry.",
+        "Oligarchy": "Oligarchy places power in the hands of a small, elite group — not the broader population.",
+        "Theocracy": "A theocracy bases governance on religious doctrine and authority, not popular sovereignty."
+      }
+    }
+  ]
+}

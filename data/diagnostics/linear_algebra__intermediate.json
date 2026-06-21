@@ -1,0 +1,184 @@
+{
+  "questions": [
+    {
+      "id": "d1",
+      "topic": "Matrix Multiplication",
+      "prompt": "Let A be a 3×4 matrix and B be a 4×2 matrix. What are the dimensions of the product AB?",
+      "choices": [
+        "3×2",
+        "4×4",
+        "2×3",
+        "3×4"
+      ],
+      "correct_answer": "3×2",
+      "explanation": "Matrix multiplication AB is defined when the number of columns of A equals the number of rows of B (here, 4 = 4), and the resulting matrix has dimensions equal to rows of A × columns of B: 3 × 2.",
+      "distractor_rationales": {
+        "4×4": "This incorrectly assumes square dimensions or confuses with the inner dimension; AB is not square and inner dimension does not become outer.",
+        "2×3": "This swaps the row and column counts — matrix multiplication yields rows from the first matrix and columns from the second, not vice versa.",
+        "3×4": "This mistakenly uses the dimensions of A alone, ignoring how B’s column count determines the result’s width."
+      }
+    },
+    {
+      "id": "d2",
+      "topic": "Linear Independence",
+      "prompt": "Which set of vectors in ℝ³ is linearly independent?",
+      "choices": [
+        "{(1,0,0), (0,1,0), (1,1,0)}",
+        "{(1,2,3), (4,5,6), (7,8,9)}",
+        "{(1,0,1), (0,1,1), (1,1,0)}",
+        "{(2,4,6), (1,2,3), (3,6,9)}"
+      ],
+      "correct_answer": "{(1,0,1), (0,1,1), (1,1,0)}",
+      "explanation": "The three vectors form a 3×3 matrix with determinant = 2 ≠ 0, so they are linearly independent.",
+      "distractor_rationales": {
+        "{(1,0,0), (0,1,0), (1,1,0)}": "The third vector is the sum of the first two, so the set is linearly dependent.",
+        "{(1,2,3), (4,5,6), (7,8,9)}": "These rows are arithmetic progressions; the third is the sum of the first two minus a constant vector — more precisely, the matrix has rank 2 (determinant = 0), so dependent.",
+        "{(2,4,6), (1,2,3), (3,6,9)}": "All three vectors are scalar multiples of (1,2,3), so they span only a 1-dimensional subspace and are dependent."
+      }
+    },
+    {
+      "id": "d3",
+      "topic": "Eigenvalues and Eigenvectors",
+      "prompt": "What is an eigenvalue of the matrix [[2, 1], [0, 2]]?",
+      "choices": [
+        "0",
+        "1",
+        "2",
+        "3"
+      ],
+      "correct_answer": "2",
+      "explanation": "The matrix is upper triangular, so its eigenvalues are its diagonal entries: both are 2. Thus 2 is an eigenvalue (with algebraic multiplicity 2).",
+      "distractor_rationales": {
+        "0": "0 is not on the diagonal and det(A) = 4 ≠ 0, so 0 is not an eigenvalue.",
+        "1": "Solving det(A − λI) = (2−λ)² = 0 yields only λ = 2; 1 does not satisfy the characteristic equation.",
+        "3": "Plugging λ = 3 gives det([[−1,1],[0,−1]]) = 1 ≠ 0, so it is not a root of the characteristic polynomial."
+      }
+    },
+    {
+      "id": "d4",
+      "topic": "Null Space",
+      "prompt": "Let A be a 5×3 matrix with rank 2. What is the dimension of the null space of A?",
+      "choices": [
+        "0",
+        "1",
+        "2",
+        "3"
+      ],
+      "correct_answer": "1",
+      "explanation": "By the Rank-Nullity Theorem: dim(null(A)) = number of columns − rank = 3 − 2 = 1.",
+      "distractor_rationales": {
+        "0": "That would require rank = 3, but rank is given as 2.",
+        "2": "This would imply rank = 1, contradicting the given rank of 2.",
+        "3": "That would mean rank = 0, i.e., A is the zero matrix — inconsistent with rank 2."
+      }
+    },
+    {
+      "id": "d5",
+      "topic": "Orthogonality and Projections",
+      "prompt": "Let u = (1, 2) and v = (3, 1). What is the orthogonal projection of u onto v?",
+      "choices": [
+        "(1, 1)",
+        "(9/10, 3/10)",
+        "(9/5, 3/5)",
+        "(3/5, 1/5)"
+      ],
+      "correct_answer": "(9/5, 3/5)",
+      "explanation": "For u = (1, 3) and v = (3, 1), u·v = 6 and v·v = 10, so proj_v(u) = (6/10)v = (3/5)(3, 1) = (9/5, 3/5).",
+      "distractor_rationales": {
+        "(1, 1)": "This is not a scalar multiple of v = (3,1), so cannot be the projection onto the line spanned by v.",
+        "(9/10, 3/10)": "This equals (3/10)v, corresponding to an incorrect dot product (e.g., using u·v = 3 instead of 6).",
+        "(3/5, 1/5)": "This equals (1/5)v, which would arise from miscomputing u·v as 2 or forgetting to divide by v·v."
+      }
+    },
+    {
+      "id": "d6",
+      "topic": "Determinants",
+      "prompt": "If A is a 4×4 matrix with det(A) = −5, what is det(2A)?",
+      "choices": [
+        "−10",
+        "−80",
+        "−40",
+        "160"
+      ],
+      "correct_answer": "−80",
+      "explanation": "Scaling a 4×4 matrix by 2 multiplies its determinant by 2⁴ = 16; so det(2A) = 16 × (−5) = −80.",
+      "distractor_rationales": {
+        "−10": "This incorrectly applies scalar multiplication as if determinant were linear (det(cA) = c·det(A)), ignoring dimension.",
+        "−40": "This uses 2³ = 8 instead of 2⁴, mistakenly treating A as 3×3.",
+        "160": "This ignores the sign, computing 16 × 5 = 80 and then doubling again or misapplying absolute value."
+      }
+    },
+    {
+      "id": "d7",
+      "topic": "Row Reduction and Echelon Form",
+      "prompt": "After performing Gaussian elimination on a 3×3 invertible matrix, what is always true about its reduced row echelon form (RREF)?",
+      "choices": [
+        "It has exactly one zero row.",
+        "It is the 3×3 identity matrix.",
+        "It has three pivot positions, not necessarily on the diagonal.",
+        "It has at least one row of the form [0 0 1]."
+      ],
+      "correct_answer": "It is the 3×3 identity matrix.",
+      "explanation": "An invertible square matrix is row-equivalent to the identity matrix; its RREF is uniquely the identity matrix.",
+      "distractor_rationales": {
+        "It has exactly one zero row.": "A zero row would imply rank < 3, contradicting invertibility.",
+        "It has three pivot positions, not necessarily on the diagonal.": "In RREF, pivots must be 1s, each in a distinct column and row, and all entries above/below zero — for a full-rank 3×3, this forces pivots at (1,1), (2,2), (3,3), i.e., identity.",
+        "It has at least one row of the form [0 0 1].": "While true for *some* rows, RREF requires leading 1s left-to-right and zeros above — the full set must be I, not just one row matching."
+      }
+    },
+    {
+      "id": "d8",
+      "topic": "Vector Spaces and Subspaces",
+      "prompt": "Which of the following is a subspace of ℝ³?",
+      "choices": [
+        "The set of all vectors (x, y, z) with x + y + z = 1",
+        "The set of all vectors (x, y, z) with x ≥ 0",
+        "The set of all vectors (x, y, z) with x = y",
+        "The set of all vectors (x, y, z) with xyz = 0"
+      ],
+      "correct_answer": "The set of all vectors (x, y, z) with x = y",
+      "explanation": "This set is closed under addition and scalar multiplication, contains the zero vector (0,0,0), and satisfies all subspace criteria.",
+      "distractor_rationales": {
+        "The set of all vectors (x, y, z) with x + y + z = 1": "Fails to contain zero vector (0+0+0 ≠ 1), and not closed under addition: e.g., (1,0,0) and (0,1,0) are in set, but sum (1,1,0) gives sum 2 ≠ 1.",
+        "The set of all vectors (x, y, z) with x ≥ 0": "Not closed under scalar multiplication: (1,0,0) is in set, but −1·(1,0,0) = (−1,0,0) has x < 0.",
+        "The set of all vectors (x, y, z) with xyz = 0": "Not closed under addition: (1,1,0) and (0,1,1) satisfy xyz = 0, but sum (1,2,1) has xyz = 2 ≠ 0."
+      }
+    },
+    {
+      "id": "d9",
+      "topic": "Linear Transformations",
+      "prompt": "Let T : ℝ² → ℝ² be defined by T(x, y) = (x + y, x − y). Which statement is true?",
+      "choices": [
+        "T is not linear because it involves subtraction.",
+        "The standard matrix of T is [[1, 1], [1, −1]].",
+        "T maps the unit square to a rectangle of area 1.",
+        "T is not invertible because its matrix has determinant 0."
+      ],
+      "correct_answer": "The standard matrix of T is [[1, 1], [1, −1]].",
+      "explanation": "Applying T to e₁ = (1,0) gives (1,1); to e₂ = (0,1) gives (1,−1), so columns are those images, yielding matrix [[1,1],[1,−1]].",
+      "distractor_rationales": {
+        "T is not linear because it involves subtraction.": "Subtraction does not violate linearity; T satisfies T(u+v)=T(u)+T(v) and T(cu)=cT(u).",
+        "T maps the unit square to a rectangle of area 1.": "The image is a parallelogram; its area equals |det(A)| = |−2| = 2, not 1.",
+        "T is not invertible because its matrix has determinant 0.": "det([[1,1],[1,−1]]) = −1−1 = −2 ≠ 0, so T is invertible."
+      }
+    },
+    {
+      "id": "d10",
+      "topic": "Change of Basis",
+      "prompt": "Let B = {b₁, b₂} be a basis for ℝ² where b₁ = (1, 1) and b₂ = (1, −1). What are the B-coordinates of the vector v = (3, 1)?",
+      "choices": [
+        "(2, 1)",
+        "(1, 2)",
+        "(3, 1)",
+        "(0, 2)"
+      ],
+      "correct_answer": "(2, 1)",
+      "explanation": "Solve c₁(1,1) + c₂(1,−1) = (3,1). This gives equations: c₁ + c₂ = 3 and c₁ − c₂ = 1. Adding: 2c₁ = 4 ⇒ c₁ = 2; then c₂ = 1. So [v]_B = (2, 1).",
+      "distractor_rationales": {
+        "(1, 2)": "This solves c₁ + c₂ = 3 and c₁ − c₂ = −1 (sign error in second equation), giving c₁ = 1, c₂ = 2.",
+        "(3, 1)": "This incorrectly assumes standard coordinates equal B-coordinates, ignoring basis change.",
+        "(0, 2)": "This would yield 0·b₁ + 2·b₂ = (2, −2) ≠ (3,1), violating the linear combination requirement."
+      }
+    }
+  ]
+}

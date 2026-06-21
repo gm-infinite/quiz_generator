@@ -1,0 +1,184 @@
+{
+  "questions": [
+    {
+      "id": "d1",
+      "topic": "Bayesian Inference",
+      "prompt": "A disease affects 1% of the population. A test for the disease has 95% sensitivity (true positive rate) and 90% specificity (true negative rate). If a randomly selected person tests positive, what is the approximate probability they actually have the disease?",
+      "choices": [
+        "0.01",
+        "0.087",
+        "0.50",
+        "0.95"
+      ],
+      "correct_answer": "0.087",
+      "explanation": "Using Bayes’ theorem: P(Disease|+) = P(+|Disease)P(Disease) / [P(+|Disease)P(Disease) + P(+|No Disease)P(No Disease)] = (0.95)(0.01) / [(0.95)(0.01) + (0.10)(0.99)] ≈ 0.087.",
+      "distractor_rationales": {
+        "0.01": "This is the prior prevalence, not the posterior probability after observing a positive test.",
+        "0.50": "This incorrectly assumes symmetry between false positive and true positive rates, ignoring base rates.",
+        "0.95": "This confuses sensitivity (P(+|Disease)) with the posterior probability P(Disease|+)."
+      }
+    },
+    {
+      "id": "d2",
+      "topic": "Sampling Distributions",
+      "prompt": "A simple random sample of size n = 64 is drawn from a population with mean μ = 100 and standard deviation σ = 24. What is the standard deviation of the sampling distribution of the sample mean?",
+      "choices": [
+        "0.375",
+        "3.0",
+        "24.0",
+        "1536.0"
+      ],
+      "correct_answer": "3.0",
+      "explanation": "The standard error of the mean is σ/√n = 24/√64 = 24/8 = 3.0.",
+      "distractor_rationales": {
+        "0.375": "This results from mistakenly dividing σ by n instead of √n (24/64 = 0.375).",
+        "24.0": "This is the population standard deviation, not the standard error of the sample mean.",
+        "1536.0": "This is σ × n (24 × 64), which has no statistical meaning in this context."
+      }
+    },
+    {
+      "id": "d3",
+      "topic": "Hypothesis Testing (p-values)",
+      "prompt": "In a two-sided z-test, the observed test statistic is z = −2.33. What is the best approximation of the p-value?",
+      "choices": [
+        "0.01",
+        "0.02",
+        "0.05",
+        "0.10"
+      ],
+      "correct_answer": "0.02",
+      "explanation": "For a two-sided test, p-value = 2 × P(Z ≤ −2.33) ≈ 2 × 0.0099 ≈ 0.0198 ≈ 0.02.",
+      "distractor_rationales": {
+        "0.01": "This is the one-sided p-value, not the two-sided p-value.",
+        "0.05": "This is the common α-level threshold, not the computed p-value for z = −2.33.",
+        "0.10": "This approximates the p-value for |z| ≈ 1.645, not 2.33."
+      }
+    },
+    {
+      "id": "d4",
+      "topic": "Linear Regression Assumptions",
+      "prompt": "Which assumption is most directly assessed by examining a plot of residuals versus fitted values?",
+      "choices": [
+        "Normality of errors",
+        "Independence of observations",
+        "Homoscedasticity",
+        "Linearity of the mean response"
+      ],
+      "correct_answer": "Homoscedasticity",
+      "explanation": "A residuals-vs-fitted plot reveals whether residual variance changes with fitted values; constant spread indicates homoscedasticity.",
+      "distractor_rationales": {
+        "Normality of errors": "Best assessed via Q-Q plot or histogram of residuals, not residuals-vs-fitted.",
+        "Independence of observations": "Requires knowledge of data collection design (e.g., time series, clustering); not visually diagnosable from residuals-vs-fitted alone.",
+        "Linearity of the mean response": "A curved pattern may suggest nonlinearity, but the primary purpose of this plot is detecting heteroscedasticity; nonlinearity is better diagnosed with partial residual plots or added-variable plots."
+      }
+    },
+    {
+      "id": "d5",
+      "topic": "Probability Distributions (Poisson)",
+      "prompt": "Emails arrive in an inbox according to a Poisson process with an average rate of 4 per hour. What is the probability of receiving exactly 2 emails in a 30-minute period?",
+      "choices": [
+        "e⁻² × 2² / 2!",
+        "e⁻⁴ × 4² / 2!",
+        "e⁻² × 4² / 2!",
+        "e⁻⁴ × 2² / 2!"
+      ],
+      "correct_answer": "e⁻² × 2² / 2!",
+      "explanation": "For a 30-minute interval, the Poisson rate λ = 4 × 0.5 = 2; P(X=2) = e⁻² × 2² / 2!.",
+      "distractor_rationales": {
+        "e⁻⁴ × 4² / 2!": "Uses the hourly rate λ = 4 for a 30-minute interval, ignoring time scaling.",
+        "e⁻² × 4² / 2!": "Uses correct λ in exponent but incorrect mean (4) in numerator — violates Poisson PMF form.",
+        "e⁻⁴ × 2² / 2!": "Mixes hourly λ in exponent with half-hour count in numerator, yielding inconsistent units."
+      }
+    },
+    {
+      "id": "d6",
+      "topic": "Confidence Intervals",
+      "prompt": "A 95% confidence interval for a population mean is computed from a sample and yields (22.3, 27.1). Which statement is statistically valid?",
+      "choices": [
+        "There is a 95% probability that the true mean lies in (22.3, 27.1).",
+        "95% of all possible sample means fall within (22.3, 27.1).",
+        "If we repeated sampling many times, ~95% of resulting CIs would contain the true mean.",
+        "The margin of error is 4.8."
+      ],
+      "correct_answer": "If we repeated sampling many times, ~95% of resulting CIs would contain the true mean.",
+      "explanation": "This reflects the frequentist interpretation: confidence level refers to long-run coverage probability across repeated samples.",
+      "distractor_rationales": {
+        "There is a 95% probability that the true mean lies in (22.3, 27.1).": "The true mean is a fixed parameter; in frequentist statistics, it does not have a probability distribution — this misinterprets CI as a Bayesian credible interval.",
+        "95% of all possible sample means fall within (22.3, 27.1).": "The interval is centered on *one* sample mean; it does not describe the distribution of sample means (which has standard error σ/√n).",
+        "The margin of error is 4.8.": "Margin of error is half the width: (27.1 − 22.3)/2 = 2.4, not 4.8."
+      }
+    },
+    {
+      "id": "d7",
+      "topic": "Conditional Probability & Independence",
+      "prompt": "Events A and B satisfy P(A) = 0.4, P(B) = 0.5, and P(A ∩ B) = 0.2. Which statement is true?",
+      "choices": [
+        "A and B are independent.",
+        "A and B are mutually exclusive.",
+        "P(A|B) = 0.8.",
+        "P(B|A) = 0.4."
+      ],
+      "correct_answer": "A and B are independent.",
+      "explanation": "Since P(A ∩ B) = 0.2 and P(A)P(B) = 0.4 × 0.5 = 0.2, the multiplication rule holds ⇒ A and B are independent.",
+      "distractor_rationales": {
+        "A and B are mutually exclusive.": "Mutually exclusive events require P(A ∩ B) = 0; here it is 0.2.",
+        "P(A|B) = 0.8.": "P(A|B) = P(A ∩ B)/P(B) = 0.2/0.5 = 0.4, not 0.8.",
+        "P(B|A) = 0.4.": "P(B|A) = P(A ∩ B)/P(A) = 0.2/0.4 = 0.5, not 0.4."
+      }
+    },
+    {
+      "id": "d8",
+      "topic": "ANOVA Fundamentals",
+      "prompt": "In a one-way ANOVA with k = 4 groups and total sample size N = 40, what are the degrees of freedom for the F-statistic’s denominator (error/residual df)?",
+      "choices": [
+        "3",
+        "36",
+        "39",
+        "4"
+      ],
+      "correct_answer": "36",
+      "explanation": "Error df = N − k = 40 − 4 = 36.",
+      "distractor_rationales": {
+        "3": "This is the numerator (group/treatment) degrees of freedom: k − 1 = 3.",
+        "39": "This is total degrees of freedom: N − 1 = 39, not error df.",
+        "4": "This is the number of groups, not a valid df for any ANOVA component."
+      }
+    },
+    {
+      "id": "d9",
+      "topic": "Central Limit Theorem",
+      "prompt": "The Central Limit Theorem guarantees that, for sufficiently large n, the sampling distribution of the sample mean is approximately:",
+      "choices": [
+        "Uniform, regardless of the population distribution.",
+        "Normal, provided the population distribution is normal.",
+        "Normal, regardless of the population distribution (if finite variance).",
+        "t-distributed, when σ is unknown."
+      ],
+      "correct_answer": "Normal, regardless of the population distribution (if finite variance).",
+      "explanation": "CLT states that for i.i.d. samples with finite mean μ and variance σ², (X̄ₙ − μ)/(σ/√n) → N(0,1) in distribution as n → ∞.",
+      "distractor_rationales": {
+        "Uniform, regardless of the population distribution.": "No theorem asserts convergence to uniformity; CLT specifies normality.",
+        "Normal, provided the population distribution is normal.": "That describes the exact sampling distribution under normality — not the CLT, which applies *even when the population is non-normal*.",
+        "t-distributed, when σ is unknown.": "The t-distribution arises when estimating σ with s; CLT concerns the standardized mean using σ (or asymptotically s), converging to normality."
+      }
+    },
+    {
+      "id": "d10",
+      "topic": "Random Variables (Expectation & Variance)",
+      "prompt": "Let X be a discrete random variable with E[X] = 5 and Var(X) = 4. Define Y = 3X − 2. What are E[Y] and Var(Y)?",
+      "choices": [
+        "E[Y] = 13, Var(Y) = 10",
+        "E[Y] = 13, Var(Y) = 36",
+        "E[Y] = 15, Var(Y) = 10",
+        "E[Y] = 15, Var(Y) = 36"
+      ],
+      "correct_answer": "E[Y] = 13, Var(Y) = 36",
+      "explanation": "E[3X − 2] = 3E[X] − 2 = 3(5) − 2 = 13; Var(3X − 2) = 3²Var(X) = 9 × 4 = 36.",
+      "distractor_rationales": {
+        "E[Y] = 13, Var(Y) = 10": "Var(Y) incorrectly adds/subtracts the constant (−2) into variance, which does not affect variance.",
+        "E[Y] = 15, Var(Y) = 10": "Both expectation (ignores −2) and variance (adds constant) are miscalculated.",
+        "E[Y] = 15, Var(Y) = 36": "E[Y] omits subtraction of 2: 3×5 = 15, but Y = 3X − 2 ⇒ 15 − 2 = 13."
+      }
+    }
+  ]
+}

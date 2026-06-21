@@ -1,0 +1,184 @@
+{
+  "questions": [
+    {
+      "id": "d1",
+      "topic": "Subject-verb agreement",
+      "prompt": "Which sentence demonstrates correct subject-verb agreement?",
+      "choices": [
+        "The list of items are on the desk.",
+        "The list of items is on the desk.",
+        "The list of items were on the desk.",
+        "The list of items be on the desk."
+      ],
+      "correct_answer": "The list of items is on the desk.",
+      "explanation": "The subject 'list' is singular, so it requires the singular verb 'is'. Phrases like 'of items' do not affect the number of the subject.",
+      "distractor_rationales": {
+        "The list of items are on the desk.": "Uses plural verb 'are' with singular subject 'list', violating subject-verb agreement.",
+        "The list of items were on the desk.": "Uses plural past-tense verb 'were' with singular subject 'list'; 'were' is both plural and incorrect tense for this context.",
+        "The list of items be on the desk.": "'Be' is a base form verb and cannot stand alone as the main verb in a declarative present-tense sentence without auxiliary support."
+      }
+    },
+    {
+      "id": "d2",
+      "topic": "Past perfect tense",
+      "prompt": "Which sentence correctly uses the past perfect tense to indicate an action completed before another past action?",
+      "choices": [
+        "She had left before I arrived.",
+        "She left before I had arrived.",
+        "She has left before I arrived.",
+        "She was leaving before I arrived."
+      ],
+      "correct_answer": "She had left before I arrived.",
+      "explanation": "The past perfect ('had left') correctly expresses an action completed prior to another past action ('arrived'), which is in simple past.",
+      "distractor_rationales": {
+        "She left before I had arrived.": "Reverses the temporal logic: 'had arrived' incorrectly suggests arrival happened before departure, contradicting the meaning of 'before'.",
+        "She has left before I arrived.": "Uses present perfect 'has left', which connects to the present — incompatible with a fully past time frame indicated by 'arrived'.",
+        "She was leaving before I arrived.": "Past continuous 'was leaving' describes an ongoing action, not a completed one, so it fails to convey the intended anteriority."
+      }
+    },
+    {
+      "id": "d3",
+      "topic": "Relative clauses",
+      "prompt": "Which sentence uses a non-restrictive relative clause correctly?",
+      "choices": [
+        "My brother who lives in Paris visited last week.",
+        "My brother, who lives in Paris, visited last week.",
+        "My brother which lives in Paris visited last week.",
+        "My brother, which lives in Paris, visited last week."
+      ],
+      "correct_answer": "My brother, who lives in Paris, visited last week.",
+      "explanation": "A non-restrictive clause adds extra, non-essential information and must be set off by commas; 'who' is the correct relative pronoun for people.",
+      "distractor_rationales": {
+        "My brother who lives in Paris visited last week.": "Lacks commas, making it restrictive — implying the speaker has more than one brother and specifying which one, contrary to non-restrictive intent.",
+        "My brother which lives in Paris visited last week.": "'Which' is not used for people in standard English; 'who' is required for human antecedents.",
+        "My brother, which lives in Paris, visited last week.": "'Which' is grammatically inappropriate for a human antecedent ('brother'); only 'who' is correct here."
+      }
+    },
+    {
+      "id": "d4",
+      "topic": "Modal verbs (obligation vs. permission)",
+      "prompt": "Which sentence correctly uses a modal verb to express formal obligation?",
+      "choices": [
+        "You may submit the report by Friday.",
+        "You must submit the report by Friday.",
+        "You should submit the report by Friday.",
+        "You can submit the report by Friday."
+      ],
+      "correct_answer": "You must submit the report by Friday.",
+      "explanation": "'Must' expresses strong, externally imposed obligation — appropriate for formal requirements or rules.",
+      "distractor_rationales": {
+        "You may submit the report by Friday.": "'May' expresses permission, not obligation, and is too weak for a required deadline.",
+        "You should submit the report by Friday.": "'Should' expresses advice or recommendation, not binding obligation.",
+        "You can submit the report by Friday.": "'Can' expresses ability or informal permission, not requirement."
+      }
+    },
+    {
+      "id": "d5",
+      "topic": "Comparative adjectives",
+      "prompt": "Which sentence correctly forms the comparative degree of the adjective 'careful'?",
+      "choices": [
+        "She is carefuler than her sister.",
+        "She is more careful than her sister.",
+        "She is most careful than her sister.",
+        "She is as careful than her sister."
+      ],
+      "correct_answer": "She is more careful than her sister.",
+      "explanation": "Adjectives with two or more syllables (like 'careful') form the comparative with 'more', not '-er'.",
+      "distractor_rationales": {
+        "She is carefuler than her sister.": "'Carefuler' is ungrammatical; two-syllable adjectives ending in -ful take 'more', not the -er suffix.",
+        "She is most careful than her sister.": "'Most' is the superlative form and cannot be used with 'than', which requires the comparative.",
+        "She is as careful than her sister.": "'As...as' is the correct correlative for equality; 'than' is used only with comparatives, not 'as'."
+      }
+    },
+    {
+      "id": "d6",
+      "topic": "Gerunds vs. infinitives",
+      "prompt": "Which sentence correctly uses a gerund as the subject of the sentence?",
+      "choices": [
+        "To swim is good exercise.",
+        "Swimming is good exercise.",
+        "She likes to swim every morning.",
+        "He began swimming after work."
+      ],
+      "correct_answer": "Swimming is good exercise.",
+      "explanation": "A gerund ('swimming') functions as a noun and can serve as the subject of a sentence; here it is the subject followed by the predicate 'is good exercise.'",
+      "distractor_rationales": {
+        "To swim is good exercise.": "This uses an infinitive ('to swim') as subject — grammatically acceptable but not a gerund, so it fails the prompt's specific requirement.",
+        "She likes to swim every morning.": "Here 'to swim' is an infinitive object of the verb 'likes'; it is not the subject.",
+        "He began swimming after work.": "'Swimming' is a gerund, but it functions as the direct object of 'began', not the subject."
+      }
+    },
+    {
+      "id": "d7",
+      "topic": "Tag questions",
+      "prompt": "Which tag question correctly follows the statement 'They’ve already finished the project'?",
+      "choices": [
+        "haven’t they?",
+        "have they?",
+        "didn’t they?",
+        "do they?"
+      ],
+      "correct_answer": "haven’t they?",
+      "explanation": "With present perfect affirmative statements, the tag is negative and matches the auxiliary ('have') and subject ('they'), resulting in 'haven’t they?'",
+      "distractor_rationales": {
+        "have they?": "A positive tag is incorrect after an affirmative statement; tags must be opposite in polarity.",
+        "didn’t they?": "Uses past simple auxiliary 'did', mismatching the present perfect 'have finished'.",
+        "do they?": "Uses present simple 'do', which does not align with the present perfect construction."
+      }
+    },
+    {
+      "id": "d8",
+      "topic": "Countable vs. uncountable nouns",
+      "prompt": "Which sentence correctly treats 'information' as an uncountable noun?",
+      "choices": [
+        "I need some informations about the event.",
+        "I need an information about the event.",
+        "I need some information about the event.",
+        "I need many informations about the event."
+      ],
+      "correct_answer": "I need some information about the event.",
+      "explanation": "'Information' is an uncountable noun and takes singular verbs and quantifiers like 'some', 'much', or 'a piece of', but never plural forms or 'a/an'.",
+      "distractor_rationales": {
+        "I need some informations about the event.": "'Informations' is ungrammatical — 'information' has no standard plural form in English.",
+        "I need an information about the event.": "'An' cannot precede uncountable nouns; 'information' cannot be made countable this way.",
+        "I need many informations about the event.": "'Many' modifies only countable plurals; 'information' is uncountable and requires 'much' (though 'much' is rarely used in affirmative contexts — 'some' is preferred)."
+      }
+    },
+    {
+      "id": "d9",
+      "topic": "Inversion after negative adverbials",
+      "prompt": "Which sentence correctly uses subject–auxiliary inversion after a negative adverbial expression?",
+      "choices": [
+        "Seldom she goes to the theater.",
+        "Seldom does she go to the theater.",
+        "Seldom she did go to the theater.",
+        "Seldom went she to the theater."
+      ],
+      "correct_answer": "Seldom does she go to the theater.",
+      "explanation": "Negative adverbials like 'seldom' trigger inversion in present simple: auxiliary 'does' + subject 'she' + base verb 'go'.",
+      "distractor_rationales": {
+        "Seldom she goes to the theater.": "No inversion occurs — violates the grammatical rule requiring inversion after initial negative adverbials.",
+        "Seldom she did go to the theater.": "Incorrectly places 'she' before the auxiliary 'did'; also mixes past tense without justification and lacks proper inversion order.",
+        "Seldom went she to the theater.": "Uses archaic/poetic inversion with full verb 'went'; modern standard English requires auxiliary-supported inversion ('did she go')."
+      }
+    },
+    {
+      "id": "d10",
+      "topic": "Subjunctive mood",
+      "prompt": "Which sentence correctly uses the present subjunctive after 'It is essential that'?",
+      "choices": [
+        "It is essential that he knows the rules.",
+        "It is essential that he know the rules.",
+        "It is essential that he knew the rules.",
+        "It is essential that he has known the rules."
+      ],
+      "correct_answer": "It is essential that he know the rules.",
+      "explanation": "After expressions of necessity like 'It is essential that', the present subjunctive uses the base form of the verb ('know'), regardless of subject person or number.",
+      "distractor_rationales": {
+        "It is essential that he knows the rules.": "Uses indicative 'knows', which is ungrammatical in formal subjunctive contexts; the subjunctive requires the base form 'know'.",
+        "It is essential that he knew the rules.": "'Knew' is past indicative, not subjunctive; it incorrectly shifts tense and fails to satisfy the subjunctive requirement.",
+        "It is essential that he has known the rules.": "Present perfect 'has known' is not used in the subjunctive after 'essential that'; the simple base verb is required."
+      }
+    }
+  ]
+}

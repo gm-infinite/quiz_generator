@@ -1,0 +1,184 @@
+{
+  "questions": [
+    {
+      "id": "d1",
+      "topic": "Supervised vs Unsupervised Learning",
+      "prompt": "Which task is an example of unsupervised learning?",
+      "choices": [
+        "Predicting house prices from square footage and number of bedrooms",
+        "Grouping customers into segments based on purchasing behavior",
+        "Classifying emails as spam or not spam",
+        "Predicting whether a loan applicant will default using historical repayment data"
+      ],
+      "correct_answer": "Grouping customers into segments based on purchasing behavior",
+      "explanation": "Unsupervised learning finds hidden patterns or intrinsic structures in input data without labeled outcomes; clustering customers is a classic example.",
+      "distractor_rationales": {
+        "Predicting house prices from square footage and number of bedrooms": "This is regression — a supervised learning task because it uses labeled output (prices) to train the model.",
+        "Classifying emails as spam or not spam": "This is classification — a supervised learning task requiring labeled examples of spam and non-spam emails.",
+        "Predicting whether a loan applicant will default using historical repayment data": "This is binary classification with labeled outcomes (defaulted/did not default), making it supervised learning."
+      }
+    },
+    {
+      "id": "d2",
+      "topic": "Training, Validation, and Test Sets",
+      "prompt": "What is the primary purpose of a validation set?",
+      "choices": [
+        "To provide final, unbiased evaluation of model performance after training and selection",
+        "To tune hyperparameters and select the best model among candidates",
+        "To compute gradients during backpropagation",
+        "To initialize model weights before training begins"
+      ],
+      "correct_answer": "To tune hyperparameters and select the best model among candidates",
+      "explanation": "The validation set is used during model development to assess performance across different hyperparameter configurations and guide model selection without touching the test set.",
+      "distractor_rationales": {
+        "To provide final, unbiased evaluation of model performance after training and selection": "That is the role of the test set, not the validation set.",
+        "To compute gradients during backpropagation": "Gradients are computed using the training set, not the validation set.",
+        "To initialize model weights before training begins": "Weights are typically initialized randomly or via schemes like Xavier/Glorot — unrelated to the validation set."
+      }
+    },
+    {
+      "id": "d3",
+      "topic": "Overfitting and Underfitting",
+      "prompt": "Which scenario best illustrates overfitting?",
+      "choices": [
+        "A model achieves 99% accuracy on training data but only 55% on unseen test data",
+        "A linear model fails to capture a clear quadratic trend in the data and performs poorly on both training and test sets",
+        "A model performs equally well (≈80%) on both training and test data",
+        "A decision tree is pruned aggressively and generalizes poorly to new examples"
+      ],
+      "correct_answer": "A model achieves 99% accuracy on training data but only 55% on unseen test data",
+      "explanation": "Overfitting occurs when a model learns noise or idiosyncrasies in the training data, resulting in high training performance but poor generalization to new data.",
+      "distractor_rationales": {
+        "A linear model fails to capture a clear quadratic trend in the data and performs poorly on both training and test sets": "This describes underfitting — the model is too simple to capture the underlying pattern.",
+        "A model performs equally well (≈80%) on both training and test data": "This suggests good generalization, not overfitting.",
+        "A decision tree is pruned aggressively and generalizes poorly to new examples": "Aggressive pruning usually reduces overfitting; poor generalization here likely reflects underfitting, not overfitting."
+      }
+    },
+    {
+      "id": "d4",
+      "topic": "Loss Functions",
+      "prompt": "Which loss function is most commonly used for binary classification tasks in logistic regression?",
+      "choices": [
+        "Mean Squared Error (MSE)",
+        "Hinge Loss",
+        "Cross-Entropy Loss",
+        "Kullback-Leibler Divergence"
+      ],
+      "correct_answer": "Cross-Entropy Loss",
+      "explanation": "Cross-entropy loss (also called log loss) directly measures the dissimilarity between predicted class probabilities and true binary labels, making it ideal for logistic regression.",
+      "distractor_rationales": {
+        "Mean Squared Error (MSE)": "MSE can be used but is less appropriate for classification because it penalizes confident wrong predictions less severely and lacks probabilistic interpretation.",
+        "Hinge Loss": "Hinge loss is used in support vector machines (SVMs), not standard logistic regression.",
+        "Kullback-Leibler Divergence": "KL divergence is related but not identical; cross-entropy is the standard choice, and KL divergence assumes both distributions are known and normalized."
+      }
+    },
+    {
+      "id": "d5",
+      "topic": "Feature Engineering",
+      "prompt": "Why might you apply logarithmic transformation to a highly right-skewed feature (e.g., income)?",
+      "choices": [
+        "To convert categorical values into numeric codes",
+        "To reduce the influence of outliers and make the distribution more symmetric",
+        "To increase the dimensionality by adding polynomial terms",
+        "To ensure all feature values are integers"
+      ],
+      "correct_answer": "To reduce the influence of outliers and make the distribution more symmetric",
+      "explanation": "Log transformation compresses large values and expands small ones, mitigating skewness and improving model assumptions (e.g., linearity, homoscedasticity) in many algorithms.",
+      "distractor_rationales": {
+        "To convert categorical values into numeric codes": "That is handled by encoding techniques (e.g., one-hot or label encoding), not log transforms.",
+        "To increase the dimensionality by adding polynomial terms": "Polynomial features add new columns; log transformation modifies an existing feature without increasing dimensionality.",
+        "To ensure all feature values are integers": "Logarithms of positive numbers are typically non-integer real numbers; this is not a goal of log transformation."
+      }
+    },
+    {
+      "id": "d6",
+      "topic": "Evaluation Metrics",
+      "prompt": "In a medical screening test for a rare disease, why might accuracy be misleading?",
+      "choices": [
+        "Because it ignores class imbalance and may be inflated by correctly predicting the majority (healthy) class",
+        "Because it cannot be computed when the model outputs probabilities",
+        "Because it requires a confusion matrix with exactly four entries",
+        "Because it is undefined for multi-class problems"
+      ],
+      "correct_answer": "Because it ignores class imbalance and may be inflated by correctly predicting the majority (healthy) class",
+      "explanation": "With rare diseases, even a naive model predicting 'no disease' for everyone may achieve >99% accuracy — masking failure to detect actual cases.",
+      "distractor_rationales": {
+        "Because it cannot be computed when the model outputs probabilities": "Accuracy is computed from hard predictions (e.g., thresholded probabilities), not raw probabilities — it’s fully computable.",
+        "Because it requires a confusion matrix with exactly four entries": "While binary accuracy uses a 2×2 confusion matrix, accuracy itself is just a scalar derived from it — no structural requirement beyond correct/incorrect counts.",
+        "Because it is undefined for multi-class problems": "Accuracy is well-defined and widely used for multi-class classification (proportion of correct predictions)."
+      }
+    },
+    {
+      "id": "d7",
+      "topic": "Bias-Variance Tradeoff",
+      "prompt": "Which statement best describes high bias in a machine learning model?",
+      "choices": [
+        "The model is overly sensitive to small fluctuations in the training data",
+        "The model consistently makes incorrect predictions due to oversimplification",
+        "The model achieves near-perfect accuracy on training data but fails on test data",
+        "The model's predictions vary widely across different training sets"
+      ],
+      "correct_answer": "The model consistently makes incorrect predictions due to oversimplification",
+      "explanation": "High bias reflects systematic error from assumptions that are too strong or simplistic (e.g., fitting a line to quadratic data), leading to underfitting.",
+      "distractor_rationales": {
+        "The model is overly sensitive to small fluctuations in the training data": "That describes high variance, not high bias.",
+        "The model achieves near-perfect accuracy on training data but fails on test data": "That is characteristic of high variance (overfitting).",
+        "The model's predictions vary widely across different training sets": "This is also a hallmark of high variance."
+      }
+    },
+    {
+      "id": "d8",
+      "topic": "Gradient Descent",
+      "prompt": "What role does the learning rate play in gradient descent?",
+      "choices": [
+        "It determines how many iterations the algorithm runs before stopping",
+        "It scales the size of parameter updates in the direction opposite to the gradient",
+        "It controls whether the algorithm uses batch, mini-batch, or stochastic updates",
+        "It defines the mathematical form of the loss function"
+      ],
+      "correct_answer": "It scales the size of parameter updates in the direction opposite to the gradient",
+      "explanation": "The learning rate multiplies the gradient to determine the step size taken toward minimizing loss — too large causes overshooting; too small slows convergence.",
+      "distractor_rationales": {
+        "It determines how many iterations the algorithm runs before stopping": "Iteration count is set by the stopping criterion (e.g., max epochs or loss threshold), not the learning rate.",
+        "It controls whether the algorithm uses batch, mini-batch, or stochastic updates": "That is determined by the data sampling strategy, not the learning rate.",
+        "It defines the mathematical form of the loss function": "The loss function is chosen separately (e.g., MSE, cross-entropy); the learning rate operates *on* the gradient of that function."
+      }
+    },
+    {
+      "id": "d9",
+      "topic": "Decision Trees",
+      "prompt": "What does 'information gain' measure when splitting a node in a decision tree?",
+      "choices": [
+        "The reduction in Gini impurity after the split",
+        "The increase in prediction variance introduced by the split",
+        "The reduction in entropy (or uncertainty) about the target variable after the split",
+        "The absolute difference between mean target values in left and right child nodes"
+      ],
+      "correct_answer": "The reduction in entropy (or uncertainty) about the target variable after the split",
+      "explanation": "Information gain quantifies how much uncertainty (measured by entropy) in the target label is reduced by a given split — higher gain means a more informative split.",
+      "distractor_rationales": {
+        "The reduction in Gini impurity after the split": "That is Gini gain — a different, though related, splitting criterion; information gain specifically uses entropy.",
+        "The increase in prediction variance introduced by the split": "Variance is not used in standard decision tree splitting for classification; this mischaracterizes the objective.",
+        "The absolute difference between mean target values in left and right child nodes": "That relates to regression splits or simple heuristics, not information gain in classification trees."
+      }
+    },
+    {
+      "id": "d10",
+      "topic": "Regularization",
+      "prompt": "How does L2 regularization (Ridge) affect model weights?",
+      "choices": [
+        "It forces many weights to become exactly zero, performing feature selection",
+        "It shrinks all weights toward zero but rarely sets them to zero",
+        "It prevents the model from using any features by setting all weights to zero",
+        "It increases the magnitude of large weights while reducing small ones"
+      ],
+      "correct_answer": "It shrinks all weights toward zero but rarely sets them to zero",
+      "explanation": "L2 regularization adds a penalty proportional to the squared magnitude of weights, encouraging small but non-zero coefficients — it discourages large weights without inducing sparsity.",
+      "distractor_rationales": {
+        "It forces many weights to become exactly zero, performing feature selection": "That is the behavior of L1 (Lasso) regularization, not L2.",
+        "It prevents the model from using any features by setting all weights to zero": "That would produce a trivial model; L2 penalizes large weights but permits non-zero solutions.",
+        "It increases the magnitude of large weights while reducing small ones": "L2 uniformly penalizes weight magnitude — larger weights incur disproportionately higher penalties, so they are shrunk more (not increased)."
+      }
+    }
+  ]
+}

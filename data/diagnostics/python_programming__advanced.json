@@ -1,0 +1,182 @@
+{
+  "questions": [
+    {
+      "id": "d1",
+      "topic": "Decorators",
+      "prompt": "What is the output of the following code?\n\n```python\ndef trace(func):\n    def wrapper(*args):\n        print(f'Calling {func.__name__}')\n        return func(*args)\n    return wrapper\n\n@trace\ndef greet(name):\n    return f'Hello, {name}!'\n\nprint(greet('Alice'))\n```",
+      "choices": [
+        "Hello, Alice!",
+        "Calling greet\\nHello, Alice!",
+        "Calling greet",
+        "TypeError: wrapper() takes 0 positional arguments but 1 was given"
+      ],
+      "correct_answer": "Calling greet\\nHello, Alice!",
+      "explanation": "The @trace decorator wraps greet with the wrapper function, which prints the call message before invoking the original function and returning its result.",
+      "distractor_rationales": {
+        "Hello, Alice!": "This would occur only if the decorator did not execute its print statement — but it does, before returning the result.",
+        "Calling greet": "This ignores that wrapper returns func(*args), so the greeting string is also printed by the outer print().",
+        "TypeError: wrapper() takes 0 positional arguments but 1 was given": "The wrapper accepts *args, so it correctly handles the 'Alice' argument; no signature mismatch occurs."
+      }
+    },
+    {
+      "id": "d2",
+      "topic": "Context Managers",
+      "prompt": "Which of the following best describes the primary purpose of implementing `__enter__` and `__exit__` methods in a class?",
+      "choices": [
+        "To enable iteration over instances using for loops",
+        "To allow the class to be used with the 'with' statement for resource management",
+        "To make instances callable like functions",
+        "To support arithmetic operations such as + and -"
+      ],
+      "correct_answer": "To allow the class to be used with the 'with' statement for resource management",
+      "explanation": "Classes defining `__enter__` and `__exit__` implement the context manager protocol, enabling safe setup and teardown (e.g., file handling, locks) via the 'with' statement.",
+      "distractor_rationales": {
+        "To enable iteration over instances using for loops": "Iteration requires `__iter__` and optionally `__next__`, not `__enter__`/`__exit__`.",
+        "To make instances callable like functions": "Callability is conferred by implementing `__call__`.",
+        "To support arithmetic operations such as + and -": "Arithmetic operators are implemented via special methods like `__add__` or `__sub__`."
+      }
+    },
+    {
+      "id": "d3",
+      "topic": "Metaclasses",
+      "prompt": "What will this code print?\n\n```python\nclass Meta(type):\n    def __new__(mcs, name, bases, dct):\n        dct['version'] = '1.0'\n        return super().__new__(mcs, name, bases, dct)\n\nclass MyClass(metaclass=Meta):\n    pass\n\nprint(MyClass.version)\n```",
+      "choices": [
+        "AttributeError: type object 'MyClass' has no attribute 'version'",
+        "1.0",
+        "None",
+        "'1.0'"
+      ],
+      "correct_answer": "1.0",
+      "explanation": "The metaclass `Meta` injects `'version': '1.0'` into the class dictionary during class creation, making it a class attribute accessible as `MyClass.version`.",
+      "distractor_rationales": {
+        "AttributeError: type object 'MyClass' has no attribute 'version'": "The attribute is successfully added in `__new__`, so no AttributeError occurs.",
+        "None": "No assignment to `None` happens; the string '1.0' is explicitly assigned.",
+        "'1.0'": "While the value is the string '1.0', Python prints it without quotes in this context (i.e., `print()` outputs the unquoted string)."
+      }
+    },
+    {
+      "id": "d4",
+      "topic": "Asyncio",
+      "prompt": "In asyncio, what is the role of `await`?",
+      "choices": [
+        "It pauses execution of the current coroutine until the awaited awaitable completes, allowing other coroutines to run",
+        "It blocks the entire Python process until the awaited operation finishes",
+        "It spawns a new OS thread to run the awaited operation concurrently",
+        "It converts a synchronous function into an asynchronous one"
+      ],
+      "correct_answer": "It pauses execution of the current coroutine until the awaited awaitable completes, allowing other coroutines to run",
+      "explanation": "`await` suspends the current coroutine cooperatively (not blocking the event loop), yielding control so other tasks can proceed — core to asyncio's concurrency model.",
+      "distractor_rationales": {
+        "It blocks the entire Python process until the awaited operation finishes": "That describes synchronous blocking (e.g., `time.sleep()`), not `await`, which is non-blocking within the event loop.",
+        "It spawns a new OS thread to run the awaited operation concurrently": "Threading is separate; `await` works within a single thread using cooperative multitasking.",
+        "It converts a synchronous function into an asynchronous one": "`await` can only be used on already-awaitable objects (coroutines, Tasks, etc.); it does not convert functions."
+      }
+    },
+    {
+      "id": "d5",
+      "topic": "Descriptors",
+      "prompt": "What is the output of the following code?\n\n```python\nclass PositiveNumber:\n    def __get__(self, obj, objtype=None):\n        return obj._value\n    def __set__(self, obj, value):\n        if value < 0:\n            raise ValueError('Must be positive')\n        obj._value = value\n\nclass BankAccount:\n    balance = PositiveNumber()\n\nacc = BankAccount()\nacc.balance = 100\nprint(acc.balance)\n```",
+      "choices": [
+        "100",
+        "ValueError: Must be positive",
+        "_value",
+        "AttributeError: 'BankAccount' object has no attribute '_value'"
+      ],
+      "correct_answer": "100",
+      "explanation": "The descriptor `PositiveNumber` stores the value in `obj._value` via `__set__`, and retrieves it in `__get__`; assigning `acc.balance = 100` succeeds and `print(acc.balance)` returns 100.",
+      "distractor_rationales": {
+        "ValueError: Must be positive": "100 is positive, so the validation passes.",
+        "_value": "That is the internal attribute name, not the value returned by `__get__`.",
+        "AttributeError: 'BankAccount' object has no attribute '_value'": "The descriptor assigns `obj._value` during `__set__`, so the attribute exists after assignment."
+      }
+    },
+    {
+      "id": "d6",
+      "topic": "Type Hints and Generics",
+      "prompt": "Given the function signature `def process_items(items: list[str]) -> dict[str, int]:`, which of the following is a valid call assuming correct implementation?",
+      "choices": [
+        "process_items(['a', 'b', 'c'])",
+        "process_items(('a', 'b', 'c'))",
+        "process_items({'a': 1, 'b': 2})"
+      ],
+      "correct_answer": "process_items(['a', 'b', 'c'])",
+      "explanation": "The type annotation `list[str]` requires a list of strings; `['a', 'b', 'c']` satisfies this, while the tuple and dict do not match the expected type.",
+      "distractor_rationales": {
+        "process_items(('a', 'b', 'c'))": "A tuple is not a `list`, so it violates the type contract (even if structurally similar).",
+        "process_items({'a': 1, 'b': 2})": "A dict is neither a list nor iterable as a list of strings; it fails both type and structural expectations."
+      }
+    },
+    {
+      "id": "d7",
+      "topic": "Memory Management and Weak References",
+      "prompt": "What is the primary use case for `weakref.ref`?",
+      "choices": [
+        "To create a reference that does not prevent garbage collection of the referent",
+        "To force immediate garbage collection of an object",
+        "To create an alias for a variable with guaranteed lifetime extension",
+        "To track all active references to an object in real time"
+      ],
+      "correct_answer": "To create a reference that does not prevent garbage collection of the referent",
+      "explanation": "`weakref.ref` creates a weak reference: it allows access to the object while not contributing to its reference count, so the object can still be garbage-collected when no strong references remain.",
+      "distractor_rationales": {
+        "To force immediate garbage collection of an object": "Weak references do not trigger GC; they merely don’t inhibit it.",
+        "To create an alias for a variable with guaranteed lifetime extension": "A weak reference does *not* extend lifetime — the object may vanish at any time.",
+        "To track all active references to an object in real time": "Python provides no built-in mechanism to enumerate all references to an object."
+      }
+    },
+    {
+      "id": "d8",
+      "topic": "Closures and Late Binding",
+      "prompt": "What is printed by the following code?\n\n```python\nfuncs = []\nfor i in range(3):\n    funcs.append(lambda: i)\nfor f in funcs:\n    print(f())\n```",
+      "choices": [
+        "0\\n1\\n2",
+        "2\\n2\\n2",
+        "0\\n0\\n0",
+        "UnboundLocalError"
+      ],
+      "correct_answer": "2\\n2\\n2",
+      "explanation": "All lambdas close over the same variable `i`. By loop end, `i == 2`, so each lambda returns 2 — classic late binding behavior in closures.",
+      "distractor_rationales": {
+        "0\\n1\\n2": "This would require each lambda to capture `i`'s value at definition time, which Python doesn’t do by default.",
+        "0\\n0\\n0": "That would imply `i` remained 0, but the loop increments it to 2.",
+        "UnboundLocalError": "No assignment to `i` inside the lambda makes it a free variable bound to the loop scope — no error occurs."
+      }
+    },
+    {
+      "id": "d9",
+      "topic": "Import System and `__all__`",
+      "prompt": "If a module `mymodule.py` contains `__all__ = ['func_a', 'CONST']`, what is the effect of `from mymodule import *`?",
+      "choices": [
+        "Only `func_a` and `CONST` are imported into the current namespace",
+        "All public names (not starting with underscore) are imported",
+        "Only `func_a` is imported (since `CONST` is uppercase and treated as private)",
+        "The import raises SyntaxError because `__all__` must be a tuple"
+      ],
+      "correct_answer": "Only `func_a` and `CONST` are imported into the current namespace",
+      "explanation": "`__all__` explicitly defines the public API for wildcard imports (`import *`); only listed names are imported, regardless of naming convention.",
+      "distractor_rationales": {
+        "All public names (not starting with underscore) are imported": "That is the default behavior *only when `__all__` is not defined`.",
+        "Only `func_a` is imported (since `CONST` is uppercase and treated as private)": "Uppercase names are conventional constants, not private; `__all__` controls import, not naming.",
+        "The import raises SyntaxError because `__all__` must be a tuple": "`__all__` can be any iterable — list, tuple, or even a set — though list/tuple are idiomatic."
+      }
+    },
+    {
+      "id": "d10",
+      "topic": "String Formatting and F-Strings Internals",
+      "prompt": "What happens when an f-string contains a call to a function that raises an exception?",
+      "choices": [
+        "The exception is raised during f-string evaluation, before the string is formed",
+        "The f-string silently substitutes '<exception>' and continues",
+        "The f-string compiles successfully but raises the exception only upon first use",
+        "The f-string compilation fails with SyntaxError"
+      ],
+      "correct_answer": "The exception is raised during f-string evaluation, before the string is formed",
+      "explanation": "Expressions inside f-strings (e.g., `{func()}`) are evaluated at runtime when the f-string is executed — if `func()` raises, the exception propagates immediately.",
+      "distractor_rationales": {
+        "The f-string silently substitutes '<exception>' and continues": "Python never suppresses exceptions in f-string expressions.",
+        "The f-string compiles successfully but raises the exception only upon first use": "F-strings are evaluated each time they're executed — there's no 'first use' caching that delays exceptions.",
+        "The f-string compilation fails with SyntaxError": "Syntax errors occur only for malformed syntax (e.g., unmatched braces); runtime exceptions are unrelated to parsing."
+      }
+    }
+  ]
+}

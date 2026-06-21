@@ -1,0 +1,184 @@
+{
+  "questions": [
+    {
+      "id": "d1",
+      "topic": "Molecular Genetics",
+      "prompt": "Which enzyme is primarily responsible for synthesizing the RNA primer required for DNA replication in prokaryotes?",
+      "choices": [
+        "DNA polymerase III",
+        "Primase",
+        "Helicase",
+        "Ligase"
+      ],
+      "correct_answer": "Primase",
+      "explanation": "Primase (DnaG in E. coli) synthesizes short RNA primers that provide a 3'-OH group for DNA polymerase to initiate synthesis.",
+      "distractor_rationales": {
+        "DNA polymerase III": "DNA polymerase III elongates DNA strands but cannot initiate synthesis de novo; it requires a primer.",
+        "Helicase": "Helicase unwinds the DNA double helix but does not synthesize nucleic acids.",
+        "Ligase": "DNA ligase joins Okazaki fragments by catalyzing phosphodiester bond formation, not primer synthesis."
+      }
+    },
+    {
+      "id": "d2",
+      "topic": "Plant Physiology",
+      "prompt": "In vascular plants, which tissue is primarily responsible for the long-distance transport of water and minerals from roots to shoots?",
+      "choices": [
+        "Phloem",
+        "Cortex",
+        "Xylem",
+        "Endodermis"
+      ],
+      "correct_answer": "Xylem",
+      "explanation": "Xylem conducts water and dissolved minerals upward from roots via tracheids and vessel elements, driven by transpiration and root pressure.",
+      "distractor_rationales": {
+        "Phloem": "Phloem transports sugars and organic compounds bidirectionally, not water/minerals from roots.",
+        "Cortex": "The cortex stores starch and facilitates radial transport across the root but is not specialized for long-distance conduction.",
+        "Endodermis": "The endodermis regulates selective entry into the vascular cylinder via the Casparian strip but does not conduct water over distance."
+      }
+    },
+    {
+      "id": "d3",
+      "topic": "Evolutionary Biology",
+      "prompt": "Which observation provides the strongest direct evidence for evolution by natural selection in real time?",
+      "choices": [
+        "Fossilized transitional forms like Tiktaalik",
+        "Homologous limb structures in tetrapods",
+        "Rapid antibiotic resistance in bacterial populations",
+        "Shared ERV insertions in primate genomes"
+      ],
+      "correct_answer": "Rapid antibiotic resistance in bacterial populations",
+      "explanation": "Antibiotic resistance demonstrates heritable variation, differential survival/reproduction, and measurable allele frequency change across generations within observable timeframes.",
+      "distractor_rationales": {
+        "Fossilized transitional forms like Tiktaalik": "These support macroevolutionary patterns but are historical reconstructions, not real-time observation of selection.",
+        "Homologous limb structures in tetrapods": "These indicate common ancestry but do not demonstrate the mechanism or process of selection acting now.",
+        "Shared ERV insertions in primate genomes": "These are powerful evidence for common descent, but they reflect ancient, fixed events—not ongoing selection."
+      }
+    },
+    {
+      "id": "d4",
+      "topic": "Cell Signaling",
+      "prompt": "What is the primary second messenger produced by phospholipase C (PLC) activation downstream of Gq-coupled receptors?",
+      "choices": [
+        "cAMP",
+        "IP3",
+        "DAG",
+        "Ca²⁺"
+      ],
+      "correct_answer": "IP3",
+      "explanation": "PLC hydrolyzes PIP2 to generate inositol trisphosphate (IP3) and diacylglycerol (DAG); IP3 diffuses to the ER to trigger Ca²⁺ release.",
+      "distractor_rationales": {
+        "cAMP": "cAMP is produced by adenylate cyclase, not PLC, and acts downstream of Gs/Gi-coupled receptors.",
+        "DAG": "DAG is a co-product of PLC activity but functions as a membrane-bound activator of PKC—not the primary diffusible second messenger like IP3.",
+        "Ca²⁺": "Ca²⁺ is a downstream signal mobilized *by* IP3, not directly produced by PLC; it is a tertiary messenger in this cascade."
+      }
+    },
+    {
+      "id": "d5",
+      "topic": "Ecology",
+      "prompt": "In a community where two species compete for the same limiting resource, what outcome is predicted by the competitive exclusion principle?",
+      "choices": [
+        "Resource partitioning evolves rapidly",
+        "One species drives the other to local extinction",
+        "Both species coexist indefinitely at reduced population sizes",
+        "The superior competitor evolves into a new niche"
+      ],
+      "correct_answer": "One species drives the other to local extinction",
+      "explanation": "The competitive exclusion principle states that two species competing for identical limiting resources cannot coexist stably; the competitively superior species will eliminate the inferior one.",
+      "distractor_rationales": {
+        "Resource partitioning evolves rapidly": "Resource partitioning may *prevent* exclusion if it occurs, but the principle itself predicts exclusion *in the absence* of differentiation.",
+        "Both species coexist indefinitely at reduced population sizes": "This violates the principle unless niche differentiation reduces interspecific competition below a critical threshold.",
+        "The superior competitor evolves into a new niche": "Evolutionary change is not assumed in the classic formulation; exclusion is an ecological outcome under static conditions."
+      }
+    },
+    {
+      "id": "d6",
+      "topic": "Immunology",
+      "prompt": "Which cell type is primarily responsible for antigen presentation to naïve CD4⁺ T lymphocytes?",
+      "choices": [
+        "Cytotoxic T cells",
+        "Neutrophils",
+        "Dendritic cells",
+        "Natural killer cells"
+      ],
+      "correct_answer": "Dendritic cells",
+      "explanation": "Dendritic cells are the most potent professional antigen-presenting cells (APCs) that migrate to lymph nodes and present antigen via MHC II to activate naïve CD4⁺ T cells.",
+      "distractor_rationales": {
+        "Cytotoxic T cells": "CD8⁺ cytotoxic T cells recognize antigen on MHC I but do not present antigen to naïve T cells.",
+        "Neutrophils": "Neutrophils phagocytose pathogens but lack sustained MHC II expression and co-stimulatory molecules needed to prime naïve T cells.",
+        "Natural killer cells": "NK cells mediate innate cytotoxicity and do not function as antigen-presenting cells for adaptive T-cell activation."
+      }
+    },
+    {
+      "id": "d7",
+      "topic": "Neurobiology",
+      "prompt": "During the rising phase of a neuronal action potential, which ion movement is primarily responsible for depolarization?",
+      "choices": [
+        "Influx of K⁺",
+        "Efflux of Na⁺",
+        "Influx of Na⁺",
+        "Efflux of Cl⁻"
+      ],
+      "correct_answer": "Influx of Na⁺",
+      "explanation": "Voltage-gated Na⁺ channels open rapidly upon depolarization, allowing Na⁺ influx down its electrochemical gradient, driving the membrane potential toward +30 mV.",
+      "distractor_rationales": {
+        "Influx of K⁺": "K⁺ has a negative equilibrium potential (~−90 mV); its influx would hyperpolarize, not depolarize, the cell.",
+        "Efflux of Na⁺": "Na⁺ efflux occurs via the Na⁺/K⁺ pump (electrogenic but slow) and does not contribute to rapid depolarization.",
+        "Efflux of Cl⁻": "Cl⁻ efflux would depolarize in some neurons, but in most mature neurons Cl⁻ influx mediates inhibition; Cl⁻ is not involved in the action potential upstroke."
+      }
+    },
+    {
+      "id": "d8",
+      "topic": "Biochemistry",
+      "prompt": "Which metabolic pathway directly produces the majority of ATP in aerobic eukaryotic cells?",
+      "choices": [
+        "Glycolysis",
+        "Citric acid cycle",
+        "Oxidative phosphorylation",
+        "Beta-oxidation"
+      ],
+      "correct_answer": "Oxidative phosphorylation",
+      "explanation": "Oxidative phosphorylation (electron transport chain + chemiosmosis) generates ~26–28 of the ~30 ATP per glucose molecule, far exceeding substrate-level phosphorylation in glycolysis or the citric acid cycle.",
+      "distractor_rationales": {
+        "Glycolysis": "Glycolysis yields only 2 ATP (net) per glucose via substrate-level phosphorylation and does not require oxygen.",
+        "Citric acid cycle": "The citric acid cycle produces 1 ATP (or GTP), 3 NADH, and 1 FADH₂ per acetyl-CoA—but ATP is generated later via oxidative phosphorylation.",
+        "Beta-oxidation": "Beta-oxidation breaks down fatty acids to acetyl-CoA and generates NADH/FADH₂, but ATP is produced exclusively via oxidative phosphorylation downstream."
+      }
+    },
+    {
+      "id": "d9",
+      "topic": "Developmental Biology",
+      "prompt": "In Drosophila embryogenesis, what is the primary functional role of bicoid mRNA?",
+      "choices": [
+        "Establishing segment polarity in each parasegment",
+        "Specifying posterior identity",
+        "Acting as a gap gene transcription factor",
+        "Providing anterior positional information as a maternal morphogen"
+      ],
+      "correct_answer": "Providing anterior positional information as a maternal morphogen",
+      "explanation": "Bicoid mRNA is maternally deposited at the anterior pole; after translation, Bicoid protein forms an anterior-to-posterior concentration gradient that activates hunchback and represses caudal to specify anterior structures.",
+      "distractor_rationales": {
+        "Establishing segment polarity in each parasegment": "Segment polarity genes like engrailed and wingless maintain boundaries *within* segments, not initial AP axis patterning.",
+        "Specifying posterior identity": "Posterior identity is specified by nanos and caudal, not bicoid.",
+        "Acting as a gap gene transcription factor": "Bicoid is a maternal effect gene whose protein product *regulates* gap genes (e.g., hunchback), but it is not itself classified as a gap gene."
+      }
+    },
+    {
+      "id": "d10",
+      "topic": "Microbiology",
+      "prompt": "Which feature distinguishes archaea from bacteria at the molecular level?",
+      "choices": [
+        "Presence of peptidoglycan in the cell wall",
+        "Use of ether-linked isoprenoid lipids in membranes",
+        "Circular chromosome organization",
+        "Binary fission as the primary mode of reproduction"
+      ],
+      "correct_answer": "Use of ether-linked isoprenoid lipids in membranes",
+      "explanation": "Archaea possess membranes composed of isoprenoid chains linked to glycerol by ether bonds—unlike bacterial ester-linked fatty acid membranes—conferring stability in extreme environments.",
+      "distractor_rationales": {
+        "Presence of peptidoglycan in the cell wall": "Peptidoglycan is a hallmark of most bacteria; archaea lack it and use pseudopeptidoglycan or other polymers.",
+        "Circular chromosome organization": "Both bacteria and archaea typically have circular chromosomes; this is not a distinguishing feature.",
+        "Binary fission as the primary mode of reproduction": "Both domains predominantly reproduce asexually via binary fission (or similar mechanisms), so this is not diagnostic."
+      }
+    }
+  ]
+}
