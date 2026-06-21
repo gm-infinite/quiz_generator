@@ -5,7 +5,7 @@ This file provides guidance to Claude Code (claude.ai/code) when working with co
 ## Repo
 
 - GitHub: https://github.com/gm-infinite/quiz_generator
-- Active branch: `ayberk` (this is where work lands; no `main` exists yet).
+- Active branch: `ayberk` (this is where work lands). `main` exists and is the PR base.
 
 ## Project
 
@@ -30,7 +30,7 @@ python -m scripts.smoke_test
 # time end-to-end assessment latency
 python -m scripts.bench
 
-# tests (~76, deterministic, no real API calls)
+# tests (~104, deterministic, no real API calls)
 pytest -q
 pytest tests/test_orchestrator.py -q             # one file
 pytest tests/test_agents.py::test_evaluator_pass_by_absolute_threshold -q   # one test
@@ -95,7 +95,7 @@ User-visible strings say "initial test" / "test"; internal field names still say
 - Python 3.11+ (developed on 3.13)
 - `openai` SDK (used against any OpenAI-compatible endpoint — default DashScope)
 - Pydantic v2, Gradio (6.x — note `theme` and `css` belong on `launch()`, not `Blocks()`)
-- `pypdf` for uploaded-source extraction (`tools/file_loader.py`)
+- `pypdf` for uploaded-source extraction (`tools/file_loader.py`); `fpdf2` for PDF report export (Unicode font support)
 - In-memory `SessionState` during a run; completed sessions are appended to `~/.quizmind/sessions.jsonl` by `tools/session_storage.py` — no database
 - Default model: `qwen-plus` (`core/config.LLM_MODEL`) on DashScope. `USE_STRICT_PARSE` is `False` because DashScope's OpenAI-compat endpoint doesn't reliably honor strict JSON mode — flip it on if you switch to a provider that does. Other model/provider options are commented in `core/config.py`.
 
