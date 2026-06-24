@@ -283,16 +283,16 @@ def test_start_session_handler(mock_extract, mock_orch_get):
     assert start_session_fn is not None
 
     # Case 1: Empty subject when Custom category chosen
-    gen = start_session_fn("Custom...", "   ", "beginner", 10, 3, None)
+    gen = start_session_fn("Pick a category", "Custom...", "   ", "beginner", 10, 3, None)
     res = list(gen)
     assert len(res) == 1
     state_upd, group_upd, status_msg = res[0]
     assert isinstance(state_upd, dict)
-    assert "_Please pick or enter a subject._" in status_msg
+    assert "_Pick a category or enter a subject._" in status_msg
 
     # Case 2: File reading exception
     mock_extract.side_effect = RuntimeError("PDF read error")
-    gen = start_session_fn("History", "", "beginner", 10, 3, "fake_file.pdf")
+    gen = start_session_fn("Upload a file", "History", "", "beginner", 10, 3, "fake_file.pdf")
     res = list(gen)
     assert len(res) == 1
     state_upd, group_upd, status_msg = res[0]
@@ -302,12 +302,12 @@ def test_start_session_handler(mock_extract, mock_orch_get):
     # Case 3: Empty file content
     mock_extract.side_effect = None
     mock_extract.return_value = ""
-    gen = start_session_fn("History", "", "beginner", 10, 3, "empty.txt")
+    gen = start_session_fn("Upload a file", "History", "", "beginner", 10, 3, "empty.txt")
     res = list(gen)
     assert len(res) == 1
     state_upd, group_upd, status_msg = res[0]
     assert isinstance(state_upd, dict)
-    assert "File appears empty." in status_msg
+    assert "no readable text" in status_msg
 
     # Case 4: Successful configuration and start
     mock_orchestrator = MagicMock()
@@ -315,7 +315,7 @@ def test_start_session_handler(mock_extract, mock_orch_get):
     mock_state = SessionState(subject="History", level="beginner")
     mock_orchestrator.start.return_value = mock_state
 
-    gen = start_session_fn("History", "", "beginner", 10, 3, None)
+    gen = start_session_fn("Pick a category", "History", "", "beginner", 10, 3, None)
     res = list(gen)
     assert len(res) == 2
 
@@ -334,6 +334,17 @@ def test_start_session_handler(mock_extract, mock_orch_get):
     # Verify orchestrator.start was called with expected values
     mock_orchestrator.start.assert_called_once_with(
         "History", "beginner", source_text="", question_count=10, max_rounds=3
+    )
+
+    # Case 5: Upload mode derives the subject from the filename and passes source
+    mock_orchestrator.start.reset_mock()
+    mock_extract.return_value = "SPI is a synchronous serial protocol."
+    gen = start_session_fn("Upload a file", "History", "", "beginner", 10, 3, "/tmp/CMP3010_Notes.pdf")
+    list(gen)
+    mock_orchestrator.start.assert_called_once_with(
+        "CMP3010 Notes", "beginner",
+        source_text="SPI is a synchronous serial protocol.",
+        question_count=10, max_rounds=3,
     )
 
 

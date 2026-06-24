@@ -37,6 +37,32 @@ def test_assessment_populates_diagnostic_questions(fake_client):
     assert state.diagnostic_questions[0]["topic"] == "x"
 
 
+def test_assessment_raises_on_empty_question_set(fake_client):
+    # A mismatched subject + uploaded source can make the model return zero
+    # questions; the agent must surface that, not hand the UI an empty quiz.
+    import pytest
+
+    fake_client.set(QuestionSet, lambda _p: QuestionSet(questions=[]))
+    state = SessionState(subject="Ottoman architecture", level="beginner",
+                         source_text="Embedded systems SPI notes")
+    with pytest.raises(ValueError, match="empty"):
+        AssessmentAgent(fake_client).run(state)
+
+
+def test_assessment_source_overrides_subject():
+    # With source material, the subject is only a hint and the source is
+    # authoritative — otherwise a mismatched subject yields zero questions.
+    from llm import prompts
+
+    p = prompts.assessment_prompt(
+        subject="Ottoman architecture", level="beginner",
+        n_questions=5, source_text="SPI is a synchronous serial protocol.",
+    )
+    assert "authoritative" in p
+    assert "IGNORE the subject" in p
+    assert "SPI is a synchronous serial protocol." in p
+
+
 def test_assessment_uses_state_question_count(fake_client):
     """Agent must request exactly state.question_count questions, not the config default."""
     captured_prompts: list[str] = []

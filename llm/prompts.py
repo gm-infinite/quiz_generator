@@ -7,37 +7,50 @@ depends on and lets us refactor without touching agent code.
 from __future__ import annotations
 
 
+_QUESTION_REQUIREMENTS = (
+    "\nRequirements per question:\n"
+    "  - 4 plausible answer choices, exactly one correct. `correct_answer` "
+    "must be EXACTLY one of the strings in `choices`. No duplicate choices.\n"
+    "  - A `topic` tag naming the specific subtopic (e.g. 'derivatives', not 'math').\n"
+    "  - A short `explanation` of why the correct answer is correct.\n"
+    "  - A `distractor_rationales` object mapping EACH incorrect choice "
+    "(the exact string) to a one-sentence explanation of why it is wrong.\n"
+    "  - A unique `id` like 'd1', 'd2', ...\n"
+)
+
+
 def assessment_prompt(
     subject: str,
     level: str,
     n_questions: int,
     source_text: str = "",
 ) -> str:
-    source_block = ""
     if source_text:
-        source_block = (
-            f"\nGround every question STRICTLY in the source material below — do not "
-            f"introduce facts that are not stated or directly implied by it. If the "
-            f"source is short, stay focused on what it actually covers.\n"
+        # Source material is authoritative. The subject is only a hint about
+        # the area — if it doesn't match the source (e.g. a mislabeled upload),
+        # following the source must win, otherwise the model returns zero
+        # questions trying to satisfy both. See test_assessment_source_overrides_subject.
+        return (
+            f"You are designing a broad-coverage initial test based on the source material below.\n"
+            f"Generate questions ONLY about what the source material actually covers — it is "
+            f"authoritative. Do not introduce facts that are not stated or directly implied by it. "
+            f"Treat {subject!r} as a loose hint about the topic area; if it does not match the "
+            f"source material, IGNORE the subject and follow the source.\n"
             f"\n--- SOURCE MATERIAL START ---\n{source_text}\n--- SOURCE MATERIAL END ---\n"
+            f"\n"
+            f"Generate exactly {n_questions} multiple-choice questions at a {level} level that span "
+            f"a BROAD set of subtopics found in the source material — do not cluster on one area. "
+            f"The goal is to surface weak spots, so coverage matters more than depth.\n"
+            f"{_QUESTION_REQUIREMENTS}"
         )
     return (
         f"You are designing a broad-coverage initial test to map a student's knowledge "
         f"of {subject!r} at a {level} level.\n"
-        f"{source_block}"
         f"\n"
         f"Generate exactly {n_questions} multiple-choice questions that span a BROAD set of "
         f"subtopics within {subject!r} — do not cluster on one area. The goal is to surface "
         f"weak spots, so coverage matters more than depth.\n"
-        f"\n"
-        f"Requirements per question:\n"
-        f"  - 4 plausible answer choices, exactly one correct. `correct_answer` "
-        f"must be EXACTLY one of the strings in `choices`. No duplicate choices.\n"
-        f"  - A `topic` tag naming the specific subtopic (e.g. 'derivatives', not 'math').\n"
-        f"  - A short `explanation` of why the correct answer is correct.\n"
-        f"  - A `distractor_rationales` object mapping EACH incorrect choice "
-        f"(the exact string) to a one-sentence explanation of why it is wrong.\n"
-        f"  - A unique `id` like 'd1', 'd2', ...\n"
+        f"{_QUESTION_REQUIREMENTS}"
     )
 
 

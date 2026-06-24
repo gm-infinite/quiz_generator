@@ -199,6 +199,29 @@ code, pre, .qm-code, .gr-markdown code {
   font-family: 'JetBrains Mono', ui-monospace, monospace !important;
 }
 
+/* Inline code (history timestamps, scores, the "Missing: [...]" list) must
+   stay readable — without this it inherits Gradio's dark default and renders
+   as an unreadable black box on the light theme. */
+code, .qm-code, .gr-markdown code {
+  background: var(--qm-surface-2) !important;
+  color: var(--qm-ink) !important;
+  padding: 1px 6px !important;
+  border-radius: 4px !important;
+  border: 1px solid var(--qm-border) !important;
+}
+
+/* Uploaded-file chip: Gradio's default file display is dark-on-dark on the
+   light theme (unreadable filename + size). Force the light surface. */
+#file-uploader, #file-uploader * {
+  background: var(--qm-surface) !important;
+  color: var(--qm-ink) !important;
+}
+#file-uploader {
+  border: 1px solid var(--qm-border) !important;
+  border-radius: 8px !important;
+}
+#file-uploader a, #file-uploader .download { color: var(--qm-blue) !important; }
+
 body, .gradio-container {
   background: var(--qm-bg) !important;
   color: var(--qm-text) !important;
@@ -1511,18 +1534,32 @@ def build_blocks() -> gr.Blocks:
 
         with gr.Group(elem_classes=["qm-card"]) as setup_group:
             gr.HTML('<h3 style="margin-top: 0; margin-bottom: 20px; font-size: 18px; border-bottom: 1px solid var(--qm-border); padding-bottom: 10px;">Configure Learning Session</h3>')
-            category_in = gr.Dropdown(
-                choices=[*config.SUBJECT_CATEGORIES, "Custom..."],
-                value=config.SUBJECT_CATEGORIES[0],
-                label="Category",
-                elem_id="category-dropdown",
+            mode_in = gr.Radio(
+                choices=["Pick a category", "Upload a file"],
+                value="Pick a category",
+                label="Build the test from",
+                elem_id="mode-radio",
             )
-            custom_subject_in = gr.Textbox(
-                label="Custom subject",
-                placeholder="e.g. Ottoman architecture",
-                visible=False,
-                elem_id="custom-subject-textbox",
-            )
+            with gr.Group(visible=True) as subject_group:
+                category_in = gr.Dropdown(
+                    choices=[*config.SUBJECT_CATEGORIES, "Custom..."],
+                    value=config.SUBJECT_CATEGORIES[0],
+                    label="Category",
+                    elem_id="category-dropdown",
+                )
+                custom_subject_in = gr.Textbox(
+                    label="Custom subject",
+                    placeholder="e.g. Ottoman architecture",
+                    visible=False,
+                    elem_id="custom-subject-textbox",
+                )
+            with gr.Group(visible=False) as file_group:
+                file_in = gr.File(
+                    label="Upload a file to generate questions from (.txt, .md, .pdf)",
+                    file_types=[".txt", ".md", ".pdf"],
+                    file_count="single",
+                    elem_id="file-uploader",
+                )
             level_in = gr.Radio(
                 choices=list(config.LEVELS),
                 value="beginner",
@@ -1545,13 +1582,13 @@ def build_blocks() -> gr.Blocks:
                 label="Max practice rounds",
                 elem_id="max-rounds-slider",
             )
-            file_in = gr.File(
-                label="Optional: upload a file to generate questions from (.txt, .md, .pdf)",
-                file_types=[".txt", ".md", ".pdf"],
-                file_count="single",
-                elem_id="file-uploader",
-            )
             start_btn = gr.Button("Start test", variant="primary", elem_id="start-session-button")
+
+        def _toggle_mode(mode: str):
+            use_file = mode == "Upload a file"
+            return gr.update(visible=not use_file), gr.update(visible=use_file)
+
+        mode_in.change(_toggle_mode, inputs=mode_in, outputs=[subject_group, file_group])
 
         def _toggle_custom(choice: str):
             return gr.update(visible=(choice == "Custom..."))
@@ -1567,14 +1604,14 @@ def build_blocks() -> gr.Blocks:
 
         status = gr.Markdown("")
 
-        def start_session(category: str, custom_subject: str, level: str, question_count: int, max_rounds: int, file_obj):
-            subject = custom_subject.strip() if category == "Custom..." else category
-            if not subject:
-                yield gr.skip(), gr.update(), "_Please pick or enter a subject._"
-                return
-
+        def start_session(mode: str, category: str, custom_subject: str, level: str, question_count: int, max_rounds: int, file_obj):
+            # The mode radio decides the source: a category OR an uploaded file.
             source_text = ""
-            if file_obj is not None:
+            if mode == "Upload a file":
+                if file_obj is None:
+                    yield gr.skip(), gr.update(), "_Upload a file or switch to “Pick a category”._"
+                    return
+                import os
                 path = file_obj.name if hasattr(file_obj, "name") else file_obj
                 try:
                     source_text = extract_text(path)
@@ -1582,7 +1619,15 @@ def build_blocks() -> gr.Blocks:
                     yield gr.skip(), gr.update(), f"_Could not read file: {exc}_"
                     return
                 if not source_text:
-                    yield gr.skip(), gr.update(), "_File appears empty._"
+                    yield gr.skip(), gr.update(), "_That file has no readable text — try another file or pick a category instead._"
+                    return
+                # The file is authoritative; the subject label comes from its name.
+                base = os.path.splitext(os.path.basename(path))[0]
+                subject = base.replace("_", " ").replace("-", " ").strip() or "Uploaded material"
+            else:
+                subject = custom_subject.strip() if category == "Custom..." else category
+                if not subject:
+                    yield gr.skip(), gr.update(), "_Pick a category or enter a subject._"
                     return
 
             yield (
@@ -1609,7 +1654,7 @@ def build_blocks() -> gr.Blocks:
 
         start_btn.click(
             start_session,
-            inputs=[category_in, custom_subject_in, level_in, question_count_in, max_rounds_in, file_in],
+            inputs=[mode_in, category_in, custom_subject_in, level_in, question_count_in, max_rounds_in, file_in],
             outputs=[state, setup_group, status],
         )
 

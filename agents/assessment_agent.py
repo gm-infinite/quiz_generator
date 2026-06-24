@@ -30,5 +30,11 @@ class AssessmentAgent(BaseAgent):
             source_text=state.source_text,
         )
         result: QuestionSet = self.client.generate_structured(prompt, QuestionSet)
+        if not result.questions:
+            raise ValueError(
+                "The test came back empty. If you uploaded a file, it may not contain "
+                "enough readable text to build questions from — try a different file or "
+                "remove it to test on the subject alone."
+            )
         state.diagnostic_questions = [q.model_dump() for q in result.questions]
         return state
